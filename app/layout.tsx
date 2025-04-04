@@ -1,8 +1,11 @@
 import FooterCPN from "@/components/Footer/FooterCPN";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
+
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "700"] });
 
 export const metadata: Metadata = {
@@ -21,6 +24,8 @@ export default function RootLayout({
         <Providers>
           {children}
           <FooterCPN />
+          <SpeedInsights />
+          <Analytics />
         </Providers>
       </body>
     </html>

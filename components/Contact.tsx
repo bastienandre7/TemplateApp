@@ -9,8 +9,8 @@ export default function Contact() {
           Contact Us
         </h2>
         <p className="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">
-          Got a technical issue? Want to send feedback about a beta feature?
-          Need details about our Business plan? Let us know.
+          Got a technical issue with a template? Need help using a component?
+          Want to suggest a new feature? Reach out to us anytime.
         </p>
         <form
           action="https://api.web3forms.com/submit"

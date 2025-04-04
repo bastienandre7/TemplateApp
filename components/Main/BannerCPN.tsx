@@ -1,3 +1,4 @@
+import Link from "next/link";
 import HeaderCPN from "../Header/HeaderCPN";
 
 export default function BannerCPN() {
@@ -9,7 +10,7 @@ export default function BannerCPN() {
           <h1 className="text-4xl text-black font-extrabold sm:text-6xl">
             Build Faster. Design Better.
             <strong className="font-extrabold text-red-700 sm:block">
-              Premium Tailwind Tempaltes.
+              Premium Tailwind Templates.
             </strong>
           </h1>
           <p className="mt-4 max-w-lg sm:text-lg text-black mx-auto">
@@ -24,12 +25,12 @@ export default function BannerCPN() {
             >
               Explore Components
             </a>
-            <a
+            <Link
               className="block bg-white rounded-md px-12 py-3 text-sm font-medium text-red-700 shadow-sm hover:bg-gray-100 sm:w-auto"
-              href="/templates"
+              href="#templates"
             >
               View Templates
-            </a>
+            </Link>
           </div>
         </div>
       </div>

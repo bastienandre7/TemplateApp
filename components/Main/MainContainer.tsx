@@ -1,4 +1,5 @@
 "use client";
+
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import {
@@ -23,9 +24,14 @@ type Product = {
   type: "template" | "component";
 };
 
+type Purchase = {
+  template: string;
+};
+
 export default function MainContainer() {
   const [sortOrder, setSortOrder] = useState("asc");
   const [products, setProducts] = useState<Product[]>([]);
+  const [ownedTemplates, setOwnedTemplates] = useState<string[]>([]);
   const [progress, setProgress] = useState(0);
   const { data: session } = useSession();
 
@@ -52,12 +58,23 @@ export default function MainContainer() {
       });
   }, []);
 
+  useEffect(() => {
+    if (session?.user?.email) {
+      fetch("/api/purchases")
+        .then((res) => res.json())
+        .then((data: Purchase[]) => {
+          const owned = data.map((purchase) => purchase.template);
+          setOwnedTemplates(owned);
+        });
+    }
+  }, [session]);
+
   const filteredItems = [...products].sort((a, b) =>
     sortOrder === "asc" ? a.price - b.price : b.price - a.price
   );
 
   return (
-    <div className="w-full mx-auto text-black px-4 md:px-0">
+    <div id="templates" className="w-full mx-auto text-black px-4 md:px-0">
       <div className="py-8 max-w-screen-lg mx-auto">
         <div className="flex gap-4 mb-4 text-black">
           <Select
@@ -79,6 +96,8 @@ export default function MainContainer() {
           )}
 
           {filteredItems.map((item) => {
+            const isOwned = ownedTemplates.includes(item.name);
+
             return (
               <div
                 key={item.id}
@@ -87,6 +106,11 @@ export default function MainContainer() {
                 <div className="flex-1 w-full">
                   <h3 className="text-lg font-bold">
                     {item.name} - {item.price} €
+                    {isOwned && (
+                      <span className="ml-2 text-xs px-2 py-1 bg-green-100 text-green-800 rounded-full">
+                        Owned
+                      </span>
+                    )}
                   </h3>
                   <p className="text-sm text-gray-600">
                     {item.description
@@ -96,9 +120,7 @@ export default function MainContainer() {
                   </p>
 
                   <div className="flex items-center gap-2 mt-2">
-                    <span className="text-sm text-gray-500">
-                      Built with
-                    </span>
+                    <span className="text-sm text-gray-500">Built with</span>
                     <Image
                       src="/images/logo/nextLogo.png"
                       alt="Next.js"
@@ -111,17 +133,23 @@ export default function MainContainer() {
                     <Button variant="outline">
                       <Link href={`/demoLive/${item.id}`}>Live Démo</Link>
                     </Button>
-                    <Button
-                      onClick={() => {
-                        if (!session) {
-                          signIn();
-                        } else {
-                          window.location.href = item.lemonLink;
-                        }
-                      }}
-                    >
-                      Buy Now
-                    </Button>
+                    {isOwned ? (
+                      <Button variant="secondary" asChild>
+                        <Link href="/dashboard">Owned</Link>
+                      </Button>
+                    ) : (
+                      <Button
+                        onClick={() => {
+                          if (!session) {
+                            signIn();
+                          } else {
+                            window.location.href = item.lemonLink;
+                          }
+                        }}
+                      >
+                        Buy Now
+                      </Button>
+                    )}
                   </div>
                 </div>
 

@@ -79,7 +79,7 @@ export default function DashboardSection() {
                       variant="outline"
                       size="sm"
                       onClick={() => handleDownload(p.variantId)}
-                      className="flex items-center gap-2"
+                      className="flex justify-end items-center gap-2 ml-auto"
                     >
                       <Download size={14} />
                       Download
