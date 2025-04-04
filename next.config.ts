@@ -1,7 +1,16 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "cdn.lemonsqueezy.com",
+        port: "",
+        pathname: "/**", // autorise toutes les images Lemon
+      },
+    ],
+  },
 };
 
 export default nextConfig;
