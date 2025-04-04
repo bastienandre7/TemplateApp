@@ -19,22 +19,22 @@ export async function GET() {
 
 export async function POST(req: NextRequest) {
   const body = await req.json();
-  const email = body?.data?.attributes?.user_email;
-  const items = body?.data?.attributes?.order_items;
 
-  if (!email || !items || !Array.isArray(items)) {
+  const email = body?.data?.attributes?.user_email;
+  const item = body?.data?.attributes?.first_order_item;
+
+  if (!email || !item) {
+    console.error("Invalid payload:", body);
     return NextResponse.json({ error: "Invalid payload" }, { status: 400 });
   }
 
-  for (const item of items) {
-    await prisma.purchase.create({
-      data: {
-        email,
-        template: item.product_name,
-        variantId: item.variant_id,
-      },
-    });
-  }
+  await prisma.purchase.create({
+    data: {
+      email,
+      template: item.product_name,
+      variantId: item.variant_id,
+    },
+  });
 
   return NextResponse.json({ success: true });
 }
