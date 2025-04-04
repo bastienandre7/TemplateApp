@@ -1,6 +1,4 @@
-import { NextResponse } from "next/server";
-
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
   try {
@@ -10,41 +8,32 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Missing variantId" }, { status: 400 });
     }
 
-    const response = await fetch("https://api.lemonsqueezy.com/v1/downloads", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${process.env.LEMON_API_KEY}`,
-        Accept: "application/vnd.api+json",
-        "Content-Type": "application/vnd.api+json",
-      },
-      body: JSON.stringify({
-        data: {
-          type: "downloads",
-          attributes: {
-            variant_id: variantId,
-          },
+    const res = await fetch(
+      `https://api.lemonsqueezy.com/v1/files?filter[variant_id]=${variantId}`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${process.env.LEMON_API_KEY}`,
+          Accept: "application/vnd.api+json",
         },
-      }),
-    });
+      }
+    );
 
-    if (!response.ok) {
-      const error = await response.json();
-      console.error("Lemon API error:", error);
+    const json = await res.json();
+
+    const file = json?.data?.[0];
+    const downloadUrl = file?.attributes?.download_url;
+
+    if (!downloadUrl) {
       return NextResponse.json(
-        { error: "Failed to create download URL" },
-        { status: 500 }
+        { error: "No file found for this variant." },
+        { status: 404 }
       );
     }
 
-    const json = await response.json();
-    const downloadUrl = json?.data?.attributes?.url;
-
     return NextResponse.json({ url: downloadUrl });
   } catch (err) {
-    console.error("API Error:", err);
-    return NextResponse.json(
-      { error: "Internal Server Error" },
-      { status: 500 }
-    );
+    console.error("Download API error:", err);
+    return NextResponse.json({ error: "Server error" }, { status: 500 });
   }
 }
