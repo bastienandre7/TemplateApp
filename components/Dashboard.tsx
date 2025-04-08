@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
 import { useSession } from "next-auth/react";
+import { redirect } from "next/navigation";
 import { useEffect, useState } from "react";
 
 type Purchase = {
@@ -43,12 +44,15 @@ export default function DashboardSection() {
     }
   };
 
-  if (status === "loading") return <p className="p-4">Chargement...</p>;
-  if (!session) return <p className="p-4">Non connecté</p>;
+  if (status === "loading") return <p className="p-4">Loading...</p>;
+
+  if (!session) {
+    redirect("/auth/signin?callbackUrl=/dashboard");
+  }
 
   return (
     <div className="p-4 sm:p-8 max-w-6xl mx-auto min-h-screen">
-      <h1 className="text-3xl font-bold mb-6">Your Templates</h1>
+      <h1 className="text-3xl font-bold mb-6">Your Products</h1>
 
       {purchases.length === 0 ? (
         <p className="text-muted-foreground">

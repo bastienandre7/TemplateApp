@@ -11,11 +11,12 @@ export default function DemoViewer({ template }: DemoOverlayProps) {
   const [viewMode, setViewMode] = useState("desktop");
 
   return (
-    <div className="bg-gray-700 pt-4">
+    <div className="bg-black pt-4">
       <HeaderCPN />
       <div className="flex flex-col h-screen">
         {/* Header avec boutons */}
-        <div className="bg-gray-700 p-8 flex justify-center gap-4">
+        <h2 className="text-white underline text-xl text-center pt-8">{template.name}</h2>
+        <div className="bg-black p-8 flex justify-center gap-4">
           <button
             onClick={() => setViewMode("desktop")}
             className={`px-6 py-2 rounded-lg text-white flex items-center gap-2 ${
