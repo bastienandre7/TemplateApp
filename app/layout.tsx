@@ -15,6 +15,31 @@ export const metadata: Metadata = {
   title: "BloomTPL – Modern Next.js Templates",
   description:
     "Discover and download premium templates and components built with Next.js, Tailwind CSS, and modern design systems.",
+  icons: {
+    icon: "/logo.ico",
+  },
+  keywords: [
+    "website templates",
+    "premium website templates",
+    "modern website templates",
+    "responsive website templates",
+    "Tailwind CSS templates",
+    "UI components",
+    "UI kits",
+    "buy website templates",
+    "download website templates",
+    "website starter kits",
+    "modern design systems",
+    "frontend development resources",
+    "web design templates",
+    "web development templates",
+    "professional website templates",
+    "ready-to-use templates",
+    "website design tools",
+    "premium Tailwind templates",
+    "responsive UI components",
+    "modern UI design",
+  ],
   openGraph: {
     title: "BloomTPL – Modern Next.js Templates",
     description:
