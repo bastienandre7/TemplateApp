@@ -2,10 +2,10 @@
 
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
+import { signIn, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { signIn, useSession } from "next-auth/react";
 
 interface Product {
   id: number;
@@ -139,6 +139,11 @@ export default function ProductsContainer() {
             );
           })}
         </ul>
+        {products.length === 0 && (
+          <p className="text-center text-gray-500 text-sm my-8">
+            No components available
+          </p>
+        )}
       </div>
     </div>
   );

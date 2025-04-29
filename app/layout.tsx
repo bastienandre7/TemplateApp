@@ -1,8 +1,11 @@
+import CookieBanner from "@/components/CookieBanner";
+import CookieConsentGate from "@/components/CookieConsentGate";
 import FooterCPN from "@/components/Footer/FooterCPN";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
+import { Suspense } from "react";
 import "./globals.css";
 import { Providers } from "./providers";
 
@@ -38,10 +41,15 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${poppins.className} antialiased`}>
         <Providers>
-          {children}
+          <Suspense fallback={<div className="min-h-screen" />}>
+            <CookieBanner />
+            {children}
+          </Suspense>
           <FooterCPN />
-          <SpeedInsights />
-          <Analytics />
+          <CookieConsentGate>
+            <SpeedInsights />
+            <Analytics />
+          </CookieConsentGate>
         </Providers>
       </body>
     </html>

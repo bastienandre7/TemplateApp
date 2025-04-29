@@ -1,4 +1,5 @@
 "use client";
+
 import { Template } from "@/lib/types";
 import { useState } from "react";
 import HeaderCPN from "../Header/HeaderCPN";
@@ -11,12 +12,14 @@ export default function DemoViewer({ template }: DemoOverlayProps) {
   const [viewMode, setViewMode] = useState("desktop");
 
   return (
-    <div className="bg-black pt-4">
+    <div className="bg-gray-100 pt-4">
       <HeaderCPN />
       <div className="flex flex-col h-screen">
         {/* Header avec boutons */}
-        <h2 className="text-white underline text-xl text-center pt-8">{template.name}</h2>
-        <div className="bg-black p-8 flex justify-center gap-4">
+        <h2 className="text-black underline font-bold text-2xl text-center mb-4 md:mb-0 pt-8">
+          {template.name}
+        </h2>
+        <div className="pt-8 hidden md:flex justify-center gap-4">
           <button
             onClick={() => setViewMode("desktop")}
             className={`px-6 py-2 rounded-lg text-white flex items-center gap-2 ${
@@ -38,28 +41,6 @@ export default function DemoViewer({ template }: DemoOverlayProps) {
               />
             </svg>
             PC
-          </button>
-          <button
-            onClick={() => setViewMode("tablet")}
-            className={`px-6 py-2 rounded-lg text-white flex items-center gap-2 ${
-              viewMode === "tablet" ? "bg-blue-600" : "bg-gray-500"
-            }`}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              className="size-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M10.5 19.5h3m-6.75 2.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-15a2.25 2.25 0 0 0-2.25-2.25H6.75A2.25 2.25 0 0 0 4.5 4.5v15a2.25 2.25 0 0 0 2.25 2.25Z"
-              />
-            </svg>
-            Tablet
           </button>
           <button
             onClick={() => setViewMode("mobile")}
@@ -87,27 +68,17 @@ export default function DemoViewer({ template }: DemoOverlayProps) {
 
         {/* Conteneur de la démo */}
         <div
-          className={`flex-1 bg-gray-300 p-8 ${
-            viewMode === "desktop"
-              ? ""
-              : viewMode === "tablet"
-              ? "flex items-center justify-center"
-              : "flex items-center justify-center"
-          }`}
+          className={`flex-1 bg-gray-100 p-4 md:p-8 flex items-center justify-center overflow-hidden`}
         >
           <div
             className={`bg-white rounded-lg overflow-hidden ${
-              viewMode === "desktop"
-                ? "w-full h-full"
-                : viewMode === "tablet"
-                ? "w-[768px] h-[1024px]"
-                : "w-[375px] h-[667px]"
+              viewMode === "desktop" ? "w-full h-full" : "w-[375px] h-[667px]"
             }`}
           >
             {template.demoUrl ? (
               <iframe
                 src={template.demoUrl}
-                className="w-full h-full"
+                className="w-full h-full bg-white border-2"
                 title={`${template.name} Demo`}
               />
             ) : (

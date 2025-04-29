@@ -22,6 +22,7 @@ type Product = {
   demoUrl?: string;
   lemonLink: string;
   type: "template" | "component";
+  features: string[];
 };
 
 type Purchase = {
@@ -74,7 +75,7 @@ export default function MainContainer() {
   );
 
   return (
-    <div id="templates" className="w-full mx-auto text-black px-4 md:px-0">
+    <div id="templates" className="w-full mx-auto text-black px-4  md:py-8">
       <div className="py-8 max-w-screen-lg mx-auto">
         <div className="flex gap-4 mb-4 text-black">
           <Select
@@ -103,8 +104,8 @@ export default function MainContainer() {
                 key={item.id}
                 className="flex flex-col sm:flex-row items-center sm:items-center p-4 border rounded-lg shadow gap-4"
               >
-                <div className="flex-1 w-full">
-                  <h3 className="text-lg font-bold">
+                <div className="flex-1 w-full p-0 sm:p-4">
+                  <h3 className="text-xl font-bold">
                     {item.name} - {item.price} €
                     {isOwned && (
                       <span className="ml-2 text-xs px-2 py-1 bg-green-100 text-green-800 rounded-full">
@@ -112,15 +113,15 @@ export default function MainContainer() {
                       </span>
                     )}
                   </h3>
-                  <p className="text-sm text-gray-600">
+                  <p className="text-sm text-gray-800 mt-2">
                     {item.description
                       ?.split(/\. |\n/)
                       .filter((sentence) => !/démo|preview/i.test(sentence))
                       .join(". ")}
                   </p>
 
-                  <div className="flex items-center gap-2 mt-2">
-                    <span className="text-sm text-gray-500">Built with</span>
+                  <div className="flex items-center gap-2 mt-4">
+                    <span className="text-sm text-gray-700">Built with</span>
                     <Image
                       src="/images/logo/nextLogo.png"
                       alt="Next.js"
@@ -129,7 +130,17 @@ export default function MainContainer() {
                     />
                   </div>
 
-                  <div className="mt-2 flex flex-wrap gap-2">
+                  <div>
+                    <p className="text-sm font-semibold mt-4 mb-2">Features:</p>
+
+                    <ul className="list-disc list-inside space-y-1 text-sm mt-2">
+                      {item.features.map((feature: string, index: number) => (
+                        <li key={index}>{feature}</li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="mt-4 flex flex-wrap gap-2">
                     <Button variant="outline">
                       <Link href={`/demoLive/${item.id}`}>Live Démo</Link>
                     </Button>
@@ -142,8 +153,12 @@ export default function MainContainer() {
                         onClick={() => {
                           if (!session) {
                             signIn();
-                          } else {
-                            window.location.href = item.lemonLink;
+                          } else if (session.user?.email) {
+                            const email = encodeURIComponent(
+                              session.user.email
+                            );
+                            const url = `${item.lemonLink}?checkout[email]=${email}`;
+                            window.location.href = url;
                           }
                         }}
                       >

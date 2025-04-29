@@ -25,6 +25,7 @@ export async function POST(req: NextRequest) {
 
   const email = body?.data?.attributes?.user_email;
   const orderItems = body?.data?.attributes?.order_items;
+  
 
   if (!email || !orderItems || !Array.isArray(orderItems)) {
     console.error("Invalid payload:", body);

@@ -19,17 +19,17 @@ export default function BannerCPN() {
             projects effortlessly.
           </p>
           <div className="mt-8 flex flex-wrap gap-4 justify-center">
-            <a
-              className="block rounded-md bg-red-700 px-12 py-3 text-sm font-medium text-white shadow-sm hover:bg-red-600 sm:w-auto"
-              href="/components"
-            >
-              Explore Components
-            </a>
             <Link
-              className="block bg-white rounded-md px-12 py-3 text-sm font-medium text-red-700 shadow-sm hover:bg-gray-100 sm:w-auto"
+              className="block rounded-md bg-red-700 px-12 py-3 text-sm font-medium text-white shadow-sm hover:bg-red-600 sm:w-auto"
               href="#templates"
             >
-              View Templates
+              Explore Templates
+            </Link>
+            <Link
+              className="block bg-white rounded-md px-12 py-3 text-sm font-medium text-red-700 shadow-sm hover:bg-gray-100 sm:w-auto"
+              href="/contact"
+            >
+              Contact Us
             </Link>
           </div>
         </div>

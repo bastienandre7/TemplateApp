@@ -1,14 +1,16 @@
 "use client";
 
 import { signIn } from "next-auth/react";
+import Link from "next/link";
 import { useEffect, useState } from "react";
-import { FcGoogle } from "react-icons/fc";
 import { FaTwitter } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
 
 export default function SignIn() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [emailSent, setEmailSent] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);
 
   useEffect(() => {
@@ -19,7 +21,9 @@ export default function SignIn() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (emailSent) return;
+    if (emailSent || loading) return;
+
+    setLoading(true);
 
     const res = await signIn("email", {
       email,
@@ -33,6 +37,8 @@ export default function SignIn() {
     } else {
       setMessage("Error sending login link.");
     }
+
+    setLoading(false);
   };
 
   return (
@@ -80,14 +86,18 @@ export default function SignIn() {
           />
           <button
             type="submit"
+            disabled={emailSent || loading}
             className={`w-full p-2 rounded-lg ${
-              emailSent
+              emailSent || loading
                 ? "bg-gray-400 cursor-not-allowed"
                 : "bg-blue-600 hover:bg-blue-700 text-white"
             }`}
-            disabled={emailSent}
           >
-            {emailSent ? "Login Link Sent" : "Get Login Link"}
+            {loading
+              ? "Sending..."
+              : emailSent
+              ? "Login Link Sent"
+              : "Get Login Link"}
           </button>
           {message && (
             <p className="text-green-600 text-sm text-center">{message}</p>
@@ -96,21 +106,28 @@ export default function SignIn() {
 
         <p className="text-xs text-gray-600 text-center">
           By signing in, you agree to our{" "}
-          <a
-            href="/privacy&terms/terms"
-            className="text-blue-600 hover:underline"
-          >
+          <a href="/terms-of-use" className="text-blue-600 hover:underline">
             Terms of Service
-          </a>{" "}
-          and{" "}
+          </a>
+          ,{" "}
           <a
-            href="/privacy&terms/privacy"
+            href="/privacy&terms/privacy-policy"
             className="text-blue-600 hover:underline"
           >
             Privacy Policy
+          </a>{" "}
+          and{" "}
+          <a href="/legal-notice" className="text-blue-600 hover:underline">
+            Legal Notice
           </a>
           .
         </p>
+
+        <div className="text-center">
+          <Link href="/" className="text-sm text-blue-600 hover:underline">
+            ← Back to Menu
+          </Link>
+        </div>
       </div>
     </div>
   );

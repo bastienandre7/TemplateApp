@@ -10,7 +10,7 @@ export default function HeaderCPN() {
 
   const navLinks = [
     { name: "Templates", path: "/" },
-    { name: "Components", path: "/components" },
+    // { name: "Components", path: "/components" },
     { name: "Docs", path: "/docs" },
     { name: "Contact", path: "/contact" },
   ];
@@ -26,7 +26,7 @@ export default function HeaderCPN() {
               className="flex items-center space-x-3 rtl:space-x-reverse"
             >
               <span className="self-center text-2xl font-semibold whitespace-nowrap text-black">
-                Bloom
+                BloomTPL
               </span>
             </Link>
             <div className="hidden md:flex items-center space-x-8 rtl:space-x-reverse">

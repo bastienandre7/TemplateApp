@@ -5,6 +5,7 @@ import { Download } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 import { useEffect, useState } from "react";
+import { DeleteAccountButton } from "./DeleteAccountButton";
 
 type Purchase = {
   id: string;
@@ -95,6 +96,7 @@ export default function DashboardSection() {
           </table>
         </div>
       )}
+      <DeleteAccountButton />
     </div>
   );
 }
