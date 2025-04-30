@@ -72,7 +72,7 @@ export default function DemoViewer({ template }: DemoOverlayProps) {
         >
           <div
             className={`bg-white rounded-lg overflow-hidden ${
-              viewMode === "desktop" ? "w-full h-full" : "w-[375px] h-[667px]"
+              viewMode === "desktop" ? "w-full h-full" : "w-[430px] h-[667px]"
             }`}
           >
             {template.demoUrl ? (
