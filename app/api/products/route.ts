@@ -2,14 +2,17 @@ import { NextResponse } from "next/server";
 
 export async function GET() {
   try {
-    const productsRes = await fetch("https://api.lemonsqueezy.com/v1/products", {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${process.env.LEMON_API_KEY}`,
-        Accept: "application/vnd.api+json",
-      },
-      next: { revalidate: 60 },
-    });
+    const productsRes = await fetch(
+      "https://api.lemonsqueezy.com/v1/products",
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${process.env.LEMON_API_KEY}`,
+          Accept: "application/vnd.api+json",
+        },
+        next: { revalidate: 60 },
+      }
+    );
 
     const productsJson = await productsRes.json();
 
@@ -21,6 +24,7 @@ export async function GET() {
         price?: number;
         large_thumb_url?: string;
         buy_now_url: string;
+        slug: string;
       };
     }
 
@@ -43,9 +47,7 @@ export async function GET() {
       const decoded = decodeHtml(description);
       const lines = decoded.split(/<br\s*\/?\>|<\/?p>/gi);
 
-      const indexOfFeatures = lines.findIndex((line) =>
-        /features/i.test(line)
-      );
+      const indexOfFeatures = lines.findIndex((line) => /features/i.test(line));
 
       if (indexOfFeatures === -1) return [];
 
@@ -83,7 +85,8 @@ export async function GET() {
       const demoUrl = extractDemoUrl(decodedDescription);
       const features = extractFeatures(rawDescription);
       const cleaned = extractCleanedDescription(rawDescription);
-      const firstImage = product.attributes.large_thumb_url || "/images/NoImage.jpg";
+      const firstImage =
+        product.attributes.large_thumb_url || "/images/NoImage.jpg";
 
       return {
         id: Number(product.id),
@@ -95,6 +98,7 @@ export async function GET() {
         lemonLink: product.attributes.buy_now_url,
         type: "template",
         features,
+        slug: product.attributes.slug,
       };
     });
 

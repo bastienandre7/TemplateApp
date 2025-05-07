@@ -12,11 +12,12 @@ export default function HeaderCPN() {
     { name: "Templates", path: "/" },
     // { name: "Components", path: "/components" },
     { name: "Docs", path: "/docs" },
+    { name: "Blog", path: "/blog" },
     { name: "Contact", path: "/contact" },
   ];
 
   return (
-    <header className="px-4">
+    <header className="px-4 ">
       <nav className="bg-transparent sticky w-full z-20 top-0 start-0">
         <div className="bg-white rounded-xl max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           {/* Logo et liens de navigation */}

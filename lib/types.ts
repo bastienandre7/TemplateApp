@@ -4,4 +4,7 @@ export interface Template {
   description?: string;
   imageUrl?: string;
   demoUrl: string;
+  slug: string;
+  price: number;
+  lemonLink: string;
 }

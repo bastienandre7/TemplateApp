@@ -1,24 +1,63 @@
 "use client";
 
 import { Template } from "@/lib/types";
+import { signIn, useSession } from "next-auth/react";
+import Link from "next/link";
 import { useState } from "react";
 import HeaderCPN from "../Header/HeaderCPN";
 
 interface DemoOverlayProps {
   template: Template;
+  ownedTemplates?: string[];
 }
 
-export default function DemoViewer({ template }: DemoOverlayProps) {
+export default function DemoViewer({
+  template,
+  ownedTemplates = [],
+}: DemoOverlayProps) {
   const [viewMode, setViewMode] = useState("desktop");
+  const { data: session } = useSession();
+
+  const isOwned = ownedTemplates.includes(template.name);
 
   return (
     <div className="bg-gray-100 pt-4">
       <HeaderCPN />
-      <div className="flex flex-col h-screen">
-        {/* Header avec boutons */}
-        <h2 className="text-black underline font-bold text-2xl text-center mb-4 md:mb-0 pt-8">
-          {template.name}
-        </h2>
+      <div className="flex flex-col h-screen max-w-screen-xl mx-auto px-4">
+        <div className="flex flex-col items-center text-center mt-8 gap-4">
+          <h1 className="text-black font-bold text-3xl">{template.name}</h1>
+          <p className="text-gray-600 max-w-2xl">{template.description}</p>
+          <div className="flex gap-4 flex-wrap justify-center">
+            <Link href={`/template/${template.id}`}>
+              <button className="px-6 py-3 rounded-xl bg-gray-200 hover:bg-gray-300 text-black transition">
+                More Info
+              </button>
+            </Link>
+            {isOwned ? (
+              <Link href="/dashboard">
+                <button className="px-6 py-3 rounded-xl bg-red-500 hover:bg-red-600 text-white transition">
+                  Owned – View in Dashboard
+                </button>
+              </Link>
+            ) : (
+              <button
+                className="px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white transition"
+                onClick={() => {
+                  if (!session) {
+                    signIn();
+                  } else if (session.user?.email) {
+                    const email = encodeURIComponent(session.user.email);
+                    const url = `${template.lemonLink}?checkout[email]=${email}`;
+                    window.location.href = url;
+                  }
+                }}
+              >
+                Buy Now – {template.price}€
+              </button>
+            )}
+          </div>
+        </div>
+
         <div className="pt-8 hidden md:flex justify-center gap-4">
           <button
             onClick={() => setViewMode("desktop")}
@@ -66,10 +105,7 @@ export default function DemoViewer({ template }: DemoOverlayProps) {
           </button>
         </div>
 
-        {/* Conteneur de la démo */}
-        <div
-          className={`flex-1 bg-gray-100 p-4 md:p-8 flex items-center justify-center overflow-hidden`}
-        >
+        <div className="flex-1 bg-gray-100 py-4 md:py-8 flex items-center justify-center overflow-hidden">
           <div
             className={`bg-white rounded-lg overflow-hidden ${
               viewMode === "desktop" ? "w-full h-full" : "w-[430px] h-[667px]"

@@ -28,6 +28,11 @@ export default function FooterCPN() {
                     Contact
                   </Link>
                 </li>
+                <li className="mb-4">
+                  <Link href="/blog" className="hover:underline">
+                    Blog
+                  </Link>
+                </li>
               </ul>
             </div>
             <div>

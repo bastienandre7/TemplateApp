@@ -23,6 +23,7 @@ type Product = {
   lemonLink: string;
   type: "template" | "component";
   features: string[];
+  slug?: string;
 };
 
 type Purchase = {
@@ -102,7 +103,7 @@ export default function MainContainer() {
             return (
               <div
                 key={item.id}
-                className="flex flex-col sm:flex-row items-center sm:items-center p-4 border rounded-lg shadow gap-4"
+                className="hover:bg-gray-50 transition flex flex-col sm:flex-row items-center sm:items-center p-4 border rounded-lg shadow gap-4"
               >
                 <div className="flex-1 w-full p-0 sm:p-4">
                   <h3 className="text-xl font-bold">
@@ -141,11 +142,31 @@ export default function MainContainer() {
                   </div>
 
                   <div className="mt-4 flex flex-wrap gap-2">
-                    <Button variant="outline">
+                    <Button
+                      variant="default"
+                      className="bg-red-700 hover:bg-red-800 text-white"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                      }}
+                    >
+                      <Link href={`/template/${item.id}`}>See More</Link>
+                    </Button>
+                    <Button
+                      variant="outline"
+                      onClick={(e) => {
+                        e.stopPropagation(); // <--- empêche la redirection
+                      }}
+                    >
                       <Link href={`/demoLive/${item.id}`}>Live Démo</Link>
                     </Button>
                     {isOwned ? (
-                      <Button variant="secondary" asChild>
+                      <Button
+                        variant="secondary"
+                        onClick={(e) => {
+                          e.stopPropagation(); // <--- empêche la redirection
+                        }}
+                        asChild
+                      >
                         <Link href="/dashboard">Owned</Link>
                       </Button>
                     ) : (
