@@ -23,7 +23,7 @@ export default function DemoViewer({
   return (
     <div className="bg-gray-100 pt-4">
       <HeaderCPN />
-      <div className="flex flex-col h-screen max-w-screen-xl mx-auto px-4">
+      <div className="flex flex-col max-w-screen-xl mx-auto px-4">
         <div className="flex flex-col items-center text-center mt-8 gap-4">
           <h1 className="text-black font-bold text-3xl">{template.name}</h1>
           <p className="text-gray-600 max-w-2xl">{template.description}</p>
@@ -58,7 +58,7 @@ export default function DemoViewer({
           </div>
         </div>
 
-        <div className="pt-8 hidden md:flex justify-center gap-4">
+        <div className="pt-8 hidden md:flex justify-center gap-4 ">
           <button
             onClick={() => setViewMode("desktop")}
             className={`px-6 py-2 rounded-lg text-white flex items-center gap-2 ${
@@ -114,7 +114,7 @@ export default function DemoViewer({
             {template.demoUrl ? (
               <iframe
                 src={template.demoUrl}
-                className="w-full h-full bg-white border-2"
+                className="w-full h-full bg-white border-2 h-[90vh]"
                 title={`${template.name} Demo`}
               />
             ) : (

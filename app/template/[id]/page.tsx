@@ -152,7 +152,7 @@ export default function ProductPage() {
             src={template.imageUrl || "/images/NoImage.jpg"}
             alt={`${template.name} main preview`}
             width={1000}
-            height={600}
+            height={1000}
             className="rounded-xl w-full object-cover"
             priority
           />
@@ -163,7 +163,7 @@ export default function ProductPage() {
               src={src}
               alt={`${template.name} preview ${i + 1}`}
               width={1000}
-              height={600}
+              height={1000}
               className="rounded-xl w-full object-cover"
             />
           ))}
