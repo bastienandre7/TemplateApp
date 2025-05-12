@@ -24,15 +24,25 @@ type Product = {
   type: "template" | "component";
   features: string[];
   slug?: string;
+  tech: string[];
 };
 
 type Purchase = {
   template: string;
 };
 
+const techLogos: { [key: string]: string } = {
+  "Next.js": "/images/logo/nextLogo.png",
+  "Vue.js": "/images/logo/vueLogo.png",
+  React: "/images/logo/reactLogo.png",
+  Svelte: "/images/logo/svelteLogo.png",
+  "Tailwind CSS": "/images/logo/tailwindLogo.png",
+};
+
 export default function MainContainer() {
   const [sortOrder, setSortOrder] = useState("asc");
   const [products, setProducts] = useState<Product[]>([]);
+  const [selectedTech, setSelectedTech] = useState<string | null>(null);
   const [ownedTemplates, setOwnedTemplates] = useState<string[]>([]);
   const [progress, setProgress] = useState(0);
   const { data: session } = useSession();
@@ -71,12 +81,18 @@ export default function MainContainer() {
     }
   }, [session]);
 
-  const filteredItems = [...products].sort((a, b) =>
-    sortOrder === "asc" ? a.price - b.price : b.price - a.price
+  const techs = Array.from(
+    new Set(products.flatMap((p) => p.tech).filter(Boolean))
   );
 
+  const filteredItems = [...products]
+    .filter((p) => !selectedTech || p.tech.includes(selectedTech))
+    .sort((a, b) =>
+      sortOrder === "asc" ? a.price - b.price : b.price - a.price
+    );
+
   return (
-    <div id="templates" className="w-full mx-auto text-black px-4  md:py-8">
+    <div id="templates" className="w-full mx-auto text-black px-4 md:py-8">
       <div className="py-8 max-w-screen-lg mx-auto">
         <div className="flex gap-4 mb-4 text-black">
           <Select
@@ -89,7 +105,39 @@ export default function MainContainer() {
               <SelectItem value="desc">Descending price</SelectItem>
             </SelectContent>
           </Select>
+
+          {techs.length > 0 && (
+            <Select
+              value={selectedTech ?? "all"}
+              onValueChange={(value) =>
+                setSelectedTech(value === "all" ? null : value)
+              }
+            >
+              <SelectTrigger className="w-[180px]">
+                {selectedTech || "All technologies"}
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">All technologies</SelectItem>
+                {techs.map((tech) => (
+                  <SelectItem key={tech} value={tech}>
+                    <div className="flex items-center gap-2">
+                      {techLogos[tech] && (
+                        <Image
+                          src={techLogos[tech]}
+                          alt={tech}
+                          width={16}
+                          height={16}
+                        />
+                      )}
+                      {tech}
+                    </div>
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          )}
         </div>
+
         <div className="space-y-8">
           {progress > 0 && (
             <div className="mb-4">
@@ -115,25 +163,31 @@ export default function MainContainer() {
                     )}
                   </h3>
                   <p className="text-sm text-gray-800 mt-2">
-                    {item.description
-                      ?.split(/\. |\n/)
-                      .filter((sentence) => !/démo|preview/i.test(sentence))
-                      .join(". ")}
+                    {item.description ||
+                      "No description available for this template."}
                   </p>
 
-                  <div className="flex items-center gap-2 mt-4">
-                    <span className="text-sm text-gray-700">Built with</span>
-                    <Image
-                      src="/images/logo/nextLogo.png"
-                      alt="Next.js"
-                      width={20}
-                      height={20}
-                    />
-                  </div>
+                  {Array.isArray(item.tech) && item.tech.length > 0 && (
+                    <div className="flex items-center gap-2 mt-4">
+                      <p className="text-sm">Build with : </p>
+                      {item.tech.map((tech) => (
+                        <div key={tech} className="flex items-center gap-1">
+                          {techLogos[tech] && (
+                            <Image
+                              src={techLogos[tech]}
+                              alt={tech}
+                              width={20}
+                              height={20}
+                            />
+                          )}
+                          <span className="text-sm text-gray-700">{tech}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
 
                   <div>
                     <p className="text-sm font-semibold mt-4 mb-2">Features:</p>
-
                     <ul className="list-disc list-inside space-y-1 text-sm mt-2">
                       {item.features.map((feature: string, index: number) => (
                         <li key={index}>{feature}</li>
@@ -145,28 +199,14 @@ export default function MainContainer() {
                     <Button
                       variant="default"
                       className="bg-red-700 hover:bg-red-800 text-white"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                      }}
                     >
                       <Link href={`/template/${item.id}`}>See More</Link>
                     </Button>
-                    <Button
-                      variant="outline"
-                      onClick={(e) => {
-                        e.stopPropagation(); // <--- empêche la redirection
-                      }}
-                    >
+                    <Button variant="outline">
                       <Link href={`/demoLive/${item.id}`}>Live Démo</Link>
                     </Button>
                     {isOwned ? (
-                      <Button
-                        variant="secondary"
-                        onClick={(e) => {
-                          e.stopPropagation(); // <--- empêche la redirection
-                        }}
-                        asChild
-                      >
+                      <Button variant="secondary" asChild>
                         <Link href="/dashboard">Owned</Link>
                       </Button>
                     ) : (

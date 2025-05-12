@@ -1,3 +1,4 @@
+import { templateData } from "@/lib/products";
 import { NextResponse } from "next/server";
 
 export async function GET(
@@ -30,49 +31,22 @@ export async function GET(
       throw new Error("Produit non trouvé");
     }
 
-    const decodeHtml = (html: string): string =>
-      html.replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&");
-
-    const extractDemoUrl = (description?: string): string => {
-      if (!description) return "";
-      const match = description.match(/href="(https?:\/\/[^"]+)"/i);
-      return match?.[1] || "";
-    };
-
-    const extractFeatures = (description?: string): string[] => {
-      if (!description) return [];
-      const decoded = decodeHtml(description);
-      const lines = decoded.split(/<br\s*\/?\>|<\/?p>/gi);
-      const index = lines.findIndex((line) => /features/i.test(line));
-      const features = index === -1 ? [] : lines.slice(index + 1);
-      return features
-        .map((l) => l.replace(/<[^>]+>/g, "").trim())
-        .filter(Boolean);
-    };
-
-    const cleanDescription = (description?: string): string => {
-      if (!description) return "";
-      const decoded = decodeHtml(description);
-      const lines = decoded.split(/<br\s*\/?\>|<\/?p>/gi);
-      const index = lines.findIndex((line) =>
-        /features|live demo|preview/i.test(line)
-      );
-      return (index === -1 ? lines : lines.slice(0, index))
-        .map((line) => line.replace(/<[^>]+>/g, "").trim())
-        .filter(Boolean)
-        .join(" ");
-    };
+    const localData = templateData.find((tpl) => tpl.id === Number(id));
 
     const formatted = {
       id: Number(product.id),
       name: product.attributes.name,
       price: product.attributes.price ? product.attributes.price / 100 : 0,
       imageUrl: product.attributes.large_thumb_url,
-      description: cleanDescription(product.attributes.description),
-      demoUrl: extractDemoUrl(product.attributes.description),
+      description:
+        localData?.description || product.attributes.description || "",
       lemonLink: product.attributes.buy_now_url,
-      features: extractFeatures(product.attributes.description),
       slug: product.attributes.name.toLowerCase().replace(/\s+/g, "-"),
+      demoUrl: localData?.demoUrl || "",
+      features: localData?.features || [],
+      frameworks: localData?.tech ? [localData.tech] : [],
+      images: localData?.images || [],
+      tech: localData?.tech || "",
     };
 
     return NextResponse.json(formatted);

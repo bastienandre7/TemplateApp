@@ -18,6 +18,7 @@ interface Product {
   lemonLink: string;
   features: string[];
   slug: string;
+  images?: string[];
 }
 
 type Purchase = {
@@ -84,10 +85,6 @@ export default function ProductPage() {
   }
 
   const isOwned = ownedTemplates.includes(template.name);
-
-  const additionalImages = [1, 2, 3].map(
-    (i) => `/images/templates/${template.slug}/preview-${i}.png`
-  );
 
   return (
     <div className="pt-4 bg-zinc-900 text-white min-h-screen">
@@ -157,7 +154,7 @@ export default function ProductPage() {
             priority
           />
 
-          {additionalImages.map((src, i) => (
+          {template.images?.map((src, i) => (
             <Image
               key={i}
               src={src}

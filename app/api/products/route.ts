@@ -1,3 +1,4 @@
+import { templateData } from "@/lib/products"; // Import de tes données locales
 import { NextResponse } from "next/server";
 
 export async function GET() {
@@ -28,77 +29,23 @@ export async function GET() {
       };
     }
 
-    const decodeHtml = (html: string): string => {
-      return html
-        .replace(/&lt;/g, "<")
-        .replace(/&gt;/g, ">")
-        .replace(/&amp;/g, "&");
-    };
-
-    const extractDemoUrl = (description?: string): string => {
-      if (!description) return "";
-      const match = description.match(/href="(https?:\/\/[^"]+)"/i);
-      return match?.[1] || "";
-    };
-
-    const extractFeatures = (description?: string): string[] => {
-      if (!description) return [];
-
-      const decoded = decodeHtml(description);
-      const lines = decoded.split(/<br\s*\/?\>|<\/?p>/gi);
-
-      const indexOfFeatures = lines.findIndex((line) => /features/i.test(line));
-
-      if (indexOfFeatures === -1) return [];
-
-      const featureLines = lines.slice(indexOfFeatures + 1);
-
-      return featureLines
-        .map((line) => line.replace(/<[^>]+>/g, "").trim())
-        .filter((line) => line.length > 0);
-    };
-
-    const extractCleanedDescription = (description?: string): string => {
-      if (!description) return "";
-
-      const decoded = decodeHtml(description);
-      const lines = decoded.split(/<br\s*\/?\>|<\/?p>/gi);
-
-      // Trouver l'index du bloc à exclure ("Live demo" ou "Features")
-      const indexToCut = lines.findIndex((line) =>
-        /live demo|preview|features/i.test(line)
-      );
-
-      const contentLines =
-        indexToCut === -1 ? lines : lines.slice(0, indexToCut);
-
-      return contentLines
-        .map((line) => line.replace(/<[^>]+>/g, "").trim())
-        .filter((line) => line.length > 0)
-        .join(" ");
-    };
-
     const formatted = productsJson.data.map((product: Product) => {
-      const rawDescription = product.attributes.description || "";
-      const decodedDescription = decodeHtml(rawDescription);
-
-      const demoUrl = extractDemoUrl(decodedDescription);
-      const features = extractFeatures(rawDescription);
-      const cleaned = extractCleanedDescription(rawDescription);
-      const firstImage =
-        product.attributes.large_thumb_url || "/images/NoImage.jpg";
+      const localData = templateData.find(
+        (tpl) => tpl.id === Number(product.id)
+      );
 
       return {
         id: Number(product.id),
         name: product.attributes.name,
         price: product.attributes.price ? product.attributes.price / 100 : 0,
-        imageUrl: firstImage,
-        description: cleaned, // ✅ Sans live demo ni features
-        demoUrl,
+        imageUrl: product.attributes.large_thumb_url || "/images/NoImage.jpg",
+        description: localData?.description || "",
         lemonLink: product.attributes.buy_now_url,
-        type: "template",
-        features,
         slug: product.attributes.slug,
+        type: "template",
+        features: localData?.features || [],
+        demoUrl: localData?.demoUrl || "",
+        tech: localData?.tech || [],
       };
     });
 

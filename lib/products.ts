@@ -1,17 +1,66 @@
-export const templates = [
+// lib/products.ts
+export const templateData = [
   {
-    slug: "ecommerce-template",
+    id: 508811,
+    slug: "e-commerce-template",
     name: "E-Commerce Template",
-    shortDescription: "A clean and modern ecommerce starter template.",
-    fullDescription:
-      "This template includes product listings, a cart system, responsive design, dark/light mode, and Stripe integration.",
+    description:
+      "Modern e-commerce template built with Tailwind CSS. Fast, responsive, and perfect for launching your digital store.",
     features: [
-      "Next.js 14 & App Router",
-      "Stripe integration",
-      "Responsive & accessible",
-      "Light & Dark mode",
-      "Beautiful UI with shadcn/ui",
+      "Modern homepage with hero banner, categories, best sellers, and newsletter signup.",
+      "Shop page with filters by category and price sorting.",
+      "Optimized product page with image gallery and quantity management in cart.",
+      "Fully responsive design with smooth animations (built with Tailwind CSS)",
+      "Clean, reusable components and production-ready code.",
     ],
-    tech: "Next.js",
+    tech: ["Next.js"],
+    demoUrl: "https://bloom-ecommerce-template.vercel.app/",
+    images: [
+      "/images/templates/e-commerce-template/preview-1.png",
+      "/images/templates/e-commerce-template/preview-2.png",
+      "/images/templates/e-commerce-template/preview-3.png",
+    ],
+  },
+  {
+    id: 509780,
+    slug: "saas-dashboard-template",
+    name: "SaaS Dashboard Template",
+    description:
+      "Modern SaaS dashboard template built with Next.js and Tailwind CSS. Clean, fast, and ideal for launching your next admin panel or internal tool.",
+    features: [
+      "Modern dashboard layout with sidebar navigation and topbar actions.",
+      "Fully responsive UI with smooth transitions using Framer Motion.",
+      "Reusable cards and chart-ready sections for metrics and insights.",
+      "Dark mode–ready components, styled with Tailwind CSS and shadcn/ui.",
+      "Reusable cards and chart-ready sections for metrics and insights.",
+    ],
+    tech: ["Next.js"],
+    demoUrl: "https://bloom-dashboard-template.vercel.app/",
+    images: [
+      "/images/templates/saas-dashboard-template/preview-1.png",
+      "/images/templates/saas-dashboard-template/preview-2.png",
+      "/images/templates/saas-dashboard-template/preview-3.png",
+    ],
+  },
+  {
+    id: 509512,
+    slug: "blog-template",
+    name: "Blog Template",
+    description:
+      "Minimalist blog template built with Next.js and Tailwind CSS. Clean, fast, and perfect for launching your personal blog, journal, or editorial site.",
+    features: [
+      "Elegant blog layout with category filtering and author pages.",
+      "Fully responsive design with smooth UI transitions.",
+      "Dynamic post routing and SEO-friendly structure.",
+      "Dark mode support, styled exclusively with Tailwind CSS.",
+      "Clean and scalable file organization, ready for CMS or markdown integration.",
+    ],
+    tech: ["Next.js"],
+    demoUrl: "https://bloom-tpl-blog-template.vercel.app/",
+    images: [
+      "/images/templates/blog-template/preview-1.png",
+      "/images/templates/blog-template/preview-2.png",
+      "/images/templates/blog-template/preview-3.png",
+    ],
   },
 ];
