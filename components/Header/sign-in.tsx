@@ -21,7 +21,9 @@ export default function AuthButton() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline">My Account</Button>
+        <Button variant="outline" className="text-black">
+          My Account
+        </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-40">
         <DropdownMenuItem onClick={() => router.push("/dashboard")}>

@@ -41,7 +41,7 @@ export async function GET() {
         imageUrl: product.attributes.large_thumb_url || "/images/NoImage.jpg",
         description: localData?.description || "",
         lemonLink: product.attributes.buy_now_url,
-        slug: product.attributes.slug,
+        slug: localData?.slug,
         type: "template",
         features: localData?.features || [],
         demoUrl: localData?.demoUrl || "",

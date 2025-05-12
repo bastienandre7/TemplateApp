@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { signIn, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
-import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 interface Product {
@@ -25,8 +24,11 @@ type Purchase = {
   template: string;
 };
 
-export default function ProductPage() {
-  const { id } = useParams() as { id: string };
+interface ProductPageProps {
+  slug: string;
+}
+
+export default function ProductPage({ slug }: ProductPageProps) {
   const [template, setTemplate] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
   const [ownedTemplates, setOwnedTemplates] = useState<string[]>([]);
@@ -35,7 +37,7 @@ export default function ProductPage() {
   useEffect(() => {
     const fetchTemplate = async () => {
       try {
-        const res = await fetch(`/api/products/${id}`);
+        const res = await fetch(`/api/products/slug/${slug}`);
         const data = await res.json();
         setTemplate(data);
       } catch (err) {
@@ -47,7 +49,7 @@ export default function ProductPage() {
     };
 
     fetchTemplate();
-  }, [id]);
+  }, [slug]);
 
   useEffect(() => {
     if (session?.user?.email) {
@@ -64,7 +66,7 @@ export default function ProductPage() {
     return (
       <div className="bg-zinc-900 pt-4">
         <HeaderCPN />
-        <div className="min-h-screen flex flex-col items-center justify-center text-white ">
+        <div className="min-h-screen flex flex-col items-center justify-center text-white">
           <div className="mt-8 animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-white" />
           <p className="mt-4 text-gray-400">Loading template...</p>
         </div>
@@ -76,7 +78,7 @@ export default function ProductPage() {
     return (
       <div className="bg-zinc-900 pt-4">
         <HeaderCPN />
-        <div className="min-h-screen flex flex-col items-center justify-center text-white ">
+        <div className="min-h-screen flex flex-col items-center justify-center text-white">
           <div className="mt-8 animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-white" />
           <p className="mt-4 text-gray-400">Template not found.</p>
         </div>
@@ -96,7 +98,7 @@ export default function ProductPage() {
           </h1>
           <div className="flex gap-4 mt-4 lg:mt-0">
             {template.demoUrl && (
-              <Link href={`/demoLive/${template.id}`}>
+              <Link href={`/demo/${template.slug}`}>
                 <Button
                   className="border border-gray-400 text-gray-800 px-8 py-6 rounded-xl hover:bg-stone-200 transition"
                   variant="outline"
@@ -134,15 +136,6 @@ export default function ProductPage() {
         </div>
 
         <p className="text-gray-200 mt-4">{template.description}</p>
-        <div className="flex items-center gap-2 mt-4">
-          <span className="text-sm text-gray-200">Built with</span>
-          <Image
-            src="/images/logo/nextLogo.png"
-            alt="Next.js"
-            width={20}
-            height={20}
-          />
-        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
           <Image
@@ -166,7 +159,6 @@ export default function ProductPage() {
           ))}
         </div>
 
-        {/* Features */}
         <h2 className="text-3xl mt-10">Features :</h2>
         <ul className="list-disc list-inside mt-4 text-gray-200">
           {template.features.map((f, i) => (

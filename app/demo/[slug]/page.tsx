@@ -2,8 +2,7 @@
 
 import DemoViewer from "@/components/Demo/DemoOverlay";
 import HeaderCPN from "@/components/Header/HeaderCPN";
-import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 
 interface Product {
   id: number;
@@ -16,15 +15,20 @@ interface Product {
   slug: string;
 }
 
-export default function TemplatePage() {
-  const { id } = useParams() as { id: string };
+export default function DemoPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = use(params);
+
   const [template, setTemplate] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchTemplate = async () => {
       try {
-        const res = await fetch(`/api/products/${id}`);
+        const res = await fetch(`/api/products/slug/${slug}`);
         const data = await res.json();
         setTemplate(data);
       } catch (err) {
@@ -36,14 +40,14 @@ export default function TemplatePage() {
     };
 
     fetchTemplate();
-  }, [id]);
+  }, [slug]);
 
   if (loading) {
     return (
       <div className="bg-gray-100 pt-4">
         <HeaderCPN />
-        <div className="min-h-screen flex flex-col items-center justify-center text-white ">
-          <div className="mt-8 animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-white" />
+        <div className="min-h-screen flex flex-col items-center justify-center text-black">
+          <div className="mt-8 animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-black" />
           <p className="mt-4 text-gray-800">Loading template...</p>
         </div>
       </div>
@@ -54,8 +58,8 @@ export default function TemplatePage() {
     return (
       <div className="bg-gray-100 pt-4">
         <HeaderCPN />
-        <div className="min-h-screen flex flex-col items-center justify-center text-white ">
-          <div className="mt-8 animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-white" />
+        <div className="min-h-screen flex flex-col items-center justify-center text-black">
+          <div className="mt-8 animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-black" />
           <p className="mt-4 text-gray-800">Template not found.</p>
         </div>
       </div>

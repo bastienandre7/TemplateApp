@@ -28,7 +28,7 @@ export default function DemoViewer({
           <h1 className="text-black font-bold text-3xl">{template.name}</h1>
           <p className="text-gray-600 max-w-2xl">{template.description}</p>
           <div className="flex gap-4 flex-wrap justify-center">
-            <Link href={`/template/${template.id}`}>
+            <Link href={`/template/${template.slug}`}>
               <button className="px-6 py-3 rounded-xl bg-gray-200 hover:bg-gray-300 text-black transition">
                 More Info
               </button>
@@ -114,7 +114,7 @@ export default function DemoViewer({
             {template.demoUrl ? (
               <iframe
                 src={template.demoUrl}
-                className="w-full h-full bg-white border-2 h-[90vh]"
+                className="w-full h-full bg-white border-2 h-screen"
                 title={`${template.name} Demo`}
               />
             ) : (

@@ -200,10 +200,10 @@ export default function MainContainer() {
                       variant="default"
                       className="bg-red-700 hover:bg-red-800 text-white"
                     >
-                      <Link href={`/template/${item.id}`}>See More</Link>
+                      <Link href={`/template/${item.slug}`}>See More</Link>
                     </Button>
                     <Button variant="outline">
-                      <Link href={`/demoLive/${item.id}`}>Live Démo</Link>
+                      <Link href={`/demo/${item.slug}`}>Live Démo</Link>
                     </Button>
                     {isOwned ? (
                       <Button variant="secondary" asChild>
