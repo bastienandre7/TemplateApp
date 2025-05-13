@@ -18,28 +18,23 @@ export const metadata: Metadata = {
   icons: {
     icon: "/logo.ico",
   },
+  alternates: {
+    canonical: "https://bloomtpl.com",
+  },
   keywords: [
-    "website templates",
-    "premium website templates",
-    "modern website templates",
-    "responsive website templates",
+    "Next.js templates",
     "Tailwind CSS templates",
     "UI components",
-    "UI kits",
-    "buy website templates",
-    "download website templates",
+    "SaaS dashboard templates",
+    "ecommerce templates",
+    "portfolio templates",
     "website starter kits",
-    "modern design systems",
-    "frontend development resources",
-    "web design templates",
-    "web development templates",
-    "professional website templates",
-    "ready-to-use templates",
-    "website design tools",
-    "premium Tailwind templates",
-    "responsive UI components",
+    "premium templates",
     "modern UI design",
+    "responsive design systems",
   ],
+  robots:
+    "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
   openGraph: {
     title: "BloomTPL – Modern Next.js Templates",
     description:
@@ -48,13 +43,32 @@ export const metadata: Metadata = {
     siteName: "BloomTPL",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "https://bloomtpl.com/logo.ico",
+        width: 1200,
+        height: 630,
+        alt: "BloomTPL – Modern Next.js Templates",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "BloomTPL – Modern Next.js Templates",
     description:
       "Discover and download premium templates and components built with Next.js, Tailwind CSS, and modern design systems.",
+    images: ["https://bloomtpl.com/logo.ico"],
   },
+  creator: "BloomTPL",
+  publisher: "BloomTPL",
+};
+
+export const viewport = {
+  themeColor: "#0f172a",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: "no",
 };
 
 export default function RootLayout({

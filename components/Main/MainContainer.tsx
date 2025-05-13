@@ -99,7 +99,9 @@ export default function MainContainer() {
             value={sortOrder}
             onValueChange={(value) => setSortOrder(value)}
           >
-            <SelectTrigger className="w-[180px]">Sort</SelectTrigger>
+            <SelectTrigger className="w-[180px]" aria-label="Sort templates">
+              Sort
+            </SelectTrigger>
             <SelectContent>
               <SelectItem value="asc">Rising price</SelectItem>
               <SelectItem value="desc">Descending price</SelectItem>
@@ -113,7 +115,10 @@ export default function MainContainer() {
                 setSelectedTech(value === "all" ? null : value)
               }
             >
-              <SelectTrigger className="w-[180px]">
+              <SelectTrigger
+                className="w-[180px]"
+                aria-label="Filter templates by technology"
+              >
                 {selectedTech || "All technologies"}
               </SelectTrigger>
               <SelectContent>
@@ -154,14 +159,14 @@ export default function MainContainer() {
                 className="hover:bg-gray-50 transition flex flex-col sm:flex-row items-center sm:items-center p-4 border rounded-lg shadow gap-4"
               >
                 <div className="flex-1 w-full p-0 sm:p-4">
-                  <h3 className="text-xl font-bold">
+                  <h2 className="text-xl font-bold">
                     {item.name} - {item.price} €
                     {isOwned && (
                       <span className="ml-2 text-xs px-2 py-1 bg-green-100 text-green-800 rounded-full">
                         Owned
                       </span>
                     )}
-                  </h3>
+                  </h2>
                   <p className="text-sm text-gray-800 mt-2">
                     {item.description ||
                       "No description available for this template."}
@@ -195,18 +200,25 @@ export default function MainContainer() {
                     </ul>
                   </div>
 
-                  <div className="mt-4 flex flex-wrap gap-2">
+                  <div className="mt-4 flex flex-wrap gap-4">
                     <Button
                       variant="default"
-                      className="bg-red-700 hover:bg-red-800 text-white"
+                      className="bg-red-700 hover:bg-red-800 text-white md:min-h-[48px] md:min-w-[48px]"
                     >
-                      <Link href={`/template/${item.slug}`}>See More</Link>
+                      <Link href={`/template/${item.slug}`}>More Info</Link>
                     </Button>
-                    <Button variant="outline">
+                    <Button
+                      variant="outline"
+                      className="md:min-h-[48px] md:min-w-[48px]"
+                    >
                       <Link href={`/demo/${item.slug}`}>Live Démo</Link>
                     </Button>
                     {isOwned ? (
-                      <Button variant="secondary" asChild>
+                      <Button
+                        variant="secondary"
+                        asChild
+                        className="md:min-h-[48px] md:min-w-[48px]"
+                      >
                         <Link href="/dashboard">Owned</Link>
                       </Button>
                     ) : (
@@ -222,6 +234,7 @@ export default function MainContainer() {
                             window.location.href = url;
                           }
                         }}
+                        className="md:min-h-[48px] md:min-w-[48px]"
                       >
                         Buy Now
                       </Button>

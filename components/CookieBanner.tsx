@@ -30,7 +30,7 @@ export default function CookieBanner() {
         agree to our{" "}
         <a
           href="/privacy-policy"
-          className="underline text-blue-400 hover:text-blue-300"
+          className="underline text-blue-600 hover:text-blue-700"
         >
           Privacy Policy
         </a>
