@@ -194,34 +194,43 @@ export default function MainContainer() {
                   <div>
                     <p className="text-sm font-semibold mt-4 mb-2">Features:</p>
                     <ul className="list-disc list-inside space-y-1 text-sm mt-2">
-                      {item.features.map((feature: string, index: number) => (
-                        <li key={index}>{feature}</li>
-                      ))}
+                      {item.features
+                        .slice(0, 2)
+                        .map((feature: string, index: number) => (
+                          <li key={index}>{feature}</li>
+                        ))}
+                      {item.features.length > 2 && (
+                        <li className="italic">
+                          ...and {item.features.length - 2} more
+                        </li>
+                      )}
                     </ul>
                   </div>
 
                   <div className="mt-4 flex flex-wrap gap-4">
                     <Button
                       asChild
-                      className="min-h-[48px] min-w-[48px] px-6 py-3 bg-gradient-to-r from-pink-300 to-yellow-200 text-black shadow-lg hover:shadow-xl hover:scale-105 hover:brightness-105 active:scale-95 border border-pink-300/50 font-semibold tracking-wide transition-all duration-300"
+                      className="min-h-[48px] px-6 py-3 bg-red-700 text-white shadow-lg hover:shadow-xl hover:scale-105 hover:brightness-105 active:scale-95 border border-pink-300/50 font-semibold tracking-wide transition-all duration-300 break-words text-center"
                     >
                       <Link href={`/template/${item.slug}`}>
-                        More Info about {item.name}
+                        More Info
+                        <span className="sr-only"> about {item.name}</span>
                       </Link>
                     </Button>
 
                     <Button
                       asChild
                       variant="outline"
-                      className="min-h-[48px] min-w-[48px] px-4 py-3"
+                      className="min-h-[48px] min-w-[48px] px-4 py-3 hover:scale-105 hover:shadow-xl transition-all duration-300"
                     >
                       <Link href={`/demo/${item.slug}`}>Live Demo</Link>
                     </Button>
+
                     {isOwned ? (
                       <Button
                         asChild
                         variant="secondary"
-                        className="min-h-[48px] min-w-[48px] px-4 py-3"
+                        className="min-h-[48px] min-w-[48px] px-4 py-3 hover:scale-105 hover:shadow-xl transition-all duration-300"
                       >
                         <Link href="/dashboard">Owned</Link>
                       </Button>
@@ -238,7 +247,7 @@ export default function MainContainer() {
                             window.location.href = url;
                           }
                         }}
-                        className="min-h-[48px] min-w-[48px] px-4 py-3"
+                        className="min-h-[48px] min-w-[48px] px-4 py-3 hover:scale-105 hover:shadow-xl transition-all duration-300"
                       >
                         Buy Now
                       </Button>
