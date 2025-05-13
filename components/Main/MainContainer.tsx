@@ -202,22 +202,26 @@ export default function MainContainer() {
 
                   <div className="mt-4 flex flex-wrap gap-4">
                     <Button
-                      variant="default"
-                      className="bg-red-700 hover:bg-red-800 text-white md:min-h-[48px] md:min-w-[48px]"
+                      asChild
+                      className="min-h-[48px] min-w-[48px] px-6 py-3 bg-gradient-to-r from-pink-300 to-yellow-200 text-black shadow-lg hover:shadow-xl hover:scale-105 hover:brightness-105 active:scale-95 border border-pink-300/50 font-semibold tracking-wide transition-all duration-300"
                     >
-                      <Link href={`/template/${item.slug}`}>More Info</Link>
+                      <Link href={`/template/${item.slug}`}>
+                        More Info about {item.name}
+                      </Link>
                     </Button>
+
                     <Button
+                      asChild
                       variant="outline"
-                      className="md:min-h-[48px] md:min-w-[48px]"
+                      className="min-h-[48px] min-w-[48px] px-4 py-3"
                     >
-                      <Link href={`/demo/${item.slug}`}>Live Démo</Link>
+                      <Link href={`/demo/${item.slug}`}>Live Demo</Link>
                     </Button>
                     {isOwned ? (
                       <Button
-                        variant="secondary"
                         asChild
-                        className="md:min-h-[48px] md:min-w-[48px]"
+                        variant="secondary"
+                        className="min-h-[48px] min-w-[48px] px-4 py-3"
                       >
                         <Link href="/dashboard">Owned</Link>
                       </Button>
@@ -234,7 +238,7 @@ export default function MainContainer() {
                             window.location.href = url;
                           }
                         }}
-                        className="md:min-h-[48px] md:min-w-[48px]"
+                        className="min-h-[48px] min-w-[48px] px-4 py-3"
                       >
                         Buy Now
                       </Button>

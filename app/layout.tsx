@@ -45,8 +45,8 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://bloomtpl.com/logo.ico",
-        width: 1200,
+        url: "https://bloomtpl.com/og-image.png",
+        width: 1260,
         height: 630,
         alt: "BloomTPL – Modern Next.js Templates",
       },
@@ -57,18 +57,16 @@ export const metadata: Metadata = {
     title: "BloomTPL – Modern Next.js Templates",
     description:
       "Discover and download premium templates and components built with Next.js, Tailwind CSS, and modern design systems.",
-    images: ["https://bloomtpl.com/logo.ico"],
+    images: ["https://bloomtpl.com/og-image.png"],
   },
   creator: "BloomTPL",
   publisher: "BloomTPL",
 };
 
 export const viewport = {
-  themeColor: "#0f172a",
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: "no",
+  themeColor: "#0f172a",
 };
 
 export default function RootLayout({
