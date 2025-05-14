@@ -210,7 +210,7 @@ export default function MainContainer() {
                   <div className="mt-4 flex flex-wrap gap-4">
                     <Button
                       asChild
-                      className="min-h-[48px] px-6 py-3 bg-red-700 text-white shadow-lg hover:shadow-xl hover:scale-105 hover:brightness-105 active:scale-95 border border-pink-300/50 font-semibold tracking-wide transition-all duration-300 break-words text-center"
+                      className="min-h-[48px] px-6 py-3 bg-red-700 text-white shadow-lg hover:shadow-xl hover:scale-105 hover:brightness-105 active:scale-95 font-semibold tracking-wide transition-all duration-300 break-words text-center"
                     >
                       <Link href={`/template/${item.slug}`}>
                         More Info

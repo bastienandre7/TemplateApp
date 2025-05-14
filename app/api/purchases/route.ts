@@ -18,14 +18,22 @@ export async function GET() {
 }
 
 export async function POST(req: NextRequest) {
-  const body = await req.json();
+  const session = await getServerSession(authOptions);
 
+  if (!session?.user?.email) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  const body = await req.json();
   const email = body?.data?.attributes?.user_email;
   const item = body?.data?.attributes?.first_order_item;
 
   if (!email || !item) {
-    console.error("Invalid payload:", body);
     return NextResponse.json({ error: "Invalid payload" }, { status: 400 });
+  }
+
+  if (email !== session.user.email) {
+    return NextResponse.json({ error: "Invalid user email" }, { status: 403 });
   }
 
   await prisma.purchase.create({

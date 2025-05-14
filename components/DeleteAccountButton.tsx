@@ -13,7 +13,7 @@ export function DeleteAccountButton() {
 
     setLoading(true);
 
-    const res = await fetch("/api/account/delete", {
+    const res = await fetch("/api/account/delete?confirm=true", {
       method: "DELETE",
     });
 
