@@ -105,16 +105,16 @@ export default function DemoViewer({
           </button>
         </div>
 
-        <div className="flex-1 bg-gray-100 py-4 md:py-8 flex items-center justify-center overflow-hidden">
+        <div className="flex-1 bg-gray-100 py-4 md:py-8 flex items-center justify-center min-h-screen">
           <div
             className={`bg-white rounded-lg overflow-hidden ${
-              viewMode === "desktop" ? "w-full h-full" : "w-[430px] h-[667px]"
+              viewMode === "desktop" ? "w-full h-screen" : "w-[430px] h-[667px]"
             }`}
           >
             {template.demoUrl ? (
               <iframe
                 src={template.demoUrl}
-                className="w-full h-full bg-white border-2 h-screen"
+                className="w-full h-full bg-white border-2"
                 title={`${template.name} Demo`}
               />
             ) : (

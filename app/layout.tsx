@@ -5,7 +5,6 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-import { Suspense } from "react";
 import "./globals.css";
 import { Providers } from "./providers";
 
@@ -78,11 +77,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${poppins.className} antialiased`}>
         <Providers>
-          <Suspense fallback={<div className="min-h-screen" />}>
+          <div className="flex flex-col min-h-screen bg-white">
             <CookieBanner />
-            {children}
-          </Suspense>
-          <FooterCPN />
+            <main className="flex-1">{children}</main>
+            <FooterCPN />
+          </div>
           <CookieConsentGate>
             <SpeedInsights />
             <Analytics />
