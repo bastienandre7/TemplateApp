@@ -3,6 +3,7 @@
 import ProductPage from "@/components/ProductPage";
 import { use } from "react";
 
+
 export default function TemplatePage({
   params,
 }: {
