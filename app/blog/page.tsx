@@ -27,7 +27,7 @@ export default function BlogPage() {
   );
 
   return (
-    <div className="pt-4 bg-neutral-800 text-white">
+    <div className="pt-4 bg-neutral-100 text-gray-800">
       <HeaderCPN />
       <main className="max-w-4xl mx-auto px-6 py-12 min-h-screen">
         <h1 className="text-4xl font-bold mb-8">Blog</h1>
@@ -48,8 +48,8 @@ export default function BlogPage() {
                 <h2 className="text-2xl font-semibold group-hover:underline mb-1">
                   {post.title}
                 </h2>
-                <p className="text-gray-300 mb-2">{post.description}</p>
-                <p className="text-sm text-gray-300">
+                <p className="text-gray-600 mb-2">{post.description}</p>
+                <p className="text-sm text-gray-600">
                   {new Date(post.date).toLocaleDateString()}
                 </p>
               </Link>
