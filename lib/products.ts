@@ -65,7 +65,7 @@ export const templateData = [
   },
   {
     id: 529635,
-    slug: "dev-portfolio-template",
+    slug: "developer-portfolio-template",
     name: "Developer Portfolio Template",
     description:
       "A sleek and professional portfolio template built with Next.js 15 and Tailwind CSS. Perfect for developers, freelancers, and indie hackers who want to showcase their work, experience, and skills with style.",
