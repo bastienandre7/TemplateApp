@@ -63,4 +63,26 @@ export const templateData = [
       "/images/templates/blog-template/preview-3.png",
     ],
   },
+  {
+    id: 529635,
+    slug: "dev-portfolio-template",
+    name: "Developer Portfolio Template",
+    description:
+      "A sleek and professional portfolio template built with Next.js 15 and Tailwind CSS. Perfect for developers, freelancers, and indie hackers who want to showcase their work, experience, and skills with style.",
+    features: [
+      "Modern developer portfolio layout with about, experience, skills, and projects.",
+      "Fully responsive design with clean mobile and desktop experience.",
+      "Animated skill bars triggered on scroll using Framer Motion.",
+      "Dark mode support, styled exclusively with Tailwind CSS.",
+      "Contact section with working form and social media links.",
+      "Optimized structure for customization and deployment on Vercel.",
+    ],
+    tech: ["Next.js"],
+    demoUrl: "https://bloom-tpl-dev-portfolio-template.vercel.app/",
+    images: [
+      "/images/templates/dev-portfolio-template/preview-1.png",
+      "/images/templates/dev-portfolio-template/preview-2.png",
+      "/images/templates/dev-portfolio-template/preview-3.png",
+    ],
+  },
 ];
