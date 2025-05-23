@@ -8,7 +8,7 @@ export default async function DashboardPage() {
   const session = await getServerSession(authOptions);
 
   if (!session?.user?.email) {
-    redirect("/auth/signin"); // ou autre page sécurisée
+    redirect("/auth/signin");
   }
 
   return (

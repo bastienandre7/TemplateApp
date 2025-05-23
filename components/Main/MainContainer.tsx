@@ -159,65 +159,61 @@ export default function MainContainer() {
                 className="hover:bg-gray-50 transition flex flex-col sm:flex-row items-center sm:items-center p-4 border rounded-lg shadow gap-4"
               >
                 <div className="flex-1 w-full p-0 sm:p-4">
-                  <h2 className="text-xl font-bold">
-                    {item.name} - {item.price} €
-                    {isOwned && (
-                      <span className="ml-2 text-xs px-2 py-1 bg-green-100 text-green-800 rounded-full">
-                        Owned
-                      </span>
-                    )}
-                  </h2>
-                  <p className="text-sm text-gray-800 mt-2">
-                    {item.description ||
-                      "No description available for this template."}
-                  </p>
-
-                  {Array.isArray(item.tech) && item.tech.length > 0 && (
-                    <div className="flex items-center gap-2 mt-4">
-                      <p className="text-sm">Build with : </p>
-                      {item.tech.map((tech) => (
-                        <div key={tech} className="flex items-center gap-1">
-                          {techLogos[tech] && (
-                            <Image
-                              src={techLogos[tech]}
-                              alt={tech}
-                              width={20}
-                              height={20}
-                            />
-                          )}
-                          <span className="text-sm text-gray-700">{tech}</span>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-
-                  <div>
-                    <p className="text-sm font-semibold mt-4 mb-2">Features:</p>
-                    <ul className="list-disc list-inside space-y-1 text-sm mt-2">
-                      {item.features
-                        .slice(0, 2)
-                        .map((feature: string, index: number) => (
-                          <li key={index}>{feature}</li>
-                        ))}
-                      {item.features.length > 2 && (
-                        <li className="italic">
-                          ...and {item.features.length - 2} more
-                        </li>
+                  <Link href={`/template/${item.slug}`} className="cursor-pointer">
+                    <h2 className="text-xl font-bold">
+                      {item.name}
+                      {isOwned && (
+                        <span className="ml-2 text-xs px-2 py-1 bg-green-100 text-green-800 rounded-full">
+                          Owned
+                        </span>
                       )}
-                    </ul>
-                  </div>
+                    </h2>
+                    <p className="text-sm text-gray-800 mt-2">
+                      {item.description ||
+                        "No description available for this template."}
+                    </p>
+
+                    {Array.isArray(item.tech) && item.tech.length > 0 && (
+                      <div className="flex items-center gap-2 mt-4">
+                        <p className="text-sm">Build with : </p>
+                        {item.tech.map((tech) => (
+                          <div key={tech} className="flex items-center gap-1">
+                            {techLogos[tech] && (
+                              <Image
+                                src={techLogos[tech]}
+                                alt={tech}
+                                width={20}
+                                height={20}
+                              />
+                            )}
+                            <span className="text-sm text-gray-700">
+                              {tech}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
+                    <div>
+                      <p className="text-sm font-semibold mt-4 mb-2">
+                        Features:
+                      </p>
+                      <ul className="list-disc list-inside space-y-1 text-sm mt-2">
+                        {item.features
+                          .slice(0, 2)
+                          .map((feature: string, index: number) => (
+                            <li key={index}>{feature}</li>
+                          ))}
+                        {item.features.length > 2 && (
+                          <li className="italic">
+                            ...and {item.features.length - 2} more
+                          </li>
+                        )}
+                      </ul>
+                    </div>
+                  </Link>
 
                   <div className="mt-4 flex flex-wrap gap-4">
-                    <Button
-                      asChild
-                      className="min-h-[48px] px-6 py-3 bg-red-700 text-white shadow-lg hover:shadow-xl hover:scale-105 hover:brightness-105 active:scale-95 font-semibold tracking-wide transition-all duration-300 break-words text-center"
-                    >
-                      <Link href={`/template/${item.slug}`}>
-                        More Info
-                        <span className="sr-only"> about {item.name}</span>
-                      </Link>
-                    </Button>
-
                     <Button
                       asChild
                       variant="outline"
@@ -249,19 +245,22 @@ export default function MainContainer() {
                         }}
                         className="min-h-[48px] min-w-[48px] px-4 py-3 hover:scale-105 hover:shadow-xl transition-all duration-300"
                       >
-                        Buy Now
+                        Buy Now - {item.price} €
                       </Button>
                     )}
                   </div>
                 </div>
 
-                <Image
-                  src={item.imageUrl}
-                  alt={item.name}
-                  width={1000}
-                  height={1000}
-                  className="w-full sm:w-72 h-auto object-cover rounded-lg border"
-                />
+                <Link href={`/template/${item.slug}`} className="cursor-pointer">
+                  <Image
+                    src={item.imageUrl}
+                    alt={item.name}
+                    width={1000}
+                    height={1000}
+                    priority
+                    className="w-full sm:w-72 h-auto object-cover rounded-lg border"
+                  />
+                </Link>
               </div>
             );
           })}

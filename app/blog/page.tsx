@@ -1,6 +1,31 @@
 import HeaderCPN from "@/components/Header/HeaderCPN";
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "BloomTPL Blog – Tips, Guides & Inspiration for Web Developers",
+  description:
+    "Explore the latest blog articles from BloomTPL. Discover tips on web development, design systems, template usage, and more.",
+  alternates: {
+    canonical: "https://bloomtpl.com/blog",
+  },
+  openGraph: {
+    title: "BloomTPL Blog – Tips, Guides & Inspiration for Web Developers",
+    description:
+      "Read articles on Next.js, Tailwind CSS, and building web apps faster with templates. Updated regularly by BloomTPL.",
+    url: "https://bloomtpl.com/blog",
+    siteName: "BloomTPL",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "BloomTPL Blog – Tips, Guides & Inspiration for Web Developers",
+    description:
+      "Stay updated with the BloomTPL blog. Learn how to build, ship, and scale websites with high-quality templates.",
+  },
+};
 
 type BlogPost = {
   slug: string;
