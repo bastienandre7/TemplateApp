@@ -11,14 +11,15 @@ import { Providers } from "./providers";
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "700"] });
 
 export const metadata: Metadata = {
-  title: "BloomTPL – Modern Next.js Templates",
+  title:
+    "Premium Tailwind Templates for SaaS, Dashboards, Portfolios & More - BloomTPL",
   description:
-    "Discover and download premium templates and components built with Next.js, Tailwind CSS, and modern design systems.",
+    "Explore premium Next.js templates built with Tailwind CSS. Perfect for SaaS apps, admin dashboards, and modern portfolio websites.",
   icons: {
     icon: "/logo.ico",
   },
   alternates: {
-    canonical: "https://bloomtpl.com",
+    canonical: "https://www.bloomtpl.com",
   },
   keywords: [
     "Next.js templates",
@@ -35,16 +36,17 @@ export const metadata: Metadata = {
   robots:
     "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
   openGraph: {
-    title: "BloomTPL – Modern Next.js Templates",
+    title:
+      "Premium Tailwind Templates for SaaS, Dashboards, Portfolios & More - BloomTPL",
     description:
-      "Discover and download premium templates and components built with Next.js, Tailwind CSS, and modern design systems.",
-    url: "https://bloomtpl.com",
+      "Explore premium Next.js templates built with Tailwind CSS. Perfect for SaaS apps, admin dashboards, and modern portfolio websites.",
+    url: "https://www.bloomtpl.com",
     siteName: "BloomTPL",
     locale: "en_US",
     type: "website",
     images: [
       {
-        url: "https://bloomtpl.com/og-image.png",
+        url: "https://www.bloomtpl.com/og-image.png",
         width: 1260,
         height: 630,
         alt: "BloomTPL – Modern Next.js Templates",
@@ -53,10 +55,11 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "BloomTPL – Modern Next.js Templates",
+    title:
+      "Premium Tailwind Templates for SaaS, Dashboards, Portfolios & More - BloomTPL",
     description:
-      "Discover and download premium templates and components built with Next.js, Tailwind CSS, and modern design systems.",
-    images: ["https://bloomtpl.com/og-image.png"],
+      "Explore premium Next.js templates built with Tailwind CSS. Perfect for SaaS apps, admin dashboards, and modern portfolio websites.",
+    images: ["https://www.bloomtpl.com/og-image.png"],
   },
   creator: "BloomTPL",
   publisher: "BloomTPL",

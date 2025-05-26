@@ -41,7 +41,7 @@ export default function ProductPage({ slug }: ProductPageProps) {
         const data = await res.json();
         setTemplate(data);
       } catch (err) {
-        console.error("Erreur chargement template:", err);
+        console.error("Error loading template:", err);
         setTemplate(null);
       } finally {
         setLoading(false);

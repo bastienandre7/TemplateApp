@@ -6,13 +6,13 @@ export const metadata: Metadata = {
   description:
     "Learn how to install, customize, and launch your project with BloomTPL templates. Step-by-step guides and best practices included.",
   alternates: {
-    canonical: "https://bloomtpl.com/docs",
+    canonical: "https://www.bloomtpl.com/docs",
   },
   openGraph: {
     title: "Documentation – How to Use BloomTPL Templates",
     description:
       "Step-by-step documentation to help you make the most of your BloomTPL templates. Setup, customization, deployment, and more.",
-    url: "https://bloomtpl.com/docs",
+    url: "https://www.bloomtpl.com/docs",
     siteName: "BloomTPL",
     locale: "en_US",
     type: "website",

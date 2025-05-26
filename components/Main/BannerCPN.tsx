@@ -8,15 +8,15 @@ export default function BannerCPN() {
       <div className="mx-auto max-w-screen-xl px-4 py-32 grid place-items-center">
         <div className="w-full text-center">
           <h1 className="text-4xl text-black font-extrabold sm:text-6xl">
-            Build Faster. Design Better.
-            <strong className="font-extrabold text-red-700 sm:block">
-              Premium Tailwind Templates.
+            Tailwind Templates for SaaS, Dashboards, Portfolios & More
+            <strong className="font-extrabold text-red-700 sm:block py-4">
+              Premium Next.js Designs by BloomTPL
             </strong>
           </h1>
           <p className="mt-4 max-w-lg sm:text-lg text-black mx-auto">
-            Get access to high-quality, ready-to-use Tailwind CSS templates and
-            UI components. Save time, improve performance, and create stunning
-            projects effortlessly.
+            Build faster with BloomTPL. Explore high-quality Tailwind CSS
+            templates for SaaS applications, admin dashboards, and developer
+            portfolios — all built with Next.js.
           </p>
           <div className="mt-8 flex flex-wrap gap-4 justify-center">
             <Link

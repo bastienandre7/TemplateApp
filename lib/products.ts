@@ -86,3 +86,7 @@ export const templateData = [
     ],
   },
 ];
+
+export function getTemplateBySlug(slug: string) {
+  return templateData.find((tpl) => tpl.slug === slug);
+}
