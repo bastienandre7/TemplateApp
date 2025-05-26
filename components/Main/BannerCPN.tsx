@@ -9,8 +9,9 @@ export default function BannerCPN() {
         <div className="w-full text-center">
           <h1 className="text-4xl text-black font-extrabold sm:text-6xl">
             Tailwind Templates for SaaS, Dashboards, Portfolios & More
+            <br />
             <strong className="font-extrabold text-red-700 sm:block py-4">
-              Premium Next.js Designs by BloomTPL
+            Premium Next.js Designs by BloomTPL
             </strong>
           </h1>
           <p className="mt-4 max-w-lg sm:text-lg text-black mx-auto">
