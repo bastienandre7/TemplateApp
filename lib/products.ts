@@ -86,7 +86,7 @@ export const templateData = [
     ],
   },
   {
-    id: 529635,
+    id: 532956,
     slug: "restaurant-template",
     name: "Restaurant Template",
     description:
