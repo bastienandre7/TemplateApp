@@ -1,102 +1,75 @@
+import { templateData } from "@/lib/products";
 import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [
+  const baseUrl = "https://www.bloomtpl.com";
+
+  const staticRoutes: MetadataRoute.Sitemap = [
     {
-      url: "https://www.bloomtpl.com",
+      url: `${baseUrl}`,
       lastModified: new Date(),
-      changeFrequency: "weekly",
+      changeFrequency: "weekly" as const,
       priority: 1,
     },
     {
-      url: "https://www.bloomtpl.com/template/blog-template",
+      url: `${baseUrl}/blog`,
       lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
-      url: "https://www.bloomtpl.com/template/e-commerce-template",
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
-      url: "https://www.bloomtpl.com/template/saas-dashboard-template",
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
-      url: "https://www.bloomtpl.com/template/dev-portfolio-template",
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
-      url: "https://www.bloomtpl.com/demo/saas-dashboard-template",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: "https://www.bloomtpl.com/demo/blog-template",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: "https://www.bloomtpl.com/demo/e-commerce-template",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: "https://www.bloomtpl.com/demo/dev-portfolio-template",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: "https://www.bloomtpl.com/blog",
-      lastModified: new Date(),
-      changeFrequency: "weekly",
+      changeFrequency: "weekly" as const,
       priority: 0.8,
     },
     {
-      url: "https://www.bloomtpl.com/blog/why-use-template",
+      url: `${baseUrl}/blog/why-use-template`,
       lastModified: new Date(),
-      changeFrequency: "weekly",
+      changeFrequency: "weekly" as const,
       priority: 0.8,
     },
     {
-      url: "https://www.bloomtpl.com/terms-of-use",
+      url: `${baseUrl}/terms-of-use`,
       lastModified: new Date(),
-      changeFrequency: "yearly",
+      changeFrequency: "yearly" as const,
       priority: 0.3,
     },
     {
-      url: "https://www.bloomtpl.com/legal-notice",
+      url: `${baseUrl}/legal-notice`,
       lastModified: new Date(),
-      changeFrequency: "yearly",
+      changeFrequency: "yearly" as const,
       priority: 0.3,
     },
     {
-      url: "https://www.bloomtpl.com/privacy-policy",
+      url: `${baseUrl}/privacy-policy`,
       lastModified: new Date(),
-      changeFrequency: "yearly",
+      changeFrequency: "yearly" as const,
       priority: 0.3,
     },
     {
-      url: "https://www.bloomtpl.com/contact",
+      url: `${baseUrl}/contact`,
       lastModified: new Date(),
-      changeFrequency: "yearly",
+      changeFrequency: "yearly" as const,
       priority: 0.3,
     },
     {
-      url: "https://www.bloomtpl.com/docs",
+      url: `${baseUrl}/docs`,
       lastModified: new Date(),
-      changeFrequency: "yearly",
+      changeFrequency: "yearly" as const,
       priority: 0.3,
     },
   ];
+
+  const templateRoutes = templateData.map((template) => ({
+    url: `${baseUrl}/template/${template.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "daily" as const,
+    priority: 0.9,
+  }));
+
+  const demoRoutes = templateData
+    .filter((t) => t.demoUrl)
+    .map((template) => ({
+      url: `${baseUrl}/demo/${template.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "daily" as const,
+      priority: 0.7,
+    }));
+
+  return [...staticRoutes, ...templateRoutes, ...demoRoutes];
 }
