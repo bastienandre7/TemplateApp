@@ -105,6 +105,7 @@ export const templateData = [
       "/images/templates/restaurant-template/preview-2.png",
       "/images/templates/restaurant-template/preview-3.png",
     ],
+    openGraph: "/images/templates/restaurant-template/restaurant-template.png",
   },
 ];
 
