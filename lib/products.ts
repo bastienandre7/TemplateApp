@@ -85,6 +85,27 @@ export const templateData = [
       "/images/templates/dev-portfolio-template/preview-3.png",
     ],
   },
+  {
+    id: 529635,
+    slug: "restaurant-template",
+    name: "Restaurant Template",
+    description:
+      "Modern restaurant website template built with Next.js and Tailwind CSS. Perfect for showcasing a menu, taking reservations, and attracting local food lovers.",
+    features: [
+      "Modern restaurant layout with hero, menu, gallery, and reservation.",
+      "Responsive design and smooth scroll animations with Framer Motion.",
+      "Image lightbox and testimonial carousel with ratings.",
+      "Clean Tailwind CSS setup, easy to customize.",
+      "Next.js 15 App Router, ready to deploy on Vercel.",
+    ],
+    tech: ["Next.js"],
+    demoUrl: "https://bloom-tpl-restaurant-template.vercel.app/",
+    images: [
+      "/images/templates/restaurant-template/preview-1.png",
+      "/images/templates/restaurant-template/preview-2.png",
+      "/images/templates/restaurant-template/preview-3.png",
+    ],
+  },
 ];
 
 export function getTemplateBySlug(slug: string) {
