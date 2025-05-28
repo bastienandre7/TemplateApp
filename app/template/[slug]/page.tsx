@@ -30,7 +30,7 @@ export async function generateMetadata({
       url: `https://www.bloomtpl.com/template/${slug}`,
       images: [
         {
-          url: `https://www.bloomtpl.com${product.openGraph || "/images/og-template.png"}`,
+          url: `https://www.bloomtpl.com${product.openGraphImage || "/images/og-template.png"}`,
           alt: `${product.name} – Premium Tailwind Template`,
           type: "image/png",
           width: 1200,
