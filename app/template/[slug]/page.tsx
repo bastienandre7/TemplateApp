@@ -38,6 +38,14 @@ export async function generateMetadata({
         },
       ],
     },
+    twitter: {
+      card: "summary_large_image",
+      title: `${product.name} – Premium Tailwind Template`,
+      description: product.description,
+      images: [
+        `https://www.bloomtpl.com${product.openGraphImage || "/images/og-template.png"}`,
+      ],
+    },
   };
 }
 
