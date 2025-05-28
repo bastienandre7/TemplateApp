@@ -25,31 +25,12 @@ type Purchase = {
 };
 
 interface ProductPageProps {
-  slug: string;
+  template: Product;
 }
 
-export default function ProductPage({ slug }: ProductPageProps) {
-  const [template, setTemplate] = useState<Product | null>(null);
-  const [loading, setLoading] = useState(true);
+export default function ProductPage({ template }: ProductPageProps) {
   const [ownedTemplates, setOwnedTemplates] = useState<string[]>([]);
   const { data: session } = useSession();
-
-  useEffect(() => {
-    const fetchTemplate = async () => {
-      try {
-        const res = await fetch(`/api/products/slug/${slug}`);
-        const data = await res.json();
-        setTemplate(data);
-      } catch (err) {
-        console.error("Error loading template:", err);
-        setTemplate(null);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchTemplate();
-  }, [slug]);
 
   useEffect(() => {
     if (session?.user?.email) {
@@ -61,30 +42,6 @@ export default function ProductPage({ slug }: ProductPageProps) {
         });
     }
   }, [session]);
-
-  if (loading) {
-    return (
-      <div className="bg-zinc-900 pt-4">
-        <HeaderCPN />
-        <div className="min-h-screen flex flex-col items-center justify-center text-white">
-          <div className="mt-8 animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-white" />
-          <p className="mt-4 text-gray-400">Loading template...</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (!template) {
-    return (
-      <div className="bg-zinc-900 pt-4">
-        <HeaderCPN />
-        <div className="min-h-screen flex flex-col items-center justify-center text-white">
-          <div className="mt-8 animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-white" />
-          <p className="mt-4 text-gray-400">Template not found.</p>
-        </div>
-      </div>
-    );
-  }
 
   const isOwned = ownedTemplates.includes(template.name);
 

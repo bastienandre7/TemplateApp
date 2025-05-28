@@ -1,70 +1,77 @@
-"use client";
-
 import DemoViewer from "@/components/Demo/DemoOverlay";
-import HeaderCPN from "@/components/Header/HeaderCPN";
-import { use, useEffect, useState } from "react";
+import { notFound } from "next/navigation";
 
-interface Product {
-  id: number;
-  name: string;
-  description?: string;
-  price: number;
-  imageUrl?: string;
-  demoUrl: string;
-  lemonLink: string;
-  slug: string;
-}
-
-export default function DemoPage({
+export async function generateMetadata({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const { slug } = use(params);
+  const { slug } = await params;
 
-  const [template, setTemplate] = useState<Product | null>(null);
-  const [loading, setLoading] = useState(true);
+  const res = await fetch(
+    `${process.env.NEXTAUTH_URL}/api/products/slug/${slug}`,
+    {
+      cache: "no-store",
+    }
+  );
 
-  useEffect(() => {
-    const fetchTemplate = async () => {
-      try {
-        const res = await fetch(`/api/products/slug/${slug}`);
-        const data = await res.json();
-        setTemplate(data);
-      } catch (err) {
-        console.error("Erreur chargement template:", err);
-        setTemplate(null);
-      } finally {
-        setLoading(false);
-      }
+  if (!res.ok) {
+    return {
+      title: "Demo Not Found – BloomTPL",
+      description: "This demo does not exist or is no longer available.",
     };
-
-    fetchTemplate();
-  }, [slug]);
-
-  if (loading) {
-    return (
-      <div className="bg-gray-100 pt-4">
-        <HeaderCPN />
-        <div className="min-h-screen flex flex-col items-center justify-center text-black">
-          <div className="mt-8 animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-black" />
-          <p className="mt-4 text-gray-800">Loading template...</p>
-        </div>
-      </div>
-    );
   }
 
-  if (!template) {
-    return (
-      <div className="bg-gray-100 pt-4">
-        <HeaderCPN />
-        <div className="min-h-screen flex flex-col items-center justify-center text-black">
-          <div className="mt-8 animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-black" />
-          <p className="mt-4 text-gray-800">Template not found.</p>
-        </div>
-      </div>
-    );
-  }
+  const product = await res.json();
 
-  return <DemoViewer template={template} />;
+  return {
+    title: `Live Demo – ${product.name} | BloomTPL`,
+    description: product.description,
+    alternates: {
+      canonical: `https://www.bloomtpl.com/demo/${slug}`,
+    },
+    openGraph: {
+      title: `Live Demo – ${product.name} | BloomTPL`,
+      description: product.description,
+      url: `https://www.bloomtpl.com/demo/${slug}`,
+      images: [
+        {
+          url: `https://www.bloomtpl.com${product.openGraphImage || "/images/og-template.png"}`,
+          alt: `${product.name} – Live Demo`,
+          type: "image/png",
+          width: 1200,
+          height: 630,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `Live Demo – ${product.name} | BloomTPL`,
+      description: product.description,
+      images: [
+        `https://www.bloomtpl.com${product.openGraphImage || "/images/og-template.png"}`,
+      ],
+    },
+  };
+}
+
+export default async function DemoPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+
+  const res = await fetch(
+    `${process.env.NEXTAUTH_URL}/api/products/slug/${slug}`,
+    {
+      cache: "no-store",
+    }
+  );
+
+  if (!res.ok) return notFound();
+
+  const product = await res.json();
+
+  return <DemoViewer template={product} />;
 }

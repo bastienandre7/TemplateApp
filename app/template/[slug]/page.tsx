@@ -1,5 +1,4 @@
 import ProductPage from "@/components/ProductPage";
-import { getTemplateBySlug } from "@/lib/products";
 import { notFound } from "next/navigation";
 
 export async function generateMetadata({
@@ -9,14 +8,19 @@ export async function generateMetadata({
 }) {
   const { slug } = await params;
 
-  const product = getTemplateBySlug(slug);
+  const res = await fetch(
+    `${process.env.NEXTAUTH_URL}/api/products/slug/${slug}`,
+    { cache: "no-store" }
+  );
 
-  if (!product) {
+  if (!res.ok) {
     return {
       title: "Template Not Found – BloomTPL",
       description: "This template does not exist or is no longer available.",
     };
   }
+
+  const product = await res.json();
 
   return {
     title: `${product.name} – Premium Tailwind Template | BloomTPL`,
@@ -55,9 +59,15 @@ export default async function TemplatePage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const product = getTemplateBySlug(slug);
 
-  if (!product) return notFound();
+  const res = await fetch(
+    `${process.env.NEXTAUTH_URL}/api/products/slug/${slug}`,
+    { cache: "no-store" }
+  );
 
-  return <ProductPage slug={slug} />;
+  if (!res.ok) return notFound();
+
+  const product = await res.json();
+
+  return <ProductPage template={product} />;
 }

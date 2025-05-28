@@ -15,9 +15,6 @@ export const metadata: Metadata = {
     "Premium Tailwind Templates for SaaS, Dashboards, Portfolios & More - BloomTPL",
   description:
     "Explore premium Next.js templates built with Tailwind CSS. Perfect for SaaS apps, admin dashboards, and modern portfolio websites.",
-  icons: {
-    icon: "/logo.ico",
-  },
   alternates: {
     canonical: "https://www.bloomtpl.com",
   },
