@@ -4,6 +4,13 @@ import HeaderCPN from "@/components/Header/HeaderCPN";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 
+export const metadata = {
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
+
 export default async function DashboardPage() {
   const session = await getServerSession(authOptions);
 

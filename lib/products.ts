@@ -20,6 +20,7 @@ export const templateData = [
       "/images/templates/e-commerce-template/preview-2.png",
       "/images/templates/e-commerce-template/preview-3.png",
     ],
+    openGraphImage: "/images/templates/e-commerce-template/og.png",
   },
   {
     id: 509780,
@@ -41,6 +42,7 @@ export const templateData = [
       "/images/templates/saas-dashboard-template/preview-2.png",
       "/images/templates/saas-dashboard-template/preview-3.png",
     ],
+    openGraphImage: "/images/templates/saas-dashboard-template/og.png",
   },
   {
     id: 509512,
@@ -62,6 +64,7 @@ export const templateData = [
       "/images/templates/blog-template/preview-2.png",
       "/images/templates/blog-template/preview-3.png",
     ],
+    openGraphImage: "/images/templates/blog-template/og.png",
   },
   {
     id: 529635,
@@ -84,6 +87,7 @@ export const templateData = [
       "/images/templates/dev-portfolio-template/preview-2.png",
       "/images/templates/dev-portfolio-template/preview-3.png",
     ],
+    openGraphImage: "/images/templates/dev-portfolio-template/og.png",
   },
   {
     id: 532956,
