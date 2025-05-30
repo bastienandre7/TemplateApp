@@ -1,7 +1,6 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Progress } from "@/components/ui/progress";
 import {
   Select,
   SelectContent,
@@ -33,42 +32,13 @@ type Purchase = {
 
 const techLogos: { [key: string]: string } = {
   "Next.js": "/images/logo/nextLogo.png",
-  "Vue.js": "/images/logo/vueLogo.png",
-  React: "/images/logo/reactLogo.png",
-  Svelte: "/images/logo/svelteLogo.png",
-  "Tailwind CSS": "/images/logo/tailwindLogo.png",
 };
 
-export default function MainContainer() {
+export default function MainContainer({ products }: { products: Product[] }) {
   const [sortOrder, setSortOrder] = useState("asc");
-  const [products, setProducts] = useState<Product[]>([]);
   const [selectedTech, setSelectedTech] = useState<string | null>(null);
   const [ownedTemplates, setOwnedTemplates] = useState<string[]>([]);
-  const [progress, setProgress] = useState(0);
   const { data: session } = useSession();
-
-  useEffect(() => {
-    setProgress(10);
-
-    const interval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev < 90) return prev + 10;
-        clearInterval(interval);
-        return prev;
-      });
-    }, 100);
-
-    fetch("/api/products")
-      .then((res) => res.json())
-      .then((data) => {
-        const templatesOnly = data.filter(
-          (item: Product) => item.type === "template"
-        );
-        setProducts(templatesOnly);
-        setProgress(100);
-        setTimeout(() => setProgress(0), 500);
-      });
-  }, []);
 
   useEffect(() => {
     if (session?.user?.email) {
@@ -144,12 +114,6 @@ export default function MainContainer() {
         </div>
 
         <div className="space-y-8">
-          {progress > 0 && (
-            <div className="mb-4">
-              <Progress value={progress} className="h-2" />
-            </div>
-          )}
-
           {filteredItems.map((item) => {
             const isOwned = ownedTemplates.includes(item.name);
 
@@ -159,7 +123,10 @@ export default function MainContainer() {
                 className="hover:bg-gray-50 transition flex flex-col sm:flex-row items-center sm:items-center p-4 border rounded-lg shadow gap-4"
               >
                 <div className="flex-1 w-full p-0 sm:p-4">
-                  <Link href={`/template/${item.slug}`} className="cursor-pointer">
+                  <Link
+                    href={`/template/${item.slug}`}
+                    className="cursor-pointer"
+                  >
                     <h2 className="text-xl font-bold">
                       {item.name}
                       {isOwned && (
@@ -251,13 +218,15 @@ export default function MainContainer() {
                   </div>
                 </div>
 
-                <Link href={`/template/${item.slug}`} className="cursor-pointer">
+                <Link
+                  href={`/template/${item.slug}`}
+                  className="cursor-pointer"
+                >
                   <Image
-                    src={item.imageUrl}
-                    alt={item.name}
-                    width={1000}
-                    height={1000}
-                    priority
+                    src={item.imageUrl || "/images/NoImage.jpg"}
+                    alt={`${item.name} main preview`}
+                    width={300}
+                    height={300}
                     className="w-full sm:w-72 h-auto object-cover rounded-lg border"
                   />
                 </Link>

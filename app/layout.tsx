@@ -1,12 +1,8 @@
-import CookieBanner from "@/components/CookieBanner";
-import CookieConsentGate from "@/components/CookieConsentGate";
-import FooterCPN from "@/components/Footer/FooterCPN";
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
-import type { Metadata } from "next";
+import { Metadata } from "next";
 import { Poppins } from "next/font/google";
+import { ReactNode } from "react";
 import "./globals.css";
-import { Providers } from "./providers";
+import LayoutShell from "./LayoutShell";
 
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "700"] });
 
@@ -68,25 +64,11 @@ export const viewport = {
   themeColor: "#0f172a",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body className={`${poppins.className} antialiased`}>
-        <Providers>
-          <div className="flex flex-col min-h-screen bg-white">
-            <CookieBanner />
-            <main className="flex-1">{children}</main>
-            <FooterCPN />
-          </div>
-          <CookieConsentGate>
-            <SpeedInsights />
-            <Analytics />
-          </CookieConsentGate>
-        </Providers>
+        <LayoutShell>{children}</LayoutShell>
       </body>
     </html>
   );
