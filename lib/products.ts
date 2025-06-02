@@ -21,6 +21,7 @@ export const templateData = [
       "/images/templates/e-commerce-template/preview-3.png",
     ],
     openGraphImage: "/images/templates/e-commerce-template/og.png",
+    category: "E-Commerce",
   },
   {
     id: 509780,
@@ -43,6 +44,7 @@ export const templateData = [
       "/images/templates/saas-dashboard-template/preview-3.png",
     ],
     openGraphImage: "/images/templates/saas-dashboard-template/og.png",
+    category: "Dashboard",
   },
   {
     id: 509512,
@@ -65,6 +67,7 @@ export const templateData = [
       "/images/templates/blog-template/preview-3.png",
     ],
     openGraphImage: "/images/templates/blog-template/og.png",
+    category: "Blog",
   },
   {
     id: 529635,
@@ -88,6 +91,7 @@ export const templateData = [
       "/images/templates/dev-portfolio-template/preview-3.png",
     ],
     openGraphImage: "/images/templates/dev-portfolio-template/og.png",
+    category: "Portfolio",
   },
   {
     id: 532956,
@@ -110,6 +114,7 @@ export const templateData = [
       "/images/templates/restaurant-template/preview-3.png",
     ],
     openGraphImage: "/images/templates/restaurant-template/og.png",
+    category: "Restaurant",
   },
 ];
 

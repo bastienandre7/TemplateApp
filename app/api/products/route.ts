@@ -46,6 +46,7 @@ export async function GET() {
         features: localData?.features || [],
         demoUrl: localData?.demoUrl || "",
         tech: localData?.tech || [],
+        category: localData?.category || "Uncategorized",
       };
     });
 

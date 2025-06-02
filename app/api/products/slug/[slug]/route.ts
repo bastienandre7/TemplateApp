@@ -57,6 +57,7 @@ export async function GET(
       frameworks: localData.tech ? [localData.tech] : [],
       images: localData.images || [],
       tech: localData.tech || [],
+      category: localData.category || "Uncategorized",
     };
 
     return NextResponse.json(formatted);

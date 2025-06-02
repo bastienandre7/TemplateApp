@@ -4,7 +4,7 @@ import PromoBanner from "@/components/PromoBanner";
 
 export default async function Home() {
   const res = await fetch(`${process.env.NEXTAUTH_URL}/api/products`, {
-    cache: "no-store", // ou "force-cache" si c’est une liste stable
+    cache: "no-store",
   });
   const data = await res.json();
   return (

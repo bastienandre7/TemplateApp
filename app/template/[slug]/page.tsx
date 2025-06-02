@@ -69,5 +69,31 @@ export default async function TemplatePage({
 
   const product = await res.json();
 
-  return <ProductPage template={product} />;
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.name,
+    image: [product.imageUrl],
+    description: product.description,
+    sku: product.slug,
+    offers: {
+      "@type": "Offer",
+      priceCurrency: "EUR",
+      price: product.price.toFixed(2),
+      availability: "https://schema.org/InStock",
+      url: `https://www.bloomtpl.com/template/${product.slug}`,
+    },
+  };
+
+  return (
+    <>
+      <ProductPage template={product} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
+    </>
+  );
 }

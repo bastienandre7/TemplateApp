@@ -1,39 +1,87 @@
+"use client";
+
+import { motion } from "framer-motion";
 import Link from "next/link";
 import HeaderCPN from "../Header/HeaderCPN";
 
-export default function BannerCPN() {
+export default function HeroBanner() {
   return (
     <section className="bg-gradient-to-r from-pink-200 to-yellow-100 border-b pt-4">
       <HeaderCPN />
       <div className="mx-auto max-w-screen-xl px-4 py-32 grid place-items-center">
-        <div className="w-full text-center">
-          <h1 className="text-4xl text-black font-extrabold sm:text-6xl">
-            Tailwind Templates for SaaS, Dashboards, Portfolios & More
-            <br />
-            <strong className="font-extrabold text-red-700 sm:block py-4">
-            Premium Next.js Designs by BloomTPL
-            </strong>
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="w-full text-center"
+        >
+          <h1 className="text-4xl text-black font-extrabold sm:text-6xl leading-tight">
+            <span className="block">
+              Build Faster with Tailwind CSS & Next.js
+            </span>
+            <span className="text-red-700 py-4 block">
+              Premium Web Templates for SaaS, Dashboards & Portfolios
+            </span>
           </h1>
-          <p className="mt-4 max-w-lg sm:text-lg text-black mx-auto">
-            Build faster with BloomTPL. Explore high-quality Tailwind CSS
-            templates for SaaS applications, admin dashboards, and developer
-            portfolios — all built with Next.js.
+          <p className="mt-4 max-w-xl sm:text-lg text-black mx-auto">
+            Discover production-ready templates built with{" "}
+            <strong>Tailwind CSS</strong> and <strong>Next.js</strong>. Clean
+            design, fast performance, and easy customization for developers and
+            startups.
           </p>
-          <div className="mt-8 flex flex-wrap gap-4 justify-center">
+          <p className="mt-2 text-sm text-gray-600">
+            Trusted by 500+ developers and indie makers.
+          </p>
+
+          <motion.div
+            className="mt-10 flex flex-wrap gap-4 justify-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.5 }}
+          >
             <Link
-              className="block rounded-md bg-red-700 px-12 py-3 text-sm font-medium text-white shadow-sm hover:bg-red-600 sm:w-auto"
               href="#templates"
+              className="inline-flex items-center justify-center gap-2 rounded-xl bg-red-700 px-8 py-3 text-sm font-semibold text-white transition hover:bg-red-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-700 shadow-md"
             >
-              Explore Templates
+              Browse Templates
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-4 h-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
             </Link>
+
             <Link
-              className="block bg-white rounded-md px-12 py-3 text-sm font-medium text-red-700 shadow-sm hover:bg-gray-100 sm:w-auto"
               href="/contact"
+              className="inline-flex items-center justify-center gap-2 rounded-xl border border-red-700 bg-white px-8 py-3 text-sm font-semibold text-red-700 transition hover:bg-red-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-700 shadow-sm"
             >
-              Contact Us
+              Get in Touch
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-4 h-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
             </Link>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

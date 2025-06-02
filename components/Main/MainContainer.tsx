@@ -21,6 +21,7 @@ type Product = {
   demoUrl?: string;
   lemonLink: string;
   type: "template" | "component";
+  category: string;
   features: string[];
   slug?: string;
   tech: string[];
@@ -36,7 +37,7 @@ const techLogos: { [key: string]: string } = {
 
 export default function MainContainer({ products }: { products: Product[] }) {
   const [sortOrder, setSortOrder] = useState("asc");
-  const [selectedTech, setSelectedTech] = useState<string | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [ownedTemplates, setOwnedTemplates] = useState<string[]>([]);
   const { data: session } = useSession();
 
@@ -51,12 +52,12 @@ export default function MainContainer({ products }: { products: Product[] }) {
     }
   }, [session]);
 
-  const techs = Array.from(
-    new Set(products.flatMap((p) => p.tech).filter(Boolean))
+  const categories = Array.from(
+    new Set(products.map((p) => p.category).filter(Boolean))
   );
 
   const filteredItems = [...products]
-    .filter((p) => !selectedTech || p.tech.includes(selectedTech))
+    .filter((p) => !selectedCategory || p.category === selectedCategory)
     .sort((a, b) =>
       sortOrder === "asc" ? a.price - b.price : b.price - a.price
     );
@@ -78,34 +79,24 @@ export default function MainContainer({ products }: { products: Product[] }) {
             </SelectContent>
           </Select>
 
-          {techs.length > 0 && (
+          {categories.length > 0 && (
             <Select
-              value={selectedTech ?? "all"}
+              value={selectedCategory ?? "all"}
               onValueChange={(value) =>
-                setSelectedTech(value === "all" ? null : value)
+                setSelectedCategory(value === "all" ? null : value)
               }
             >
               <SelectTrigger
                 className="w-[180px]"
-                aria-label="Filter templates by technology"
+                aria-label="Filter templates by category"
               >
-                {selectedTech || "All technologies"}
+                {selectedCategory || "All categories"}
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="all">All technologies</SelectItem>
-                {techs.map((tech) => (
-                  <SelectItem key={tech} value={tech}>
-                    <div className="flex items-center gap-2">
-                      {techLogos[tech] && (
-                        <Image
-                          src={techLogos[tech]}
-                          alt={tech}
-                          width={16}
-                          height={16}
-                        />
-                      )}
-                      {tech}
-                    </div>
+                <SelectItem value="all">All categories</SelectItem>
+                {categories.map((cat) => (
+                  <SelectItem key={cat} value={cat}>
+                    {cat.charAt(0).toUpperCase() + cat.slice(1)}
                   </SelectItem>
                 ))}
               </SelectContent>
