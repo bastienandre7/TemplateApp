@@ -1,9 +1,9 @@
 "use client";
 
 import HeaderCPN from "@/components/Header/HeaderCPN";
+import ProductGallery from "@/components/Template/ProductGallery";
 import { Button } from "@/components/ui/button";
 import { signIn, useSession } from "next-auth/react";
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -96,27 +96,9 @@ export default function ProductPage({ template }: ProductPageProps) {
           {template.description}
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-          <Image
-            src={template.imageUrl || "/images/NoImage.jpg"}
-            alt={`${template.name} main preview`}
-            width={1000}
-            height={1000}
-            className="rounded-2xl shadow-xl w-full object-cover border border-gray-800"
-            priority
-          />
-
-          {template.images?.map((src, i) => (
-            <Image
-              key={i}
-              src={src}
-              alt={`${template.name} preview ${i + 1}`}
-              width={1000}
-              height={1000}
-              className="rounded-2xl shadow-xl w-full object-cover border border-gray-800"
-            />
-          ))}
-        </div>
+        {template.images && template.images.length > 0 && (
+          <ProductGallery images={template.images} />
+        )}
 
         <div className="mt-16 space-y-8">
           <h2 className="text-3xl md:text-4xl font-bold text-center">

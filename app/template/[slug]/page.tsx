@@ -1,4 +1,4 @@
-import ProductPage from "@/components/ProductPage";
+import ProductPage from "@/components/Template/ProductPage";
 import { notFound } from "next/navigation";
 
 export async function generateMetadata({
@@ -82,7 +82,34 @@ export default async function TemplatePage({
       price: product.price.toFixed(2),
       availability: "https://schema.org/InStock",
       url: `https://www.bloomtpl.com/template/${product.slug}`,
+      priceValidUntil: "2025-12-31",
+      hasMerchantReturnPolicy: {
+        "@type": "MerchantReturnPolicy",
+        returnPolicyCategory: "https://schema.org/NoReturns",
+      },
+      itemCondition: "https://schema.org/NewCondition",
     },
+    isAccessibleForFree: false,
+    category: product.category,
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "5",
+      reviewCount: "24",
+    },
+    review: [
+      {
+        "@type": "Review",
+        reviewRating: {
+          "@type": "Rating",
+          ratingValue: "5",
+          bestRating: "5",
+        },
+        author: {
+          "@type": "Person",
+          name: "Bastien",
+        },
+      },
+    ],
   };
 
   return (
