@@ -7,13 +7,13 @@ export default function ProductGallery({ images }: { images: string[] }) {
   const [selectedImage, setSelectedImage] = useState(images[0]);
 
   return (
-    <div className="w-full max-w-[800px] mx-auto flex flex-col items-center px-4">
+    <div className="w-full max-w-screen-xl mx-auto flex flex-col items-center px-4">
       <div className="rounded-xl shadow-lg overflow-hidden mb-4 w-full border border-gray-800">
         <Image
           src={selectedImage}
           alt="Selected product"
-          width={800}
-          height={800}
+          width={1200}
+          height={600}
           className="rounded-xl object-cover w-full h-auto max-h-[800px]"
         />
       </div>
@@ -24,7 +24,7 @@ export default function ProductGallery({ images }: { images: string[] }) {
             key={index}
             onClick={() => setSelectedImage(img)}
             className={`border-2 ${
-              selectedImage === img ? "border-white" : "border-transparent"
+              selectedImage === img ? "border-white" : "border-gray-700"
             } rounded-md cursor-pointer`}
           >
             <Image
