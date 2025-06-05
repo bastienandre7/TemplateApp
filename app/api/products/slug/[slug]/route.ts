@@ -58,6 +58,7 @@ export async function GET(
       images: localData.images || [],
       tech: localData.tech || [],
       category: localData.category || "Uncategorized",
+      openGraphImage: localData.openGraphImage || "/images/og-template.png",
     };
 
     return NextResponse.json(formatted);
