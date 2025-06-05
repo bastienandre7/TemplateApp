@@ -122,6 +122,31 @@ export const templateData = [
     openGraphImage: "/images/templates/restaurant-template/og.png",
     category: "Restaurant",
   },
+  {
+    id: 540440,
+    slug: "saas-template",
+    name: "SaaS Template",
+    description:
+      "A modern dark-mode SaaS UI template built with Next.js and Tailwind CSS. Clean, fast, responsive and ready to launch your own SaaS.",
+    features: [
+      "Modern SaaS layout with homepage, pricing, blog, and contact pages.",
+      "Responsive design with animated sections powered by Framer Motion.",
+      "Dark mode UI, gradient backgrounds, and clean component structure.",
+      "Integrated FAQ, testimonials, and use-case sections.",
+      "Built with Next.js 15 App Router and Tailwind CSS — deploy-ready.",
+    ],
+    tech: ["Next.js"],
+    demoUrl: "https://bloom-tpl-saa-s-template.vercel.app/",
+    images: [
+      "/images/templates/saas-template/preview-1.png",
+      "/images/templates/saas-template/preview-2.png",
+      "/images/templates/saas-template/preview-3.png",
+      "/images/templates/saas-template/preview-4.png",
+      "/images/templates/saas-template/preview-5.png",
+    ],
+    openGraphImage: "/images/templates/saas-template/og.png",
+    category: "SaaS",
+  },
 ];
 
 export function getTemplateBySlug(slug: string) {
