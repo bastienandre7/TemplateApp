@@ -25,11 +25,11 @@ export default function DemoViewer({
       <HeaderCPN />
       <div className="flex flex-col max-w-screen-xl mx-auto px-4">
         <div className="flex flex-col items-center text-center mt-8 gap-4">
-          <h1 className="text-black font-bold text-3xl">{template.name}</h1>
+          <h1 className="text-black font-bold text-3xl">BloomTPL - Next.js Tailwind CSS {template.name}</h1>
           <p className="text-gray-600 max-w-2xl">{template.description}</p>
           <div className="flex gap-4 flex-wrap justify-center">
             <Link href={`/template/${template.slug}`}>
-              <button className="px-6 py-3 rounded-xl bg-gray-200 hover:bg-gray-300 text-black transition">
+              <button className="px-6 py-3 rounded-xl bg-gray-200 hover:bg-gray-300 text-black transition shadow-md">
                 More Info
               </button>
             </Link>
@@ -41,7 +41,7 @@ export default function DemoViewer({
               </Link>
             ) : (
               <button
-                className="px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white transition"
+                className="px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white transition shadow-md"
                 onClick={() => {
                   if (!session) {
                     signIn();

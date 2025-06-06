@@ -25,6 +25,7 @@ type Product = {
   features: string[];
   slug?: string;
   tech: string[];
+  created_at: string;
 };
 
 type Purchase = {
@@ -36,7 +37,7 @@ const techLogos: { [key: string]: string } = {
 };
 
 export default function MainContainer({ products }: { products: Product[] }) {
-  const [sortOrder, setSortOrder] = useState("asc");
+  const [sortOrder, setSortOrder] = useState("newest");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [ownedTemplates, setOwnedTemplates] = useState<string[]>([]);
   const { data: session } = useSession();
@@ -58,9 +59,15 @@ export default function MainContainer({ products }: { products: Product[] }) {
 
   const filteredItems = [...products]
     .filter((p) => !selectedCategory || p.category === selectedCategory)
-    .sort((a, b) =>
-      sortOrder === "asc" ? a.price - b.price : b.price - a.price
-    );
+    .sort((a, b) => {
+      if (sortOrder === "asc") return a.price - b.price;
+      if (sortOrder === "desc") return b.price - a.price;
+      if (sortOrder === "newest")
+        return (
+          new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+        );
+      return 0;
+    });
 
   return (
     <div id="templates" className="w-full mx-auto text-black px-4 md:py-8">
@@ -74,6 +81,7 @@ export default function MainContainer({ products }: { products: Product[] }) {
               Sort
             </SelectTrigger>
             <SelectContent>
+              <SelectItem value="newest">Newest first</SelectItem>
               <SelectItem value="asc">Rising price</SelectItem>
               <SelectItem value="desc">Descending price</SelectItem>
             </SelectContent>
@@ -118,8 +126,15 @@ export default function MainContainer({ products }: { products: Product[] }) {
                     href={`/template/${item.slug}`}
                     className="cursor-pointer"
                   >
-                    <h2 className="text-xl font-bold">
+                    <h2 className="text-xl font-bold flex items-center">
                       {item.name}
+                      {new Date().getTime() -
+                        new Date(item.created_at).getTime() <
+                        14 * 24 * 60 * 60 * 1000 && (
+                        <span className="ml-2 text-xs px-2 py-1 bg-blue-100 text-indigo-600 rounded-full">
+                          New
+                        </span>
+                      )}
                       {isOwned && (
                         <span className="ml-2 text-xs px-2 py-1 bg-green-100 text-green-800 rounded-full">
                           Owned
@@ -217,7 +232,7 @@ export default function MainContainer({ products }: { products: Product[] }) {
                     src={item.imageUrl || "/images/NoImage.jpg"}
                     alt={`${item.name} main preview`}
                     width={300}
-                    height={300}
+                    height={300}              
                     className="w-full sm:w-72 h-auto object-cover rounded-lg border"
                   />
                 </Link>

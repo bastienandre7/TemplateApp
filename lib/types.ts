@@ -7,4 +7,6 @@ export interface Template {
   slug: string;
   price: number;
   lemonLink: string;
+  created_at: string;
+  updated_at: string;
 }

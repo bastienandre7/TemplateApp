@@ -7,28 +7,17 @@ import LayoutShell from "./LayoutShell";
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "700"] });
 
 export const metadata: Metadata = {
-  title: "BloomTPL - Tailwind CSS & Next.js Templates for SaaS & UI",
+  title: "BloomTPL - Premium Next.js Templates & Starter Kits",
   description:
-    "Launch faster with premium Tailwind CSS & Next.js templates. Ideal for SaaS products, dashboards, and developer portfolios. Built to be clean and ready.",
+    "Launch faster with clean, responsive templates for SaaS, dashboards, portfolios, and more — built with Next.js and Tailwind CSS.",
+  metadataBase: new URL("https://www.bloomtpl.com"),
   alternates: {
     canonical: "https://www.bloomtpl.com",
   },
-  keywords: [
-    "Next.js templates",
-    "Tailwind CSS templates",
-    "UI components",
-    "SaaS dashboard templates",
-    "ecommerce templates",
-    "portfolio templates",
-    "website starter kits",
-    "premium templates",
-    "modern UI design",
-    "responsive design systems",
-  ],
   robots:
     "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
   openGraph: {
-    title: "BloomTPL - Tailwind CSS & Next.js Templates for SaaS & UI",
+    title: "BloomTPL - Premium Next.js Templates & Starter Kits",
     description:
       "Launch faster with premium Tailwind CSS & Next.js templates. Ideal for SaaS products, dashboards, and developer portfolios. Built to be clean and ready.",
     url: "https://www.bloomtpl.com",
@@ -46,7 +35,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "BloomTPL - Tailwind CSS & Next.js Templates for SaaS & UI",
+    title: "BloomTPL - Premium Next.js Templates & Starter Kits",
     description:
       "Launch faster with premium Tailwind CSS & Next.js templates. Ideal for SaaS products, dashboards, and developer portfolios. Built to be clean and ready.",
     images: ["https://www.bloomtpl.com/og-image.png"],

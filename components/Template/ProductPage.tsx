@@ -18,6 +18,7 @@ interface Product {
   features: string[];
   slug: string;
   images?: string[];
+  updated_at: string;
 }
 
 type Purchase = {
@@ -46,76 +47,85 @@ export default function ProductPage({ template }: ProductPageProps) {
   const isOwned = ownedTemplates.includes(template.name);
 
   return (
-    <div className="pt-4 bg-gradient-to-br from-zinc-900 to-zinc-950 text-white min-h-screen">
-      <HeaderCPN />
+    <div className="pt-4 bg-white text-black min-h-screen">
+  <HeaderCPN />
 
-      <div className="max-w-screen-xl mx-auto px-8 py-20 xl:px-4 lg:py-28 space-y-16">
-        {/* Hero Section */}
-        <div className="text-center space-y-6">
-          <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">
-            {template.name}
-          </h1>
-          <p className="text-xl text-gray-300">{template.price}€</p>
-          <div className="flex flex-wrap justify-center gap-4 mt-6">
-            {template.demoUrl && (
-              <Link href={`/demo/${template.slug}`}>
-                <Button
-                  className="px-8 py-4 rounded-xl text-lg bg-white text-black hover:bg-gray-200 min-h-[48px] min-w-[48px]"
-                  variant="outline"
-                >
-                  Live Demo
-                </Button>
-              </Link>
-            )}
-            {isOwned ? (
-              <Link href="/dashboard">
-                <Button className="px-8 py-4 rounded-xl text-lg bg-red-500 hover:bg-red-600 text-white min-h-[48px] min-w-[48px]">
-                  Owned
-                </Button>
-              </Link>
-            ) : (
-              <Button
-                onClick={() => {
-                  if (!session) {
-                    signIn();
-                  } else if (session.user?.email) {
-                    const email = encodeURIComponent(session.user.email);
-                    const url = `${template.lemonLink}?checkout[email]=${email}`;
-                    window.location.href = url;
-                  }
-                }}
-                className="px-8 py-4 rounded-xl text-lg bg-emerald-500 hover:bg-emerald-600 text-white min-h-[48px] min-w-[48px]"
-              >
-                Buy Now
-              </Button>
-            )}
-          </div>
-        </div>
+  <div className="max-w-screen-xl mx-auto px-8 py-20 xl:px-4 lg:py-28 space-y-20">
+    {/* Hero Section */}
+    <div className="text-center space-y-6">
+      <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">
+        BloomTPL - Next.js Tailwind CSS {template.name}
+      </h1>
 
-        <p className="max-w-2xl mx-auto text-center text-lg text-gray-300">
-          {template.description}
-        </p>
+      <p className="text-xl text-gray-800 font-medium">{template.price} €</p>
 
-        {template.images && template.images.length > 0 && (
-          <ProductGallery images={template.images} />
+      <div className="flex flex-wrap justify-center gap-4 mt-6">
+        {template.demoUrl && (
+          <Link href={`/demo/${template.slug}`}>
+            <Button
+              className="px-8 py-4 rounded-xl text-lg bg-white text-black hover:bg-gray-100 min-h-[48px] min-w-[48px] shadow-md"
+              variant="outline"
+            >
+              Live Demo
+            </Button>
+          </Link>
         )}
 
-        <div className="mt-16 space-y-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-center">
-            Features
-          </h2>
-          <ul className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto text-gray-200">
-            {template.features.map((f, i) => (
-              <li
-                key={i}
-                className="p-6 bg-zinc-800 rounded-xl shadow hover:scale-105 transition transform"
-              >
-                <span className="text-lg">{f}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
+        {isOwned ? (
+          <Link href="/dashboard">
+            <Button className="px-8 py-4 rounded-xl text-lg bg-blue-600 hover:bg-blue-700 text-white min-h-[48px] min-w-[48px] shadow-md">
+              Owned
+            </Button>
+          </Link>
+        ) : (
+          <Button
+            onClick={() => {
+              if (!session) {
+                signIn();
+              } else if (session.user?.email) {
+                const email = encodeURIComponent(session.user.email);
+                const url = `${template.lemonLink}?checkout[email]=${email}`;
+                window.location.href = url;
+              }
+            }}
+            className="px-8 py-4 rounded-xl text-lg bg-emerald-600 hover:bg-emerald-700 text-white min-h-[48px] min-w-[48px] shadow-md"
+          >
+            Buy Now
+          </Button>
+        )}
+      </div>
+
+      <div className="mt-4 text-sm text-gray-500">
+        <p>Updated on: {new Date(template.updated_at).toLocaleDateString()}</p>
+        <p>Built with: Next.js 15</p>
       </div>
     </div>
+
+    <p className="max-w-2xl mx-auto text-center text-lg text-gray-700">
+      {template.description}
+    </p>
+
+    {template.images && template.images.length > 0 && (
+      <ProductGallery images={template.images} />
+    )}
+
+    {/* Features Section */}
+    <div className="space-y-8">
+      <h2 className="text-3xl md:text-4xl font-bold text-center">Key Features</h2>
+      <ul className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto text-gray-900">
+        {template.features.map((f, i) => (
+          <li
+            key={i}
+            className="p-6 bg-gray-100 rounded-xl shadow hover:scale-105 transition transform flex items-start gap-3"
+          >
+            <span className="mt-1 text-emerald-600">✔️</span>
+            <span className="text-base font-medium">{f}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</div>
+
   );
 }

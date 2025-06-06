@@ -23,18 +23,18 @@ export async function generateMetadata({
   const product = await res.json();
 
   return {
-    title: `${product.name} – Premium Tailwind Template | BloomTPL`,
+    title: `BloomTPL - Premium Next.js Tailwind CSS ${product.name}`,
     description: product.description,
     alternates: {
       canonical: `https://www.bloomtpl.com/template/${slug}`,
     },
     openGraph: {
-      title: `${product.name} – Premium Tailwind Template`,
+      title: `BloomTPL - Premium Next.js Tailwind CSS ${product.name}`,
       description: product.description,
       url: `https://www.bloomtpl.com/template/${slug}`,
       images: [
         {
-          url: `https://www.bloomtpl.com${product.openGraphImage || "/images/og-template.png"}`,
+          url: `https://www.bloomtpl.com${product.openGraphImage || "/og-image.png"}`,
           alt: `${product.name} – Premium Tailwind Template`,
           type: "image/png",
           width: 1200,
@@ -44,10 +44,10 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: `${product.name} – Premium Tailwind Template`,
+      title: `BloomTPL - Premium Next.js Tailwind CSS ${product.name}`,
       description: product.description,
       images: [
-        `https://www.bloomtpl.com${product.openGraphImage || "/images/og-template.png"}`,
+        `https://www.bloomtpl.com${product.openGraphImage || "/og-image.png"}`,
       ],
     },
   };

@@ -24,8 +24,8 @@ export default function ProductGallery({ images }: { images: string[] }) {
           <button
             key={index}
             onClick={() => setSelectedImage(img)}
-            className={`border-2 ${
-              selectedImage === img ? "border-white" : "border-gray-700"
+            className={`border-4 ${
+              selectedImage === img ? "border-indigo-400" : "border-gray-700"
             } rounded-md cursor-pointer`}
           >
             <Image
@@ -33,7 +33,7 @@ export default function ProductGallery({ images }: { images: string[] }) {
               alt={`Thumbnail ${index + 1}`}
               width={100}
               height={100}
-              className="object-cover rounded-md w-[60px] h-[60px] transition-transform transform hover:scale-101"
+              className="object-cover  w-[60px] h-[60px] transition-transform transform hover:scale-101"
             />
           </button>
         ))}

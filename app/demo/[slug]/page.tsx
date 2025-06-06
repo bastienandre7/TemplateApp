@@ -25,18 +25,18 @@ export async function generateMetadata({
   const product = await res.json();
 
   return {
-    title: `Live Demo – ${product.name} | BloomTPL`,
+    title: `BloomTPL - Next.js Tailwind CSS ${product.name} Live Demo`,
     description: product.description,
     alternates: {
       canonical: `https://www.bloomtpl.com/demo/${slug}`,
     },
     openGraph: {
-      title: `Live Demo – ${product.name} | BloomTPL`,
+      title: `BloomTPL - Next.js Tailwind CSS ${product.name} Live Demo`,
       description: product.description,
       url: `https://www.bloomtpl.com/demo/${slug}`,
       images: [
         {
-          url: `https://www.bloomtpl.com${product.openGraphImage || "/images/og-template.png"}`,
+          url: `https://www.bloomtpl.com${product.openGraphImage || "/og-image.png"}`,
           alt: `${product.name} – Live Demo`,
           type: "image/png",
           width: 1200,
@@ -46,10 +46,10 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: `Live Demo – ${product.name} | BloomTPL`,
+      title: `BloomTPL - Next.js Tailwind CSS ${product.name} Live Demo`,
       description: product.description,
       images: [
-        `https://www.bloomtpl.com${product.openGraphImage || "/images/og-template.png"}`,
+        `https://www.bloomtpl.com${product.openGraphImage || "/og-image.png"}`,
       ],
     },
   };

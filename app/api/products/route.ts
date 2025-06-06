@@ -26,6 +26,7 @@ export async function GET() {
         large_thumb_url?: string;
         buy_now_url: string;
         slug: string;
+        created_at: string;
       };
     }
 
@@ -47,6 +48,7 @@ export async function GET() {
         demoUrl: localData?.demoUrl || "",
         tech: localData?.tech || [],
         category: localData?.category || "Uncategorized",
+        created_at: product.attributes.created_at,
       };
     });
 

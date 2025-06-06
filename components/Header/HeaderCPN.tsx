@@ -17,10 +17,9 @@ export default function HeaderCPN() {
   ];
 
   return (
-    <header className="px-4 ">
+    <header className="px-4">
       <nav className="bg-transparent sticky w-full z-20 top-0 start-0">
-        <div className="bg-white rounded-xl max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-          {/* Logo et liens de navigation */}
+        <div className="bg-white rounded-xl max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 border border-gray-200 shadow-md">
           <div className="flex items-center space-x-8 rtl:space-x-reverse">
             <Link
               href="/"

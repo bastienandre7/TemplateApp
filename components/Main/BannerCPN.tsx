@@ -6,30 +6,22 @@ import HeaderCPN from "../Header/HeaderCPN";
 
 export default function HeroBanner() {
   return (
-    <section className="bg-gradient-to-r from-pink-200 to-yellow-100 border-b pt-4">
+    <section className="bg-gradient-to-br from-indigo-50 to-blue-50 border-b pt-4">
       <HeaderCPN />
-      <div className="mx-auto max-w-screen-xl px-4 py-32 grid place-items-center">
+      <div className="mx-auto max-w-screen-lg px-4 py-32 grid place-items-center">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="w-full text-center"
         >
-          <h1 className="text-4xl text-black font-extrabold sm:text-6xl leading-tight">
-            <span className="block">
-              Build Faster with Tailwind CSS & Next.js
-            </span>
-            <span className="text-red-700 py-4 block">
-              Premium Web Templates for SaaS, Dashboards & Portfolios
-            </span>
+          <h1 className="text-4xl sm:text-6xl font-extrabold leading-tight text-gray-900">
+            Premium Next.js Templates & Starter Kits
           </h1>
-          <p className="mt-4 max-w-xl sm:text-lg text-black mx-auto">
-            Discover production-ready templates built with{" "}
-            <strong>Tailwind CSS</strong> and <strong>Next.js</strong>. Clean
-            design, fast performance, and easy customization for developers and
-            startups.
+          <p className="mt-4 max-w-2xl text-center text-gray-800 sm:text-lg mx-auto">
+            Launch faster with clean, responsive templates for SaaS, dashboards, portfolios, and more — built with <strong>Next.js</strong> and <strong>Tailwind CSS</strong>.
           </p>
-          <p className="mt-2 text-sm text-gray-600">
+          <p className="mt-4 text-sm text-gray-600">
             Trusted by 500+ developers and indie makers.
           </p>
 
@@ -41,7 +33,7 @@ export default function HeroBanner() {
           >
             <Link
               href="#templates"
-              className="inline-flex items-center justify-center gap-2 rounded-xl bg-red-700 px-8 py-3 text-sm font-semibold text-white transition hover:bg-red-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-700 shadow-md"
+              className="inline-flex items-center justify-center gap-2 rounded-xl bg-indigo-600 px-8 py-3 text-sm font-semibold text-white transition hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 shadow-md"
             >
               Browse Templates
               <svg
@@ -52,17 +44,13 @@ export default function HeroBanner() {
                 stroke="currentColor"
                 strokeWidth="2"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M9 5l7 7-7 7"
-                />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
               </svg>
             </Link>
 
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center gap-2 rounded-xl border border-red-700 bg-white px-8 py-3 text-sm font-semibold text-red-700 transition hover:bg-red-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-700 shadow-sm"
+              className="inline-flex items-center justify-center gap-2 rounded-xl border border-indigo-600 bg-white px-8 py-3 text-sm font-semibold text-indigo-600 transition hover:bg-indigo-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 shadow-sm"
             >
               Get in Touch
               <svg
@@ -73,11 +61,7 @@ export default function HeroBanner() {
                 stroke="currentColor"
                 strokeWidth="2"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M9 5l7 7-7 7"
-                />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
               </svg>
             </Link>
           </motion.div>
