@@ -54,13 +54,14 @@ export async function GET(
       lemonLink: product.attributes.buy_now_url,
       slug: localData.slug,
       demoUrl: localData.demoUrl || "",
-      features: localData.features || [],
       frameworks: localData.tech ? [localData.tech] : [],
       images: localData.images || [],
       tech: localData.tech || [],
       category: localData.category || "Uncategorized",
       openGraphImage: localData.openGraphImage || "/images/og-template.png",
       updated_at: product.attributes.updated_at,
+      pages: localData.pages || [],
+      extras: localData.extras || [],
     };
 
     return NextResponse.json(formatted);

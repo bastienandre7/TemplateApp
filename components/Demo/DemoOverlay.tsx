@@ -108,7 +108,7 @@ export default function DemoViewer({
         <div className="flex-1 bg-gray-100 py-4 md:py-8 flex items-center justify-center min-h-screen">
           <div
             className={`bg-white rounded-lg overflow-hidden ${
-              viewMode === "desktop" ? "w-full h-screen" : "w-[430px] h-[667px]"
+              viewMode === "desktop" ? "w-full h-[56rem]" : "w-[430px] h-[667px]"
             }`}
           >
             {template.demoUrl ? (

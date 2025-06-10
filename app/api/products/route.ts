@@ -44,9 +44,9 @@ export async function GET() {
         lemonLink: product.attributes.buy_now_url,
         slug: localData?.slug,
         type: "template",
-        features: localData?.features || [],
+        features: localData?.extras || [],
         demoUrl: localData?.demoUrl || "",
-        tech: localData?.tech || [],
+        tech: "Next.js",
         category: localData?.category || "Uncategorized",
         created_at: product.attributes.created_at,
       };

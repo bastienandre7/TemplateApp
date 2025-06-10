@@ -32,10 +32,6 @@ type Purchase = {
   template: string;
 };
 
-const techLogos: { [key: string]: string } = {
-  "Next.js": "/images/logo/nextLogo.png",
-};
-
 export default function MainContainer({ products }: { products: Product[] }) {
   const [sortOrder, setSortOrder] = useState("newest");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
@@ -146,26 +142,20 @@ export default function MainContainer({ products }: { products: Product[] }) {
                         "No description available for this template."}
                     </p>
 
-                    {Array.isArray(item.tech) && item.tech.length > 0 && (
-                      <div className="flex items-center gap-2 mt-4">
-                        <p className="text-sm">Build with : </p>
-                        {item.tech.map((tech) => (
-                          <div key={tech} className="flex items-center gap-1">
-                            {techLogos[tech] && (
-                              <Image
-                                src={techLogos[tech]}
-                                alt={tech}
-                                width={20}
-                                height={20}
-                              />
-                            )}
-                            <span className="text-sm text-gray-700">
-                              {tech}
-                            </span>
-                          </div>
-                        ))}
+                    <div className="flex items-center gap-2 mt-4">
+                      <p className="text-sm">Build with : </p>
+
+                      <div className="flex items-center gap-1">
+                        <Image
+                          src="/images/logo/nextLogo.png"
+                          alt="Next.js logo"
+                          width={20}
+                          height={20}
+                        />
+
+                        <span className="text-sm text-gray-700">Next.js</span>
                       </div>
-                    )}
+                    </div>
 
                     <div>
                       <p className="text-sm font-semibold mt-4 mb-2">
@@ -232,7 +222,7 @@ export default function MainContainer({ products }: { products: Product[] }) {
                     src={item.imageUrl || "/images/NoImage.jpg"}
                     alt={`${item.name} main preview`}
                     width={300}
-                    height={300}              
+                    height={300}
                     className="w-full sm:w-72 h-auto object-cover rounded-lg border"
                   />
                 </Link>

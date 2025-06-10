@@ -6,14 +6,6 @@ export const templateData = [
     name: "E-Commerce Template",
     description:
       "Modern e-commerce template built with Tailwind CSS. Fast, responsive, and perfect for launching your digital store.",
-    features: [
-      "Modern homepage with hero banner, categories, best sellers, and newsletter signup.",
-      "Shop page with filters by category and price sorting.",
-      "Optimized product page with image gallery and quantity management in cart.",
-      "Fully responsive design with smooth animations (built with Tailwind CSS)",
-      "Clean, reusable components and production-ready code.",
-    ],
-    tech: ["Next.js"],
     demoUrl: "https://bloom-ecommerce-template.vercel.app/",
     images: [
       "/images/templates/e-commerce-template/preview-1.png",
@@ -23,6 +15,14 @@ export const templateData = [
     ],
     openGraphImage: "/images/templates/e-commerce-template/og.png",
     category: "E-Commerce",
+    pages: ["Home", "Shop", "Product", "Cart", "About", "Contact"],
+    tech: ["Next.js 15 (App Router)", "Tailwind CSS 3"],
+    extras: [
+      "Built for conversion-focused storefronts",
+      "Easy to customize with clean component structure",
+      "Cart functionality with local storage",
+      "Deployment-ready for Vercel",
+    ],
   },
   {
     id: 509780,
@@ -30,14 +30,6 @@ export const templateData = [
     name: "SaaS Dashboard Template",
     description:
       "Modern SaaS dashboard template built with Next.js and Tailwind CSS. Clean, fast, and ideal for launching your next admin panel or internal tool.",
-    features: [
-      "Modern dashboard layout with sidebar navigation and topbar actions.",
-      "Fully responsive UI with smooth transitions using Framer Motion.",
-      "Reusable cards and chart-ready sections for metrics and insights.",
-      "Dark mode–ready components, styled with Tailwind CSS and shadcn/ui.",
-      "Reusable cards and chart-ready sections for metrics and insights.",
-    ],
-    tech: ["Next.js"],
     demoUrl: "https://bloom-dashboard-template.vercel.app/",
     images: [
       "/images/templates/saas-dashboard-template/preview-1.png",
@@ -47,6 +39,21 @@ export const templateData = [
     ],
     openGraphImage: "/images/templates/saas-dashboard-template/og.png",
     category: "Dashboard",
+    tech: [
+      "Next.js 15 (App Router)",
+      "Tailwind CSS 3",
+      "Lucide React",
+      "Framer Motion",
+      "Shadcn UI",
+    ],
+    pages: ["Home", "Users", "Statistics", "Settings"],
+    extras: [
+      "Modern dashboard layout with sidebar navigation",
+      "User management with search and filtering",
+      "Dark/Light mode toggle",
+      "Animated charts and statistics",
+      "Deployment-ready for Vercel",
+    ],
   },
   {
     id: 509512,
@@ -54,14 +61,6 @@ export const templateData = [
     name: "Blog Template",
     description:
       "Minimalist blog template built with Next.js and Tailwind CSS. Clean, fast, and perfect for launching your personal blog, journal, or editorial site.",
-    features: [
-      "Elegant blog layout with category filtering and author pages.",
-      "Fully responsive design with smooth UI transitions.",
-      "Dynamic post routing and SEO-friendly structure.",
-      "Dark mode support, styled exclusively with Tailwind CSS.",
-      "Clean and scalable file organization, ready for CMS or markdown integration.",
-    ],
-    tech: ["Next.js"],
     demoUrl: "https://bloom-tpl-blog-template.vercel.app/",
     images: [
       "/images/templates/blog-template/preview-1.png",
@@ -71,6 +70,14 @@ export const templateData = [
     ],
     openGraphImage: "/images/templates/blog-template/og.png",
     category: "Blog",
+    tech: ["Next.js 15 (App Router)", "Tailwind CSS 3", "Lucide React"],
+    pages: ["Home", "Blog (Post)", "Author"],
+    extras: [
+      "Dynamic routing for posts and authors",
+      "Dark mode support",
+      "Category filtering via URL params",
+      "Deployment-ready for Vercel",
+    ],
   },
   {
     id: 529635,
@@ -78,15 +85,6 @@ export const templateData = [
     name: "Developer Portfolio Template",
     description:
       "A sleek and professional portfolio template built with Next.js 15 and Tailwind CSS. Perfect for developers, freelancers, and indie hackers who want to showcase their work, experience, and skills with style.",
-    features: [
-      "Modern developer portfolio layout with about, experience, skills, and projects.",
-      "Fully responsive design with clean mobile and desktop experience.",
-      "Animated skill bars triggered on scroll using Framer Motion.",
-      "Dark mode support, styled exclusively with Tailwind CSS.",
-      "Contact section with working form and social media links.",
-      "Optimized structure for customization and deployment on Vercel.",
-    ],
-    tech: ["Next.js"],
     demoUrl: "https://bloom-tpl-dev-portfolio-template.vercel.app/",
     images: [
       "/images/templates/dev-portfolio-template/preview-1.png",
@@ -96,6 +94,15 @@ export const templateData = [
     ],
     openGraphImage: "/images/templates/dev-portfolio-template/og.png",
     category: "Portfolio",
+    tech: ["Next.js 15 (App Router)", "Tailwind CSS 3", "Lucide React"],
+    pages: ["Home"],
+    extras: [
+      "Clean and minimal folder structure",
+      "Dark/Light mode toggle with next-themes",
+      "Fully responsive across devices",
+      "SEO-friendly setup with metadata",
+      "Deployment-ready for Vercel",
+    ],
   },
   {
     id: 532956,
@@ -103,14 +110,6 @@ export const templateData = [
     name: "Restaurant Template",
     description:
       "Modern restaurant website template built with Next.js and Tailwind CSS. Perfect for showcasing a menu, taking reservations, and attracting local food lovers.",
-    features: [
-      "Modern restaurant layout with hero, menu, gallery, and reservation.",
-      "Responsive design and smooth scroll animations with Framer Motion.",
-      "Image lightbox and testimonial carousel with ratings.",
-      "Clean Tailwind CSS setup, easy to customize.",
-      "Next.js 15 App Router, ready to deploy on Vercel.",
-    ],
-    tech: ["Next.js"],
     demoUrl: "https://bloom-tpl-restaurant-template.vercel.app/",
     images: [
       "/images/templates/restaurant-template/preview-1.png",
@@ -121,6 +120,18 @@ export const templateData = [
     ],
     openGraphImage: "/images/templates/restaurant-template/og.png",
     category: "Restaurant",
+    tech: [
+      "Next.js 15 (App Router)",
+      "Tailwind CSS 3",
+      "Framer Motion",
+      "Lucide React",
+    ],
+    pages: ["Home"],
+    extras: [
+      "Gallery with lightbox image preview",
+      "Auto-rotating testimonial carousel",
+      "Deployment-ready for Vercel",
+    ],
   },
   {
     id: 540440,
@@ -128,14 +139,6 @@ export const templateData = [
     name: "SaaS Template",
     description:
       "A modern dark-mode SaaS UI template built with Next.js and Tailwind CSS. Clean, fast, responsive and ready to launch your own SaaS.",
-    features: [
-      "Modern SaaS layout with homepage, pricing, blog, and contact pages.",
-      "Responsive design with animated sections powered by Framer Motion.",
-      "Dark mode UI, gradient backgrounds, and clean component structure.",
-      "Integrated FAQ, testimonials, and use-case sections.",
-      "Built with Next.js 15 App Router and Tailwind CSS — deploy-ready.",
-    ],
-    tech: ["Next.js"],
     demoUrl: "https://bloom-tpl-saa-s-template.vercel.app/",
     images: [
       "/images/templates/saas-template/preview-1.png",
@@ -146,6 +149,28 @@ export const templateData = [
     ],
     openGraphImage: "/images/templates/saas-template/og.png",
     category: "SaaS",
+    tech: [
+      "Next.js 15 (App Router)",
+      "Tailwind CSS 3",
+      "Framer Motion",
+      "Lucide React",
+    ],
+    pages: [
+      "Home",
+      "Product",
+      "Pricing",
+      "Contact",
+      "Resources",
+      "Legal (Terms, Privacy)",
+      "404",
+    ],
+    extras: [
+      "Clean, modular components",
+      "Dark mode UI",
+      "SEO-ready metadata",
+      "Animated sections (Hero, Pricing, FAQ)",
+      "Deployment-ready for Vercel",
+    ],
   },
 ];
 
