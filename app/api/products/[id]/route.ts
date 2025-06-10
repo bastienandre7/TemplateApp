@@ -43,7 +43,6 @@ export async function GET(
       lemonLink: product.attributes.buy_now_url,
       slug: product.attributes.name.toLowerCase().replace(/\s+/g, "-"),
       demoUrl: localData?.demoUrl || "",
-      features: localData?.features || [],
       frameworks: localData?.tech ? [localData.tech] : [],
       images: localData?.images || [],
       tech: localData?.tech || "",

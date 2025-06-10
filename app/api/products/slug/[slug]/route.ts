@@ -9,7 +9,7 @@ interface LemonProduct {
     price?: number;
     large_thumb_url?: string;
     buy_now_url: string;
-    updated_at: string;
+    created_at: string;
   };
 }
 
@@ -59,7 +59,7 @@ export async function GET(
       tech: localData.tech || [],
       category: localData.category || "Uncategorized",
       openGraphImage: localData.openGraphImage || "/images/og-template.png",
-      updated_at: product.attributes.updated_at,
+      updated_at: product.attributes.created_at,
       pages: localData.pages || [],
       extras: localData.extras || [],
     };
