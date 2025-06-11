@@ -1,125 +1,137 @@
+import Image from "next/image";
+import Link from "next/link";
 import HeaderCPN from "./Header/HeaderCPN";
 
 export default function Docs() {
   return (
     <div className="bg-gray-100 min-h-screen flex flex-col pt-4">
       <HeaderCPN />
-      <main className="flex-1 px-4 sm:px-8 py-8 w-full max-w-4xl mx-auto">
+      <main className="flex-1 px-4 sm:px-8 py-8 w-full max-w-4xl mx-auto mt-16">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900">Documentation</h1>
+          <h1 className="text-4xl font-bold text-gray-900">How It Works</h1>
           <p className="text-gray-600 mt-2 text-base sm:text-lg">
-            Everything you need to get started with our application.
+            A step-by-step guide to purchase, download, and install your
+            template.
           </p>
         </div>
 
-        {/* Section Introduction */}
+        {/* Step 1 */}
         <section className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            Introduction
+            1. Choose a Template
           </h2>
-          <p className="text-gray-700 leading-relaxed text-base">
-            Welcome to our application documentation. Whether you&apos;re a new
-            user or an expert, you&apos;ll find all the information you need to
-            get the most out of our product.
+          <Image
+            src="/images/doc/step-1.png"
+            alt="Choosing a template on homepage"
+            width={1000}
+            height={600}
+            priority
+            className="rounded-xl mb-4 shadow-lg"
+          />
+          <p className="text-gray-700 text-base">
+            Browse our homepage and select the template that fits your project —
+            SaaS, blog, portfolio, or e-commerce.
           </p>
         </section>
 
-        {/* Section Installation */}
+        {/* Step 2 */}
         <section className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            Installation
+            2. Secure Payment via Lemon Squeezy
           </h2>
-          <p className="text-gray-700 mb-4 text-base">
-            Follow these steps to install and configure the application:
+          <Image
+            src="/images/doc/step-2.png"
+            alt="Checkout with Lemon Squeezy"
+            width={1000}
+            height={600}
+            className="rounded-xl mb-4 shadow-lg"
+          />
+          <p className="text-gray-700 text-base">
+            Login and proceed to checkout using Lemon Squeezy. You can pay with
+            credit card, Paypal, and more. After purchase, you&apos;ll receive
+            an instant download link by email.
+          </p>
+        </section>
+
+        {/* Step 3 */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            3. Download Your Files
+          </h2>
+          <Image
+            src="/images/doc/step-3.png"
+            alt="Download link email"
+            width={1000}
+            height={600}
+            className="rounded-xl mb-4 shadow-lg"
+          />
+          <p className="text-gray-700 text-base">
+            You can access your purchased templates from the download email or
+            directly in your dashboard on BloomTPL by clicking on &quot;My
+            Account&quot;.
+          </p>
+        </section>
+
+        {/* Step 4 */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            4. Install the Template
+          </h2>
+          <Image
+            src="/images/doc/step-4.png"
+            alt="Opening template in VS Code"
+            width={1000}
+            height={600}
+            className="rounded-xl mb-4 shadow-lg"
+          />
+          <p className="text-gray-700 text-base mb-4">
+            Unzip the downloaded archive and open the project in your code
+            editor.
           </p>
           <div className="bg-white border rounded-lg overflow-auto p-4">
-            <pre className="text-sm text-gray-800">
-              <code>{`# Step 1: Install dependencies
-npm install
-
-# Step 2: Start the application
-npm start`}</code>
-            </pre>
-          </div>
-        </section>
-
-        {/* Section How to Use Templates */}
-        <section className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            How to Use the Templates
-          </h2>
-          <p className="text-gray-700 mb-4 text-base">
-            Once you download a template, unzip the archive. You&apos;ll find a
-            complete project with a{" "}
-            <code className="bg-gray-100 px-1 py-0.5 rounded">README.md</code>{" "}
-            file to guide you. If the template is based on Next.js:
-          </p>
-          <div className="bg-white border rounded-lg overflow-auto p-4 mb-4">
             <pre className="text-sm text-gray-800">
               <code>{`# Install dependencies
 npm install
 
 # Run the development server
-npm run dev
-
-# Open http://localhost:3000 to view the template`}</code>
+npm run dev`}</code>
             </pre>
           </div>
-          <p className="text-gray-700 text-base">
-            You can then customize the styles, components, and logic based on
-            your needs. Most templates come with Tailwind CSS and Shadcn/ui
-            preconfigured.
-          </p>
         </section>
 
-        {/* Section How to Use Components */}
+        {/* Step 5 */}
         <section className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            How to Use the Components
+            5. Customize and Deploy
           </h2>
-          <p className="text-gray-700 mb-4 text-base">
-            All component packs come with a set of prebuilt React components
-            using Tailwind CSS and often Shadcn/ui. To use a component:
-          </p>
-          <div className="bg-white border rounded-lg overflow-auto p-4 mb-4">
-            <pre className="text-sm text-gray-800">
-              <code>{`# Example usage in your own project
-
-// 1. Copy the component code (e.g., Button.tsx)
-// 2. Paste it into your components folder
-// 3. Import and use it in your pages:
-
-import Button from '@/components/Button';
-
-export default function Page() {
-  return <Button>Click me</Button>;
-}`}</code>
-            </pre>
-          </div>
+          <Image
+            src="/images/doc/step-5.png"
+            alt="Deployed site screenshot"
+            width={1000}
+            height={600}
+            className="rounded-xl mb-4 shadow-lg"
+          />
           <p className="text-gray-700 text-base">
-            Make sure Tailwind CSS and its configuration are properly set up.
-            Most components follow a standard design system so they&apos;re easy
-            to integrate and customize.
+            Personalize your template with your branding, content, and features.
+            Then, deploy it using platforms like Vercel, Netlify, or your
+            preferred hosting service.
           </p>
         </section>
-
-        {/* Section FAQ */}
-        <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">FAQ</h2>
-          <div className="space-y-4">
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <h3 className="text-lg font-semibold text-gray-900">
-                How can I update the application?
-              </h3>
-              <p className="text-gray-700 mt-2 text-base">
-                To update the application, run the following command:
-                <code className="bg-gray-100 px-2 py-1 rounded ml-2">
-                  npm update
-                </code>
-              </p>
-            </div>
-          </div>
+        <section className="mt-16 text-center">
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">
+            You&apos;re all set!
+          </h2>
+          <p className="text-gray-700 text-base mb-6">
+            You now have everything you need to install, customize, and launch
+            your template. If you have any questions, feel free to reach out.
+          </p>
+          <Link
+            href="/#templates"
+            className="inline-block bg-black text-white font-semibold px-6 py-3 rounded-lg hover:bg-gray-800 transition"
+          >
+            Browse More Templates →
+          </Link>
         </section>
       </main>
     </div>

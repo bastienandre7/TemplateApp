@@ -73,7 +73,7 @@ export default function DashboardSection() {
               {purchases.map((p) => (
                 <tr
                   key={p.id}
-                  className="border-b hover:bg-gray-50 transition-colors"
+                  className="border-b hover:bg-gray-50 transition-colors bg-white"
                 >
                   <td className="px-4 py-3 font-medium">{p.template}</td>
                   <td className="px-4 py-3 text-sm text-gray-500">

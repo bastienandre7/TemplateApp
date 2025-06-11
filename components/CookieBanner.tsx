@@ -13,7 +13,7 @@ export default function CookieBanner() {
   const handleAccept = () => {
     localStorage.setItem("cookie_consent", "true");
     setVisible(false);
-    location.reload(); // recharge le site pour que CookieConsentGate affiche les outils
+    location.reload();
   };
 
   const handleDecline = () => {
