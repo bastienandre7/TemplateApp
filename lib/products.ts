@@ -174,7 +174,7 @@ export const templateData = [
   },
   {
     id: 554503,
-    slug: "coresaas–premium-saas-starter-kit-&-boilerplate",
+    slug: "coresaas-premium-saas-starter-kit-boilerplate",
     name: "CoreSaaS – Premium SaaS Starter Kit & Boilerplate",
     description:
       "Launch your SaaS faster with a complete starter kit: authentication, Stripe billing, admin dashboard, and user management – built with Next.js and Tailwind CSS.",
