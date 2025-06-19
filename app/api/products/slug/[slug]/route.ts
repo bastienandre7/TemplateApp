@@ -10,6 +10,7 @@ interface LemonProduct {
     large_thumb_url?: string;
     buy_now_url: string;
     created_at: string;
+    slug: string;
   };
 }
 
@@ -36,9 +37,7 @@ export async function GET(
 
     const json = await response.json();
     const products: LemonProduct[] = json.data;
-    const product = products.find(
-      (p) => p.attributes.name.toLowerCase().replace(/\s+/g, "-") === slug
-    );
+    const product = products.find((p) => p.attributes.slug === slug);
 
     if (!product) {
       throw new Error("Produit Lemon non trouvé");
