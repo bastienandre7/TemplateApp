@@ -25,7 +25,9 @@ export default function DemoViewer({
       <HeaderCPN />
       <div className="flex flex-col max-w-screen-xl mx-auto px-4">
         <div className="flex flex-col items-center text-center mt-8 gap-4">
-          <h1 className="text-black font-bold text-3xl">BloomTPL - Next.js Tailwind CSS {template.name}</h1>
+          <h1 className="text-black font-bold text-3xl">
+            BloomTPL | {template.name} Live Demo
+          </h1>
           <p className="text-gray-600 max-w-2xl">{template.description}</p>
           <div className="flex gap-4 flex-wrap justify-center">
             <Link href={`/template/${template.slug}`}>
@@ -108,7 +110,9 @@ export default function DemoViewer({
         <div className="flex-1 bg-gray-100 py-4 md:py-8 flex items-center justify-center min-h-screen">
           <div
             className={`bg-white rounded-lg overflow-hidden ${
-              viewMode === "desktop" ? "w-full h-[56rem]" : "w-[430px] h-[667px]"
+              viewMode === "desktop"
+                ? "w-full h-[56rem]"
+                : "w-[430px] h-[667px]"
             }`}
           >
             {template.demoUrl ? (

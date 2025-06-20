@@ -42,7 +42,7 @@ export default function FooterCPN() {
               <ul className="text-gray-400 font-medium">
                 <li className="mb-4">
                   <a href="https://x.com/BloomTPL" className="hover:underline ">
-                    Twitter
+                    X
                   </a>
                 </li>
                 <li>

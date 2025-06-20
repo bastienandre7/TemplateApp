@@ -61,7 +61,11 @@ export default function ProductPage({ template }: ProductPageProps) {
 
           <div className="flex flex-wrap justify-center gap-4">
             {template.demoUrl && (
-              <Link href={`/demo/${template.slug}`}>
+              <Link
+                href={`${template.demoUrl}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Button
                   className="px-8 py-4 rounded-xl text-lg bg-white text-black hover:bg-gray-100 min-h-[48px] min-w-[48px] shadow-md"
                   variant="outline"
@@ -88,7 +92,7 @@ export default function ProductPage({ template }: ProductPageProps) {
                     window.location.href = url;
                   }
                 }}
-                className="px-8 py-4 rounded-xl text-lg bg-emerald-500 hover:bg-emerald-600 text-white min-h-[48px] min-w-[48px] shadow-md"
+                className="px-8 py-4 rounded-xl text-lg bg-indigo-600 hover:bg-indigo-700 text-white min-h-[48px] min-w-[48px] shadow-md"
               >
                 Buy Now - {template.price} €
               </Button>
@@ -164,7 +168,7 @@ export default function ProductPage({ template }: ProductPageProps) {
                   window.location.href = url;
                 }
               }}
-              className="px-8 py-4 rounded-xl text-lg bg-emerald-500 hover:bg-emerald-700 text-white min-h-[48px] min-w-[48px] shadow-md"
+              className="px-8 py-4 rounded-xl text-lg bg-indigo-600 hover:bg-indigo-700 text-white min-h-[48px] min-w-[48px] shadow-md"
             >
               Buy Now - {template.price} €
             </Button>

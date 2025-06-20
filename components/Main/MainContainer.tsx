@@ -117,7 +117,20 @@ export default function MainContainer({ products }: { products: Product[] }) {
                 key={item.id}
                 className="hover:bg-gray-50 transition flex flex-col sm:flex-row items-center sm:items-center p-4 border rounded-lg shadow gap-4"
               >
-                <div className="flex-1 w-full p-0 sm:p-4">
+                <Link
+                  href={`/template/${item.slug}`}
+                  className="cursor-pointer w-full sm:w-auto order-1 sm:order-none"
+                >
+                  <Image
+                    src={item.imageUrl || "/images/NoImage.jpg"}
+                    alt={`${item.name} main preview`}
+                    width={548}
+                    height={548}
+                    className="w-full sm:w-72 h-auto object-cover rounded-lg border"
+                  />
+                </Link>
+
+                <div className="flex-1 w-full p-0 sm:p-4 order-2 sm:order-none">
                   <Link
                     href={`/template/${item.slug}`}
                     className="cursor-pointer"
@@ -182,7 +195,13 @@ export default function MainContainer({ products }: { products: Product[] }) {
                       variant="outline"
                       className="min-h-[48px] min-w-[48px] px-4 py-3 hover:scale-105 hover:shadow-xl transition-all duration-300"
                     >
-                      <Link href={`/demo/${item.slug}`}>Live Demo</Link>
+                      <Link
+                        href={`${item.demoUrl}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Live Demo
+                      </Link>
                     </Button>
 
                     {isOwned ? (
@@ -213,19 +232,6 @@ export default function MainContainer({ products }: { products: Product[] }) {
                     )}
                   </div>
                 </div>
-
-                <Link
-                  href={`/template/${item.slug}`}
-                  className="cursor-pointer"
-                >
-                  <Image
-                    src={item.imageUrl || "/images/NoImage.jpg"}
-                    alt={`${item.name} main preview`}
-                    width={300}
-                    height={300}
-                    className="w-full sm:w-72 h-auto object-cover rounded-lg border"
-                  />
-                </Link>
               </div>
             );
           })}

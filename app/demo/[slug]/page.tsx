@@ -25,13 +25,13 @@ export async function generateMetadata({
   const product = await res.json();
 
   return {
-    title: `BloomTPL - ${product.name} with Next.js and Tailwind CSS Live Demo`,
+    title: `BloomTPL | ${product.name} Live Demo`,
     description: product.description,
     alternates: {
       canonical: `https://www.bloomtpl.com/demo/${slug}`,
     },
     openGraph: {
-      title: `BloomTPL - ${product.name} with Next.js and Tailwind CSS Live Demo`,
+      title: `BloomTPL | ${product.name} Live Demo`,
       description: product.description,
       url: `https://www.bloomtpl.com/demo/${slug}`,
       images: [
@@ -46,7 +46,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: `BloomTPL - ${product.name} with Next.js and Tailwind CSS Live Demo`,
+      title: `BloomTPL | ${product.name} Live Demo`,
       description: product.description,
       images: [
         `https://www.bloomtpl.com${product.openGraphImage || "/og-image.png"}`,

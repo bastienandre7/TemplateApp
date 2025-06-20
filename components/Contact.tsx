@@ -2,7 +2,7 @@ import HeaderCPN from "./Header/HeaderCPN";
 
 export default function Contact() {
   return (
-    <section className="bg-gradient-to-r from-blue-200 to-indigo-200 pt-4">
+    <section className="bg-gradient-to-br from-indigo-50 to-blue-50 pt-4">
       <HeaderCPN />
       <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
         <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">
