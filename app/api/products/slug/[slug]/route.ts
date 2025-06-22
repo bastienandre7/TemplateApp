@@ -1,6 +1,13 @@
 import { templateData } from "@/lib/products";
 import { NextResponse } from "next/server";
 
+function toSlug(str: string) {
+  return str
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)+/g, "");
+}
+
 interface LemonProduct {
   id: string;
   attributes: {
@@ -37,7 +44,9 @@ export async function GET(
 
     const json = await response.json();
     const products: LemonProduct[] = json.data;
-    const product = products.find((p) => p.attributes.slug === slug);
+
+    // Compare le slug généré à partir du nom Lemon Squeezy
+    const product = products.find((p) => toSlug(p.attributes.name) === slug);
 
     if (!product) {
       throw new Error("Produit Lemon non trouvé");
