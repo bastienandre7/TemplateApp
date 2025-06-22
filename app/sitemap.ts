@@ -62,14 +62,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }));
 
-  const demoRoutes = templateData
-    .filter((t) => t.demoUrl)
-    .map((template) => ({
-      url: `${baseUrl}/demo/${template.slug}`,
-      lastModified: new Date(),
-      changeFrequency: "daily" as const,
-      priority: 0.7,
-    }));
-
-  return [...staticRoutes, ...templateRoutes, ...demoRoutes];
+  return [...staticRoutes, ...templateRoutes];
 }

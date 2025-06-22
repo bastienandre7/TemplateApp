@@ -55,8 +55,12 @@ export default function ProductPage({ template }: ProductPageProps) {
 
       <div className="max-w-screen-xl mx-auto px-8 py-20 xl:px-4 lg:py-28 space-y-20">
         <div className="text-center space-y-10">
-          <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">
-            {template.name} with Next.js and Tailwind CSS
+          <h1 className="text-3xl sm:text-5xl font-extrabold leading-tight text-gray-900 drop-shadow-md">
+            <span>{template.name}</span>
+            <br />
+            <span className="text-xl sm:text-3xl font-semibold text-gray-700">
+              with Next.js and Tailwind CSS
+            </span>
           </h1>
 
           <div className="flex flex-wrap justify-center gap-4">
