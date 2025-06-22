@@ -2,7 +2,7 @@
 export const templateData = [
   {
     id: 508811,
-    slug: "e-commerce-template",
+    slug: "2c593f93-f488-4a88-ae96-1640a7d87c0c",
     name: "E-Commerce Template",
     description:
       "Modern e-commerce template built with Tailwind CSS. Fast, responsive, and perfect for launching your digital store.",
@@ -26,7 +26,7 @@ export const templateData = [
   },
   {
     id: 509780,
-    slug: "saas-dashboard-template",
+    slug: "11c5a867-07f5-4706-917c-88d084a56324",
     name: "SaaS Dashboard Template",
     description:
       "Modern SaaS dashboard template built with Next.js and Tailwind CSS. Clean, fast, and ideal for launching your next admin panel or internal tool.",
@@ -57,7 +57,7 @@ export const templateData = [
   },
   {
     id: 509512,
-    slug: "blog-template",
+    slug: "dbfe3d43-597b-4b9d-a688-eb4c7f7f2911",
     name: "Blog Template",
     description:
       "Minimalist blog template built with Next.js and Tailwind CSS. Clean, fast, and perfect for launching your personal blog, journal, or editorial site.",

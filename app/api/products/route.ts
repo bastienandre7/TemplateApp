@@ -30,6 +30,12 @@ export async function GET() {
       };
     }
 
+    // productsJson.data.forEach((product: Product) => {
+    //   console.log(
+    //     `Product ID: ${product.id} | Slug: ${product.attributes.slug}`
+    //   );
+    // });
+
     const formatted = productsJson.data.map((product: Product) => {
       const localData = templateData.find(
         (tpl) => tpl.id === Number(product.id)
