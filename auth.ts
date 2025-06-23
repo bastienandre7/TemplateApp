@@ -21,12 +21,13 @@ export const authOptions = {
           to: identifier,
           subject: "Sign in to BloomTPL",
           html: `
-            <div style="font-family: sans-serif; padding: 32px; background-color: #f9f9f9; color: #111;">
-              <div style="max-width: 520px; margin: auto; background: #fff; padding: 32px; border-radius: 8px;">
-                <h2 style="margin-bottom: 16px;">Sign in to <span style="color:#000;">BloomTPL</span> </h2>
-                <p style="margin-bottom: 24px;">Click the button below to log into your account:</p>
-                <a href="${url}" style="display:inline-block; padding: 12px 24px; background-color: #000; color: #fff; border-radius: 6px; text-decoration: none;">Sign In</a>
-                <p style="margin-top: 32px; font-size: 12px; color: #888;">If you didn’t request this, you can ignore this email.</p>
+            <div style="font-family: 'Inter', Arial, sans-serif; padding: 32px; background-color: #f4f6fb; color: #111;">
+              <div style="max-width: 520px; margin: auto; background: #fff; padding: 32px 28px; border-radius: 12px; box-shadow: 0 4px 24px 0 #0001;">
+                <h2 style="margin-bottom: 18px; font-size: 1.5rem; color: #111;">Sign in to <span style="color:#6366f1;">BloomTPL</span></h2>
+                <p style="margin-bottom: 28px; color: #444;">Click the button below to securely log into your account:</p>
+                <a href="${url}" style="display:inline-block; padding: 14px 32px; background: linear-gradient(90deg,#6366f1,#0ea5e9); color: #fff; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1rem; letter-spacing: 0.01em;">Sign In</a>
+                <p style="margin-top: 36px; font-size: 13px; color: #888;">If you didn’t request this, you can safely ignore this email.<br><br>
+                <span style="color:#bbb;">&copy; ${new Date().getFullYear()} BloomTPL</span></p>
               </div>
             </div>
           `,

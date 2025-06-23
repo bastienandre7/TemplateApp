@@ -6,11 +6,7 @@ import { useEffect, useState } from "react";
 import { FaTwitter } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 
-export default function SignIn({
-  searchParams,
-}: {
-  searchParams: { error?: string };
-}) {
+export default function SignIn() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [emailSent, setEmailSent] = useState(false);
@@ -76,13 +72,6 @@ export default function SignIn({
             Or sign in with email
           </div>
         </div>
-
-        {searchParams?.error === "OAuthAccountNotLinked" && (
-          <div className="mb-2 text-red-600 text-center text-sm font-medium">
-            This email is already registered with another sign-in method. Please
-            use the original provider or sign in with email.
-          </div>
-        )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <input
