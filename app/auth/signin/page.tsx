@@ -1,8 +1,9 @@
-import SignIn from '@/components/Auth/SignIn'
-import React from 'react'
+import SignIn from "@/components/Auth/SignIn";
 
-export default async function page() {
-  return (
-    <SignIn />
-  )
+export default function Page({
+  searchParams,
+}: {
+  searchParams: { error?: string };
+}) {
+  return <SignIn searchParams={searchParams} />;
 }
