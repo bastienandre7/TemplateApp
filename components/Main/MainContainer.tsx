@@ -206,7 +206,9 @@ export default function MainContainer({ products }: { products: Product[] }) {
                         }}
                         className="min-h-[44px] min-w-[44px] px-4 py-2 hover:scale-105 hover:shadow-xl transition-all duration-300 bg-indigo-600 text-white"
                       >
-                        Buy Now - {item.price} €
+                        {item.price === 0
+                          ? "FREE"
+                          : `Buy Now - ${item.price} €`}
                       </Button>
                     )}
                   </div>

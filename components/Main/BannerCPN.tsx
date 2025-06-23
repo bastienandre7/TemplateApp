@@ -16,7 +16,9 @@ export default function HeroBanner() {
           className="w-full text-center"
         >
           <h1 className="text-4xl sm:text-6xl font-extrabold leading-tight text-gray-900 drop-shadow-md">
-            <span className="text-indigo-700">Premium Next.js Templates</span>
+            <span className="text-indigo-700">
+              Free & Premium Next.js Templates
+            </span>
             <br />
             <span className="text-2xl sm:text-4xl font-semibold text-gray-700">
               & Starter Kits for Modern Web Apps
