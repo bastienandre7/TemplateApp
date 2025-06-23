@@ -45,16 +45,18 @@ export async function GET() {
         id: Number(product.id),
         name: product.attributes.name,
         price: product.attributes.price ? product.attributes.price / 100 : 0,
-        imageUrl: product.attributes.large_thumb_url || "/images/NoImage.jpg",
+        imageUrl:
+          localData?.images?.[0] ||
+          product.attributes.large_thumb_url ||
+          "/images/NoImage.jpg",
         description: localData?.description || "",
         lemonLink: product.attributes.buy_now_url,
         slug: localData?.slug,
         type: "template",
-        features: localData?.extras || [],
         demoUrl: localData?.demoUrl || "",
-        tech: "Next.js",
         category: localData?.category || "Uncategorized",
         created_at: product.attributes.created_at,
+        openGraphImage: localData?.openGraphImage || "",
       };
     });
 

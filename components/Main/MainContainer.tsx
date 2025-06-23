@@ -22,10 +22,9 @@ type Product = {
   lemonLink: string;
   type: "template" | "component";
   category: string;
-  features: string[];
   slug?: string;
-  tech: string[];
   created_at: string;
+  openGraphImage?: string;
 };
 
 type Purchase = {
@@ -108,92 +107,72 @@ export default function MainContainer({ products }: { products: Product[] }) {
           )}
         </div>
 
-        <div className="space-y-8">
+        <div className="grid gap-8 md:grid-cols-2">
           {filteredItems.map((item) => {
             const isOwned = ownedTemplates.includes(item.name);
 
             return (
               <div
                 key={item.id}
-                className="hover:bg-gray-50 transition flex flex-col sm:flex-row items-center sm:items-center p-4 border rounded-lg shadow gap-4"
+                className="group relative flex flex-col rounded-2xl border border-gray-200 bg-white shadow-xl overflow-hidden transition hover:shadow-2xl hover:border-indigo-200"
               >
                 <Link
                   href={`/template/${item.slug}`}
-                  className="cursor-pointer w-full sm:w-auto order-1 sm:order-none"
+                  className="block relative aspect-[1200/630] bg-gray-100"
                 >
                   <Image
-                    src={item.imageUrl || "/images/NoImage.jpg"}
+                    src={
+                      item.openGraphImage ||
+                      item.imageUrl ||
+                      "/images/NoImage.jpg"
+                    }
                     alt={`${item.name} main preview`}
-                    width={548}
-                    height={548}
-                    className="w-full sm:w-72 h-auto object-cover rounded-lg border"
+                    fill
+                    className="object-contain w-full h-full transition-transform duration-300 group-hover:scale-105 bg-white"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    priority
                   />
+                  <span className="absolute top-4 left-4 bg-white/80 text-xs text-indigo-700 font-semibold px-3 py-1 rounded-full shadow">
+                    {item.category}
+                  </span>
+                  {new Date().getTime() - new Date(item.created_at).getTime() <
+                    14 * 24 * 60 * 60 * 1000 && (
+                    <span className="absolute top-4 right-4 bg-gradient-to-r from-indigo-500 to-blue-400 text-white text-sm px-3 py-1 rounded-full shadow-lg font-bold border-2 border-white z-10">
+                      NEW
+                    </span>
+                  )}
+                  {isOwned && (
+                    <span className="absolute bottom-4 right-4 bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full shadow">
+                      Owned
+                    </span>
+                  )}
                 </Link>
 
-                <div className="flex-1 w-full p-0 sm:p-4 order-2 sm:order-none">
-                  <Link
-                    href={`/template/${item.slug}`}
-                    className="cursor-pointer"
-                  >
-                    <h2 className="text-xl font-bold flex items-center">
-                      {item.name}
-                      {new Date().getTime() -
-                        new Date(item.created_at).getTime() <
-                        14 * 24 * 60 * 60 * 1000 && (
-                        <span className="ml-2 text-xs px-2 py-1 bg-blue-100 text-indigo-600 rounded-full">
-                          New
-                        </span>
-                      )}
-                      {isOwned && (
-                        <span className="ml-2 text-xs px-2 py-1 bg-green-100 text-green-800 rounded-full">
-                          Owned
-                        </span>
-                      )}
-                    </h2>
-                    <p className="text-sm text-gray-800 mt-2">
+                <div className="flex-1 flex flex-col justify-between p-6">
+                  <div>
+                    <Link href={`/template/${item.slug}`}>
+                      <h2 className="text-2xl font-bold mb-2 text-gray-900 group-hover:text-indigo-700 transition">
+                        {item.name}
+                      </h2>
+                    </Link>
+                    <p className="text-gray-700 text-base mb-4 line-clamp-3">
                       {item.description ||
                         "No description available for this template."}
                     </p>
-
-                    <div className="flex items-center gap-2 mt-4">
-                      <p className="text-sm">Build with : </p>
-
-                      <div className="flex items-center gap-1">
-                        <Image
-                          src="/images/logo/nextLogo.png"
-                          alt="Next.js logo"
-                          width={20}
-                          height={20}
-                        />
-
-                        <span className="text-sm text-gray-700">Next.js</span>
-                      </div>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      <span className="inline-block bg-indigo-50 text-indigo-700 text-xs font-medium px-2 py-1 rounded">
+                        Next.js
+                      </span>
+                      <span className="inline-block bg-indigo-50 text-indigo-700 text-xs font-medium px-2 py-1 rounded">
+                        Tailwind CSS
+                      </span>
                     </div>
-
-                    <div>
-                      <p className="text-sm font-semibold mt-4 mb-2">
-                        Features:
-                      </p>
-                      <ul className="list-disc list-inside space-y-1 text-sm mt-2">
-                        {item.features
-                          .slice(0, 2)
-                          .map((feature: string, index: number) => (
-                            <li key={index}>{feature}</li>
-                          ))}
-                        {item.features.length > 2 && (
-                          <li className="italic">
-                            ...and {item.features.length - 2} more
-                          </li>
-                        )}
-                      </ul>
-                    </div>
-                  </Link>
-
-                  <div className="mt-4 flex flex-wrap gap-4">
+                  </div>
+                  <div className="flex flex-wrap gap-3 mt-4">
                     <Button
                       asChild
                       variant="outline"
-                      className="min-h-[48px] min-w-[48px] px-4 py-3 hover:scale-105 hover:shadow-xl transition-all duration-300"
+                      className="min-h-[44px] min-w-[44px] px-4 py-2 hover:scale-105 hover:shadow-xl transition-all duration-300"
                     >
                       <Link
                         href={`${item.demoUrl}`}
@@ -208,7 +187,7 @@ export default function MainContainer({ products }: { products: Product[] }) {
                       <Button
                         asChild
                         variant="secondary"
-                        className="min-h-[48px] min-w-[48px] px-4 py-3 hover:scale-105 hover:shadow-xl transition-all duration-300"
+                        className="min-h-[44px] min-w-[44px] px-4 py-2 hover:scale-105 hover:shadow-xl transition-all duration-300"
                       >
                         <Link href="/dashboard">Owned</Link>
                       </Button>
@@ -225,7 +204,7 @@ export default function MainContainer({ products }: { products: Product[] }) {
                             window.location.href = url;
                           }
                         }}
-                        className="min-h-[48px] min-w-[48px] px-4 py-3 hover:scale-105 hover:shadow-xl transition-all duration-300"
+                        className="min-h-[44px] min-w-[44px] px-4 py-2 hover:scale-105 hover:shadow-xl transition-all duration-300 bg-indigo-600 text-white"
                       >
                         Buy Now - {item.price} €
                       </Button>

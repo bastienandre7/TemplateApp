@@ -6,7 +6,7 @@ export const templateData = [
     name: "E-Commerce Template",
     description:
       "Modern e-commerce template built with Tailwind CSS. Fast, responsive, and perfect for launching your digital store.",
-    demoUrl: "https://bloom-ecommerce-template.vercel.app/",
+    demoUrl: "https://bloomtpl-ecommerce-template.vercel.app/",
     images: [
       "/images/templates/e-commerce-template/preview-1.png",
       "/images/templates/e-commerce-template/preview-2.png",
@@ -30,7 +30,7 @@ export const templateData = [
     name: "SaaS Dashboard Template",
     description:
       "Modern SaaS dashboard template built with Next.js and Tailwind CSS. Clean, fast, and ideal for launching your next admin panel or internal tool.",
-    demoUrl: "https://bloom-dashboard-template.vercel.app/",
+    demoUrl: "https://bloomtpl-dashboard-template.vercel.app/",
     images: [
       "/images/templates/saas-dashboard-template/preview-1.png",
       "/images/templates/saas-dashboard-template/preview-2.png",
@@ -61,7 +61,7 @@ export const templateData = [
     name: "Blog Template",
     description:
       "Minimalist blog template built with Next.js and Tailwind CSS. Clean, fast, and perfect for launching your personal blog, journal, or editorial site.",
-    demoUrl: "https://bloom-tpl-blog-template.vercel.app/",
+    demoUrl: "https://bloomtpl-blog-template.vercel.app/",
     images: [
       "/images/templates/blog-template/preview-1.png",
       "/images/templates/blog-template/preview-2.png",
@@ -85,7 +85,7 @@ export const templateData = [
     name: "Developer Portfolio Template",
     description:
       "A sleek and professional portfolio template built with Next.js 15 and Tailwind CSS. Perfect for developers, freelancers, and indie hackers who want to showcase their work, experience, and skills with style.",
-    demoUrl: "https://bloom-tpl-dev-portfolio-template.vercel.app/",
+    demoUrl: "https://bloomtpl-dev-portfolio-template.vercel.app/",
     images: [
       "/images/templates/dev-portfolio-template/preview-1.png",
       "/images/templates/dev-portfolio-template/preview-2.png",
@@ -110,7 +110,7 @@ export const templateData = [
     name: "Restaurant Template",
     description:
       "Modern restaurant website template built with Next.js and Tailwind CSS. Perfect for showcasing a menu, taking reservations, and attracting local food lovers.",
-    demoUrl: "https://bloom-tpl-restaurant-template.vercel.app/",
+    demoUrl: "https://bloomtpl-restaurant-template.vercel.app/",
     images: [
       "/images/templates/restaurant-template/preview-1.png",
       "/images/templates/restaurant-template/preview-2.png",
@@ -139,7 +139,7 @@ export const templateData = [
     name: "SaaS Template",
     description:
       "A modern dark-mode SaaS UI template built with Next.js and Tailwind CSS. Clean, fast, responsive and ready to launch your own SaaS.",
-    demoUrl: "https://bloom-tpl-saa-s-template.vercel.app/",
+    demoUrl: "https://bloomtpl-saas-template.vercel.app/",
     images: [
       "/images/templates/saas-template/preview-1.png",
       "/images/templates/saas-template/preview-2.png",
@@ -178,7 +178,7 @@ export const templateData = [
     name: "CoreSaaS – Premium SaaS Starter Kit & Boilerplate",
     description:
       "Launch your SaaS faster with a complete starter kit: authentication, Stripe billing, admin dashboard, and user management – built with Next.js and Tailwind CSS.",
-    demoUrl: "https://coresaas-template-bloomtpl.vercel.app/",
+    demoUrl: "https://bloomtpl-coresaas-template.vercel.app/",
     images: [
       "/images/templates/coresaas-boilerplate/preview-1.png",
       "/images/templates/coresaas-boilerplate/preview-2.png",
