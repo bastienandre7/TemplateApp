@@ -49,6 +49,34 @@ export default async function Home() {
     <div className="min-h-screen bg-white">
       <BannerCPN />
       <MainContainer products={data} />
+      <section className="max-w-2xl mx-auto mt-16 mb-32 px-4">
+        <h2 className="text-2xl font-bold mb-4 text-center">FAQ – BloomTPL</h2>
+        <div className="space-y-6">
+          <div>
+            <h3 className="font-semibold">What is BloomTPL?</h3>
+            <p>
+              BloomTPL offers a curated collection of free and premium Next.js &
+              Tailwind CSS templates for SaaS, dashboards, portfolios, and more.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-semibold">Are the templates free to use?</h3>
+            <p>
+              Some templates are free, and some are premium. You can filter and
+              browse all available options on the homepage.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-semibold">
+              Can I use these templates for commercial projects?
+            </h3>
+            <p>
+              Yes! All templates can be used for personal and commercial
+              projects.
+            </p>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

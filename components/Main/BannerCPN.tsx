@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Link from "next/link";
 import HeaderCPN from "../Header/HeaderCPN";
 
@@ -9,25 +8,17 @@ export default function HeroBanner() {
     <section className="bg-gradient-to-br from-indigo-50 to-blue-50 border-b pt-4">
       <HeaderCPN />
       <div className="mx-auto max-w-screen-lg px-4 py-24 sm:py-32 grid place-items-center">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="w-full text-center"
-        >
-          <h1 className="text-4xl sm:text-6xl font-extrabold leading-tight text-gray-900 drop-shadow-md">
-            <span className="text-indigo-700">
-              Free & Premium Next.js Templates
-            </span>
-            <br />
-            <span className="text-2xl sm:text-4xl font-semibold text-gray-700">
-              & Starter Kits for Modern Web Apps
-            </span>
+        <div className="w-full text-center">
+          <h1 className="text-3xl sm:text-4xl font-extrabold leading-tight text-gray-900 drop-shadow-md">
+            Free & Premium Next.js Templates & Starter Kits for Modern Web Apps
           </h1>
-          <p className="mt-6 max-w-2xl text-center text-gray-800 sm:text-lg mx-auto">
-            Launch faster with clean, responsive templates for SaaS, dashboards,
-            portfolios, and more — built with <strong>Next.js</strong> and{" "}
-            <strong>Tailwind CSS</strong>.
+          <p className="mt-6 max-w-3xl text-center text-gray-800 mx-auto">
+            Discover a curated collection of premium and free Next.js templates
+            to launch your SaaS apps, dashboards, portfolios, and more. All
+            templates are handcrafted with Tailwind CSS and optimized for
+            performance, accessibility, and ease of customization. Whether
+            you&apos;re building a startup or a side project, BloomTPL helps you
+            move faster with clean and modern design.
           </p>
           <div className="mt-4 flex flex-col sm:flex-row items-center justify-center gap-2">
             <span className="inline-flex items-center gap-2 text-xs text-gray-600 bg-white/80 px-3 py-1 rounded-full shadow">
@@ -65,12 +56,7 @@ export default function HeroBanner() {
             </span>
           </div>
 
-          <motion.div
-            className="mt-10 flex flex-wrap gap-4 justify-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.5 }}
-          >
+          <div className="mt-10 flex flex-wrap gap-4 justify-center">
             <Link
               href="#templates"
               className="inline-flex items-center justify-center gap-2 rounded-md bg-indigo-600 px-8 py-3 text-sm font-semibold text-white transition hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 shadow-lg"
@@ -112,8 +98,8 @@ export default function HeroBanner() {
                 />
               </svg>
             </Link>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );
