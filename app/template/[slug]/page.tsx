@@ -34,7 +34,7 @@ export async function generateMetadata({
       url: `https://www.bloomtpl.com/template/${slug}`,
       images: [
         {
-          url: `https://www.bloomtpl.com${product.openGraphImage || "/og-image.png"}`,
+          url: `${product.openGraphImage || "/og-image.png"}`,
           alt: `${product.name} – Premium Tailwind Template`,
           type: "image/png",
           width: 1200,
@@ -46,9 +46,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: `BloomTPL | ${product.name} | Next.js & Tailwind CSS`,
       description: product.description,
-      images: [
-        `https://www.bloomtpl.com${product.openGraphImage || "/og-image.png"}`,
-      ],
+      images: [`${product.openGraphImage || "/og-image.png"}`],
     },
   };
 }
@@ -73,7 +71,7 @@ export default async function TemplatePage({
     "@context": "https://schema.org",
     "@type": "Product",
     name: product.name,
-    image: [product.imageUrl],
+    image: [`${product.openGraphImage || "/og-image.png"}`],
     description: product.description,
     sku: product.slug,
     offers: {
