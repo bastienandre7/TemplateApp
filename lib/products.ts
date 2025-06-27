@@ -225,6 +225,39 @@ export const templateData = [
       "Prisma ORM with PostgreSQL support",
     ],
   },
+  {
+    id: 562201,
+    slug: "blogstarter-premium-blog-starter-kit",
+    name: "BlogStarter – Premium Blog Starter Kit",
+    description:
+      "Kickstart your modern blog with BloomTPL BlogStarter, a feature-rich Next.js starter kit powered by Sanity.io and styled with Tailwind CSS. Fast, customizable, and production-ready.",
+    demoUrl: "https://bloomtpl-blogstarter-starter-kit.vercel.app/",
+    images: [
+      "/images/templates/blogstarter-starterkit/preview-1.png",
+      "/images/templates/blogstarter-starterkit/preview-2.png",
+      "/images/templates/blogstarter-starterkit/preview-3.png",
+      "/images/templates/blogstarter-starterkit/preview-4.png",
+    ],
+    openGraphImage: "/images/templates/blogstarter-starterkit/og.png",
+    category: "Blog",
+    tech: [
+      "Next.js 15 (App Router)",
+      "TypeScript",
+      "Tailwind CSS",
+      "shadcn/ui",
+      "Lucide React",
+      "Sanity.io (Headless CMS)",
+    ],
+    pages: ["Landing (Latest Posts)", "Category", "Author", "Blog Post"],
+    extras: [
+      "Sanity CMS integration",
+      "Responsive and accessible UI",
+      "Dark mode support",
+      "Easy theme toggling",
+      "Pre-built author and category pages",
+      "Developer-friendly codebase with ESLint and TypeScript",
+    ],
+  },
 ];
 
 export function getTemplateBySlug(slug: string) {
