@@ -1,3 +1,4 @@
+import { client } from "@/sanity/client";
 import { PrismaClient } from "@prisma/client";
 import type { MetadataRoute } from "next";
 
@@ -15,12 +16,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     {
       url: `${baseUrl}/blog`,
-      lastModified: new Date(),
-      changeFrequency: "weekly" as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/blog/why-use-template`,
       lastModified: new Date(),
       changeFrequency: "weekly" as const,
       priority: 0.8,
@@ -57,6 +52,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
+  // Récupère les slugs des templates depuis la base
   const templates = await prisma.template.findMany({
     select: { slug: true, updatedAt: true },
   });
@@ -68,5 +64,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.9,
   }));
 
-  return [...staticRoutes, ...templateRoutes];
+  // Récupère les slugs des blogs depuis Sanity
+  const blogPosts = await client.fetch<
+    { slug: { current: string }; _updatedAt?: string }[]
+  >(`*[_type == "post" && defined(slug.current)]{slug, _updatedAt}`);
+
+  const blogRoutes = blogPosts.map((post) => ({
+    url: `${baseUrl}/blog/${post.slug.current}`,
+    lastModified: post._updatedAt ? new Date(post._updatedAt) : new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 0.8,
+  }));
+
+  return [...staticRoutes, ...templateRoutes, ...blogRoutes];
 }
