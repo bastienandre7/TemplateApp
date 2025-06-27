@@ -1,8 +1,24 @@
-import { templateData } from "@/lib/products"; // Import de tes données locales
+import { PrismaClient } from "@prisma/client";
 import { NextResponse } from "next/server";
+
+const prisma = new PrismaClient();
+
+type LemonProduct = {
+  id: string;
+  attributes: {
+    price?: number;
+    buy_now_url?: string;
+    created_at?: string;
+    // Ajoute d'autres attributs si besoin
+  };
+};
 
 export async function GET() {
   try {
+    // 1. Récupère tous les templates depuis la base
+    const templates = await prisma.template.findMany();
+
+    // 2. (Optionnel) Récupère les infos LemonSqueezy pour enrichir (prix, buy_now_url, etc.)
     const productsRes = await fetch(
       "https://api.lemonsqueezy.com/v1/products",
       {
@@ -14,55 +30,41 @@ export async function GET() {
         next: { revalidate: 60 },
       }
     );
-
     const productsJson = await productsRes.json();
 
-    interface Product {
-      id: string;
-      attributes: {
-        name: string;
-        description?: string;
-        price?: number;
-        large_thumb_url?: string;
-        buy_now_url: string;
-        slug: string;
-        created_at: string;
-      };
-    }
-
-    // productsJson.data.forEach((product: Product) => {
-    //   console.log(
-    //     `Product ID: ${product.id} | Slug: ${product.attributes.slug}`
-    //   );
-    // });
-
-    const formatted = productsJson.data.map((product: Product) => {
-      const localData = templateData.find(
-        (tpl) => tpl.id === Number(product.id)
+    // 3. Mappe les templates avec les infos LemonSqueezy
+    const formatted = templates.map((tpl) => {
+      const lemon = (productsJson.data as LemonProduct[]).find(
+        (product) => Number(product.id) === tpl.lemonId
       );
-
       return {
-        id: Number(product.id),
-        name: product.attributes.name,
-        price: product.attributes.price ? product.attributes.price / 100 : 0,
+        id: tpl.lemonId,
+        name: tpl.name,
+        price: lemon?.attributes?.price ? lemon.attributes.price / 100 : 0,
         imageUrl:
-          localData?.images?.[0] ||
-          product.attributes.large_thumb_url ||
-          "/images/NoImage.jpg",
-        description: localData?.description || "",
-        lemonLink: product.attributes.buy_now_url,
-        slug: localData?.slug,
+          Array.isArray(tpl.images) && tpl.images.length > 0
+            ? tpl.images[0]
+            : "/images/NoImage.jpg",
+        description: tpl.description,
+        lemonLink: lemon?.attributes?.buy_now_url || "",
+        slug: tpl.slug,
         type: "template",
-        demoUrl: localData?.demoUrl || "",
-        category: localData?.category || "Uncategorized",
-        created_at: product.attributes.created_at,
-        openGraphImage: localData?.openGraphImage || "",
+        demoUrl: tpl.demoUrl,
+        category: tpl.category,
+        created_at: lemon?.attributes?.created_at || tpl.createdAt,
+        openGraphImage: tpl.openGraphImage || "",
+        tech: tpl.tech,
+        pages: tpl.pages,
+        extras: tpl.extras,
+        images: tpl.images,
       };
     });
 
     return NextResponse.json(formatted);
   } catch (error) {
-    console.error("Erreur Lemon API:", error);
-    return NextResponse.json({ error: "Erreur Lemon API" }, { status: 500 });
+    console.error("Erreur API:", error);
+    return NextResponse.json({ error: "Erreur API" }, { status: 500 });
+  } finally {
+    await prisma.$disconnect();
   }
 }

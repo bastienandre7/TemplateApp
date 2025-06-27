@@ -87,3 +87,20 @@ model Authenticator {
  
   @@id([userId, credentialID])
 }
+
+model Template {
+  id             Int      @id @default(autoincrement())
+  lemonId        Int
+  slug           String   @unique
+  name           String
+  description    String
+  demoUrl        String
+  images         Json     // Tableau d'URLs d'images (hébergées sur Vercel Blob)
+  openGraphImage String
+  category       String
+  tech           Json
+  pages          Json
+  extras         Json
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}

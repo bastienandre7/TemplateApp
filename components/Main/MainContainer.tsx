@@ -67,7 +67,7 @@ export default function MainContainer({ products }: { products: Product[] }) {
   return (
     <div id="templates" className="w-full mx-auto text-black px-4 md:py-8">
       <div className="py-8 max-w-screen-lg mx-auto">
-        <div className="flex gap-4 mb-4 text-black">
+        <div className="flex gap-4 mb-8 text-black">
           <Select
             value={sortOrder}
             onValueChange={(value) => setSortOrder(value)}

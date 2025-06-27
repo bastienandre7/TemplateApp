@@ -1,7 +1,9 @@
-import { templateData } from "@/lib/products";
+import { PrismaClient } from "@prisma/client";
 import type { MetadataRoute } from "next";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+const prisma = new PrismaClient();
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://www.bloomtpl.com";
 
   const staticRoutes: MetadataRoute.Sitemap = [
@@ -55,9 +57,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  const templateRoutes = templateData.map((template) => ({
+  const templates = await prisma.template.findMany({
+    select: { slug: true, updatedAt: true },
+  });
+
+  const templateRoutes = templates.map((template) => ({
     url: `${baseUrl}/template/${template.slug}`,
-    lastModified: new Date(),
+    lastModified: template.updatedAt || new Date(),
     changeFrequency: "daily" as const,
     priority: 0.9,
   }));
