@@ -15,7 +15,11 @@ export default function AuthButton() {
   const router = useRouter();
 
   if (!session) {
-    return <Button onClick={() => signIn()}>Sign In</Button>;
+    return (
+      <Button variant="default" onClick={() => signIn()}>
+        Sign In
+      </Button>
+    );
   }
 
   return (

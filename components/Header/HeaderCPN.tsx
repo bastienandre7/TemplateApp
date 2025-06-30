@@ -6,91 +6,39 @@ import AuthButton from "./sign-in";
 
 export default function HeaderCPN() {
   const pathname = usePathname();
-  const [isOpen, setIsOpen] = useState(false); // menu fermé par défaut
+  const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
     { name: "Templates", path: "/" },
-    // { name: "Components", path: "/components" },
     { name: "Docs", path: "/docs" },
     { name: "Blog", path: "/blog" },
+    { name: "License", path: "/license" },
     { name: "Contact", path: "/contact" },
+    { name: "FAQ", path: "/#faq" },
   ];
 
   return (
-    <header className="px-4">
-      <nav className="bg-transparent sticky w-full z-20 top-0 start-0">
-        <div className="bg-white rounded-xl max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 border border-gray-200 shadow-md">
-          <div className="flex items-center space-x-8 rtl:space-x-reverse">
-            <Link
-              href="/"
-              className="flex items-center space-x-3 rtl:space-x-reverse"
-            >
-              <span className="self-center text-2xl font-semibold whitespace-nowrap text-black">
-                BloomTPL
-              </span>
-            </Link>
-            <div className="hidden md:flex items-center space-x-8 rtl:space-x-reverse">
-              <ul className="flex space-x-8 rtl:space-x-reverse">
-                {navLinks.map((link) => (
-                  <li key={link.path}>
-                    <Link
-                      href={link.path}
-                      className={`py-2 px-3 text-black text-sm font-medium rounded-sm md:p-0 ${
-                        pathname === link.path
-                          ? "underline "
-                          : "hover:underline"
-                      }`}
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          {/* Bouton de connexion et menu mobile */}
-          <div className="flex items-center space-x-3 md:space-x-0 rtl:space-x-reverse">
-            <AuthButton />
-            <button
-              type="button"
-              onClick={() => setIsOpen(!isOpen)} // toggle le menu
-              className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
-              aria-expanded={isOpen}
-            >
-              <span className="sr-only">Open main menu</span>
-              <svg
-                className="w-5 h-5"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 17 14"
-              >
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M1 1h15M1 7h15M1 13h15"
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
-
-        {/* Menu mobile (liens de navigation) */}
-        {isOpen && (
-          <div className="md:hidden w-full pt-2" id="navbar-sticky">
-            <ul className="flex flex-col p-4 font-semibold border border-gray-100 rounded-lg bg-white dark:bg-gray-800">
+    <header className="fixed top-0 left-0 right-0 z-50 px-4 py-3">
+      <nav className="bg-white/90 backdrop-blur-lg rounded-2xl max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-6 py-4 border border-gray-200/30 shadow-lg transition-all duration-300">
+        <div className="flex items-center space-x-8 rtl:space-x-reverse">
+          <Link
+            href="/"
+            className="flex items-center space-x-3 rtl:space-x-reverse group"
+          >
+            <span className="self-center text-2xl font-bold whitespace-nowrap">
+              BloomTPL
+            </span>
+          </Link>
+          <div className="hidden lg:flex items-center space-x-8 rtl:space-x-reverse">
+            <ul className="flex space-x-8 rtl:space-x-reverse">
               {navLinks.map((link) => (
                 <li key={link.path}>
                   <Link
                     href={link.path}
-                    onClick={() => setIsOpen(false)} // referme le menu quand on clique sur un lien
-                    className={`block py-2 px-3 text-gray-900 rounded-sm md:p-0 dark:text-white ${
+                    className={`py-2 px-4 text-gray-700 text-sm font-medium rounded-lg transition-all duration-200 hover:bg-purple-50 hover:text-purple-700 ${
                       pathname === link.path
-                        ? "underline text-blue-400"
-                        : "hover:underline hover:text-black"
+                        ? "bg-purple-100 text-purple-700 shadow-sm"
+                        : ""
                     }`}
                   >
                     {link.name}
@@ -99,8 +47,75 @@ export default function HeaderCPN() {
               ))}
             </ul>
           </div>
-        )}
+        </div>
+
+        {/* Bouton de connexion et menu mobile */}
+        <div className="flex items-center space-x-3 md:space-x-0 rtl:space-x-reverse">
+          <AuthButton />
+          <button
+            type="button"
+            onClick={() => setIsOpen(!isOpen)}
+            className="inline-flex items-center p-2 w-10 h-10 justify-center text-gray-600 rounded-lg lg:hidden hover:bg-purple-50 hover:text-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-200 transition-all duration-200"
+            aria-expanded={isOpen}
+          >
+            <span className="sr-only">Open main menu</span>
+            {isOpen ? (
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            ) : (
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            )}
+          </button>
+        </div>
       </nav>
+
+      {/* Menu mobile (liens de navigation) */}
+      {isOpen && (
+        <div
+          className="lg:hidden w-full pt-2 animate-in slide-in-from-top-2 duration-200"
+          id="navbar-sticky"
+        >
+          <div className="flex flex-col p-6 bg-white/90 backdrop-blur-md border border-gray-200/50 rounded-2xl shadow-xl mx-4">
+            {navLinks.map((link) => (
+              <Link
+                key={link.path}
+                href={link.path}
+                onClick={() => setIsOpen(false)}
+                className={`block py-3 px-4 text-gray-700 rounded-lg font-medium transition-all duration-200 hover:bg-purple-50 hover:text-purple-700 ${
+                  pathname === link.path
+                    ? "bg-purple-100 text-purple-700 shadow-sm"
+                    : ""
+                }`}
+              >
+                {link.name}
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
     </header>
   );
 }

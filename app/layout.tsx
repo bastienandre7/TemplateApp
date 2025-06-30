@@ -9,7 +9,7 @@ const poppins = Poppins({ subsets: ["latin"], weight: ["400", "700"] });
 export const metadata: Metadata = {
   title: "BloomTPL - Free & Premium Next.js Templates & Starter Kits",
   description:
-    "Launch faster with clean, responsive templates for SaaS, dashboards, portfolios, and more — built with Next.js and Tailwind CSS.",
+    "BloomTPL is a template marketplace offering high-quality, production-ready templates for SaaS apps, e-commerce, portfolios, blogs and more, built with Next.js and Tailwind CSS.",
   metadataBase: new URL("https://www.bloomtpl.com"),
   alternates: {
     canonical: "https://www.bloomtpl.com",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "BloomTPL - Free & Premium Next.js Templates & Starter Kits",
     description:
-      "Launch faster with premium Tailwind CSS & Next.js templates. Ideal for SaaS products, dashboards, and developer portfolios. Built to be clean and ready.",
+      "BloomTPL is a template marketplace offering high-quality, production-ready templates for SaaS apps, e-commerce, portfolios, blogs and more, built with Next.js and Tailwind CSS.",
     url: "https://www.bloomtpl.com",
     siteName: "BloomTPL",
     locale: "en_US",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "BloomTPL - Free & Premium Next.js Templates & Starter Kits",
     description:
-      "Launch faster with premium Tailwind CSS & Next.js templates. Ideal for SaaS products, dashboards, and developer portfolios. Built to be clean and ready.",
+      "BloomTPL is a template marketplace offering high-quality, production-ready templates for SaaS apps, e-commerce, portfolios, blogs and more, built with Next.js and Tailwind CSS.",
     images: ["https://www.bloomtpl.com/og-image.png"],
   },
   creator: "BloomTPL",

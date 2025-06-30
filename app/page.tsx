@@ -1,11 +1,10 @@
-import BannerCPN from "@/components/Main/BannerCPN";
-import MainContainer from "@/components/Main/MainContainer";
+import HomeWrapper from "@/components/HomeWrapper";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "BloomTPL - Free & Premium Next.js Templates & Starter Kits",
+  title: "BloomTPL - Best Next.js Templates & Starter Kits",
   description:
-    "Launch faster with clean, responsive templates for SaaS, dashboards, portfolios, and more — built with Next.js and Tailwind CSS.",
+    "BloomTPL is a template marketplace offering high-quality, production-ready templates for SaaS apps, e-commerce, portfolios, blogs and more, built with Next.js and Tailwind CSS.",
   metadataBase: new URL("https://www.bloomtpl.com"),
   alternates: {
     canonical: "https://www.bloomtpl.com",
@@ -13,9 +12,9 @@ export const metadata: Metadata = {
   robots:
     "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
   openGraph: {
-    title: "BloomTPL - Free & Premium Next.js Templates & Starter Kits",
+    title: "BloomTPL - Best Next.js Templates & Starter Kits",
     description:
-      "Launch faster with premium Tailwind CSS & Next.js templates. Ideal for SaaS products, dashboards, and developer portfolios. Built to be clean and ready.",
+      "BloomTPL is a template marketplace offering high-quality, production-ready templates for SaaS apps, e-commerce, portfolios, blogs and more, built with Next.js and Tailwind CSS.",
     url: "https://www.bloomtpl.com",
     siteName: "BloomTPL",
     locale: "en_US",
@@ -31,9 +30,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "BloomTPL - Free & Premium Next.js Templates & Starter Kits",
+    title: "BloomTPL - Best Next.js Templates & Starter Kits",
     description:
-      "Launch faster with premium Tailwind CSS & Next.js templates. Ideal for SaaS products, dashboards, and developer portfolios. Built to be clean and ready.",
+      "BloomTPL is a template marketplace offering high-quality, production-ready templates for SaaS apps, e-commerce, portfolios, blogs and more, built with Next.js and Tailwind CSS.",
     images: ["https://www.bloomtpl.com/og-image.png"],
   },
   creator: "BloomTPL",
@@ -45,38 +44,112 @@ export default async function Home() {
     cache: "no-store",
   });
   const data = await res.json();
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://www.bloomtpl.com/#organization",
+        name: "BloomTPL",
+        url: "https://www.bloomtpl.com",
+        logo: {
+          "@type": "ImageObject",
+          url: "https://www.bloomtpl.com/logo.png",
+          width: 512,
+          height: 512,
+        },
+        description:
+          "BloomTPL is a premium template marketplace offering high-quality, production-ready Next.js templates for SaaS apps, e-commerce, portfolios, blogs and more.",
+        foundingDate: "2025",
+        sameAs: ["https://twitter.com/BloomTPL"],
+        contactPoint: {
+          "@type": "ContactPoint",
+          email: "bloomtpl@gmail.com",
+          contactType: "customer service",
+        },
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.bloomtpl.com/#website",
+        url: "https://www.bloomtpl.com",
+        name: "BloomTPL - Best Next.js Templates & Starter Kits",
+        description:
+          "BloomTPL is a template marketplace offering high-quality, production-ready templates for SaaS apps, e-commerce, portfolios, blogs and more, built with Next.js and Tailwind CSS.",
+        publisher: {
+          "@id": "https://www.bloomtpl.com/#organization",
+        },
+        inLanguage: "en-US",
+        potentialAction: {
+          "@type": "SearchAction",
+          target: {
+            "@type": "EntryPoint",
+            urlTemplate:
+              "https://www.bloomtpl.com/?search={search_term_string}",
+          },
+          "query-input": "required name=search_term_string",
+        },
+      },
+      {
+        "@type": "ItemList",
+        "@id": "https://www.bloomtpl.com/#products",
+        name: "Next.js Templates",
+        description:
+          "Premium Next.js and Tailwind CSS templates for modern web development",
+        numberOfItems: data.length,
+        itemListElement: data.slice(0, 10).map(
+          (
+            product: {
+              slug: string;
+              name: string;
+              description: string;
+              price: number;
+              openGraphImage?: string;
+              imageUrl: string;
+              category: string;
+            },
+            index: number
+          ) => ({
+            "@type": "ListItem",
+            position: index + 1,
+            item: {
+              "@type": "Product",
+              "@id": `https://www.bloomtpl.com/template/${product.slug}`,
+              name: product.name,
+              description: product.description,
+              url: `https://www.bloomtpl.com/template/${product.slug}`,
+              image: product.openGraphImage || product.imageUrl,
+              offers: {
+                "@type": "Offer",
+                priceCurrency: "EUR",
+                price: product.price.toFixed(2),
+                availability: "https://schema.org/InStock",
+                seller: {
+                  "@id": "https://www.bloomtpl.com/#organization",
+                },
+              },
+              brand: {
+                "@id": "https://www.bloomtpl.com/#organization",
+              },
+              category: product.category,
+            },
+          })
+        ),
+      },
+    ],
+  };
+
   return (
-    <div className="min-h-screen bg-white">
-      <BannerCPN />
-      <MainContainer products={data} />
-      <section className="max-w-2xl mx-auto mt-16 mb-32 px-4">
-        <h2 className="text-2xl font-bold mb-4 text-center">FAQ – BloomTPL</h2>
-        <div className="space-y-6">
-          <div>
-            <h3 className="font-semibold">What is BloomTPL?</h3>
-            <p>
-              BloomTPL offers a curated collection of free and premium Next.js &
-              Tailwind CSS templates for SaaS, dashboards, portfolios, and more.
-            </p>
-          </div>
-          <div>
-            <h3 className="font-semibold">Are the templates free to use?</h3>
-            <p>
-              Some templates are free, and some are premium. You can filter and
-              browse all available options on the homepage.
-            </p>
-          </div>
-          <div>
-            <h3 className="font-semibold">
-              Can I use these templates for commercial projects?
-            </h3>
-            <p>
-              Yes! All templates can be used for personal and commercial
-              projects.
-            </p>
-          </div>
-        </div>
-      </section>
-    </div>
+    <>
+      <HomeWrapper products={data} />
+
+      {/* JSON-LD pour les données structurées */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
+    </>
   );
 }

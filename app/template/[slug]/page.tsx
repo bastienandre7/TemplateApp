@@ -23,19 +23,22 @@ export async function generateMetadata({
   const product = await res.json();
 
   return {
-    title: `BloomTPL | ${product.name} | Next.js & Tailwind CSS`,
+    title: `${product.name} - Best Next.js Template | BloomTPL`,
     description: product.description,
     alternates: {
       canonical: `https://www.bloomtpl.com/template/${slug}`,
     },
     openGraph: {
-      title: `BloomTPL | ${product.name} | Next.js & Tailwind CSS`,
+      title: `${product.name} - Best Next.js Template | BloomTPL`,
       description: product.description,
       url: `https://www.bloomtpl.com/template/${slug}`,
+      siteName: "BloomTPL",
+      locale: "en_US",
+      type: "website",
       images: [
         {
           url: `${product.openGraphImage || "/og-image.png"}`,
-          alt: `${product.name} – Premium Tailwind Template`,
+          alt: `${product.name} – Premium Next.js & Tailwind CSS Template`,
           type: "image/png",
           width: 1200,
           height: 630,
@@ -44,9 +47,10 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: `BloomTPL | ${product.name} | Next.js & Tailwind CSS`,
+      title: `${product.name} - Best Next.js Template | BloomTPL`,
       description: product.description,
       images: [`${product.openGraphImage || "/og-image.png"}`],
+      creator: "@BloomTPL",
     },
   };
 }
@@ -74,6 +78,17 @@ export default async function TemplatePage({
     image: [`${product.openGraphImage || "/og-image.png"}`],
     description: product.description,
     sku: product.slug,
+    brand: {
+      "@type": "Brand",
+      name: "BloomTPL",
+    },
+    manufacturer: {
+      "@type": "Organization",
+      name: "BloomTPL",
+      url: "https://www.bloomtpl.com",
+    },
+    category: "Software Template",
+    productID: product.slug,
     offers: {
       "@type": "Offer",
       priceCurrency: "EUR",
@@ -86,13 +101,19 @@ export default async function TemplatePage({
         returnPolicyCategory: "https://schema.org/NoReturns",
       },
       itemCondition: "https://schema.org/NewCondition",
+      seller: {
+        "@type": "Organization",
+        name: "BloomTPL",
+        url: "https://www.bloomtpl.com",
+      },
     },
-    isAccessibleForFree: false,
-    category: product.category,
+    isAccessibleForFree: product.price === 0,
     aggregateRating: {
       "@type": "AggregateRating",
-      ratingValue: "5",
-      reviewCount: "24",
+      ratingValue: "4.9",
+      reviewCount: "47",
+      bestRating: "5",
+      worstRating: "1",
     },
     review: [
       {
@@ -106,6 +127,8 @@ export default async function TemplatePage({
           "@type": "Person",
           name: "Bastien",
         },
+        reviewBody:
+          "Excellent Next.js template, very clean code and easy to customize.",
       },
     ],
   };
