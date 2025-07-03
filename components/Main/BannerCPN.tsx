@@ -10,6 +10,7 @@ export default function HeroBanner({
   onSearch?: (query: string) => void;
 }) {
   const [searchQuery, setSearchQuery] = useState("");
+  const [copied, setCopied] = useState(false);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -22,6 +23,12 @@ export default function HeroBanner({
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
+  };
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText("BLOOM50");
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1500);
   };
 
   return (
@@ -72,6 +79,27 @@ export default function HeroBanner({
                 Tailwind CSS.
               </span>
             </h2>
+
+            <div className="mx-auto max-w-xl mb-8">
+              <div className="flex items-center justify-center gap-3 bg-gradient-to-r from-purple-500 to-purple-700 text-white px-4 py-2 rounded-xl shadow-2xl font-semibold text-base border-2 border-black animate-bounce">
+                <span>
+                  <b>-50%</b> for the first 10 users! Use code :{" "}
+                  <button
+                    type="button"
+                    onClick={handleCopy}
+                    className="bg-white/30 px-2 py-1 rounded font-mono tracking-wider cursor-pointer border border-white/50 hover:bg-white/40 transition font-bold text-yellow-200"
+                    title="Copy code"
+                  >
+                    BLOOM50
+                  </button>
+                  {copied && (
+                    <span className="ml-2 text-xs text-green-200 font-normal animate-fade-in">
+                      Copied!
+                    </span>
+                  )}
+                </span>
+              </div>
+            </div>
 
             {/* Quick features */}
             <div className="flex flex-wrap justify-center gap-6 mb-12 text-sm text-gray-500">
