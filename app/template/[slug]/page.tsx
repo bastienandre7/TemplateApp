@@ -23,13 +23,13 @@ export async function generateMetadata({
   const product = await res.json();
 
   return {
-    title: `${product.name} - Best Next.js Template | BloomTPL`,
+    title: `${product.name} | BloomTPL`,
     description: product.description,
     alternates: {
       canonical: `https://www.bloomtpl.com/template/${slug}`,
     },
     openGraph: {
-      title: `${product.name} - Best Next.js Template | BloomTPL`,
+      title: `${product.name} | BloomTPL`,
       description: product.description,
       url: `https://www.bloomtpl.com/template/${slug}`,
       siteName: "BloomTPL",
@@ -47,7 +47,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: `${product.name} - Best Next.js Template | BloomTPL`,
+      title: `${product.name} | BloomTPL`,
       description: product.description,
       images: [`${product.openGraphImage || "/og-image.png"}`],
       creator: "@BloomTPL",

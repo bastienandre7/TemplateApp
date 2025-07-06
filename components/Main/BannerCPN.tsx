@@ -81,7 +81,7 @@ export default function HeroBanner({
             </h2>
 
             <div className="mx-auto max-w-xl mb-8">
-              <div className="flex items-center justify-center gap-3 bg-gradient-to-r from-purple-500 to-purple-700 text-white px-4 py-2 rounded-xl shadow-2xl font-semibold text-base border-2 border-black animate-bounce">
+              <div className="flex items-center justify-center gap-3 bg-gradient-to-r from-purple-500 to-purple-700 text-white px-4 py-2 rounded-xl shadow-2xl font-semibold text-base">
                 <span>
                   <b>-50%</b> for the first 10 users! Use code :{" "}
                   <button
