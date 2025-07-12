@@ -88,16 +88,10 @@ export default function MainContainer({
 
   return (
     <div id="templates" className="w-full mx-auto text-black relative bg-white">
-      <div className="relative z-10 px-4 py-16">
+      <div className="relative z-10 px-4 py-10">
         <div className="max-w-6xl mx-auto">
           {/* Section Header - Notion style */}
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Browse Templates
-            </h2>
-            <p className="text-lg text-gray-600 max-w-lg mx-auto">
-              Professionally crafted templates to accelerate your projects
-            </p>
             {searchQuery && (
               <div className="mt-4 p-3 bg-purple-50 border border-purple-200 rounded-lg inline-flex items-center gap-3">
                 <p className="text-sm text-purple-700">
@@ -246,7 +240,6 @@ export default function MainContainer({
                         fill
                         className="object-cover w-full h-full"
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
-                        priority
                         quality={90}
                       />
 
@@ -311,7 +304,7 @@ export default function MainContainer({
                             target="_blank"
                             rel="noopener noreferrer"
                           >
-                            Demo
+                            Live Demo
                           </Link>
                         </Button>
 
@@ -339,7 +332,9 @@ export default function MainContainer({
                             size="sm"
                             className="flex-1 text-sm bg-purple-600 hover:bg-purple-700 text-white"
                           >
-                            {item.price === 0 ? "Get FREE" : `${item.price}€`}
+                            {item.price === 0
+                              ? "Get FREE"
+                              : `Buy Now - ${item.price}€`}
                           </Button>
                         )}
                       </div>

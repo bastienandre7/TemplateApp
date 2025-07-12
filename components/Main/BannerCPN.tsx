@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
 import HeaderCPN from "../Header/HeaderCPN";
 
@@ -14,15 +13,9 @@ export default function HeroBanner({
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    // Appeler la fonction onSearch si elle est fournie
-    if (onSearch) {
-      onSearch(searchQuery);
-    }
-    // Scroll vers les templates avec le terme de recherche
+    if (onSearch) onSearch(searchQuery);
     const element = document.getElementById("templates");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+    if (element) element.scrollIntoView({ behavior: "smooth" });
   };
 
   const handleCopy = () => {
@@ -33,7 +26,7 @@ export default function HeroBanner({
 
   return (
     <section
-      className="relative bg-white border-b border-gray-100 pt-20"
+      className="relative bg-white border-b border-gray-100 pt-24"
       itemScope
       itemType="https://schema.org/WebSite"
     >
@@ -61,39 +54,42 @@ export default function HeroBanner({
 
       <div className="relative pt-4">
         <HeaderCPN />
-        {/* Hero Content */}
-        <div className="mx-auto max-w-4xl px-6 py-20 sm:py-32">
+
+        <div className="mx-auto max-w-4xl px-6 py-10 sm:py-10">
           <div className="text-center">
-            {/* Main Headline - SEO optimized */}
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-6 text-gray-900">
-              BloomTPL -{" "}
-              <span className="text-purple-600">Best Next.js Templates</span>
+            {/* Nouveau titre SEO */}
+            <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-6 text-gray-900">
+              Build Modern Web Apps with Premium & Free Next.js Templates
             </h1>
 
-            {/* Subtitle - SEO enhanced */}
-            <h2 className="mx-auto max-w-xl text-xl text-gray-600 mb-12 leading-relaxed font-normal">
-              The best Next.js templates and starter kits for modern developers.
-              <br />
-              <span className="text-gray-500">
-                Launch faster with production-ready boilerplates, TypeScript and
-                Tailwind CSS.
-              </span>
+            {/* Nouvelle description SEO */}
+            <h2 className="mx-auto max-w-2xl text-gray-700 mb-10 leading-relaxed font-normal">
+              Discover beautifully crafted Next.js templates and starter kits
+              made for SaaS products, landing pages, portfolios, and dashboards.
+              Accelerate your development with boilerplates powered by Tailwind
+              CSS, React, and TypeScript — SEO-friendly, fully responsive, and
+              production-ready.
             </h2>
 
             <div className="mx-auto max-w-xl mb-8">
-              <div className="flex items-center justify-center gap-3 bg-gradient-to-r from-purple-500 to-purple-700 text-white px-4 py-2 rounded-xl shadow-2xl font-semibold text-base">
+              <div className="flex items-center justify-center gap-3 bg-gradient-to-r from-purple-600 to-purple-400 text-white px-6 py-4 rounded-xl shadow-lg font-semibold text-base border border-purple-300">
+                <span className="bg-purple-100 text-purple-700 px-2 py-0.5 rounded text-xs font-bold mr-2">
+                  -50% CODE
+                </span>
                 <span>
-                  <b>-50%</b> for the first 10 users! Use code :{" "}
+                  <b className="text-lg text-white">BLOOM50</b> for the first{" "}
+                  <b>10 users</b>
+                  <span className="mx-2 text-purple-200">|</span>
                   <button
                     type="button"
                     onClick={handleCopy}
-                    className="bg-white/30 px-2 py-1 rounded font-mono tracking-wider cursor-pointer border border-white/50 hover:bg-white/40 transition font-bold text-yellow-200"
+                    className="bg-white px-2 py-1 rounded font-mono tracking-wider cursor-pointer border border-purple-300 hover:bg-purple-50 transition font-bold text-purple-700"
                     title="Copy code"
                   >
-                    BLOOM50
+                    Copy
                   </button>
                   {copied && (
-                    <span className="ml-2 text-xs text-green-200 font-normal animate-fade-in">
+                    <span className="ml-2 text-xs text-white font-normal">
                       Copied!
                     </span>
                   )}
@@ -147,7 +143,7 @@ export default function HeroBanner({
               </div>
             </div>
 
-            {/* Minimal Search Bar - Notion style - Mobile responsive */}
+            {/* Search Bar */}
             <div className="mx-auto max-w-lg mb-16 px-4">
               <form onSubmit={handleSearch} className="relative">
                 <div className="flex items-center bg-gray-50 border border-gray-200 rounded-lg overflow-hidden hover:border-gray-300 transition-colors duration-200">
@@ -195,51 +191,6 @@ export default function HeroBanner({
                   </button>
                 </div>
               </form>
-            </div>
-
-            {/* Simple CTA Button - Notion style */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link
-                href="#templates"
-                className="inline-flex items-center gap-2 bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-medium text-base transition-colors duration-200"
-                aria-label="Browse all templates and starter kits"
-              >
-                Explore Templates
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M13 7l5 5m0 0l-5 5m5-5H6"
-                  />
-                </svg>
-              </Link>
-
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 px-4 py-3 font-medium text-base transition-colors duration-200"
-              >
-                Get Custom Template
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
-                  />
-                </svg>
-              </Link>
             </div>
           </div>
         </div>
