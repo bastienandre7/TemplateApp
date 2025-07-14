@@ -10,6 +10,7 @@ export default function HeaderCPN() {
 
   const navLinks = [
     { name: "Templates", path: "/" },
+    { name: "Components", path: "/components" },
     { name: "Docs", path: "/docs" },
     { name: "Blog", path: "/blog" },
     { name: "License", path: "/license" },
@@ -30,7 +31,7 @@ export default function HeaderCPN() {
             </span>
           </Link>
           <div className="hidden lg:flex items-center space-x-8 rtl:space-x-reverse">
-            <ul className="flex space-x-8 rtl:space-x-reverse">
+            <ul className="flex space-x-4 rtl:space-x-reverse">
               {navLinks.map((link) => (
                 <li key={link.path}>
                   <Link

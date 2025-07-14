@@ -31,7 +31,7 @@ export default function HeroBanner({
       itemType="https://schema.org/WebSite"
     >
       {/* Subtle background pattern */}
-      <div className="absolute inset-0 opacity-40" aria-hidden="true">
+      <div className="absolute inset-0 opacity-60" aria-hidden="true">
         <svg className="w-full h-full" viewBox="0 0 100 100" fill="none">
           <defs>
             <pattern
@@ -57,18 +57,14 @@ export default function HeroBanner({
 
         <div className="mx-auto max-w-4xl px-6 py-10 sm:py-10">
           <div className="text-center">
-            {/* Nouveau titre SEO */}
             <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-6 text-gray-900">
-              Build Modern Web Apps with Premium & Free Next.js Templates
+              8+ Best Free and Premium Next.js Templates (2025)
             </h1>
 
-            {/* Nouvelle description SEO */}
             <h2 className="mx-auto max-w-2xl text-gray-700 mb-10 leading-relaxed font-normal">
-              Discover beautifully crafted Next.js templates and starter kits
-              made for SaaS products, landing pages, portfolios, and dashboards.
-              Accelerate your development with boilerplates powered by Tailwind
-              CSS, React, and TypeScript — SEO-friendly, fully responsive, and
-              production-ready.
+              Explore 8+ free and premium Next.js templates, starter kits and
+              themes built with Tailwind CSS and React — ideal for SaaS,
+              e-commerce, portfolios and landing pages.
             </h2>
 
             <div className="mx-auto max-w-xl mb-8">
