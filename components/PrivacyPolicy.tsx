@@ -18,7 +18,7 @@ export default function PrivacyPolicy() {
         <section id="english">
           <h1 className="text-3xl font-bold mb-4">Privacy Policy</h1>
           <p className="text-sm text-gray-500 mb-8">
-            BloomTPL / Last updated on April 14, 2025.
+            BloomTPL / Last updated on July 16, 2025.
           </p>
 
           <h2 className="text-2xl font-bold mb-4">ARTICLE 1: PREAMBLE</h2>
@@ -211,6 +211,7 @@ export default function PrivacyPolicy() {
           <p className="mb-4">Cookies are used to:</p>
 
           <li>Measure site audience via Vercel Analytics</li>
+          <li>Measure site audience via Google Analytics</li>
           <li>Improve user experience (cart, preferences)</li>
           <li className="mb-4">Secure user sessions (authentication)</li>
 
