@@ -7,9 +7,9 @@ import LayoutShell from "./LayoutShell";
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "700"] });
 
 export const metadata: Metadata = {
-  title: "10+ Best Free And Premium Next.js Templates (2025)",
+  title: "8+ Best Free and Premium Next.js Templates (2025)",
   description:
-    "Explore 10+ free and premium Next.js templates, starter kits and themes built with Tailwind CSS and React — ideal for SaaS, e-commerce, portfolios and landing pages.",
+    "Explore 8+ free and premium Next.js templates, starter kits and themes built with Tailwind CSS and React — ideal for SaaS, e-commerce, portfolios and landing pages.",
   metadataBase: new URL("https://www.bloomtpl.com"),
   alternates: {
     canonical: "https://www.bloomtpl.com",
@@ -17,9 +17,9 @@ export const metadata: Metadata = {
   robots:
     "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
   openGraph: {
-    title: "10+ Best Free And Premium Next.js Templates (2025)",
+    title: "8+ Best Free and Premium Next.js Templates (2025)",
     description:
-      "Explore 10+ free and premium Next.js templates, starter kits and themes built with Tailwind CSS and React — ideal for SaaS, e-commerce, portfolios and landing pages.",
+      "Explore 8+ free and premium Next.js templates, starter kits and themes built with Tailwind CSS and React — ideal for SaaS, e-commerce, portfolios and landing pages.",
     url: "https://www.bloomtpl.com",
     siteName: "BloomTPL",
     locale: "en_US",
@@ -35,9 +35,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "10+ Best Free And Premium Next.js Templates (2025)",
+    title: "8+ Best Free and Premium Next.js Templates (2025)",
     description:
-      "Explore 10+ free and premium Next.js templates, starter kits and themes built with Tailwind CSS and React — ideal for SaaS, e-commerce, portfolios and landing pages.",
+      "Explore 8+ free and premium Next.js templates, starter kits and themes built with Tailwind CSS and React — ideal for SaaS, e-commerce, portfolios and landing pages.",
     images: ["https://www.bloomtpl.com/og-image.png"],
   },
   creator: "BloomTPL",

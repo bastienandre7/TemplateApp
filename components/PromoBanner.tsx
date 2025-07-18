@@ -12,7 +12,7 @@ export default function PromoBanner() {
   }, []);
 
   const handleCopy = () => {
-    navigator.clipboard.writeText("LAUNCH50");
+    navigator.clipboard.writeText("BLOOM50");
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -20,18 +20,28 @@ export default function PromoBanner() {
   if (!show) return null;
 
   return (
-    <div className="w-full bg-black text-white text-center py-2 px-4 text-sm font-medium flex flex-col sm:flex-row items-center justify-center gap-2">
-      <span>
-        🎉 Launch offer: <span className="text-yellow-400 font-semibold">50% OFF</span> all templates until{" "}
-        <strong>June 8</strong> with code
-      </span>
-
-      <button
-        onClick={handleCopy}
-        className="ml-1 bg-white text-black px-2 py-1 rounded font-bold hover:bg-neutral-200 transition text-sm"
-      >
-        {copied ? "Copied!" : "LAUNCH50"}
-      </button>
+    <div className="mx-auto max-w-xl mb-8">
+      <div className="flex items-center justify-center gap-3 bg-gradient-to-r from-purple-600 to-purple-400 text-white px-6 py-4 rounded-xl shadow-lg font-semibold text-base border border-purple-300">
+        <span className="bg-purple-100 text-purple-700 px-2 py-0.5 rounded text-xs font-bold mr-2">
+          -50% CODE
+        </span>
+        <span>
+          <b className="text-lg text-white">BLOOM50</b> for the first{" "}
+          <b>10 users</b>
+          <span className="mx-2 text-purple-200">|</span>
+          <button
+            type="button"
+            onClick={handleCopy}
+            className="bg-white px-2 py-1 rounded font-mono tracking-wider cursor-pointer border border-purple-300 hover:bg-purple-50 transition font-bold text-purple-700"
+            title="Copy code"
+          >
+            Copy
+          </button>
+          {copied && (
+            <span className="ml-2 text-xs text-white font-normal">Copied!</span>
+          )}
+        </span>
+      </div>
     </div>
   );
 }

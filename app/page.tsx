@@ -2,7 +2,7 @@ import HomeWrapper from "@/components/HomeWrapper";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "8+ Best Free And Premium Next.js Templates (2025)",
+  title: "8+ Best Free and Premium Next.js Templates (2025)",
   description:
     "Explore 8+ free and premium Next.js templates, starter kits and themes built with Tailwind CSS and React — ideal for SaaS, e-commerce, portfolios and blog pages.",
   metadataBase: new URL("https://www.bloomtpl.com"),
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   robots:
     "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
   openGraph: {
-    title: "8+ Best Free And Premium Next.js Templates (2025)",
+    title: "8+ Best Free and Premium Next.js Templates (2025)",
     description:
       "Explore 8+ free and premium Next.js templates, starter kits and themes built with Tailwind CSS and React — ideal for SaaS, e-commerce, portfolios and blog pages.",
     url: "https://www.bloomtpl.com",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "8+ Best Free And Premium Next.js Templates (2025)",
+    title: "8+ Best Free and Premium Next.js Templates (2025)",
     description:
       "Explore 8+ free and premium Next.js templates, starter kits and themes built with Tailwind CSS and React — ideal for SaaS, e-commerce, portfolios and blog pages.",
     images: ["https://www.bloomtpl.com/og-image.png"],
@@ -73,7 +73,7 @@ export default async function Home() {
         "@type": "WebSite",
         "@id": "https://www.bloomtpl.com/#website",
         url: "https://www.bloomtpl.com",
-        name: "8+ Best Free And Premium Next.js Templates (2025)",
+        name: "8+ Best Free and Premium Next.js Templates (2025)",
         description:
           "Explore 8+ free and premium Next.js templates, starter kits and themes built with Tailwind CSS and React — ideal for SaaS, e-commerce, portfolios and blog pages.",
         publisher: {
