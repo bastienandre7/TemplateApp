@@ -102,20 +102,21 @@ export default function ProductPage({ template }: ProductPageProps) {
   };
 
   return (
-    <div className="pt-4 bg-white text-black min-h-screen mt-20">
+    <div className="pt-4 bg-white text-black min-h-screen">
       <HeaderCPN />
 
       <div className="max-w-screen-xl mx-auto px-8 xl:px-4 py-20 sm:py-32 space-y-20">
         <div className="text-center space-y-12">
           {/* Main Title */}
           <div className="space-y-6">
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold leading-tight text-gray-900">
+            <h1 className="text-4xl sm:text-5xl font-bold leading-tight text-gray-900">
               {template.name}
-              <div className="text-2xl sm:text-3xl lg:text-4xl font-medium text-gray-600 mt-2">
-                <span className="text-purple-600">Premium</span> Next.js &
-                Tailwind CSS Template
-              </div>
             </h1>
+
+            <div className="text-2xl sm:text-3xl font-medium text-gray-600 mt-2">
+              <span className="text-purple-600">Premium</span> Next.js &
+              Tailwind CSS Template
+            </div>
 
             <p className="max-w-3xl mx-auto text-xl text-gray-600 leading-relaxed">
               {template.description}
