@@ -1,44 +1,83 @@
-"use client";
-
-import HeaderCPN from "@/components/Header/HeaderCPN";
+import ComponentDetailClient from "@/components/ComponentDetailClient";
 import { components } from "@/data/components";
+import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { use, useState } from "react";
 
-export default function ComponentDetailPage(props: {
+// Générer les métadonnées dynamiquement
+export async function generateMetadata({
+  params,
+}: {
   params: Promise<{ slug: string }>;
-}) {
-  const { slug } = use(props.params);
-
-  const [copied, setCopied] = useState(false);
-
+}): Promise<Metadata> {
+  const { slug } = await params;
   const comp = components.find((c) => c.slug === slug);
 
-  if (!comp) return notFound();
+  if (!comp) {
+    return {
+      title: "Component Not Found | BloomTPL",
+      description: "The component you're looking for doesn't exist.",
+    };
+  }
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText(comp.code);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 1200);
+  return {
+    title: `${comp.name} - Free React Component | BloomTPL`,
+    description: `${comp.description} Copy and paste this free ${comp.name} component built with React and Tailwind CSS.`,
+    keywords: [
+      comp.name.toLowerCase(),
+      "react",
+      "component",
+      "tailwind css",
+      "free",
+      "nextjs",
+      comp.category,
+      "ui component",
+      "copy paste",
+    ],
+    openGraph: {
+      title: `${comp.name} - Free React Component`,
+      description: `${comp.description} Built with React and Tailwind CSS.`,
+      type: "article",
+      url: `https://yoursite.com/components/${slug}`,
+      images: [
+        {
+          url: comp.image,
+          width: 1200,
+          height: 630,
+          alt: comp.name,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${comp.name} - Free React Component`,
+      description: `${comp.description} Built with React and Tailwind CSS.`,
+      images: [comp.image],
+    },
+    alternates: {
+      canonical: `https://yoursite.com/components/${slug}`,
+    },
   };
+}
 
-  return (
-    <div className="pt-20">
-      <HeaderCPN />
-      <div className="max-w-xl mx-auto py-10">
-        <h1 className="text-xl font-bold mb-4">{comp.name}</h1>
-        <div className="mb-4">{comp.preview}</div>
-        <div className="mb-2 text-gray-500">{comp.description}</div>
-        <div className="relative bg-gray-50 border rounded p-4 mb-4">
-          <pre className="text-xs overflow-x-auto">{comp.code}</pre>
-          <button
-            onClick={handleCopy}
-            className="absolute top-2 right-2 bg-purple-600 text-white px-2 py-1 rounded text-xs"
-          >
-            {copied ? "Copied!" : "Copy"}
-          </button>
-        </div>
-      </div>
-    </div>
-  );
+// Générer les routes statiques (optionnel, pour le SEO)
+export function generateStaticParams() {
+  return components.map((comp) => ({
+    slug: comp.slug,
+  }));
+}
+
+// Server Component principal
+export default async function ComponentDetailPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const comp = components.find((c) => c.slug === slug);
+
+  if (!comp) {
+    notFound();
+  }
+
+  return <ComponentDetailClient component={comp} />;
 }

@@ -1,3 +1,4 @@
+import { components } from "@/data/components"; // Import des composants
 import { client } from "@/sanity/client";
 import { PrismaClient } from "@prisma/client";
 import type { MetadataRoute } from "next";
@@ -21,22 +22,28 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     },
     {
+      url: `${baseUrl}/components`, // Page principale des composants
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.9,
+    },
+    {
       url: `${baseUrl}/terms-of-use`,
       lastModified: new Date(),
       changeFrequency: "yearly" as const,
-      priority: 0.3,
+      priority: 0.2,
     },
     {
       url: `${baseUrl}/legal-notice`,
       lastModified: new Date(),
       changeFrequency: "yearly" as const,
-      priority: 0.3,
+      priority: 0.2,
     },
     {
       url: `${baseUrl}/privacy-policy`,
       lastModified: new Date(),
       changeFrequency: "yearly" as const,
-      priority: 0.3,
+      priority: 0.2,
     },
     {
       url: `${baseUrl}/contact`,
@@ -64,6 +71,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.9,
   }));
 
+  // Ajouter les composants individuels
+  const componentRoutes = components.map((component) => ({
+    url: `${baseUrl}/components/${component.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
+
   // Récupère les slugs des blogs depuis Sanity
   const blogPosts = await client.fetch<
     { slug: { current: string }; _updatedAt?: string }[]
@@ -76,5 +91,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8,
   }));
 
-  return [...staticRoutes, ...templateRoutes, ...blogRoutes];
+  return [
+    ...staticRoutes,
+    ...templateRoutes,
+    ...componentRoutes,
+    ...blogRoutes,
+  ];
 }

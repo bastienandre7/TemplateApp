@@ -1,40 +1,43 @@
-import HeaderCPN from "@/components/Header/HeaderCPN";
-import { components } from "@/data/components";
-import Link from "next/link";
+import ComponentsClient from "@/components/ComponentsClient";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Free Next.js Components | BloomTPL",
+  description:
+    "Beautiful, responsive components built with Tailwind CSS and React. Copy the code and paste into your project. 100% free.",
+  keywords: [
+    "nextjs",
+    "react",
+    "components",
+    "tailwind",
+    "free",
+    "ui",
+    "library",
+  ],
+  openGraph: {
+    title: "Free Next.js Components | BloomTPL",
+    description:
+      "Beautiful, responsive components built with Tailwind CSS and React. Copy the code and paste into your project.",
+    type: "website",
+    url: "https://yoursite.com/components",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Free Next.js Components",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Free Next.js Components | BloomTPL",
+    description:
+      "Beautiful, responsive components built with Tailwind CSS and React.",
+    images: ["/images/og-components.jpg"],
+  },
+};
 
 export default function ComponentsPage() {
-  return (
-    <div className="pt-20">
-      <HeaderCPN />
-      <div className="max-w-3xl mx-auto py-10">
-        <h1 className="text-2xl font-bold mb-8">Free React Components</h1>
-        {components.length === 0 ? (
-          <div className="text-center text-gray-400 py-20">
-            No components for the moment.
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {components.map((comp) => (
-              <div
-                key={comp.slug}
-                className="border rounded-lg p-4 bg-gray-50 flex flex-col items-center"
-              >
-                <div className="mb-2">{comp.preview}</div>
-                <div className="font-semibold mb-1">{comp.name}</div>
-                <div className="text-xs text-gray-500 mb-2">
-                  {comp.description}
-                </div>
-                <Link
-                  href={`/components/${comp.slug}`}
-                  className="text-purple-600 hover:underline text-xs"
-                >
-                  View details & code
-                </Link>
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
-    </div>
-  );
+  return <ComponentsClient />;
 }
