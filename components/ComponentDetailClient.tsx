@@ -1,12 +1,21 @@
 "use client";
 
 import HeaderCPN from "@/components/Header/HeaderCPN";
-import { FreeComponent } from "@/data/components";
 import Link from "next/link";
 import { useState } from "react";
 
+// On ne dépend plus de FreeComponent du data local
 interface ComponentDetailClientProps {
-  component: FreeComponent;
+  component: {
+    slug: string;
+    name: string;
+    description: string;
+    category: string;
+    image: string;
+    demoUrl?: string;
+    code?: string;
+    // Ajoute d'autres propriétés si besoin (isInteractive, etc.)
+  };
 }
 
 export default function ComponentDetailClient({
@@ -14,11 +23,38 @@ export default function ComponentDetailClient({
 }: ComponentDetailClientProps) {
   const [copied, setCopied] = useState(false);
 
+  // Utilise directement le code du composant passé en props
+  const sourceCode = comp.code
+    ? comp.code
+        .replace(/\\r/g, "") // supprime tous les \r
+        .replace(/\\n/g, "\n") // remplace \n par retour à la ligne
+        .replace(/\\\"/g, '"') // remplace \" par "
+        .replace(/\\t/g, "\t") // remplace \t par tabulation (optionnel)
+    : "";
+
   const handleCopy = () => {
-    navigator.clipboard.writeText(comp.code);
+    navigator.clipboard.writeText(sourceCode);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
+
+  // 🎯 Preview via iframe si demoUrl existe
+  function PreviewSection() {
+    // Utilise comp.demoUrl si présent, sinon construit l'URL avec le slug
+    const previewUrl = `https://components-app-delta.vercel.app/${comp.slug}`;
+
+    return (
+      <div className="w-full h-full min-h-[400px] relative flex items-center justify-center">
+        <iframe
+          src={previewUrl}
+          className="w-full h-[400px] border-0 rounded-lg bg-white"
+          title={`${comp.name} Preview`}
+          loading="lazy"
+          sandbox="allow-scripts allow-same-origin"
+        />
+      </div>
+    );
+  }
 
   return (
     <div className="pt-20 bg-white min-h-screen">
@@ -54,8 +90,6 @@ export default function ComponentDetailClient({
           <p className="text-xl text-gray-600 mb-6 max-w-3xl">
             {comp.description}
           </p>
-
-          {/* Tags */}
           <div className="flex flex-wrap gap-2">
             <span className="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm font-medium">
               React
@@ -85,9 +119,7 @@ export default function ComponentDetailClient({
               </div>
             </div>
             <div className="p-8 min-h-[300px] flex items-center justify-center bg-white">
-              <div className="flex items-center justify-center w-full">
-                {comp.preview}
-              </div>
+              <PreviewSection />
             </div>
           </div>
         </div>
@@ -105,51 +137,58 @@ export default function ComponentDetailClient({
                 <span className="text-gray-300 text-sm font-mono">
                   {comp.name}.tsx
                 </span>
-              </div>
-              <button
-                onClick={handleCopy}
-                className="flex items-center gap-2 bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition"
-              >
-                {copied ? (
-                  <>
-                    <svg
-                      className="w-4 h-4"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    Copied!
-                  </>
-                ) : (
-                  <>
-                    <svg
-                      className="w-4 h-4"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
-                      />
-                    </svg>
-                    Copy Code
-                  </>
+                {sourceCode && (
+                  <span className="bg-green-600 text-white px-2 py-1 rounded text-xs font-medium">
+                    Live Code
+                  </span>
                 )}
-              </button>
+              </div>
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={handleCopy}
+                  className="flex items-center gap-2 bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition"
+                >
+                  {copied ? (
+                    <>
+                      <svg
+                        className="w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                      Copied!
+                    </>
+                  ) : (
+                    <>
+                      <svg
+                        className="w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
+                        />
+                      </svg>
+                      Copy Code
+                    </>
+                  )}
+                </button>
+              </div>
             </div>
             <div className="p-6 overflow-x-auto">
               <pre className="text-sm text-gray-300 font-mono leading-relaxed">
-                <code>{comp.code}</code>
+                <code>{sourceCode}</code>
               </pre>
             </div>
           </div>

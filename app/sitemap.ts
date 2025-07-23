@@ -1,4 +1,3 @@
-import { components } from "@/data/components"; // Import des composants
 import { client } from "@/sanity/client";
 import { PrismaClient } from "@prisma/client";
 import type { MetadataRoute } from "next";
@@ -72,10 +71,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   // Ajouter les composants individuels
-  const componentRoutes = components.map((component) => ({
+  const dbComponents = await prisma.component.findMany({
+    select: { slug: true, updatedAt: true },
+  });
+
+  const componentRoutes = dbComponents.map((component) => ({
     url: `${baseUrl}/components/${component.slug}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly" as const,
+    lastModified: component.updatedAt || new Date(),
+    changeFrequency: "weekly" as const,
     priority: 0.8,
   }));
 

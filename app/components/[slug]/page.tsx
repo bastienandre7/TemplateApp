@@ -1,5 +1,4 @@
 import ComponentDetailClient from "@/components/ComponentDetailClient";
-import { components } from "@/data/components";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -10,14 +9,19 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const comp = components.find((c) => c.slug === slug);
-
-  if (!comp) {
+  const res = await fetch(
+    `${process.env.NEXTAUTH_URL}/api/components/${slug}`,
+    {
+      cache: "no-store",
+    }
+  );
+  if (!res.ok) {
     return {
       title: "Component Not Found | BloomTPL",
       description: "The component you're looking for doesn't exist.",
     };
   }
+  const comp = await res.json();
 
   return {
     title: `${comp.name} - Free React Component | BloomTPL`,
@@ -59,13 +63,6 @@ export async function generateMetadata({
   };
 }
 
-// Générer les routes statiques (optionnel, pour le SEO)
-export function generateStaticParams() {
-  return components.map((comp) => ({
-    slug: comp.slug,
-  }));
-}
-
 // Server Component principal
 export default async function ComponentDetailPage({
   params,
@@ -73,11 +70,16 @@ export default async function ComponentDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const comp = components.find((c) => c.slug === slug);
-
-  if (!comp) {
+  const res = await fetch(
+    `${process.env.NEXTAUTH_URL}/api/components/${slug}`,
+    {
+      cache: "no-store",
+    }
+  );
+  if (!res.ok) {
     notFound();
   }
+  const comp = await res.json();
 
   return <ComponentDetailClient component={comp} />;
 }

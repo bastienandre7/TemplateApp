@@ -1,7 +1,9 @@
 // auth.ts
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { PrismaClient } from "@prisma/client";
-import NextAuth from "next-auth";
+import type { Session, User } from "next-auth";
+import NextAuth, { AuthOptions } from "next-auth";
+import type { JWT } from "next-auth/jwt";
 import EmailProvider from "next-auth/providers/email";
 import GoogleProvider from "next-auth/providers/google";
 import TwitterProvider from "next-auth/providers/twitter";
@@ -10,7 +12,7 @@ import { Resend } from "resend";
 const prisma = new PrismaClient();
 const resend = new Resend(process.env.RESEND_API_KEY!);
 
-export const authOptions = {
+export const authOptions: AuthOptions = {
   adapter: PrismaAdapter(prisma),
   providers: [
     EmailProvider({
@@ -26,7 +28,7 @@ export const authOptions = {
                 <h2 style="margin-bottom: 18px; font-size: 1.5rem; color: #111;">Sign in to <span style="color:#6366f1;">BloomTPL</span></h2>
                 <p style="margin-bottom: 28px; color: #444;">Click the button below to securely log into your account:</p>
                 <a href="${url}" style="display:inline-block; padding: 14px 32px; background: linear-gradient(90deg,#6366f1,#0ea5e9); color: #fff; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1rem; letter-spacing: 0.01em;">Sign In</a>
-                <p style="margin-top: 36px; font-size: 13px; color: #888;">If you didn’t request this, you can safely ignore this email.<br><br>
+                <p style="margin-top: 36px; font-size: 13px; color: #888;">If you didn't request this, you can safely ignore this email.<br><br>
                 <span style="color:#bbb;">&copy; ${new Date().getFullYear()} BloomTPL</span></p>
               </div>
             </div>
@@ -48,6 +50,30 @@ export const authOptions = {
       allowDangerousEmailAccountLinking: true,
     }),
   ],
+  callbacks: {
+    async session({ session, user }: { session: Session; user: User }) {
+      if (session?.user && user) {
+        session.user.id = user.id;
+
+        // Récupérer le rôle depuis la DB
+        const dbUser = await prisma.user.findUnique({
+          where: { id: user.id },
+          select: { role: true },
+        });
+
+        session.user.role = dbUser?.role || "USER";
+      }
+      return session;
+    },
+
+    async jwt({ token, user }: { token: JWT; user?: User }) {
+      if (user) {
+        token.id = user.id;
+        // Le rôle sera récupéré dans le callback session
+      }
+      return token;
+    },
+  },
   pages: {
     signIn: "/auth/signin",
   },
