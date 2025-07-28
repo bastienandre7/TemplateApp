@@ -55,7 +55,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function TemplatePage({
+export default async function TemplateDetailsPage({
   params,
 }: {
   params: Promise<{ slug: string }>;

@@ -1,6 +1,5 @@
 import { authOptions } from "@/auth";
 import DashboardSection from "@/components/Dashboard";
-import HeaderCPN from "@/components/Header/HeaderCPN";
 import type { Metadata } from "next";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
@@ -36,7 +35,6 @@ export default async function DashboardPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-purple-50/30">
-      <HeaderCPN />
       <DashboardSection />
     </div>
   );

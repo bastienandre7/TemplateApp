@@ -47,6 +47,37 @@ export default function FaqAccordion() {
             whenever possible.
           </AccordionContent>
         </AccordionItem>
+        <AccordionItem value="item-5">
+          <AccordionTrigger>
+            How do I install a template after purchase?
+          </AccordionTrigger>
+          <AccordionContent>
+            After purchase, you’ll receive a download link via email and in your
+            dashboard. Unzip the project and run <code>npm install</code>{" "}
+            followed by <code>npm run dev</code> to get started. More details
+            here :{" "}
+            <a href="/docs" className="text-blue-500 underline">
+              Installation Guide
+            </a>
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-6">
+          <AccordionTrigger>
+            Which payment methods do you accept?
+          </AccordionTrigger>
+          <AccordionContent>
+            We accept all major credit, debit cards and PayPal via Lemon
+            Squeezy. Payments are secure and processed with SSL encryption.
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-9">
+          <AccordionTrigger>Do you offer refunds?</AccordionTrigger>
+          <AccordionContent>
+            Due to the digital nature of our products, we do not offer refunds.
+            If you have any issues with your download or need help, contact our
+            support and we’ll do our best to help.
+          </AccordionContent>
+        </AccordionItem>
       </Accordion>
     </section>
   );

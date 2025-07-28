@@ -1,4 +1,3 @@
-import HeaderCPN from "@/components/Header/HeaderCPN";
 import { type Metadata } from "next";
 import Link from "next/link";
 
@@ -30,8 +29,6 @@ export const metadata: Metadata = {
 export default function LicensePage() {
   return (
     <div className="min-h-screen bg-white">
-      <HeaderCPN />
-
       {/* Hero Section */}
       <div className="pt-32 pb-16 px-4">
         <div className="max-w-4xl mx-auto text-center">

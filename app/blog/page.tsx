@@ -1,4 +1,3 @@
-import HeaderCPN from "@/components/Header/HeaderCPN";
 import { client } from "@/sanity/client";
 import { type Metadata } from "next";
 import { type SanityDocument } from "next-sanity";
@@ -102,8 +101,6 @@ export default async function BlogPage() {
   return (
     <>
       <div className="min-h-screen bg-white">
-        <HeaderCPN />
-
         {/* Hero Section */}
         <div className="pt-32 pb-16 px-4">
           <div className="max-w-4xl mx-auto text-center">

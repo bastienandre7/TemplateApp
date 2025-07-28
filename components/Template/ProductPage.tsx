@@ -1,6 +1,5 @@
 "use client";
 
-import HeaderCPN from "@/components/Header/HeaderCPN";
 import ProductGallery from "@/components/Template/ProductGallery";
 import { Button } from "@/components/ui/button";
 import { signIn, useSession } from "next-auth/react";
@@ -103,8 +102,6 @@ export default function ProductPage({ template }: ProductPageProps) {
 
   return (
     <div className="pt-4 bg-white text-black min-h-screen">
-      <HeaderCPN />
-
       <div className="max-w-screen-xl mx-auto px-8 xl:px-4 py-20 sm:py-32 space-y-20">
         <div className="text-center space-y-12">
           {/* Main Title */}

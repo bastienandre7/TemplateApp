@@ -1,4 +1,3 @@
-import HeaderCPN from "@/components/Header/HeaderCPN";
 import { client } from "@/sanity/client";
 import imageUrlBuilder from "@sanity/image-url";
 import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
@@ -146,8 +145,6 @@ export default async function PostPage({
   return (
     <>
       <div className="min-h-screen bg-white">
-        <HeaderCPN />
-
         {/* Article Header */}
         <div className="pt-32 pb-8 px-4">
           <div className="max-w-4xl mx-auto">

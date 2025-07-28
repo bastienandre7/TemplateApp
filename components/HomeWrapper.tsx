@@ -1,8 +1,7 @@
 "use client";
 
-import BannerCPN from "@/components/Main/BannerCPN";
-import FaqAccordion from "@/components/Main/FaqAccordion";
-import MainContainer from "@/components/Main/MainContainer";
+import BannerCPN from "@/components/Template/BannerCPN";
+import MainContainer from "@/components/Template/MainContainer";
 import { useState } from "react";
 
 type Product = {
@@ -39,7 +38,6 @@ export default function HomeWrapper({ products }: { products: Product[] }) {
         searchQuery={searchQuery}
         onClearSearch={handleClearSearch}
       />
-      <FaqAccordion />
     </div>
   );
 }

@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/dashboard/", "/api/"],
+      disallow: ["/dashboard/", "/dashboard/admin", "/api/"],
     },
     sitemap: "https://www.bloomtpl.com/sitemap.xml",
   };

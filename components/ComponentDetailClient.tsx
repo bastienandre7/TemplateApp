@@ -1,6 +1,5 @@
 "use client";
 
-import HeaderCPN from "@/components/Header/HeaderCPN";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -57,9 +56,7 @@ export default function ComponentDetailClient({
   }
 
   return (
-    <div className="pt-20 bg-white min-h-screen">
-      <HeaderCPN />
-
+    <div className="pt-32 bg-white min-h-screen">
       {/* Breadcrumb */}
       <div className="max-w-7xl mx-auto px-6 py-6">
         <nav className="flex items-center gap-2 text-sm text-gray-500">

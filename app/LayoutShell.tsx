@@ -1,5 +1,7 @@
 "use client";
 
+import HeaderCPN from "@/components/Header/HeaderCPN";
+import PromoBanner from "@/components/PromoBanner";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import dynamic from "next/dynamic";
@@ -24,6 +26,8 @@ export default function LayoutShell({ children }: { children: ReactNode }) {
     <Providers>
       <div className="flex flex-col min-h-screen bg-white">
         <CookieBanner />
+        <PromoBanner />
+        <HeaderCPN />
         <main className="flex-1">{children}</main>
         <FooterCPN />
       </div>

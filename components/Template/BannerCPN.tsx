@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import HeaderCPN from "../Header/HeaderCPN";
 
 export default function HeroBanner({
   onSearch,
@@ -9,19 +8,12 @@ export default function HeroBanner({
   onSearch?: (query: string) => void;
 }) {
   const [searchQuery, setSearchQuery] = useState("");
-  const [copied, setCopied] = useState(false);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (onSearch) onSearch(searchQuery);
     const element = document.getElementById("templates");
     if (element) element.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const handleCopy = () => {
-    navigator.clipboard.writeText("BLOOM50");
-    setCopied(true);
-    setTimeout(() => setCopied(false), 1500);
   };
 
   return (
@@ -53,8 +45,6 @@ export default function HeroBanner({
       </div>
 
       <div className="relative pt-4">
-        <HeaderCPN />
-
         <div className="mx-auto max-w-4xl px-6 py-10 sm:py-10">
           <div className="text-center">
             <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-6 text-gray-900">
@@ -68,32 +58,6 @@ export default function HeroBanner({
               production-ready, responsive, and SEO-optimized to help you build
               faster and smarter.
             </p>
-
-            <div className="mx-auto max-w-xl mb-8">
-              <div className="flex items-center justify-center gap-3 bg-gradient-to-r from-purple-600 to-purple-400 text-white px-6 py-4 rounded-xl shadow-lg font-semibold text-base border border-purple-300">
-                <span className="bg-purple-100 text-purple-700 px-2 py-0.5 rounded text-xs font-bold mr-2">
-                  -50% CODE
-                </span>
-                <span>
-                  <b className="text-lg text-white">BLOOM50</b> for the first{" "}
-                  <b>10 users</b>
-                  <span className="mx-2 text-purple-200">|</span>
-                  <button
-                    type="button"
-                    onClick={handleCopy}
-                    className="bg-white px-2 py-1 rounded font-mono tracking-wider cursor-pointer border border-purple-300 hover:bg-purple-50 transition font-bold text-purple-700"
-                    title="Copy code"
-                  >
-                    Copy
-                  </button>
-                  {copied && (
-                    <span className="ml-2 text-xs text-white font-normal">
-                      Copied!
-                    </span>
-                  )}
-                </span>
-              </div>
-            </div>
 
             {/* Quick features */}
             <div className="flex flex-wrap justify-center gap-6 mb-12 text-sm text-gray-500">

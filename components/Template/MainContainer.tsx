@@ -292,13 +292,8 @@ export default function MainContainer({
                       </div>
 
                       {/* Action Buttons - Notion style */}
-                      <div className="flex gap-2">
-                        <Button
-                          asChild
-                          variant="outline"
-                          size="sm"
-                          className="flex-1 text-sm hover:bg-gray-50 border-gray-200"
-                        >
+                      <div className="flex gap-2 ">
+                        <button className="flex-1 text-sm hover:bg-gray-50 border-gray-200 py-4 border rounded-lg text-gray-700">
                           <Link
                             href={`${item.demoUrl}`}
                             target="_blank"
@@ -306,7 +301,7 @@ export default function MainContainer({
                           >
                             Live Demo
                           </Link>
-                        </Button>
+                        </button>
 
                         {isOwned ? (
                           <Button
@@ -317,7 +312,7 @@ export default function MainContainer({
                             <Link href="/dashboard">Owned</Link>
                           </Button>
                         ) : (
-                          <Button
+                          <button
                             onClick={() => {
                               if (!session) {
                                 signIn();
@@ -329,13 +324,12 @@ export default function MainContainer({
                                 window.location.href = url;
                               }
                             }}
-                            size="sm"
-                            className="flex-1 text-sm bg-purple-600 hover:bg-purple-700 text-white"
+                            className="flex-1 text-sm bg-purple-600 hover:bg-purple-700 text-white py-4 border rounded-lg"
                           >
                             {item.price === 0
-                              ? "Get FREE"
+                              ? "FREE"
                               : `Buy Now - ${item.price}€`}
-                          </Button>
+                          </button>
                         )}
                       </div>
                     </div>

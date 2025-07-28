@@ -48,8 +48,7 @@ export default function ComponentsClient() {
 
   if (!mounted || loading) {
     return (
-      <div className="pt-20 bg-white min-h-screen">
-        <HeaderCPN />
+      <div className="pt-32 bg-white min-h-screen">
         <div className="bg-gradient-to-b from-purple-50 to-white py-16">
           <div className="max-w-4xl mx-auto px-6 text-center">
             <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
