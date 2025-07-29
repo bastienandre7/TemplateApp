@@ -32,7 +32,16 @@ export default function ComponentDetailClient({
     : "";
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(sourceCode);
+    // Nettoie le code pour le rendre collable
+    const cleanCode = (comp.code ?? "")
+      .replace(/\\r/g, "")
+      .replace(/\\n/g, "\n")
+      .replace(/\\"/g, '"')
+      .replace(/\\t/g, "\t")
+      .replace(/\\\//g, "/")
+      .replace(/\\'/g, "'");
+
+    navigator.clipboard.writeText(cleanCode);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
