@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Next.js Templates & Free React Components | BloomTPL",
   description:
-    "Discover premium Next.js templates and free React components. Build SaaS, e-commerce, portfolio and blog apps faster with Tailwind CSS, TypeScript, and SEO best practices.",
+    "Premium Next.js templates and free React components for SaaS, e-commerce, and portfolios. Built with Tailwind CSS and TypeScript.",
   metadataBase: new URL("https://www.bloomtpl.com"),
   alternates: {
     canonical: "https://www.bloomtpl.com",

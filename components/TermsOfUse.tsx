@@ -58,9 +58,9 @@ export default function TermsOfUse() {
             allows us to sell our products and services to you.
           </p>
 
-          <h2 className="text-3xl font-bold mb-4">
+          <h1 className="text-3xl font-bold mb-4">
             SECTION 1 - Conditions of use
-          </h2>
+          </h1>
 
           <p className="mb-4">
             By accepting these Terms of Use, you represent that you have reached

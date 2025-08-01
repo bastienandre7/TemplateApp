@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description:
     "Have questions or need help? Contact the BloomTPL team and we'll get back to you shortly.",
   alternates: {
-    canonical: "https://bloomtpl.com/contact",
+    canonical: "https://www.bloomtpl.com/contact",
   },
   openGraph: {
     title: "Contact BloomTPL – Get in Touch",

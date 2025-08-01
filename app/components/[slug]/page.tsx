@@ -37,6 +37,7 @@ export async function generateMetadata({
       "ui component",
       "copy paste",
     ],
+
     openGraph: {
       title: `${comp.name} - Free React Component`,
       description: `${comp.description} Built with React and Tailwind CSS.`,
@@ -58,7 +59,7 @@ export async function generateMetadata({
       images: [comp.image],
     },
     alternates: {
-      canonical: `https://yoursite.com/components/${slug}`,
+      canonical: `https://www.bloomtpl.com/components/${slug}`,
     },
   };
 }

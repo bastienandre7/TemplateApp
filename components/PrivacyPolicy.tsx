@@ -321,9 +321,9 @@ export default function PrivacyPolicy() {
         </section>
 
         <section id="french">
-          <h1 className="text-3xl font-bold mb-4">
+          <h2 className="text-3xl font-bold mb-4">
             Politique de confidentialité
-          </h1>
+          </h2>
           <p className="text-sm text-gray-500 mb-8">
             BloomTPL / Dernière mise à jour le 14 avril 2025.
           </p>

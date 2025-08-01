@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     "Explore 9+ free and premium Next.js templates, starter kits and themes built with Tailwind CSS and React — ideal for SaaS, e-commerce, portfolios and blog pages.",
   metadataBase: new URL("https://www.bloomtpl.com"),
   alternates: {
-    canonical: "https://www.bloomtpl.com",
+    canonical: "https://www.bloomtpl.com/template",
   },
   robots:
     "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "9+ Best Free and Premium Next.js Templates (2025) | BloomTPL",
     description:
       "Explore 9+ free and premium Next.js templates, starter kits and themes built with Tailwind CSS and React — ideal for SaaS, e-commerce, portfolios and blog pages.",
-    url: "https://www.bloomtpl.com",
+    url: "https://www.bloomtpl.com/template",
     siteName: "BloomTPL",
     locale: "en_US",
     type: "website",

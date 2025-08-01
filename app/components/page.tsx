@@ -14,6 +14,9 @@ export const metadata: Metadata = {
     "ui",
     "library",
   ],
+  alternates: {
+    canonical: "https://www.bloomtpl.com/components",
+  },
   openGraph: {
     title: "Free Next.js Components | BloomTPL",
     description:

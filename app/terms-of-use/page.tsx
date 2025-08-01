@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description:
     "Read the terms and conditions for using BloomTPL templates, services, and website.",
   alternates: {
-    canonical: "https://bloomtpl.com/terms-of-use",
+    canonical: "https://www.bloomtpl.com/terms-of-use",
   },
   openGraph: {
     title: "Terms of Use – BloomTPL",

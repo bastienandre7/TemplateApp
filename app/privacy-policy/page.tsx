@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description:
     "Understand how BloomTPL collects, uses, and protects your data when you use our site and services.",
   alternates: {
-    canonical: "https://bloomtpl.com/privacy-policy",
+    canonical: "https://www.bloomtpl.com/privacy-policy",
   },
   openGraph: {
     title: "Privacy Policy – BloomTPL",

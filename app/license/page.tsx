@@ -16,6 +16,15 @@ export const metadata: Metadata = {
     siteName: "BloomTPL",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "https://www.bloomtpl.com/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "BloomTPL License Agreement OG Image",
+        type: "image/png",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -23,6 +32,7 @@ export const metadata: Metadata = {
     description:
       "Understand your rights and responsibilities when using BloomTPL templates.",
     creator: "@BloomTPL",
+    images: ["https://www.bloomtpl.com/og/license.jpg"],
   },
 };
 

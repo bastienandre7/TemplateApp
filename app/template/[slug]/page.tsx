@@ -96,9 +96,13 @@ export default async function TemplateDetailsPage({
       availability: "https://schema.org/InStock",
       url: `https://www.bloomtpl.com/template/${product.slug}`,
       priceValidUntil: "2025-12-31",
+      eligibleRegion: {
+        "@type": "Country",
+        name: "Worldwide",
+      },
       hasMerchantReturnPolicy: {
         "@type": "MerchantReturnPolicy",
-        returnPolicyCategory: "https://schema.org/NoReturns",
+        returnPolicyCategory: "NoReturns",
       },
       itemCondition: "https://schema.org/NewCondition",
       seller: {
@@ -107,7 +111,7 @@ export default async function TemplateDetailsPage({
         url: "https://www.bloomtpl.com",
       },
     },
-    isAccessibleForFree: product.price === 0,
+    ...(product.price === 0 ? { isAccessibleForFree: true } : {}),
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: "4.9",

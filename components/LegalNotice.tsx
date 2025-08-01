@@ -76,7 +76,7 @@ export default function LegalNotice() {
         </section>
 
         <section id="french">
-          <h1 className="text-3xl font-bold mb-4">MENTIONS LÉGALES</h1>
+          <h2 className="text-3xl font-bold mb-4">MENTIONS LÉGALES</h2>
           <p className="text-sm text-gray-500 mb-8">
             Dernière mise à jour le 14 avril 2025.
           </p>
