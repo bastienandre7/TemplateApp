@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     title: "Privacy Policy – BloomTPL",
     description:
       "Understand how BloomTPL collects, uses, and protects your data when you use our site and services.",
-    url: "https://bloomtpl.com/privacy-policy",
+    url: "https://www.bloomtpl.com/privacy-policy",
     siteName: "BloomTPL",
     locale: "en_US",
     type: "website",

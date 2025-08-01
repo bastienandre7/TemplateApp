@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     description:
       "Beautiful, responsive components built with Tailwind CSS and React. Copy the code and paste into your project.",
     type: "website",
-    url: "https://yoursite.com/components",
+    url: "https://www.bloomtpl.com/components",
     images: [
       {
         url: "/og-image.png",

@@ -42,7 +42,7 @@ export async function generateMetadata({
       title: `${comp.name} - Free React Component`,
       description: `${comp.description} Built with React and Tailwind CSS.`,
       type: "article",
-      url: `https://yoursite.com/components/${slug}`,
+      url: `https://www.bloomtpl.com/components/${slug}`,
       images: [
         {
           url: comp.image,

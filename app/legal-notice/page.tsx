@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     title: "Legal Notice – BloomTPL",
     description:
       "Legal information and ownership details regarding the BloomTPL website and its contents.",
-    url: "https://bloomtpl.com/legal-notice",
+    url: "https://www.bloomtpl.com/legal-notice",
     siteName: "BloomTPL",
     locale: "en_US",
     type: "website",

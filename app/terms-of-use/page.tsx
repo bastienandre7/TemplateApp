@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     title: "Terms of Use – BloomTPL",
     description:
       "Read the terms and conditions for using BloomTPL templates, services, and website.",
-    url: "https://bloomtpl.com/terms-of-use",
+    url: "https://www.bloomtpl.com/terms-of-use",
     siteName: "BloomTPL",
     locale: "en_US",
     type: "website",

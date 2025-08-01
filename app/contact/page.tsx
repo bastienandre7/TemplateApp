@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     title: "Contact BloomTPL – Get in Touch",
     description:
       "Have questions or need help? Contact the BloomTPL team and we'll get back to you shortly.",
-    url: "https://bloomtpl.com/contact",
+    url: "https://www.bloomtpl.com/contact",
     siteName: "BloomTPL",
     locale: "en_US",
     type: "website",
