@@ -98,7 +98,7 @@ export default function LandingPage() {
         "Admin dashboard",
         "Dark Mode",
       ],
-      link: "/template/coresaas-nextjs-tailwind-css-saas-starter-kit-boilerplate",
+      link: "/template/coresaas-next-js-tailwind-css-saas-starter-kit-boilerplate",
     },
   ];
 
