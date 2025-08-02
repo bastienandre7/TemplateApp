@@ -24,19 +24,19 @@ export const metadata: Metadata = {
   description:
     "Discover the latest trends, tutorials, and insights about Next.js development, template design, and modern web development. Learn from expert developers at BloomTPL.",
   alternates: {
-    canonical: "https://www.bloomtpl.com/blog",
+    canonical: "https://bloomtpl.com/blog",
   },
   openGraph: {
     title: "Blog - Next.js Templates & Web Development | BloomTPL",
     description:
       "Discover the latest trends, tutorials, and insights about Next.js development, template design, and modern web development. Learn from expert developers at BloomTPL.",
-    url: "https://www.bloomtpl.com/blog",
+    url: "https://bloomtpl.com/blog",
     siteName: "BloomTPL",
     locale: "en_US",
     type: "website",
     images: [
       {
-        url: "https://www.bloomtpl.com/og-image.png",
+        url: "https://bloomtpl.com/og-image.png",
         width: 1200,
         height: 630,
         alt: "BloomTPL Blog - Next.js Templates & Web Development",
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     title: "Blog - Next.js Templates & Web Development | BloomTPL",
     description:
       "Discover the latest trends, tutorials, and insights about Next.js development, template design, and modern web development.",
-    images: ["https://www.bloomtpl.com/og-image.png"],
+    images: ["https://bloomtpl.com/og-image.png"],
     creator: "@BloomTPL",
   },
 };
@@ -63,18 +63,18 @@ export default async function BlogPage() {
     name: "BloomTPL Blog",
     description:
       "Discover the latest trends, tutorials, and insights about Next.js development, template design, and modern web development.",
-    url: "https://www.bloomtpl.com/blog",
+    url: "https://bloomtpl.com/blog",
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": "https://www.bloomtpl.com/blog",
+      "@id": "https://bloomtpl.com/blog",
     },
     publisher: {
       "@type": "Organization",
       name: "BloomTPL",
-      url: "https://www.bloomtpl.com",
+      url: "https://bloomtpl.com",
       logo: {
         "@type": "ImageObject",
-        url: "https://www.bloomtpl.com/logo.png",
+        url: "https://bloomtpl.com/logo.png",
       },
     },
     inLanguage: "en-US",
@@ -83,7 +83,7 @@ export default async function BlogPage() {
         "@type": "BlogPosting",
         headline: post.title,
         description: post.description || `Read ${post.title} on BloomTPL blog.`,
-        url: `https://www.bloomtpl.com/blog/${post.slug.current}`,
+        url: `https://bloomtpl.com/blog/${post.slug.current}`,
         datePublished: post.publishedAt,
         author: {
           "@type": "Person",

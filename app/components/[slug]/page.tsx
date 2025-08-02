@@ -42,7 +42,7 @@ export async function generateMetadata({
       title: `${comp.name} - Free React Component`,
       description: `${comp.description} Built with React and Tailwind CSS.`,
       type: "article",
-      url: `https://www.bloomtpl.com/components/${slug}`,
+      url: `https://bloomtpl.com/components/${slug}`,
       images: [
         {
           url: comp.image,
@@ -59,7 +59,7 @@ export async function generateMetadata({
       images: [comp.image],
     },
     alternates: {
-      canonical: `https://www.bloomtpl.com/components/${slug}`,
+      canonical: `https://bloomtpl.com/components/${slug}`,
     },
   };
 }

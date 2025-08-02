@@ -6,13 +6,13 @@ export const metadata: Metadata = {
   description:
     "Have questions or need help? Contact the BloomTPL team and we'll get back to you shortly.",
   alternates: {
-    canonical: "https://www.bloomtpl.com/contact",
+    canonical: "https://bloomtpl.com/contact",
   },
   openGraph: {
     title: "Contact BloomTPL – Get in Touch",
     description:
       "Have questions or need help? Contact the BloomTPL team and we'll get back to you shortly.",
-    url: "https://www.bloomtpl.com/contact",
+    url: "https://bloomtpl.com/contact",
     siteName: "BloomTPL",
     locale: "en_US",
     type: "website",

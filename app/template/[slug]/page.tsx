@@ -26,12 +26,12 @@ export async function generateMetadata({
     title: `${product.name} | BloomTPL`,
     description: product.description,
     alternates: {
-      canonical: `https://www.bloomtpl.com/template/${slug}`,
+      canonical: `https://bloomtpl.com/template/${slug}`,
     },
     openGraph: {
       title: `${product.name} | BloomTPL`,
       description: product.description,
-      url: `https://www.bloomtpl.com/template/${slug}`,
+      url: `https://bloomtpl.com/template/${slug}`,
       siteName: "BloomTPL",
       locale: "en_US",
       type: "website",
@@ -85,7 +85,7 @@ export default async function TemplateDetailsPage({
     manufacturer: {
       "@type": "Organization",
       name: "BloomTPL",
-      url: "https://www.bloomtpl.com",
+      url: "https://bloomtpl.com",
     },
     category: "Software Template",
     productID: product.slug,
@@ -94,7 +94,7 @@ export default async function TemplateDetailsPage({
       priceCurrency: "EUR",
       price: product.price.toFixed(2),
       availability: "https://schema.org/InStock",
-      url: `https://www.bloomtpl.com/template/${product.slug}`,
+      url: `https://bloomtpl.com/template/${product.slug}`,
       priceValidUntil: "2025-12-31",
       eligibleRegion: {
         "@type": "Country",
@@ -108,7 +108,7 @@ export default async function TemplateDetailsPage({
       seller: {
         "@type": "Organization",
         name: "BloomTPL",
-        url: "https://www.bloomtpl.com",
+        url: "https://bloomtpl.com",
       },
     },
     ...(product.price === 0 ? { isAccessibleForFree: true } : {}),

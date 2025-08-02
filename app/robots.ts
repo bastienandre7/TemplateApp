@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/dashboard/", "/dashboard/admin", "/api/"],
     },
-    sitemap: "https://www.bloomtpl.com/sitemap.xml",
+    sitemap: "https://bloomtpl.com/sitemap.xml",
   };
 }

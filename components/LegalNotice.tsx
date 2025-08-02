@@ -31,9 +31,9 @@ export default function LegalNotice() {
           <h2 className="text-2xl font-bold mb-4">Site Publisher</h2>
 
           <p className="mb-4">
-            This website, accessible at www.bloomtpl.com, is published by:
-            Bastien Andre, residing at 200 rue de la Croix Nivert, 75015 PARIS,
-            of French nationality, born on 11/20/2003.
+            This website, accessible at bloomtpl.com, is published by: Bastien
+            Andre, residing at 200 rue de la Croix Nivert, 75015 PARIS, of
+            French nationality, born on 11/20/2003.
           </p>
 
           <p className="mb-4">
@@ -91,8 +91,8 @@ export default function LegalNotice() {
           <h2 className="text-2xl font-bold mb-4">Edition du site</h2>
 
           <p className="mb-4">
-            Le présent site, accessible à l’URL www.bloomtpl.com, est édité par
-            : Bastien Andre, résidant 200 rue de la Croix Nivert 75015 PARIS, de
+            Le présent site, accessible à l’URL bloomtpl.com, est édité par :
+            Bastien Andre, résidant 200 rue de la Croix Nivert 75015 PARIS, de
             nationalité Française (France), né(e) le 20/11/2003.
           </p>
 

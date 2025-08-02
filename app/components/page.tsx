@@ -15,14 +15,14 @@ export const metadata: Metadata = {
     "library",
   ],
   alternates: {
-    canonical: "https://www.bloomtpl.com/components",
+    canonical: "https://bloomtpl.com/components",
   },
   openGraph: {
     title: "Free Next.js Components | BloomTPL",
     description:
       "Beautiful, responsive components built with Tailwind CSS and React. Copy the code and paste into your project.",
     type: "website",
-    url: "https://www.bloomtpl.com/components",
+    url: "https://bloomtpl.com/components",
     images: [
       {
         url: "/og-image.png",

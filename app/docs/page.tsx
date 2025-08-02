@@ -6,13 +6,13 @@ export const metadata: Metadata = {
   description:
     "Complete step-by-step guide to install, customize, and deploy your premium Next.js templates. From purchase to production in minutes with BloomTPL's best practices.",
   alternates: {
-    canonical: "https://www.bloomtpl.com/docs",
+    canonical: "https://bloomtpl.com/docs",
   },
   openGraph: {
     title: "Documentation - How to Use Best Next.js Templates | BloomTPL",
     description:
       "Master your Next.js template setup with our comprehensive documentation. 5-step process from purchase to deployment with premium templates.",
-    url: "https://www.bloomtpl.com/docs",
+    url: "https://bloomtpl.com/docs",
     siteName: "BloomTPL - Best Next.js Templates",
     locale: "en_US",
     type: "website",
@@ -56,22 +56,22 @@ export default function Page() {
     author: {
       "@type": "Organization",
       name: "BloomTPL",
-      url: "https://www.bloomtpl.com",
+      url: "https://bloomtpl.com",
     },
     publisher: {
       "@type": "Organization",
       name: "BloomTPL",
-      url: "https://www.bloomtpl.com",
+      url: "https://bloomtpl.com",
       logo: {
         "@type": "ImageObject",
-        url: "https://www.bloomtpl.com/images/logo/nextLogo.png",
+        url: "https://bloomtpl.com/images/logo/nextLogo.png",
       },
     },
     datePublished: "2025-06-30",
     dateModified: "2025-06-30",
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": "https://www.bloomtpl.com/docs",
+      "@id": "https://bloomtpl.com/docs",
     },
     articleSection: "Documentation",
     keywords:

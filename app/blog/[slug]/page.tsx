@@ -34,7 +34,7 @@ export async function generateMetadata({
 
   const postImageUrl = post.image
     ? urlFor(post.image)?.width(1200).height(630).url()
-    : "https://www.bloomtpl.com/images/blog/default-og.jpg";
+    : "https://bloomtpl.com/images/blog/default-og.jpg";
 
   return {
     title: `${post.title} | BloomTPL Blog`,
@@ -43,14 +43,14 @@ export async function generateMetadata({
       `Read ${post.title} on BloomTPL blog. Learn about Next.js development, template design, and modern web development best practices.`,
     authors: post.author?.name ? [{ name: post.author.name }] : undefined,
     alternates: {
-      canonical: `https://www.bloomtpl.com/blog/${post.slug.current}`,
+      canonical: `https://bloomtpl.com/blog/${post.slug.current}`,
     },
     openGraph: {
       title: `${post.title} | BloomTPL Blog`,
       description:
         post.description ||
         `Read ${post.title} on BloomTPL blog. Learn about Next.js development, template design, and modern web development best practices.`,
-      url: `https://www.bloomtpl.com/blog/${post.slug.current}`,
+      url: `https://bloomtpl.com/blog/${post.slug.current}`,
       siteName: "BloomTPL",
       locale: "en_US",
       type: "article",
@@ -108,20 +108,20 @@ export default async function PostPage({
     author: {
       "@type": "Person",
       name: post.author?.name || "BloomTPL Team",
-      url: "https://www.bloomtpl.com",
+      url: "https://bloomtpl.com",
     },
     publisher: {
       "@type": "Organization",
       name: "BloomTPL",
-      url: "https://www.bloomtpl.com",
+      url: "https://bloomtpl.com",
       logo: {
         "@type": "ImageObject",
-        url: "https://www.bloomtpl.com/logo.png",
+        url: "https://bloomtpl.com/logo.png",
       },
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://www.bloomtpl.com/blog/${post.slug.current}`,
+      "@id": `https://bloomtpl.com/blog/${post.slug.current}`,
     },
     articleSection: post.category?.title || "Development",
     keywords: [
