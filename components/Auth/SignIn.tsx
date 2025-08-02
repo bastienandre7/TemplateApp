@@ -3,7 +3,7 @@
 import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { FaTwitter } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 
 export default function SignIn() {
@@ -57,11 +57,11 @@ export default function SignIn() {
         </button>
 
         <button
-          onClick={() => signIn("twitter", { callbackUrl: "/" })}
-          className="w-full flex items-center justify-center gap-2 bg-blue-500 text-white rounded-lg px-4 py-2 text-sm hover:bg-blue-600"
+          onClick={() => signIn("github", { callbackUrl: "/" })}
+          className="w-full flex items-center justify-center gap-2 bg-gray-900 text-white rounded-lg px-4 py-2 text-sm hover:bg-gray-800"
         >
-          <FaTwitter size={18} />
-          Continue with Twitter
+          <FaGithub size={18} />
+          Continue with GitHub
         </button>
 
         <div className="relative text-center my-4">

@@ -5,8 +5,8 @@ import type { Session, User } from "next-auth";
 import NextAuth, { AuthOptions } from "next-auth";
 import type { JWT } from "next-auth/jwt";
 import EmailProvider from "next-auth/providers/email";
+import GitHubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
-import TwitterProvider from "next-auth/providers/twitter";
 import { Resend } from "resend";
 
 const prisma = new PrismaClient();
@@ -43,10 +43,9 @@ export const authOptions: AuthOptions = {
       allowDangerousEmailAccountLinking: true,
     }),
 
-    TwitterProvider({
-      clientId: process.env.TWITTER_ID!,
-      clientSecret: process.env.TWITTER_SECRET!,
-      version: "2.0",
+    GitHubProvider({
+      clientId: process.env.GITHUB_CLIENT_ID!,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET!,
       allowDangerousEmailAccountLinking: true,
     }),
   ],
