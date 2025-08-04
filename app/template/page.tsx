@@ -2,9 +2,9 @@ import HomeWrapper from "@/components/HomeWrapper";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "9+ Best Free and Premium Next.js Templates (2025) | BloomTPL",
+  title: "10+ Best Free and Premium Next.js Templates (2025) | BloomTPL",
   description:
-    "Explore 9+ free and premium Next.js templates, starter kits and themes built with Tailwind CSS and React — ideal for SaaS, e-commerce, portfolios and blog pages.",
+    "Explore 10+ free and premium Next.js templates, starter kits and themes built with Tailwind CSS and React — ideal for SaaS, e-commerce, portfolios and blog pages.",
   metadataBase: new URL("https://bloomtpl.com"),
   alternates: {
     canonical: "https://bloomtpl.com/template",
@@ -12,9 +12,9 @@ export const metadata: Metadata = {
   robots:
     "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
   openGraph: {
-    title: "9+ Best Free and Premium Next.js Templates (2025) | BloomTPL",
+    title: "10+ Best Free and Premium Next.js Templates (2025) | BloomTPL",
     description:
-      "Explore 9+ free and premium Next.js templates, starter kits and themes built with Tailwind CSS and React — ideal for SaaS, e-commerce, portfolios and blog pages.",
+      "Explore 10+ free and premium Next.js templates, starter kits and themes built with Tailwind CSS and React — ideal for SaaS, e-commerce, portfolios and blog pages.",
     url: "https://bloomtpl.com/template",
     siteName: "BloomTPL",
     locale: "en_US",
@@ -30,9 +30,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "9+ Best Free and Premium Next.js Templates (2025) | BloomTPL",
+    title: "10+ Best Free and Premium Next.js Templates (2025) | BloomTPL",
     description:
-      "Explore 9+ free and premium Next.js templates, starter kits and themes built with Tailwind CSS and React — ideal for SaaS, e-commerce, portfolios and blog pages.",
+      "Explore 10+ free and premium Next.js templates, starter kits and themes built with Tailwind CSS and React — ideal for SaaS, e-commerce, portfolios and blog pages.",
     images: ["https://bloomtpl.com/og-image.png"],
   },
   creator: "BloomTPL",
@@ -60,7 +60,7 @@ export default async function TemplatePage() {
           height: 512,
         },
         description:
-          "Explore 9+ free and premium Next.js templates, starter kits and themes built with Tailwind CSS and React — ideal for SaaS, e-commerce, portfolios and blog pages.",
+          "Explore 10+ free and premium Next.js templates, starter kits and themes built with Tailwind CSS and React — ideal for SaaS, e-commerce, portfolios and blog pages.",
         foundingDate: "2025",
         sameAs: ["https://twitter.com/BloomTPL"],
         contactPoint: {
@@ -73,9 +73,9 @@ export default async function TemplatePage() {
         "@type": "WebSite",
         "@id": "https://bloomtpl.com/#website",
         url: "https://bloomtpl.com",
-        name: "9+ Best Free and Premium Next.js Templates (2025) | BloomTPL",
+        name: "10+ Best Free and Premium Next.js Templates (2025) | BloomTPL",
         description:
-          "Explore 9+ free and premium Next.js templates, starter kits and themes built with Tailwind CSS and React — ideal for SaaS, e-commerce, portfolios and blog pages.",
+          "Explore 10+ free and premium Next.js templates, starter kits and themes built with Tailwind CSS and React — ideal for SaaS, e-commerce, portfolios and blog pages.",
         publisher: {
           "@id": "https://bloomtpl.com/#organization",
         },
