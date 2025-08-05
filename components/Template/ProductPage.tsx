@@ -37,7 +37,7 @@ export default function ProductPage({ template }: ProductPageProps) {
   const { data: session, status } = useSession();
 
   useEffect(() => {
-    if (status === "loading") return; // Attendre que la session soit chargée
+    if (status === "loading") return;
 
     if (session?.user?.email) {
       fetch("/api/purchases")
@@ -47,7 +47,7 @@ export default function ProductPage({ template }: ProductPageProps) {
           setOwnedTemplates(owned);
         })
         .catch((error) => {
-          console.error("Erreur lors de la récupération des achats:", error);
+          console.error("Error retrieving purchases:", error);
         })
         .finally(() => {
           setIsLoading(false);

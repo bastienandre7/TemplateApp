@@ -114,3 +114,16 @@
     @apply bg-background text-foreground;
   }
 }
+
+.background {
+  background-image: radial-gradient(
+    at 50% 10%,
+    var(--background) 40%,
+    var(--primary) 100%
+  );
+}
+@layer utilities {
+  .bg-radial-purple {
+    background-image: var(--radial-purple);
+  }
+}

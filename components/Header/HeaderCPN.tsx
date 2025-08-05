@@ -1,28 +1,38 @@
 "use client";
+import { useScrollHeader } from "@/hooks/useScrollHeader";
+import { DropdownMenu } from "@radix-ui/react-dropdown-menu";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import PromoBanner from "../PromoBanner";
+import {
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "../ui/dropdown-menu";
 import AuthButton from "./sign-in";
 
 export default function HeaderCPN() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
+  const { isFixed } = useScrollHeader();
 
   const navLinks = [
     { name: "Templates", path: "/template" },
     { name: "Components", path: "/components" },
+    { name: "Bundle", path: "/bundle/ultimate" },
     { name: "Docs", path: "/docs" },
-    { name: "Blog", path: "/blog" },
-    { name: "License", path: "/license" },
     { name: "Contact", path: "/contact" },
-    { name: "FAQ", path: "/#faq" },
   ];
 
   return (
-    <header className="fixed top-[35px] left-0 right-0 z-50">
-      <PromoBanner />
-      <nav className="bg-white/90 backdrop-blur-lg border border-gray-200/30 shadow-lg transition-all duration-300 px-6 py-4">
+    <header
+      className={`transform transition-all duration-300 z-50 left-0 right-0 ${
+        isFixed
+          ? "fixed top-0 shadow-lg translate-y-0 bg-white/90 backdrop-blur-lg border border-gray-200/30 shadow-lg"
+          : "absolute bg-transparent"
+      }`}
+    >
+      <nav className="transition-all duration-300 px-6 py-4">
         <div className="max-w-screen-xl mx-auto w-full flex items-center justify-between">
           <div className="flex items-center space-x-8 rtl:space-x-reverse">
             <Link
@@ -33,28 +43,46 @@ export default function HeaderCPN() {
                 BloomTPL
               </span>
             </Link>
-            <div className="hidden lg:flex items-center space-x-8 rtl:space-x-reverse">
-              <ul className="flex space-x-4 rtl:space-x-reverse">
-                {navLinks.map((link) => (
-                  <li key={link.path}>
-                    <Link
-                      href={link.path}
-                      className={`py-2 px-4 text-gray-700 text-sm font-medium rounded-lg transition-all duration-200 hover:bg-purple-50 hover:text-purple-700 ${
-                        pathname === link.path
-                          ? "bg-purple-100 text-purple-700 shadow-sm"
-                          : ""
-                      }`}
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          </div>
+          <div className="hidden lg:flex items-center space-x-4 rtl:space-x-reverse">
+            <ul className="flex space-x-2 rtl:space-x-reverse">
+              {navLinks.map((link) => (
+                <li key={link.path}>
+                  <Link
+                    href={link.path}
+                    className={`py-2 px-4 text-gray-700 text-sm font-medium rounded-lg transition-all duration-200 hover:bg-purple-50 hover:text-purple-700 ${
+                      pathname === link.path
+                        ? "bg-purple-100 text-purple-700 shadow-sm"
+                        : ""
+                    }`}
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <button className="py-2 px-4 text-gray-700 text-sm font-medium rounded-lg transition-all duration-200 hover:bg-purple-50 hover:text-purple-700">
+                  More
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuItem>
+                  <Link href="/#faq">FAQ</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Link href="/license">License</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Link href="/blog">Blog</Link>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
 
           {/* Bouton de connexion et menu mobile */}
-          <div className="flex items-center space-x-3 md:space-x-0 rtl:space-x-reverse">
+          <div className="flex items-center space-x-2 rtl:space-x-reverse">
             <AuthButton />
             <button
               type="button"
