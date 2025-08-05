@@ -6,6 +6,7 @@ import {
   ChevronRight,
   Code,
   Shield,
+  Sparkles,
   Star,
   Zap,
 } from "lucide-react";
@@ -103,22 +104,18 @@ export default function LandingPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-radial-purple">
+    <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative overflow-hidden pt-20 bg-radial-purple background-image background">
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-32">
+      <section className="relative overflow-hidden pt-20">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
           <div className="text-center">
             <div className="inline-flex items-center px-4 py-2 bg-purple-100 text-purple-800 rounded-full text-sm font-medium mb-8">
               <Star className="w-4 h-4 mr-2" />
-              9+ Premium Templates Available
+              10+ Premium Templates Available
             </div>
 
             <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 tracking-tight">
-              Premium{" "}
-              <span className="bg-gradient-to-r from-purple-500 to-purple-900 bg-clip-text text-transparent bg-clip-text text-transparent">
-                Next.js Templates
-              </span>{" "}
-              for Modern Web Apps
+              Premium Next.js Templates for Modern Web Apps
             </h1>
 
             <p className="text-xl text-gray-600 mb-10 max-w-3xl mx-auto leading-relaxed">
@@ -131,16 +128,17 @@ export default function LandingPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link
                 href="/template"
-                className="bg-purple-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-purple-700 transition-all hover:scale-105 flex items-center"
+                className="bg-blue-400 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-500 transition-all hover:scale-105 flex items-center"
               >
                 Browse Templates
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Link>
               <Link
                 href="/components"
-                className="border border-gray-300 text-gray-700 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-50 transition-colors"
+                className="bg-emerald-400 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-emerald-500 transition-all hover:scale-105 flex items-center"
               >
                 Free Components
+                <ArrowRight className="w-5 h-5 ml-2" />
               </Link>
             </div>
           </div>
@@ -185,7 +183,7 @@ export default function LandingPage() {
       <section className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-medium mb-6">
+            <div className="inline-flex items-center px-4 py-2 bg-emerald-100 text-green-800 rounded-full text-sm font-medium mb-6">
               <Check className="w-4 h-4 mr-2" />
               100% Free Components
             </div>
@@ -214,7 +212,7 @@ export default function LandingPage() {
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     quality={90}
                   />
-                  <span className="absolute top-4 left-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+                  <span className="absolute top-4 left-4 bg-emerald-400 text-white px-3 py-1 rounded-full text-sm font-medium">
                     FREE
                   </span>
                 </div>
@@ -235,12 +233,12 @@ export default function LandingPage() {
                     </span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-2xl font-bold text-green-600">
+                    <span className="text-2xl font-bold text-emerald-400">
                       FREE
                     </span>
                     <Link
                       href={`${component.link}`}
-                      className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors"
+                      className="bg-emerald-400 text-white px-4 py-2 rounded-lg hover:bg-emerald-500 transition-colors"
                     >
                       View Code
                     </Link>
@@ -253,7 +251,7 @@ export default function LandingPage() {
           <div className="text-center">
             <Link
               href="/components"
-              className="bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-green-700 transition-colors inline-flex items-center mb-4"
+              className="bg-emerald-400 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-emerald-500 transition-colors inline-flex items-center mb-4"
             >
               Browse All Free Components
               <ChevronRight className="w-5 h-5 ml-2" />
@@ -318,12 +316,12 @@ export default function LandingPage() {
                     ))}
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-2xl font-bold text-purple-600">
+                    <span className="text-2xl font-bold text-blue-400">
                       {template.price === 0 ? "FREE" : `${template.price}€`}
                     </span>
                     <Link
                       href={`${template.link}`}
-                      className="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors"
+                      className="bg-blue-400 text-white px-4 py-2 rounded-lg hover:bg-blue-500 transition-colors"
                     >
                       {template.price === 0 ? "Get Free" : "Buy Now"}
                     </Link>
@@ -336,11 +334,55 @@ export default function LandingPage() {
           <div className="text-center mt-12">
             <Link
               href="/template"
-              className="bg-gray-900 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-800 transition-colors inline-flex items-center"
+              className="bg-blue-400 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-500 transition-colors inline-flex items-center"
             >
               View All Templates
               <ChevronRight className="w-5 h-5 ml-2" />
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Bundle Promotion Section */}
+      <section className="py-24 bg-gradient-to-br from-yellow-50 to-orange-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="inline-flex items-center px-4 py-2 bg-yellow-200 text-yellow-900 rounded-full text-sm font-medium mb-6">
+            <Sparkles className="w-4 h-4 mr-2" />
+            Special Offer
+          </div>
+
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            Get All Templates in One Powerful Bundle
+          </h2>
+
+          <p className="text-lg text-gray-700 max-w-2xl mx-auto mb-8">
+            Access <strong>8 premium templates</strong> including SaaS,
+            eCommerce, Portfolio, Blog & more – all for{" "}
+            <strong className="text-green-600">just 39.99€</strong> with code{" "}
+            <code className="font-semibold">BLOOM50</code>.
+          </p>
+
+          <Link
+            href="/bundle/ultimate"
+            className="inline-flex items-center gap-2 bg-yellow-500 text-white px-8 py-4 rounded-xl text-lg font-bold hover:bg-yellow-600 transition-all hover:scale-105 shadow-lg"
+          >
+            View the Bundle
+            <ArrowRight className="w-5 h-5" />
+          </Link>
+
+          <div className="mt-6 flex flex-col sm:flex-row justify-center items-center gap-6 text-sm text-gray-600">
+            <div className="flex items-center gap-2">
+              <Check className="w-4 h-4 text-green-500" />
+              Lifetime access
+            </div>
+            <div className="flex items-center gap-2">
+              <Check className="w-4 h-4 text-green-500" />
+              Future templates included
+            </div>
+            <div className="flex items-center gap-2">
+              <Check className="w-4 h-4 text-green-500" />
+              Commercial license
+            </div>
           </div>
         </div>
       </section>
@@ -418,12 +460,12 @@ export default function LandingPage() {
       <FaqAccordion />
 
       {/* CTA Section */}
-      <section className="py-24 bg-gradient-to-r from-purple-600 to-blue-600">
+      <section className="py-24 bg-radial from-[#c2bbf0] from-50% to-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold text-white mb-6">
+          <h2 className="text-4xl font-bold text-black mb-6">
             Ready to Build Something Amazing?
           </h2>
-          <p className="text-xl text-purple-100 mb-10">
+          <p className="text-xl text-gray-800 mb-10">
             Join thousands of developers who trust our templates for their
             projects
           </p>
@@ -431,7 +473,7 @@ export default function LandingPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/template"
-              className="bg-white text-purple-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors"
+              className="bg-white text-blue-400 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors border"
             >
               Browse Templates
             </Link>

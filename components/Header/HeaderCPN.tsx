@@ -4,6 +4,7 @@ import { DropdownMenu } from "@radix-ui/react-dropdown-menu";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import PromoBanner from "../PromoBanner";
 import {
   DropdownMenuContent,
   DropdownMenuItem,
@@ -24,14 +25,21 @@ export default function HeaderCPN() {
     { name: "Contact", path: "/contact" },
   ];
 
+  const headerBgClass: { [key: string]: string } = {
+    // "/": "bg-[#c2bbf0]",
+    // "/template": "bg-[#CEE5ED]",
+    "/bundle/ultimate": "bg-[#fff380]",
+  };
+
   return (
     <header
       className={`transform transition-all duration-300 z-50 left-0 right-0 ${
         isFixed
-          ? "fixed top-0 shadow-lg translate-y-0 bg-white/90 backdrop-blur-lg border border-gray-200/30 shadow-lg"
+          ? `fixed top-0 shadow-lg translate-y-0 ${headerBgClass[pathname] ?? "bg-white"}`
           : "absolute bg-transparent"
       }`}
     >
+      <PromoBanner />
       <nav className="transition-all duration-300 px-6 py-4">
         <div className="max-w-screen-xl mx-auto w-full flex items-center justify-between">
           <div className="flex items-center space-x-8 rtl:space-x-reverse">
@@ -50,9 +58,9 @@ export default function HeaderCPN() {
                 <li key={link.path}>
                   <Link
                     href={link.path}
-                    className={`py-2 px-4 text-gray-700 text-sm font-medium rounded-lg transition-all duration-200 hover:bg-purple-50 hover:text-purple-700 ${
+                    className={`py-2 px-4 text-gray-900  font-medium rounded-lg transition-all duration-200 hover:bg-purple-50 hover:underline ${
                       pathname === link.path
-                        ? "bg-purple-100 text-purple-700 shadow-sm"
+                        ? "bg-purple-50 underline shadow-sm"
                         : ""
                     }`}
                   >
@@ -63,7 +71,7 @@ export default function HeaderCPN() {
             </ul>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <button className="py-2 px-4 text-gray-700 text-sm font-medium rounded-lg transition-all duration-200 hover:bg-purple-50 hover:text-purple-700">
+                <button className="py-2 px-4 text-gray-700 font-medium rounded-lg transition-all duration-200 hover:bg-purple-50 hover:underline cursor-pointer">
                   More
                 </button>
               </DropdownMenuTrigger>
@@ -137,7 +145,7 @@ export default function HeaderCPN() {
                 key={link.path}
                 href={link.path}
                 onClick={() => setIsOpen(false)}
-                className={`block py-3 px-4 text-gray-700 rounded-lg font-medium transition-all duration-200 hover:bg-purple-50 hover:text-purple-700 ${
+                className={`block my-1 py-2 px-4 text-gray-700 rounded-lg font-medium transition-all duration-200 hover:bg-purple-50 hover:text-purple-700 ${
                   pathname === link.path
                     ? "bg-purple-100 text-purple-700 shadow-sm"
                     : ""
@@ -146,6 +154,39 @@ export default function HeaderCPN() {
                 {link.name}
               </Link>
             ))}
+            <Link
+              href="/#faq"
+              onClick={() => setIsOpen(false)}
+              className={`block py-3 px-4 text-gray-700 rounded-lg font-medium transition-all duration-200 hover:bg-purple-50 hover:text-purple-700 ${
+                pathname === "/#faq"
+                  ? "bg-purple-100 text-purple-700 shadow-sm"
+                  : ""
+              }`}
+            >
+              FAQ
+            </Link>
+            <Link
+              href="/license"
+              onClick={() => setIsOpen(false)}
+              className={`block py-3 px-4 text-gray-700 rounded-lg font-medium transition-all duration-200 hover:bg-purple-50 hover:text-purple-700 ${
+                pathname === "/license"
+                  ? "bg-purple-100 text-purple-700 shadow-sm"
+                  : ""
+              }`}
+            >
+              License
+            </Link>
+            <Link
+              href="/blog"
+              onClick={() => setIsOpen(false)}
+              className={`block py-2 px-4 text-gray-700 rounded-lg font-medium transition-all duration-200 hover:bg-purple-50 hover:text-purple-700 ${
+                pathname === "/blog"
+                  ? "bg-purple-100 text-purple-700 shadow-sm"
+                  : ""
+              }`}
+            >
+              Blog
+            </Link>
           </div>
         </div>
       )}

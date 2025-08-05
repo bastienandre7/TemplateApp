@@ -18,36 +18,14 @@ export default function HeroBanner({
 
   return (
     <section
-      className="relative bg-white border-b border-gray-100 pt-24"
+      className="relative bg-white pt-24 template-background-style"
       itemScope
       itemType="https://schema.org/WebSite"
     >
-      {/* Subtle background pattern */}
-      <div className="absolute inset-0 opacity-60" aria-hidden="true">
-        <svg className="w-full h-full" viewBox="0 0 100 100" fill="none">
-          <defs>
-            <pattern
-              id="grid"
-              width="10"
-              height="10"
-              patternUnits="userSpaceOnUse"
-            >
-              <path
-                d="M 10 0 L 0 0 0 10"
-                fill="none"
-                stroke="#f1f5f9"
-                strokeWidth="0.5"
-              />
-            </pattern>
-          </defs>
-          <rect width="100" height="100" fill="url(#grid)" />
-        </svg>
-      </div>
-
       <div className="relative pt-4">
-        <div className="mx-auto max-w-4xl px-6 py-10 sm:py-10">
+        <div className="mx-auto max-w-5xl px-6 py-10 sm:py-10 lg:pt-20">
           <div className="text-center">
-            <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-6 text-gray-900">
+            <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 tracking-tight">
               9+ Best Free and Premium Next.js Templates (2025)
             </h1>
 
@@ -134,7 +112,7 @@ export default function HeroBanner({
                   />
                   <button
                     type="submit"
-                    className="bg-purple-600 hover:bg-purple-700 text-white px-3 sm:px-6 py-3 font-medium text-xs sm:text-sm transition-colors duration-200 whitespace-nowrap"
+                    className="bg-blue-400 hover:bg-blue-500 text-white px-3 sm:px-6 py-3 font-medium text-xs sm:text-sm transition-colors duration-200 whitespace-nowrap"
                   >
                     <span className="hidden sm:inline">Search</span>
                     <svg

@@ -11,8 +11,8 @@ export default function PromoBanner() {
   };
 
   return (
-    <div className="fixed top-0 left-0 w-full z-[60]">
-      <div className="flex items-center justify-center gap-3 bg-gradient-to-r from-purple-600 to-purple-400 text-white px-6 py-1 shadow-lg font-semibold text-base border-b border-purple-300">
+    <div className=" w-full z-[60]">
+      <div className="flex items-center justify-center gap-3 bg-black text-white px-6 py-1 shadow-lg font-semibold text-base">
         <span className="bg-purple-100 text-purple-700 px-2 py-0.5 rounded text-xs font-bold mr-2">
           -50% CODE
         </span>

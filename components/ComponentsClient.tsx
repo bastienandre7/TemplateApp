@@ -1,6 +1,5 @@
 "use client";
 
-import HeaderCPN from "@/components/Header/HeaderCPN";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -48,8 +47,8 @@ export default function ComponentsClient() {
 
   if (!mounted || loading) {
     return (
-      <div className="pt-32 bg-white min-h-screen">
-        <div className="bg-gradient-to-b from-purple-50 to-white py-16">
+      <div className="pt-32 min-h-screen">
+        <div className="py-16">
           <div className="max-w-4xl mx-auto px-6 text-center">
             <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
               Free Next.js Components
@@ -64,26 +63,16 @@ export default function ComponentsClient() {
             </p>
           </div>
         </div>
-        <div className="max-w-6xl mx-auto px-6 py-16">
-          <div className="text-center">
-            <div className="animate-pulse">
-              <div className="h-8 bg-gray-200 rounded w-1/2 mx-auto mb-4"></div>
-              <div className="h-4 bg-gray-200 rounded w-1/3 mx-auto"></div>
-            </div>
-          </div>
-        </div>
       </div>
     );
   }
 
   return (
-    <div className="pt-20 bg-gradient-to-b from-purple-50 to-white min-h-screen">
-      <HeaderCPN />
-
+    <div className="min-h-screen">
       {/* Hero Section */}
-      <div className="py-16">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
+      <div className="pt-40 pb-16">
+        <div className="max-w-5xl mx-auto px-6 text-center">
+          <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 tracking-tight">
             Free Next.js Components
           </h1>
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">

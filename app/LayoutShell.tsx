@@ -26,7 +26,7 @@ export default function LayoutShell({ children }: { children: ReactNode }) {
       <div className="flex flex-col min-h-screen bg-white">
         <CookieBanner />
         <HeaderCPN />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 mb">{children}</main>
         <FooterCPN />
       </div>
       <CookieConsentGate>

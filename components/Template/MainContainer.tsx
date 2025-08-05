@@ -88,7 +88,7 @@ export default function MainContainer({
 
   return (
     <div id="templates" className="w-full mx-auto text-black relative bg-white">
-      <div className="relative z-10 px-4 py-10">
+      <div className="relative z-10 px-4 py-10 mb-20">
         <div className="max-w-6xl mx-auto">
           {/* Section Header - Notion style */}
           <div className="text-center mb-12">
@@ -252,7 +252,7 @@ export default function MainContainer({
                       {new Date().getTime() -
                         new Date(item.created_at).getTime() <
                         14 * 24 * 60 * 60 * 1000 && (
-                        <span className="absolute top-3 right-3 bg-purple-600 text-white text-xs px-2 py-1 rounded font-medium">
+                        <span className="absolute top-3 right-3 bg-blue-500 text-white text-xs px-2 py-1 rounded font-medium">
                           NEW
                         </span>
                       )}
@@ -324,7 +324,7 @@ export default function MainContainer({
                                 window.location.href = url;
                               }
                             }}
-                            className="flex-1 text-sm bg-purple-600 hover:bg-purple-700 text-white py-4 border rounded-lg"
+                            className="flex-1 text-sm bg-blue-400 hover:bg-blue-500 text-white py-4 border rounded-lg"
                           >
                             {item.price === 0
                               ? "FREE"
