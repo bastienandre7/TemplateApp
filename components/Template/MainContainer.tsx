@@ -266,7 +266,7 @@ export default function MainContainer({
 
                     <div className="flex-1 flex flex-col justify-between p-5">
                       <div>
-                        <Link href={`/template/${item.slug}`}>
+                        <Link href={`/nextjs-templates/${item.slug}`}>
                           <h3 className="text-lg font-semibold mb-2 text-gray-900 hover:text-violet-600 transition-colors duration-200">
                             {item.name}
                           </h3>

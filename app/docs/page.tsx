@@ -4,7 +4,7 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Documentation - How to Use Best Next.js Templates | BloomTPL",
   description:
-    "Complete step-by-step guide to install, customize, and deploy your premium Next.js templates. From purchase to production in minutes with BloomTPL's best practices.",
+    "Complete step-by-step guide to install, customize, and deploy your premium Next.js templates. From purchase to production in minutes with BloomTPL.",
   alternates: {
     canonical: "https://bloomtpl.com/docs",
   },

@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Ultimate Developer Bundle – 8 Premium Next.js Templates | BloomTPL",
   description:
-    "Get the best deal with the Ultimate Developer Bundle from BloomTPL. Includes 8 premium Next.js & Tailwind CSS templates to launch SaaS, blogs, portfolios, and more.",
+    "Get the best deal with the Ultimate Developer Bundle from BloomTPL. Includes 8 premium Next.js templates to launch SaaS, blogs, portfolios, and more.",
   metadataBase: new URL("https://bloomtpl.com"),
   alternates: {
     canonical: "https://bloomtpl.com/bundle/ultimate",
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Ultimate Developer Bundle – 8 Premium Next.js Templates | BloomTPL",
     description:
-      "Get the best deal with the Ultimate Developer Bundle from BloomTPL. Includes 8 premium Next.js & Tailwind CSS templates to launch SaaS, blogs, portfolios, and more.",
+      "Get the best deal with the Ultimate Developer Bundle from BloomTPL. Includes 8 premium Next.js templates to launch SaaS, blogs, portfolios, and more.",
     url: "https://bloomtpl.com/bundle/ultimate",
     siteName: "BloomTPL",
     locale: "en_US",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Ultimate Developer Bundle – 8 Premium Next.js Templates | BloomTPL",
     description:
-      "Get the best deal with the Ultimate Developer Bundle from BloomTPL. Includes 8 premium Next.js & Tailwind CSS templates to launch SaaS, blogs, portfolios, and more.",
+      "Get the best deal with the Ultimate Developer Bundle from BloomTPL. Includes 8 premium Next.js templates to launch SaaS, blogs, portfolios, and more.",
     images: ["https://bloomtpl.com/bundle-og-image.png"],
   },
   creator: "BloomTPL",
