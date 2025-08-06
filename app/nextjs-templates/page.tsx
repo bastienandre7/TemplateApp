@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "10+ Premium Next.js Templates Under 40€ (2025) | BloomTPL",
   description:
-    "Explore premium-quality Next.js templates for 10–40€ instead of 100€+. All templates are built with Tailwind CSS & TypeScript, SEO-friendly, and production-ready.",
+    "Discover premium Next.js templates for 10–40€, built with Tailwind CSS & TypeScript. Fast, SEO-friendly, and ready for production.",
   metadataBase: new URL("https://bloomtpl.com"),
   alternates: {
     canonical: "https://bloomtpl.com/nextjs-templates",
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "10+ Premium Next.js Templates Under 40€ (2025) | BloomTPL",
     description:
-      "Explore premium-quality Next.js templates for 10–40€ instead of 100€+. All templates are built with Tailwind CSS & TypeScript, SEO-friendly, and production-ready.",
+      "Discover premium Next.js templates for 10–40€, built with Tailwind CSS & TypeScript. Fast, SEO-friendly, and ready for production.",
     url: "https://bloomtpl.com/nextjs-templates",
     siteName: "BloomTPL",
     locale: "en_US",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "10+ Premium Next.js Templates Under 40€ (2025) | BloomTPL",
     description:
-      "Explore premium-quality Next.js templates for 10–40€ instead of 100€+. All templates are built with Tailwind CSS & TypeScript, SEO-friendly, and production-ready.",
+      "Discover premium Next.js templates for 10–40€, built with Tailwind CSS & TypeScript. Fast, SEO-friendly, and ready for production.",
     images: ["https://bloomtpl.com/og-image.png"],
   },
   creator: "BloomTPL",
@@ -60,7 +60,7 @@ export default async function TemplatePage() {
           height: 512,
         },
         description:
-          "Explore premium-quality Next.js templates for 10–40€ instead of 100€+. All templates are built with Tailwind CSS & TypeScript, SEO-friendly, and production-ready.",
+          "Discover premium Next.js templates for 10–40€, built with Tailwind CSS & TypeScript. Fast, SEO-friendly, and ready for production.",
         foundingDate: "2025",
         sameAs: ["https://twitter.com/BloomTPL"],
         contactPoint: {
@@ -75,7 +75,7 @@ export default async function TemplatePage() {
         url: "https://bloomtpl.com",
         name: "10+ Premium Next.js Templates Under 40€ (2025) | BloomTPL",
         description:
-          "Explore premium-quality Next.js templates for 10–40€ instead of 100€+. All templates are built with Tailwind CSS & TypeScript, SEO-friendly, and production-ready.",
+          "Discover premium Next.js templates for 10–40€, built with Tailwind CSS & TypeScript. Fast, SEO-friendly, and ready for production.",
         publisher: {
           "@id": "https://bloomtpl.com/#organization",
         },
@@ -95,7 +95,7 @@ export default async function TemplatePage() {
         "@id": "https://bloomtpl.com/nextjs-templates/#products",
         name: "Next.js Templates",
         description:
-          "Premium Next.js templates for 10–40€ instead of 100€+. All templates are built with Tailwind CSS & TypeScript, SEO-friendly, and production-ready.",
+          "Discover premium Next.js templates for 10–40€, built with Tailwind CSS & TypeScript. Fast, SEO-friendly, and ready for production.",
         numberOfItems: data.length,
         itemListElement: data.slice(0, 10).map(
           (

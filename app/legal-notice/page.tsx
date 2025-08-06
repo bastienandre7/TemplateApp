@@ -4,14 +4,14 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Legal Notice – BloomTPL",
   description:
-    "Legal information and ownership details regarding the BloomTPL website and its contents.",
+    "Find legal details, copyright ownership, and contact information regarding the BloomTPL brand, website, and all template-related content and assets.",
   alternates: {
     canonical: "https://bloomtpl.com/legal-notice",
   },
   openGraph: {
     title: "Legal Notice – BloomTPL",
     description:
-      "Legal information and ownership details regarding the BloomTPL website and its contents.",
+      "Find legal details, copyright ownership, and contact information regarding the BloomTPL brand, website, and all template-related content and assets.",
     url: "https://bloomtpl.com/legal-notice",
     siteName: "BloomTPL",
     locale: "en_US",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     card: "summary",
     title: "Legal Notice – BloomTPL",
     description:
-      "Read the legal notice and company ownership information of BloomTPL.",
+      "Find legal details, copyright ownership, and contact information regarding the BloomTPL brand, website, and all template-related content and assets.",
   },
 };
 

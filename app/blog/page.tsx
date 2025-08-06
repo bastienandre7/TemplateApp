@@ -22,14 +22,14 @@ const options = { next: { revalidate: 30 } };
 export const metadata: Metadata = {
   title: "Blog - Next.js Templates & Web Development | BloomTPL",
   description:
-    "Discover the latest trends, tutorials, and insights about Next.js development, template design, and modern web development. Learn from expert developers at BloomTPL.",
+    "Read blog posts about Next.js, web development trends, and UI design. Learn from expert tips, guides, and tutorials by BloomTPL.",
   alternates: {
     canonical: "https://bloomtpl.com/blog",
   },
   openGraph: {
     title: "Blog - Next.js Templates & Web Development | BloomTPL",
     description:
-      "Discover the latest trends, tutorials, and insights about Next.js development, template design, and modern web development. Learn from expert developers at BloomTPL.",
+      "Read blog posts about Next.js, web development trends, and UI design. Learn from expert tips, guides, and tutorials by BloomTPL.",
     url: "https://bloomtpl.com/blog",
     siteName: "BloomTPL",
     locale: "en_US",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Blog - Next.js Templates & Web Development | BloomTPL",
     description:
-      "Discover the latest trends, tutorials, and insights about Next.js development, template design, and modern web development.",
+      "Read blog posts about Next.js, web development trends, and UI design. Learn from expert tips, guides, and tutorials by BloomTPL.",
     images: ["https://bloomtpl.com/og-image.png"],
     creator: "@BloomTPL",
   },
@@ -62,7 +62,7 @@ export default async function BlogPage() {
     "@type": "Blog",
     name: "BloomTPL Blog",
     description:
-      "Discover the latest trends, tutorials, and insights about Next.js development, template design, and modern web development.",
+      "Read blog posts about Next.js, web development trends, and UI design. Learn from expert tips, guides, and tutorials by BloomTPL.",
     url: "https://bloomtpl.com/blog",
     mainEntityOfPage: {
       "@type": "WebPage",

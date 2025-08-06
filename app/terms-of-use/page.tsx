@@ -5,14 +5,14 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Terms of Use – BloomTPL",
   description:
-    "Read the terms and conditions for using BloomTPL templates, services, and website.",
+    "Review the terms and conditions for using BloomTPL templates, including licensing, usage rules, account access, and limitations of service or support.",
   alternates: {
     canonical: "https://bloomtpl.com/terms-of-use",
   },
   openGraph: {
     title: "Terms of Use – BloomTPL",
     description:
-      "Read the terms and conditions for using BloomTPL templates, services, and website.",
+      "Review the terms and conditions for using BloomTPL templates, including licensing, usage rules, account access, and limitations of service or support.",
     url: "https://bloomtpl.com/terms-of-use",
     siteName: "BloomTPL",
     locale: "en_US",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     card: "summary",
     title: "Terms of Use – BloomTPL",
     description:
-      "Review BloomTPL's usage policies and legal conditions for accessing our digital products.",
+      "Review the terms and conditions for using BloomTPL templates, including licensing, usage rules, account access, and limitations of service or support.",
   },
 };
 

@@ -54,10 +54,11 @@ export default function ComponentsClient() {
               Free Next.js Components
             </h1>
             <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-              Beautiful, responsive components built with{" "}
+              Discover beautiful, responsive UI components built with{" "}
               <span className="text-red-600 font-semibold">Tailwind CSS</span>{" "}
               and <span className="text-red-600 font-semibold">React</span>.
-              Copy the code and paste into your project.
+              Easily copy and integrate them into your Next.js or React
+              projects. Fast, modern, and fully customizable.
             </p>
           </div>
         </div>

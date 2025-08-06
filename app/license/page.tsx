@@ -4,14 +4,14 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "License Agreement - Templates Usage Rights | BloomTPL",
   description:
-    "Understand your rights and responsibilities when using BloomTPL templates. Learn about commercial use, distribution, and modification permissions for our Next.js templates.",
+    "Learn about usage rights for BloomTPL templates, including commercial use, redistribution, and modification rules.",
   alternates: {
     canonical: "https://bloomtpl.com/license",
   },
   openGraph: {
     title: "License Agreement - Templates Usage Rights | BloomTPL",
     description:
-      "Understand your rights and responsibilities when using BloomTPL templates. Learn about commercial use, distribution, and modification permissions for our Next.js templates.",
+      "Learn about usage rights for BloomTPL templates, including commercial use, redistribution, and modification rules.",
     url: "https://bloomtpl.com/license",
     siteName: "BloomTPL",
     locale: "en_US",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "License Agreement - Templates Usage Rights | BloomTPL",
     description:
-      "Understand your rights and responsibilities when using BloomTPL templates.",
+      "Learn about usage rights for BloomTPL templates, including commercial use, redistribution, and modification rules.",
     creator: "@BloomTPL",
     images: ["https://bloomtpl.com/og/license.jpg"],
   },
