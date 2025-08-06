@@ -70,7 +70,7 @@ export default function ComponentsClient() {
       {/* Hero Section */}
       <div className="pt-40 pb-16 components-background-style">
         <div className="max-w-5xl mx-auto px-6 text-center">
-          <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 tracking-tight">
+          <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight">
             Free Next.js Components
           </h1>
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
@@ -147,7 +147,7 @@ export default function ComponentsClient() {
               <span className="font-semibold">Premium Templates</span>
             </p>
             <Link
-              href="/"
+              href="/nextjs-templates"
               className="text-purple-600 hover:text-purple-700 font-medium text-sm"
             >
               View Templates →
@@ -319,7 +319,7 @@ export default function ComponentsClient() {
             authentication, and more.
           </p>
           <Link
-            href="/"
+            href="/nextjs-templates"
             className="inline-flex items-center gap-2 bg-red-700 text-white px-8 py-4 rounded-xl font-semibold hover:bg-red-800 transition text-lg"
           >
             View Premium Templates

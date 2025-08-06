@@ -2,20 +2,20 @@ import HomeWrapper from "@/components/HomeWrapper";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "10+ Best Free and Premium Next.js Templates (2025) | BloomTPL",
+  title: "10+ Premium Next.js Templates Under 40€ (2025) | BloomTPL",
   description:
-    "Explore 10+ free and premium Next.js templates, starter kits and themes built with Tailwind CSS and React — ideal for SaaS, e-commerce, portfolios and blog pages.",
+    "Explore premium-quality Next.js templates for 10–40€ instead of 100€+. All templates are built with Tailwind CSS & TypeScript, SEO-friendly, and production-ready. Quality without compromise – made in Europe.",
   metadataBase: new URL("https://bloomtpl.com"),
   alternates: {
-    canonical: "https://bloomtpl.com/template",
+    canonical: "https://bloomtpl.com/nextjs-templates",
   },
   robots:
     "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
   openGraph: {
-    title: "10+ Best Free and Premium Next.js Templates (2025) | BloomTPL",
+    title: "10+ Premium Next.js Templates Under 40€ (2025) | BloomTPL",
     description:
-      "Explore 10+ free and premium Next.js templates, starter kits and themes built with Tailwind CSS and React — ideal for SaaS, e-commerce, portfolios and blog pages.",
-    url: "https://bloomtpl.com/template",
+      "Explore premium-quality Next.js templates for 10–40€ instead of 100€+. All templates are built with Tailwind CSS & TypeScript, SEO-friendly, and production-ready. Quality without compromise – made in Europe.",
+    url: "https://bloomtpl.com/nextjs-templates",
     siteName: "BloomTPL",
     locale: "en_US",
     type: "website",
@@ -30,9 +30,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "10+ Best Free and Premium Next.js Templates (2025) | BloomTPL",
+    title: "10+ Premium Next.js Templates Under 40€ (2025) | BloomTPL",
     description:
-      "Explore 10+ free and premium Next.js templates, starter kits and themes built with Tailwind CSS and React — ideal for SaaS, e-commerce, portfolios and blog pages.",
+      "Explore premium-quality Next.js templates for 10–40€ instead of 100€+. All templates are built with Tailwind CSS & TypeScript, SEO-friendly, and production-ready. Quality without compromise – made in Europe.",
     images: ["https://bloomtpl.com/og-image.png"],
   },
   creator: "BloomTPL",
@@ -60,7 +60,7 @@ export default async function TemplatePage() {
           height: 512,
         },
         description:
-          "Explore 10+ free and premium Next.js templates, starter kits and themes built with Tailwind CSS and React — ideal for SaaS, e-commerce, portfolios and blog pages.",
+          "Explore premium-quality Next.js templates for 10–40€ instead of 100€+. All templates are built with Tailwind CSS & TypeScript, SEO-friendly, and production-ready. Quality without compromise – made in Europe.",
         foundingDate: "2025",
         sameAs: ["https://twitter.com/BloomTPL"],
         contactPoint: {
@@ -73,9 +73,9 @@ export default async function TemplatePage() {
         "@type": "WebSite",
         "@id": "https://bloomtpl.com/#website",
         url: "https://bloomtpl.com",
-        name: "10+ Best Free and Premium Next.js Templates (2025) | BloomTPL",
+        name: "10+ Premium Next.js Templates Under 40€ (2025) | BloomTPL",
         description:
-          "Explore 10+ free and premium Next.js templates, starter kits and themes built with Tailwind CSS and React — ideal for SaaS, e-commerce, portfolios and blog pages.",
+          "Explore premium-quality Next.js templates for 10–40€ instead of 100€+. All templates are built with Tailwind CSS & TypeScript, SEO-friendly, and production-ready. Quality without compromise – made in Europe.",
         publisher: {
           "@id": "https://bloomtpl.com/#organization",
         },
@@ -84,17 +84,18 @@ export default async function TemplatePage() {
           "@type": "SearchAction",
           target: {
             "@type": "EntryPoint",
-            urlTemplate: "https://bloomtpl.com/?search={search_term_string}",
+            urlTemplate:
+              "https://bloomtpl.com/nextjs-templates/?search={search_term_string}",
           },
           "query-input": "required name=search_term_string",
         },
       },
       {
         "@type": "ItemList",
-        "@id": "https://bloomtpl.com/#products",
+        "@id": "https://bloomtpl.com/nextjs-templates/#products",
         name: "Next.js Templates",
         description:
-          "Free and Premium Next.js and Tailwind CSS templates for modern web development",
+          "Premium Next.js templates for 10–40€ instead of 100€+. All templates are built with Tailwind CSS & TypeScript, SEO-friendly, and production-ready. Quality without compromise – made in Europe.",
         numberOfItems: data.length,
         itemListElement: data.slice(0, 10).map(
           (
@@ -113,10 +114,10 @@ export default async function TemplatePage() {
             position: index + 1,
             item: {
               "@type": "Product",
-              "@id": `https://bloomtpl.com/template/${product.slug}`,
+              "@id": `https://bloomtpl.com/nextjs-templates/${product.slug}`,
               name: product.name,
               description: product.description,
-              url: `https://bloomtpl.com/template/${product.slug}`,
+              url: `https://bloomtpl.com/nextjs-templates/${product.slug}`,
               image: product.openGraphImage || product.imageUrl,
               offers: {
                 "@type": "Offer",

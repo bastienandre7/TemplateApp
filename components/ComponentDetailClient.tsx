@@ -291,7 +291,7 @@ export default function ComponentDetailClient({
             <div className="text-center">
               <p className="text-gray-600 mb-2">Need complete templates?</p>
               <Link
-                href="/"
+                href="/nextjs-templates"
                 className="inline-flex items-center gap-2 bg-purple-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-purple-700 transition"
               >
                 View Premium Templates

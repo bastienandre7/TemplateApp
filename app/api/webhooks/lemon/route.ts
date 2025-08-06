@@ -1,13 +1,16 @@
 import { prisma } from "@/lib/prisma";
-import { NextRequest, NextResponse } from "next/server";
 import crypto from "crypto";
+import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
   const rawBody = await req.text(); // important: raw body, pas .json()
   const signature = req.headers.get("x-signature");
 
   if (!signature || !process.env.LEMON_WEBHOOK_SECRET) {
-    return NextResponse.json({ error: "Missing signature or secret" }, { status: 401 });
+    return NextResponse.json(
+      { error: "Missing signature or secret" },
+      { status: 401 }
+    );
   }
 
   const expectedSignature = crypto
@@ -25,7 +28,6 @@ export async function POST(req: NextRequest) {
 
   const email = body?.data?.attributes?.user_email;
   const orderItems = body?.data?.attributes?.order_items;
-  
 
   if (!email || !orderItems || !Array.isArray(orderItems)) {
     console.error("Invalid payload:", body);
@@ -34,7 +36,7 @@ export async function POST(req: NextRequest) {
 
   for (const item of orderItems) {
     const template = item.product_name;
-    const variantId = item.variant_id;
+    const variantId = item.product_id;
 
     if (!template || !variantId) continue;
 

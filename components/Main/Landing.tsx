@@ -71,7 +71,7 @@ export default function LandingPage() {
       image:
         "https://9hn0rhd8ibpivln7.public.blob.vercel-storage.com/templates/ShopBase%20Template/preview-1.png",
       features: ["Product Catalog", "Shopping Cart", "Checkout", "Admin Panel"],
-      link: "/template/shopbase-nextjs-e-commerce-boilerplate",
+      link: "/nextjs-templates/shopbase-nextjs-e-commerce-boilerplate",
     },
     {
       name: "BlogStarter – Next.js Tailwind CSS Blog Starter Kit",
@@ -84,7 +84,7 @@ export default function LandingPage() {
         "Dark mode",
         "Pre-built author and category pages",
       ],
-      link: "/template/blogstarter-next-js-tailwind-css-blog-starter-kit",
+      link: "/nextjs-templates/blogstarter-next-js-tailwind-css-blog-starter-kit",
     },
     {
       name: "CoreSaaS – Next.js Tailwind CSS SaaS Starter Kit & Boilerplate",
@@ -98,7 +98,7 @@ export default function LandingPage() {
         "Admin dashboard",
         "Dark Mode",
       ],
-      link: "/template/coresaas-next-js-tailwind-css-saas-starter-kit-boilerplate",
+      link: "/nextjs-templates/coresaas-next-js-tailwind-css-saas-starter-kit-boilerplate",
     },
   ];
 
@@ -113,7 +113,7 @@ export default function LandingPage() {
               10+ Premium Templates Available
             </div>
 
-            <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 tracking-tight">
+            <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight max-w-3xl mx-auto">
               Premium Next.js Templates for Modern Web Apps
             </h1>
 
@@ -126,7 +126,7 @@ export default function LandingPage() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link
-                href="/template"
+                href="/nextjs-templates"
                 className="bg-violet-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-violet-700 transition-all hover:scale-105 flex items-center"
               >
                 Browse Templates
@@ -145,10 +145,10 @@ export default function LandingPage() {
       </section>
 
       {/* Features Section */}
-      <section className="py-24 bg-white">
+      <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
               Why Choose Our Templates?
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
@@ -330,7 +330,7 @@ export default function LandingPage() {
 
           <div className="text-center mt-12">
             <Link
-              href="/template"
+              href="/nextjs-templates"
               className="bg-violet-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-violet-700 transition-colors inline-flex items-center"
             >
               View All Templates
@@ -469,7 +469,7 @@ export default function LandingPage() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link
-              href="/template"
+              href="/nextjs-templates"
               className="bg-violet-600 hover:bg-violet-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center group"
             >
               Browse All Templates

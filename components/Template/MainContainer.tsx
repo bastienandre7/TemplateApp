@@ -87,8 +87,11 @@ export default function MainContainer({
     });
 
   return (
-    <div id="templates" className="w-full mx-auto text-black relative bg-white">
-      <div className="relative z-10 px-4 py-10 mb-20">
+    <div
+      id="templates"
+      className="w-full mx-auto text-black relative bg-white mb-24"
+    >
+      <div className="relative z-10 px-4 ">
         <div className="max-w-6xl mx-auto">
           {/* Section Header - Notion style */}
           <div className="text-center mb-12">
@@ -220,6 +223,7 @@ export default function MainContainer({
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-2">
               {filteredItems.map((item) => {
                 const isOwned = ownedTemplates.includes(item.name);
+                console.log(`Checking ownership for ${item.name}: ${isOwned}`);
 
                 return (
                   <div
@@ -263,7 +267,7 @@ export default function MainContainer({
                     <div className="flex-1 flex flex-col justify-between p-5">
                       <div>
                         <Link href={`/template/${item.slug}`}>
-                          <h3 className="text-lg font-semibold mb-2 text-gray-900 hover:text-blue-600 transition-colors duration-200">
+                          <h3 className="text-lg font-semibold mb-2 text-gray-900 hover:text-violet-600 transition-colors duration-200">
                             {item.name}
                           </h3>
                         </Link>
@@ -318,7 +322,7 @@ export default function MainContainer({
                             }}
                           >
                             {item.price === 0
-                              ? "Download"
+                              ? "Download Free"
                               : `Buy Now - ${item.price}€`}
                           </Button>
                         )}

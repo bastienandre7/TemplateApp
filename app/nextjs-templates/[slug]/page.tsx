@@ -26,12 +26,12 @@ export async function generateMetadata({
     title: `${product.name} | BloomTPL`,
     description: product.description,
     alternates: {
-      canonical: `https://bloomtpl.com/template/${slug}`,
+      canonical: `https://bloomtpl.com/nextjs-templates/${slug}`,
     },
     openGraph: {
       title: `${product.name} | BloomTPL`,
       description: product.description,
-      url: `https://bloomtpl.com/template/${slug}`,
+      url: `https://bloomtpl.com/nextjs-templates/${slug}`,
       siteName: "BloomTPL",
       locale: "en_US",
       type: "website",
@@ -94,7 +94,7 @@ export default async function TemplateDetailsPage({
       priceCurrency: "EUR",
       price: product.price.toFixed(2),
       availability: "https://schema.org/InStock",
-      url: `https://bloomtpl.com/template/${product.slug}`,
+      url: `https://bloomtpl.com/nextjs-templates/${product.slug}`,
       priceValidUntil: "2025-12-31",
       eligibleRegion: {
         "@type": "Country",

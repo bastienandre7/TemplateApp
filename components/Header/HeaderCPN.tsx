@@ -18,7 +18,7 @@ export default function HeaderCPN() {
   const { isFixed } = useScrollHeader();
 
   const navLinks = [
-    { name: "Templates", path: "/template" },
+    { name: "Templates", path: "/nextjs-templates" },
     { name: "Components", path: "/components" },
     { name: "Bundle", path: "/bundle/ultimate" },
     { name: "Docs", path: "/docs" },

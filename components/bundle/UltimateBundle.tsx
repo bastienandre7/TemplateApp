@@ -182,11 +182,10 @@ export default function UltimateBundle() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {templates.map((template, index) => (
+            {templates.map((template) => (
               <div
                 key={template.name}
                 className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border hover:border-blue-200 transform hover:-translate-y-1"
-                style={{ transitionDelay: `${index * 100}ms` }}
               >
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="text-xl font-bold text-slate-900">

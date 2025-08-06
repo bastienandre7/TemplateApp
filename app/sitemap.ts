@@ -15,7 +15,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 1,
     },
     {
-      url: `${baseUrl}/template`,
+      url: `${baseUrl}/nextjs-templates`,
       lastModified: new Date(),
       changeFrequency: "weekly" as const,
       priority: 0.9,
@@ -28,6 +28,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     {
       url: `${baseUrl}/components`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/bundle/ultimate`,
       lastModified: new Date(),
       changeFrequency: "weekly" as const,
       priority: 0.9,
@@ -76,7 +82,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   });
 
   const templateRoutes = templates.map((template) => ({
-    url: `${baseUrl}/template/${template.slug}`,
+    url: `${baseUrl}/nextjs-templates/${template.slug}`,
     lastModified: template.updatedAt || new Date(),
     changeFrequency: "daily" as const,
     priority: 0.9,
