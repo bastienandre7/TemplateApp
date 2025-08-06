@@ -26,9 +26,10 @@ export default function HeaderCPN() {
   ];
 
   const headerBgClass: { [key: string]: string } = {
-    // "/": "bg-[#c2bbf0]",
-    // "/template": "bg-[#CEE5ED]",
-    "/bundle/ultimate": "bg-[#fff380]",
+    // "/": "test",
+    // "/template": "bg-[#BFECFF]",
+    // "/components": "bg-[#e8ecf1]",
+    // "/bundle/ultimate": "bg-[#fff380]",
   };
 
   return (

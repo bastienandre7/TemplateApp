@@ -243,16 +243,11 @@ export default function MainContainer({
                         quality={90}
                       />
 
-                      {/* Simple category tag */}
-                      <span className="absolute top-3 left-3 bg-gray-100 text-gray-700 text-xs font-medium px-2 py-1 rounded">
-                        {item.category}
-                      </span>
-
                       {/* NEW Badge */}
                       {new Date().getTime() -
                         new Date(item.created_at).getTime() <
                         14 * 24 * 60 * 60 * 1000 && (
-                        <span className="absolute top-3 right-3 bg-blue-500 text-white text-xs px-2 py-1 rounded font-medium">
+                        <span className="absolute top-3 right-3 bg-violet-600 text-white text-xs px-2 py-1 rounded font-medium">
                           NEW
                         </span>
                       )}
@@ -293,7 +288,7 @@ export default function MainContainer({
 
                       {/* Action Buttons - Notion style */}
                       <div className="flex gap-2 ">
-                        <button className="flex-1 text-sm hover:bg-gray-50 border-gray-200 py-4 border rounded-lg text-gray-700">
+                        <Button variant="outline">
                           <Link
                             href={`${item.demoUrl}`}
                             target="_blank"
@@ -301,18 +296,15 @@ export default function MainContainer({
                           >
                             Live Demo
                           </Link>
-                        </button>
+                        </Button>
 
                         {isOwned ? (
-                          <Button
-                            asChild
-                            size="sm"
-                            className="flex-1 text-sm bg-green-600 hover:bg-green-700 text-white"
-                          >
+                          <Button asChild variant="outline">
                             <Link href="/dashboard">Owned</Link>
                           </Button>
                         ) : (
-                          <button
+                          <Button
+                            variant="default"
                             onClick={() => {
                               if (!session) {
                                 signIn();
@@ -324,12 +316,11 @@ export default function MainContainer({
                                 window.location.href = url;
                               }
                             }}
-                            className="flex-1 text-sm bg-blue-400 hover:bg-blue-500 text-white py-4 border rounded-lg"
                           >
                             {item.price === 0
-                              ? "FREE"
+                              ? "Download"
                               : `Buy Now - ${item.price}€`}
-                          </button>
+                          </Button>
                         )}
                       </div>
                     </div>

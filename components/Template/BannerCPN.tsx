@@ -18,7 +18,7 @@ export default function HeroBanner({
 
   return (
     <section
-      className="relative bg-white pt-24 template-background-style"
+      className="relative bg-white pt-24 background-style"
       itemScope
       itemType="https://schema.org/WebSite"
     >
@@ -26,11 +26,11 @@ export default function HeroBanner({
         <div className="mx-auto max-w-5xl px-6 py-10 sm:py-10 lg:pt-20">
           <div className="text-center">
             <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 tracking-tight">
-              9+ Best Free and Premium Next.js Templates (2025)
+              10+ Best Free and Premium Next.js Templates (2025)
             </h1>
 
             <p className="mx-auto max-w-2xl text-gray-700 mb-10 leading-relaxed font-normal">
-              Explore 9+ free and premium Next.js templates, starter kits, and
+              Explore 10+ free and premium Next.js templates, starter kits, and
               themes built with Tailwind CSS and React — ideal for SaaS,
               e-commerce, portfolios, and blog pages. All templates are
               production-ready, responsive, and SEO-optimized to help you build
@@ -112,7 +112,7 @@ export default function HeroBanner({
                   />
                   <button
                     type="submit"
-                    className="bg-blue-400 hover:bg-blue-500 text-white px-3 sm:px-6 py-3 font-medium text-xs sm:text-sm transition-colors duration-200 whitespace-nowrap"
+                    className="bg-violet-600 hover:bg-violet-700 text-white px-3 sm:px-6 py-3 font-medium text-xs sm:text-sm transition-colors duration-200 whitespace-nowrap"
                   >
                     <span className="hidden sm:inline">Search</span>
                     <svg

@@ -193,17 +193,29 @@
 }
 
 .background-style {
-  background: radial-gradient(125% 125% at 50% 10%, #c2bbf0 40%, #fff 70%);
+  background: radial-gradient(125% 125% at 50% 10%, #f1f5f9 40%, #fff 70%);
 }
 
 .template-background-style {
-  background: radial-gradient(125% 125% at 50% 10%, #cee5ed 40%, #fff 70%);
+  background: radial-gradient(125% 125% at 50% 10%, #bfecff 40%, #fff 70%);
 }
 
 .components-background-style {
-  background: radial-gradient(125% 125% at 50% 10%, #bbf0c2 30%, #fff 70%);
+  background: radial-gradient(125% 125% at 50% 10%, #e8ecf1 40%, #fff 70%);
 }
 
 .bundle-background-style {
-  background: radial-gradient(125% 125% at 50% 10%, #fff380 30%, #fff 70%);
+  background: radial-gradient(125% 125% at 50% 10%, #fff380 20%, #fff 70%);
+}
+
+.test {
+  background-color: #a31d1d;
+}
+
+.test:hover {
+  background-color: #8f2222;
+}
+
+.text-color-component {
+  color: #a31d1d;
 }

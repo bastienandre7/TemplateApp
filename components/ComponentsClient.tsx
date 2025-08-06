@@ -55,10 +55,8 @@ export default function ComponentsClient() {
             </h1>
             <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
               Beautiful, responsive components built with{" "}
-              <span className="text-purple-600 font-semibold">
-                Tailwind CSS
-              </span>{" "}
-              and <span className="text-purple-600 font-semibold">React</span>.
+              <span className="text-red-600 font-semibold">Tailwind CSS</span>{" "}
+              and <span className="text-red-600 font-semibold">React</span>.
               Copy the code and paste into your project.
             </p>
           </div>
@@ -70,16 +68,16 @@ export default function ComponentsClient() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <div className="pt-40 pb-16">
+      <div className="pt-40 pb-16 components-background-style">
         <div className="max-w-5xl mx-auto px-6 text-center">
           <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 tracking-tight">
             Free Next.js Components
           </h1>
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
             Beautiful, responsive components built with{" "}
-            <span className="text-purple-600 font-semibold">Tailwind CSS</span>{" "}
-            and <span className="text-purple-600 font-semibold">React</span>.
-            Copy the code and paste into your project.
+            <span className="text-red-700 font-semibold">Tailwind CSS</span> and{" "}
+            <span className="text-red-700 font-semibold">React</span>. Copy the
+            code and paste into your project.
           </p>
 
           {/* Stats */}
@@ -165,7 +163,7 @@ export default function ComponentsClient() {
             onClick={() => setSelectedCategory("all")}
             className={`px-4 py-2 rounded-lg font-medium transition ${
               selectedCategory === "all"
-                ? "bg-purple-600 text-white"
+                ? "bg-red-700 text-white"
                 : "bg-gray-100 text-gray-700 hover:bg-gray-200"
             }`}
           >
@@ -177,7 +175,7 @@ export default function ComponentsClient() {
               onClick={() => setSelectedCategory(category.value)}
               className={`px-4 py-2 rounded-lg font-medium transition ${
                 selectedCategory === category.value
-                  ? "bg-purple-600 text-white"
+                  ? "bg-red-700 text-white"
                   : "bg-gray-100 text-gray-700 hover:bg-gray-200"
               }`}
             >
@@ -284,7 +282,7 @@ export default function ComponentsClient() {
                   </div>
                   <div className="p-6">
                     <div className="flex items-start justify-between mb-2">
-                      <h3 className="font-semibold text-gray-900 group-hover:text-purple-600 transition flex-1">
+                      <h3 className="font-semibold text-gray-900 group-hover:text-red-700 transition flex-1">
                         {comp.name}
                       </h3>
                       <span className="bg-gray-100 text-gray-600 px-2 py-1 rounded text-xs font-medium ml-2 flex-shrink-0 capitalize">
@@ -295,10 +293,10 @@ export default function ComponentsClient() {
                       {comp.description}
                     </p>
                     <div className="flex items-center justify-between">
-                      <p className="text-xs text-purple-600 font-medium hover:underline">
+                      <p className="text-xs text-red-600 font-medium hover:underline">
                         View Code →
                       </p>
-                      <div className="bg-purple-100 text-purple-700 px-2 py-1 rounded text-xs font-medium">
+                      <div className="bg-red-100 text-red-700 px-2 py-1 rounded text-xs font-medium">
                         Free
                       </div>
                     </div>
@@ -322,7 +320,7 @@ export default function ComponentsClient() {
           </p>
           <Link
             href="/"
-            className="inline-flex items-center gap-2 bg-purple-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-purple-700 transition text-lg"
+            className="inline-flex items-center gap-2 bg-red-700 text-white px-8 py-4 rounded-xl font-semibold hover:bg-red-800 transition text-lg"
           >
             View Premium Templates
             <svg

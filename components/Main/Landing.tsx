@@ -83,7 +83,6 @@ export default function LandingPage() {
         "Sanity CMS integration",
         "Dark mode",
         "Pre-built author and category pages",
-        "Responsive Design",
       ],
       link: "/template/blogstarter-next-js-tailwind-css-blog-starter-kit",
     },
@@ -106,7 +105,7 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative overflow-hidden pt-20">
+      <section className="relative overflow-hidden pt-20 background-style">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
           <div className="text-center">
             <div className="inline-flex items-center px-4 py-2 bg-purple-100 text-purple-800 rounded-full text-sm font-medium mb-8">
@@ -128,14 +127,14 @@ export default function LandingPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link
                 href="/template"
-                className="bg-blue-400 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-500 transition-all hover:scale-105 flex items-center"
+                className="bg-violet-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-violet-700 transition-all hover:scale-105 flex items-center"
               >
                 Browse Templates
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Link>
               <Link
                 href="/components"
-                className="bg-emerald-400 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-emerald-500 transition-all hover:scale-105 flex items-center"
+                className="test text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-emerald-500 transition-all hover:scale-105 flex items-center"
               >
                 Free Components
                 <ArrowRight className="w-5 h-5 ml-2" />
@@ -183,7 +182,7 @@ export default function LandingPage() {
       <section className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center px-4 py-2 bg-emerald-100 text-green-800 rounded-full text-sm font-medium mb-6">
+            <div className="inline-flex items-center px-4 py-2 bg-red-100 text-red-800 rounded-full text-sm font-medium mb-6">
               <Check className="w-4 h-4 mr-2" />
               100% Free Components
             </div>
@@ -212,7 +211,7 @@ export default function LandingPage() {
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     quality={90}
                   />
-                  <span className="absolute top-4 left-4 bg-emerald-400 text-white px-3 py-1 rounded-full text-sm font-medium">
+                  <span className="absolute top-4 left-4 test text-white px-3 py-1 rounded-full text-sm font-medium">
                     FREE
                   </span>
                 </div>
@@ -233,12 +232,10 @@ export default function LandingPage() {
                     </span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-2xl font-bold text-emerald-400">
-                      FREE
-                    </span>
+                    <span className="text-2xl font-bold">FREE</span>
                     <Link
                       href={`${component.link}`}
-                      className="bg-emerald-400 text-white px-4 py-2 rounded-lg hover:bg-emerald-500 transition-colors"
+                      className="test text-white px-4 py-2 rounded-lg hover:bg-emerald-500 transition-colors"
                     >
                       View Code
                     </Link>
@@ -251,7 +248,7 @@ export default function LandingPage() {
           <div className="text-center">
             <Link
               href="/components"
-              className="bg-emerald-400 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-emerald-500 transition-colors inline-flex items-center mb-4"
+              className="test text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-red-800 transition-colors inline-flex items-center mb-4"
             >
               Browse All Free Components
               <ChevronRight className="w-5 h-5 ml-2" />
@@ -316,12 +313,12 @@ export default function LandingPage() {
                     ))}
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-2xl font-bold text-blue-400">
+                    <span className="text-2xl font-bold">
                       {template.price === 0 ? "FREE" : `${template.price}€`}
                     </span>
                     <Link
                       href={`${template.link}`}
-                      className="bg-blue-400 text-white px-4 py-2 rounded-lg hover:bg-blue-500 transition-colors"
+                      className="bg-violet-600 text-white px-4 py-2 rounded-lg hover:bg-violet-700 transition-colors"
                     >
                       {template.price === 0 ? "Get Free" : "Buy Now"}
                     </Link>
@@ -334,7 +331,7 @@ export default function LandingPage() {
           <div className="text-center mt-12">
             <Link
               href="/template"
-              className="bg-blue-400 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-500 transition-colors inline-flex items-center"
+              className="bg-violet-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-violet-700 transition-colors inline-flex items-center"
             >
               View All Templates
               <ChevronRight className="w-5 h-5 ml-2" />
@@ -460,29 +457,87 @@ export default function LandingPage() {
       <FaqAccordion />
 
       {/* CTA Section */}
-      <section className="py-24 bg-radial from-[#c2bbf0] from-50% to-white">
+      <section className="py-24 bg-gradient-to-br from-slate-50 to-gray-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold text-black mb-6">
-            Ready to Build Something Amazing?
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+            Start Building Your Next Project Today
           </h2>
-          <p className="text-xl text-gray-800 mb-10">
-            Join thousands of developers who trust our templates for their
-            projects
+          <p className="text-xl text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
+            Choose from our collection of premium Next.js templates and launch
+            faster than ever before
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link
               href="/template"
-              className="bg-white text-blue-400 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors border"
+              className="bg-violet-600 hover:bg-violet-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center group"
             >
-              Browse Templates
+              Browse All Templates
+              <svg
+                className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
             </Link>
             <Link
-              href="/contact"
-              className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-purple-600 transition-colors"
+              href="/components"
+              className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-lg font-semibold text-lg hover:border-red-700 hover:text-red-700 transition-all duration-200"
             >
-              Contact Sales
+              Try Free Components
             </Link>
+          </div>
+
+          <div className="mt-12 flex justify-center items-center space-x-8 text-sm text-gray-500">
+            <div className="flex items-center">
+              <svg
+                className="w-5 h-5 text-green-500 mr-2"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clipRule="evenodd"
+                />
+              </svg>
+              Production Ready
+            </div>
+            <div className="flex items-center">
+              <svg
+                className="w-5 h-5 text-green-500 mr-2"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clipRule="evenodd"
+                />
+              </svg>
+              TypeScript & Tailwind
+            </div>
+            <div className="flex items-center">
+              <svg
+                className="w-5 h-5 text-green-500 mr-2"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clipRule="evenodd"
+                />
+              </svg>
+              Lifetime Updates
+            </div>
           </div>
         </div>
       </section>
