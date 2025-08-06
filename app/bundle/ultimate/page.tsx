@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     "Get the best deal with the Ultimate Developer Bundle from BloomTPL. Includes 8 premium Next.js & Tailwind CSS templates to launch SaaS, blogs, portfolios, and more.",
   metadataBase: new URL("https://bloomtpl.com"),
   alternates: {
-    canonical: "https://bloomtpl.com/bundle",
+    canonical: "https://bloomtpl.com/bundle/ultimate",
   },
   robots:
     "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Ultimate Developer Bundle – 8 Premium Next.js Templates | BloomTPL",
     description:
       "Get the best deal with the Ultimate Developer Bundle from BloomTPL. Includes 8 premium Next.js & Tailwind CSS templates to launch SaaS, blogs, portfolios, and more.",
-    url: "https://bloomtpl.com/bundle",
+    url: "https://bloomtpl.com/bundle/ultimate",
     siteName: "BloomTPL",
     locale: "en_US",
     images: [

@@ -256,7 +256,7 @@ export default async function PostPage({
                 </p>
 
                 <Link
-                  href="/"
+                  href="/nextjs-templates"
                   className="inline-flex items-center bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 transform hover:-translate-y-0.5"
                 >
                   Browse Templates

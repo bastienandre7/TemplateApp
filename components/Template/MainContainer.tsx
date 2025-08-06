@@ -231,7 +231,7 @@ export default function MainContainer({
                     className="group relative flex flex-col rounded-lg border border-gray-200 bg-white overflow-hidden hover:border-gray-300 transition-all duration-200 hover:shadow-lg"
                   >
                     <Link
-                      href={`/template/${item.slug}`}
+                      href={`/nextjs-templates/${item.slug}`}
                       className="block relative aspect-[1200/630] bg-gray-50 overflow-hidden"
                     >
                       <Image
