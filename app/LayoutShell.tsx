@@ -1,5 +1,6 @@
 "use client";
 
+import FooterCPN from "@/components/Footer/FooterCPN";
 import HeaderCPN from "@/components/Header/HeaderCPN";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -15,10 +16,6 @@ const CookieConsentGate = dynamic(
   () => import("@/components/CookieConsentGate"),
   { ssr: false }
 );
-const FooterCPN = dynamic(() => import("@/components/Footer/FooterCPN"), {
-  ssr: false,
-  loading: () => <div className="h-20" />,
-});
 
 export default function LayoutShell({ children }: { children: ReactNode }) {
   return (
