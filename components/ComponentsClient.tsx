@@ -16,13 +16,11 @@ export default function ComponentsClient() {
   const [selectedCategory, setSelectedCategory] = useState<string | "all">(
     "all"
   );
-  const [mounted, setMounted] = useState(false);
   const [components, setComponents] = useState<Component[]>([]);
   const [loading, setLoading] = useState(true);
 
   // Charger les composants depuis l'API
   useEffect(() => {
-    setMounted(true);
     fetch("/api/components")
       .then((res) => res.json())
       .then((data) => {
@@ -45,119 +43,12 @@ export default function ComponentsClient() {
       ? components
       : components.filter((comp) => comp.category === selectedCategory);
 
-  if (!mounted || loading) {
-    return (
-      <div className="pt-32 min-h-screen">
-        <div className="py-16">
-          <div className="max-w-4xl mx-auto px-6 text-center">
-            <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
-              Free Next.js Components
-            </h1>
-            <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-              Discover beautiful, responsive UI components built with{" "}
-              <span className="text-red-600 font-semibold">Tailwind CSS</span>{" "}
-              and <span className="text-red-600 font-semibold">React</span>.
-              Easily copy and integrate them into your Next.js or React
-              projects. Fast, modern, and fully customizable.
-            </p>
-          </div>
-        </div>
-      </div>
-    );
+  if (loading) {
+    return null;
   }
 
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <div className="pt-40 pb-16 components-background-style">
-        <div className="max-w-5xl mx-auto px-6 text-center">
-          <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight">
-            Free Next.js Components
-          </h1>
-          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-            Beautiful, responsive components built with{" "}
-            <span className="text-red-700 font-semibold">Tailwind CSS</span> and{" "}
-            <span className="text-red-700 font-semibold">React</span>. Copy the
-            code and paste into your project.
-          </p>
-
-          {/* Stats */}
-          <div className="flex justify-center gap-8 text-sm text-gray-500 mb-8">
-            <div className="flex items-center gap-2">
-              <svg
-                className="w-4 h-4 text-green-500"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              100% Free
-            </div>
-            <div className="flex items-center gap-2">
-              <svg
-                className="w-4 h-4 text-green-500"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              Copy & Paste
-            </div>
-            <div className="flex items-center gap-2">
-              <svg
-                className="w-4 h-4 text-green-500"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              Tailwind CSS
-            </div>
-            <div className="flex items-center gap-2">
-              <svg
-                className="w-4 h-4 text-green-500"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              TypeScript Ready
-            </div>
-          </div>
-
-          {/* CTA */}
-          <div className="bg-purple-100 border border-purple-200 rounded-lg p-4 max-w-md mx-auto">
-            <p className="text-sm text-purple-800 mb-2">
-              🎉 Want more? Check out our{" "}
-              <span className="font-semibold">Premium Templates</span>
-            </p>
-            <Link
-              href="/nextjs-templates"
-              className="text-purple-600 hover:text-purple-700 font-medium text-sm"
-            >
-              View Templates →
-            </Link>
-          </div>
-        </div>
-      </div>
-
-      {/* Filters dynamiques */}
+    <div>
       <div className="max-w-6xl mx-auto px-6 py-8">
         <div className="flex flex-wrap gap-2 justify-center">
           <button
@@ -307,38 +198,6 @@ export default function ComponentsClient() {
             </div>
           </>
         )}
-      </div>
-
-      {/* Bottom CTA */}
-      <div className="bg-gray-50 py-16">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
-            Need More Than Components?
-          </h2>
-          <p className="text-lg text-gray-600 mb-8">
-            Explore our premium Next.js templates with complete designs,
-            authentication, and more.
-          </p>
-          <Link
-            href="/nextjs-templates"
-            className="inline-flex items-center gap-2 bg-red-700 text-white px-8 py-4 rounded-xl font-semibold hover:bg-red-800 transition text-lg"
-          >
-            View Premium Templates
-            <svg
-              className="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M13 7l5 5m0 0l-5 5m5-5H6"
-              />
-            </svg>
-          </Link>
-        </div>
       </div>
     </div>
   );

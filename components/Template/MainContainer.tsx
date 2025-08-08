@@ -43,6 +43,7 @@ export default function MainContainer({
   const [sortOrder, setSortOrder] = useState("newest");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [ownedTemplates, setOwnedTemplates] = useState<string[]>([]);
+  const [loading, setLoading] = useState(true);
   const { data: session } = useSession();
 
   useEffect(() => {
@@ -52,9 +53,20 @@ export default function MainContainer({
         .then((data: Purchase[]) => {
           const owned = data.map((purchase) => purchase.template);
           setOwnedTemplates(owned);
+          setLoading(false);
         });
+    } else {
+      setLoading(false);
     }
   }, [session]);
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <div className="text-gray-500">Loading templates...</div>
+      </div>
+    );
+  }
 
   const categories = Array.from(
     new Set(products.map((p) => p.category).filter(Boolean))
@@ -129,7 +141,7 @@ export default function MainContainer({
           <div className="space-y-4 mb-8">
             {/* Top row: Results counter */}
             <div className="flex justify-between items-center">
-              <h3 className="text-lg font-semibold text-gray-900">Templates</h3>
+              <p className="text-lg font-semibold text-gray-900">Templates</p>
               <div className="text-sm text-gray-500">
                 {filteredItems.length} templates
               </div>

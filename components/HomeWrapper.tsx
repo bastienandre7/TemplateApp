@@ -2,7 +2,7 @@
 
 import BannerCPN from "@/components/Template/BannerCPN";
 import MainContainer from "@/components/Template/MainContainer";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 
 type Product = {
   id: number;
@@ -33,11 +33,13 @@ export default function HomeWrapper({ products }: { products: Product[] }) {
   return (
     <div className="min-h-screen">
       <BannerCPN onSearch={handleSearch} />
-      <MainContainer
-        products={products}
-        searchQuery={searchQuery}
-        onClearSearch={handleClearSearch}
-      />
+      <Suspense fallback={<div className="text-gray-500">Loading...</div>}>
+        <MainContainer
+          products={products}
+          searchQuery={searchQuery}
+          onClearSearch={handleClearSearch}
+        />
+      </Suspense>
     </div>
   );
 }
