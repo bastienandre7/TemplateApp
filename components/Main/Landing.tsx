@@ -456,6 +456,88 @@ export default function LandingPage() {
 
       <FaqAccordion />
 
+      {/* Quick Links Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              Explore Our Collection
+            </h2>
+            <p className="text-lg text-gray-600">
+              Quick access to popular templates and components
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Popular Templates */}
+            <div className="bg-gray-50 rounded-xl p-8">
+              <h3 className="text-xl font-semibold text-gray-900 mb-6">
+                Popular Templates
+              </h3>
+              <div className="space-y-3">
+                <Link
+                  href="/nextjs-templates/nextjs-tailwind-css-restaurant-template"
+                  className="block text-purple-600 hover:text-purple-700 hover:underline"
+                >
+                  Restaurant Template
+                </Link>
+                <Link
+                  href="/nextjs-templates/nextjs-tailwind-css-saas-template"
+                  className="block text-purple-600 hover:text-purple-700 hover:underline"
+                >
+                  SaaS Template
+                </Link>
+                <Link
+                  href="/nextjs-templates/nextjs-tailwind-css-e-commerce-template"
+                  className="block text-purple-600 hover:text-purple-700 hover:underline"
+                >
+                  E-Commerce Template
+                </Link>
+                <Link
+                  href="/nextjs-templates/landkit-nextjs-landing-page-starter-kit"
+                  className="block text-purple-600 hover:text-purple-700 hover:underline"
+                >
+                  Landing Page Kit
+                </Link>
+              </div>
+            </div>
+            
+            {/* Popular Components */}
+            <div className="bg-gray-50 rounded-xl p-8">
+              <h3 className="text-xl font-semibold text-gray-900 mb-6">
+                Popular Components
+              </h3>
+              <div className="space-y-3">
+                <Link
+                  href="/components/contact-form"
+                  className="block text-red-600 hover:text-red-700 hover:underline"
+                >
+                  Contact Form
+                </Link>
+                <Link
+                  href="/components/simple-footer"
+                  className="block text-red-600 hover:text-red-700 hover:underline"
+                >
+                  Simple Footer
+                </Link>
+                <Link
+                  href="/components/pricing-section"
+                  className="block text-red-600 hover:text-red-700 hover:underline"
+                >
+                  Pricing Section
+                </Link>
+                <Link
+                  href="/components/hero-section"
+                  className="block text-red-600 hover:text-red-700 hover:underline"
+                >
+                  Hero Section
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-24 bg-gradient-to-br from-slate-50 to-gray-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

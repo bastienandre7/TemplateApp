@@ -143,7 +143,6 @@ export default async function TemplatePage() {
     <>
       <HomeWrapper products={data} />
 
-      {/* JSON-LD pour les données structurées */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

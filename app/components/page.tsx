@@ -1,7 +1,6 @@
 import ComponentsClient from "@/components/ComponentsClient";
 import { Metadata } from "next";
 import Link from "next/link";
-import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Free Next.js Components | BloomTPL",
@@ -43,7 +42,12 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ComponentsPage() {
+export default async function ComponentsPage() {
+  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/components`, {
+    cache: "no-store",
+  });
+  const data = await res.json();
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -135,9 +139,7 @@ export default function ComponentsPage() {
         </div>
       </div>
 
-      <Suspense fallback={<div className="text-center py-20">Loading...</div>}>
-        <ComponentsClient />
-      </Suspense>
+      <ComponentsClient components={data} />
 
       {/* Bottom CTA */}
       <div className="bg-gray-50 py-16">

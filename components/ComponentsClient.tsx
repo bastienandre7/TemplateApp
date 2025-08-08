@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 type Component = {
   slug: string;
@@ -12,24 +12,15 @@ type Component = {
   image: string;
 };
 
-export default function ComponentsClient() {
+export default function ComponentsClient({
+  components,
+}: {
+  components: Component[];
+}) {
   const [selectedCategory, setSelectedCategory] = useState<string | "all">(
     "all"
   );
-  const [components, setComponents] = useState<Component[]>([]);
-  const [loading, setLoading] = useState(true);
 
-  // Charger les composants depuis l'API
-  useEffect(() => {
-    fetch("/api/components")
-      .then((res) => res.json())
-      .then((data) => {
-        setComponents(data);
-        setLoading(false);
-      });
-  }, []);
-
-  // Catégories dynamiques depuis la DB
   const categories = Array.from(new Set(components.map((c) => c.category))).map(
     (cat) => ({
       value: cat,
@@ -42,10 +33,6 @@ export default function ComponentsClient() {
     selectedCategory === "all"
       ? components
       : components.filter((comp) => comp.category === selectedCategory);
-
-  if (loading) {
-    return null;
-  }
 
   return (
     <div>
@@ -164,7 +151,7 @@ export default function ComponentsClient() {
                 >
                   <div className="bg-gray-50 border-b border-gray-100 aspect-video relative overflow-hidden">
                     <Image
-                      src={comp.image}
+                      src={comp.image || "/images/Noimage.jpg"}
                       alt={comp.name}
                       fill
                       className="object-cover object-center group-hover:scale-105 transition-transform duration-200"

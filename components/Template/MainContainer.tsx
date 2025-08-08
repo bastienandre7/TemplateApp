@@ -43,7 +43,6 @@ export default function MainContainer({
   const [sortOrder, setSortOrder] = useState("newest");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [ownedTemplates, setOwnedTemplates] = useState<string[]>([]);
-  const [loading, setLoading] = useState(true);
   const { data: session } = useSession();
 
   useEffect(() => {
@@ -53,20 +52,9 @@ export default function MainContainer({
         .then((data: Purchase[]) => {
           const owned = data.map((purchase) => purchase.template);
           setOwnedTemplates(owned);
-          setLoading(false);
         });
-    } else {
-      setLoading(false);
     }
   }, [session]);
-
-  if (loading) {
-    return (
-      <div className="flex items-center justify-center h-screen">
-        <div className="text-gray-500">Loading templates...</div>
-      </div>
-    );
-  }
 
   const categories = Array.from(
     new Set(products.map((p) => p.category).filter(Boolean))
@@ -74,11 +62,9 @@ export default function MainContainer({
 
   const filteredItems = [...products]
     .filter((p) => {
-      // Filtre par catégorie
       const categoryMatch =
         !selectedCategory || p.category === selectedCategory;
 
-      // Filtre par recherche (nom ou catégorie)
       const searchMatch =
         !searchQuery ||
         p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -105,7 +91,6 @@ export default function MainContainer({
     >
       <div className="relative z-10 px-4 ">
         <div className="max-w-6xl mx-auto">
-          {/* Section Header - Notion style */}
           <div className="text-center mb-12">
             {searchQuery && (
               <div className="mt-4 p-3 bg-purple-50 border border-purple-200 rounded-lg inline-flex items-center gap-3">
@@ -235,7 +220,6 @@ export default function MainContainer({
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-2">
               {filteredItems.map((item) => {
                 const isOwned = ownedTemplates.includes(item.name);
-                console.log(`Checking ownership for ${item.name}: ${isOwned}`);
 
                 return (
                   <div
@@ -278,10 +262,11 @@ export default function MainContainer({
 
                     <div className="flex-1 flex flex-col justify-between p-5">
                       <div>
-                        <Link href={`/nextjs-templates/${item.slug}`}>
-                          <h3 className="text-lg font-semibold mb-2 text-gray-900 hover:text-violet-600 transition-colors duration-200">
-                            {item.name}
-                          </h3>
+                        <Link
+                          className="text-lg font-semibold mb-2 text-gray-900 hover:text-violet-600 transition-colors duration-200"
+                          href={`/nextjs-templates/${item.slug}`}
+                        >
+                          {item.name}
                         </Link>
                         <p className="text-gray-600 text-sm mb-4 line-clamp-2">
                           {item.description ||

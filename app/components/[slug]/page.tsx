@@ -25,7 +25,7 @@ export async function generateMetadata({
 
   return {
     title: `${comp.name} - Free React Component | BloomTPL`,
-    description: `${comp.description} Copy and paste this free ${comp.name} component built with React and Tailwind CSS.`,
+    description: `${comp.description} Copy this free component built with React and Tailwind CSS.`,
     keywords: [
       comp.name.toLowerCase(),
       "react",

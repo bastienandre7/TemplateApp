@@ -16,13 +16,91 @@ export default function FooterCPN() {
               The best Next.js templates for modern web applications.
             </p>
           </div>
-          <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+          <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-5">
+            <div>
+              <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase text-white">
+                Templates
+              </h2>
+              <ul className="text-gray-400 font-medium text-sm">
+                <li className="mb-3">
+                  <Link
+                    href="/nextjs-templates"
+                    className="hover:text-purple-400 transition-colors"
+                  >
+                    All Templates
+                  </Link>
+                </li>
+                <li className="mb-3">
+                  <Link
+                    href="/nextjs-templates/nextjs-tailwind-css-saas-template"
+                    className="hover:text-purple-400 transition-colors"
+                  >
+                    SaaS Template
+                  </Link>
+                </li>
+                <li className="mb-3">
+                  <Link
+                    href="/nextjs-templates/nextjs-tailwind-css-e-commerce-template"
+                    className="hover:text-purple-400 transition-colors"
+                  >
+                    E-Commerce
+                  </Link>
+                </li>
+                <li className="mb-3">
+                  <Link
+                    href="/nextjs-templates/nextjs-tailwind-css-blog-template"
+                    className="hover:text-purple-400 transition-colors"
+                  >
+                    Blog Template
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase text-white">
+                Components
+              </h2>
+              <ul className="text-gray-400 font-medium text-sm">
+                <li className="mb-3">
+                  <Link
+                    href="/components"
+                    className="hover:text-purple-400 transition-colors"
+                  >
+                    All Components
+                  </Link>
+                </li>
+                <li className="mb-3">
+                  <Link
+                    href="/components/contact-form"
+                    className="hover:text-purple-400 transition-colors"
+                  >
+                    Contact Form
+                  </Link>
+                </li>
+                <li className="mb-3">
+                  <Link
+                    href="/components/simple-footer"
+                    className="hover:text-purple-400 transition-colors"
+                  >
+                    Simple Footer
+                  </Link>
+                </li>
+                <li className="mb-3">
+                  <Link
+                    href="/components/hero-section"
+                    className="hover:text-purple-400 transition-colors"
+                  >
+                    Hero Section
+                  </Link>
+                </li>
+              </ul>
+            </div>
             <div>
               <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase text-white">
                 Resources
               </h2>
-              <ul className="text-gray-400 font-medium">
-                <li className="mb-4">
+              <ul className="text-gray-400 font-medium text-sm">
+                <li className="mb-3">
                   <Link
                     href="/docs"
                     className="hover:text-purple-400 transition-colors"
@@ -30,7 +108,7 @@ export default function FooterCPN() {
                     Docs
                   </Link>
                 </li>
-                <li className="mb-4">
+                <li className="mb-3">
                   <Link
                     href="/contact"
                     className="hover:text-purple-400 transition-colors"
@@ -38,7 +116,7 @@ export default function FooterCPN() {
                     Contact
                   </Link>
                 </li>
-                <li className="mb-4">
+                <li className="mb-3">
                   <Link
                     href="/blog"
                     className="hover:text-purple-400 transition-colors"
@@ -46,7 +124,7 @@ export default function FooterCPN() {
                     Blog
                   </Link>
                 </li>
-                <li className="mb-4">
+                <li className="mb-3">
                   <Link
                     href="/license"
                     className="hover:text-purple-400 transition-colors"
