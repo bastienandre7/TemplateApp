@@ -16,6 +16,7 @@ export const metadata: Metadata = {
     description:
       "Get the best deal with the Ultimate Developer Bundle from BloomTPL. Includes 8 premium Next.js templates to launch SaaS, blogs, portfolios, and more.",
     url: "https://bloomtpl.com/bundle/ultimate",
+    type: "website",
     siteName: "BloomTPL",
     locale: "en_US",
     images: [

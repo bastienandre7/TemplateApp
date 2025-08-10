@@ -17,6 +17,14 @@ export const metadata: Metadata = {
     siteName: "BloomTPL",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "https://bloomtpl.com/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "BloomTPL – Modern Next.js Templates",
+      },
+    ],
   },
   twitter: {
     card: "summary",

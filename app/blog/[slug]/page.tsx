@@ -37,10 +37,10 @@ export async function generateMetadata({
     : "https://bloomtpl.com/images/blog/default-og.jpg";
 
   return {
-    title: `${post.title} | BloomTPL Blog`,
+    title: `${post.title}`,
     description:
       post.description ||
-      `Read ${post.title} on BloomTPL blog. Learn about Next.js development, template design, and modern web development best practices.`,
+      `Read ${post.title} on BloomTPL blog. Learn about Next.js development, template design and more.`,
     authors: post.author?.name ? [{ name: post.author.name }] : undefined,
     alternates: {
       canonical: `https://bloomtpl.com/blog/${post.slug.current}`,
