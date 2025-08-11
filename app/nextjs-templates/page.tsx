@@ -2,9 +2,9 @@ import HomeWrapper from "@/components/HomeWrapper";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "10+ Premium Next.js Templates Under 40€ (2025) | BloomTPL",
+  title: "Free & Premium Next.js Templates Under 40€ (2025) | BloomTPL",
   description:
-    "Discover premium Next.js templates for 10–40€, built with Tailwind CSS & TypeScript. Fast, SEO-friendly, and ready for production.",
+    "Discover free and premium Next.js templates under 40€, built with Tailwind CSS & TypeScript. Fast, SEO-friendly, and ready for production.",
   metadataBase: new URL("https://bloomtpl.com"),
   alternates: {
     canonical: "https://bloomtpl.com/nextjs-templates",
@@ -12,9 +12,9 @@ export const metadata: Metadata = {
   robots:
     "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
   openGraph: {
-    title: "10+ Premium Next.js Templates Under 40€ (2025) | BloomTPL",
+    title: "Free & Premium Next.js Templates Under 40€ (2025) | BloomTPL",
     description:
-      "Discover premium Next.js templates for 10–40€, built with Tailwind CSS & TypeScript. Fast, SEO-friendly, and ready for production.",
+      "Discover free and premium Next.js templates under 40€, built with Tailwind CSS & TypeScript. Fast, SEO-friendly, and ready for production.",
     url: "https://bloomtpl.com/nextjs-templates",
     siteName: "BloomTPL",
     locale: "en_US",
@@ -30,9 +30,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "10+ Premium Next.js Templates Under 40€ (2025) | BloomTPL",
+    title: "Free & Premium Next.js Templates Under 40€ (2025) | BloomTPL",
     description:
-      "Discover premium Next.js templates for 10–40€, built with Tailwind CSS & TypeScript. Fast, SEO-friendly, and ready for production.",
+      "Discover free and premium Next.js templates under 40€, built with Tailwind CSS & TypeScript. Fast, SEO-friendly, and ready for production.",
     images: ["https://bloomtpl.com/og-image.png"],
   },
   creator: "BloomTPL",

@@ -43,7 +43,7 @@ export default function LandingPage() {
         "Professional footer with organized links, newsletter signup, and social media integration.",
       image:
         "https://9hn0rhd8ibpivln7.public.blob.vercel-storage.com/components/simple-footer.png",
-      link: "/components/simple-footer",
+      link: "/nextjs-components/simple-footer",
     },
     {
       name: "Pricing Section",
@@ -51,7 +51,7 @@ export default function LandingPage() {
         "Modern pricing table with monthly/yearly toggle, popular plan highlighting, and FAQ section.",
       image:
         "https://9hn0rhd8ibpivln7.public.blob.vercel-storage.com/components/pricing-section.png",
-      link: "/components/pricing-section",
+      link: "/nextjs-components/pricing-section",
     },
     {
       name: "Product Card",
@@ -59,7 +59,7 @@ export default function LandingPage() {
         "E-commerce product card with ratings, pricing, wishlist, and cart functionality.",
       image:
         "https://9hn0rhd8ibpivln7.public.blob.vercel-storage.com/components/product-card.png",
-      link: "/components/product-card",
+      link: "/nextjs-components/product-card",
     },
   ];
 
@@ -87,7 +87,7 @@ export default function LandingPage() {
       link: "/nextjs-templates/blogstarter-next-js-tailwind-css-blog-starter-kit",
     },
     {
-      name: "CoreSaaS – Next.js Tailwind CSS SaaS Starter Kit & Boilerplate",
+      name: "CoreSaaS – Next.js Tailwind CSS SaaS Boilerplate",
       category: "SaaS",
       price: 39.99,
       image:
@@ -98,14 +98,14 @@ export default function LandingPage() {
         "Admin dashboard",
         "Dark Mode",
       ],
-      link: "/nextjs-templates/coresaas-next-js-tailwind-css-saas-starter-kit-boilerplate",
+      link: "/nextjs-templates/coresaas-next-js-tailwind-css-saas-boilerplate",
     },
   ];
 
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative overflow-hidden pt-20 background-style">
+      <section className="relative overflow-hidden pt-20">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
           <div className="text-center">
             <div className="inline-flex items-center px-4 py-2 bg-purple-100 text-purple-800 rounded-full text-sm font-medium mb-8">
@@ -133,7 +133,7 @@ export default function LandingPage() {
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Link>
               <Link
-                href="/components"
+                href="/nextjs-components"
                 className="test text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-emerald-500 transition-all hover:scale-105 flex items-center"
               >
                 Free Components
@@ -247,7 +247,7 @@ export default function LandingPage() {
 
           <div className="text-center">
             <Link
-              href="/components"
+              href="/nextjs-components"
               className="test text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-red-800 transition-colors inline-flex items-center mb-4"
             >
               Browse All Free Components
@@ -456,8 +456,7 @@ export default function LandingPage() {
 
       <FaqAccordion />
 
-      {/* Quick Links Section */}
-      <section className="py-16 bg-white">
+      {/* <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
@@ -467,9 +466,8 @@ export default function LandingPage() {
               Quick access to popular templates and components
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 gap-8">
-            {/* Popular Templates */}
             <div className="bg-gray-50 rounded-xl p-8">
               <h3 className="text-xl font-semibold text-gray-900 mb-6">
                 Popular Templates
@@ -501,8 +499,7 @@ export default function LandingPage() {
                 </Link>
               </div>
             </div>
-            
-            {/* Popular Components */}
+
             <div className="bg-gray-50 rounded-xl p-8">
               <h3 className="text-xl font-semibold text-gray-900 mb-6">
                 Popular Components
@@ -536,7 +533,7 @@ export default function LandingPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* CTA Section */}
       <section className="py-24 bg-gradient-to-br from-slate-50 to-gray-100">
@@ -570,7 +567,7 @@ export default function LandingPage() {
               </svg>
             </Link>
             <Link
-              href="/components"
+              href="/nextjs-components"
               className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-lg font-semibold text-lg hover:border-red-700 hover:text-red-700 transition-all duration-200"
             >
               Try Free Components

@@ -36,7 +36,7 @@ export default function ComponentsClient({
 
   return (
     <div>
-      <div className="max-w-6xl mx-auto px-6 py-8">
+      <div className="max-w-6xl mx-auto px-6">
         <div className="flex flex-wrap gap-2 justify-center">
           <button
             onClick={() => setSelectedCategory("all")}
@@ -146,7 +146,7 @@ export default function ComponentsClient({
               {filteredComponents.map((comp) => (
                 <Link
                   key={comp.slug}
-                  href={`/components/${comp.slug}`}
+                  href={`/nextjs-components/${comp.slug}`}
                   className="group bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg hover:border-purple-200 transition-all duration-200"
                 >
                   <div className="bg-gray-50 border-b border-gray-100 aspect-video relative overflow-hidden">

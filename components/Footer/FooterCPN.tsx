@@ -63,7 +63,7 @@ export default function FooterCPN() {
               <ul className="text-gray-400 font-medium text-sm">
                 <li className="mb-3">
                   <Link
-                    href="/components"
+                    href="/nextjs-components"
                     className="hover:text-purple-400 transition-colors"
                   >
                     All Components
@@ -71,7 +71,7 @@ export default function FooterCPN() {
                 </li>
                 <li className="mb-3">
                   <Link
-                    href="/components/contact-form"
+                    href="/nextjs-components/contact-form"
                     className="hover:text-purple-400 transition-colors"
                   >
                     Contact Form
@@ -79,7 +79,7 @@ export default function FooterCPN() {
                 </li>
                 <li className="mb-3">
                   <Link
-                    href="/components/simple-footer"
+                    href="/nextjs-components/simple-footer"
                     className="hover:text-purple-400 transition-colors"
                   >
                     Simple Footer
@@ -87,7 +87,7 @@ export default function FooterCPN() {
                 </li>
                 <li className="mb-3">
                   <Link
-                    href="/components/hero-section"
+                    href="/nextjs-components/hero-section"
                     className="hover:text-purple-400 transition-colors"
                   >
                     Hero Section

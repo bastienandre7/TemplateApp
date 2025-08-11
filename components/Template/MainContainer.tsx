@@ -60,6 +60,15 @@ export default function MainContainer({
     new Set(products.map((p) => p.category).filter(Boolean))
   );
 
+  // Compter les templates par catégorie
+  const categorycounts = categories.reduce(
+    (acc, category) => {
+      acc[category] = products.filter((p) => p.category === category).length;
+      return acc;
+    },
+    {} as Record<string, number>
+  );
+
   const filteredItems = [...products]
     .filter((p) => {
       const categoryMatch =
@@ -89,8 +98,8 @@ export default function MainContainer({
       id="templates"
       className="w-full mx-auto text-black relative bg-white mb-24"
     >
-      <div className="relative z-10 px-4 ">
-        <div className="max-w-6xl mx-auto">
+      <div className="relative z-10 px-4">
+        <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             {searchQuery && (
               <div className="mt-4 p-3 bg-purple-50 border border-purple-200 rounded-lg inline-flex items-center gap-3">
@@ -122,214 +131,326 @@ export default function MainContainer({
             )}
           </div>
 
-          {/* Filters - Responsive layout */}
-          <div className="space-y-4 mb-8">
-            {/* Top row: Results counter */}
-            <div className="flex justify-between items-center">
-              <p className="text-lg font-semibold text-gray-900">Templates</p>
-              <div className="text-sm text-gray-500">
-                {filteredItems.length} templates
-              </div>
-            </div>
+          {/* Layout avec sidebar sur desktop */}
+          <div className="lg:flex lg:gap-8">
+            {/* Sidebar - Categories (Desktop uniquement) */}
+            <aside className="hidden lg:block lg:w-64 lg:flex-shrink-0">
+              <div className="sticky top-32">
+                <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
+                  <h3 className="font-semibold text-gray-900 mb-4">
+                    Categories
+                  </h3>
 
-            {/* Bottom row: Filters */}
-            <div className="flex flex-col sm:flex-row gap-3">
-              <Select
-                value={sortOrder}
-                onValueChange={(value) => setSortOrder(value)}
-              >
-                <SelectTrigger
-                  className="w-full sm:w-[180px] border-gray-200 bg-white hover:bg-gray-50 transition-colors duration-200"
-                  aria-label="Sort templates"
-                >
-                  Newest first
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="newest">Newest first</SelectItem>
-                  <SelectItem value="asc">Price: Low to High</SelectItem>
-                  <SelectItem value="desc">Price: High to Low</SelectItem>
-                </SelectContent>
-              </Select>
-
-              {categories.length > 0 && (
-                <Select
-                  value={selectedCategory ?? "all"}
-                  onValueChange={(value) =>
-                    setSelectedCategory(value === "all" ? null : value)
-                  }
-                >
-                  <SelectTrigger
-                    className="w-full sm:w-[180px] border-gray-200 bg-white hover:bg-gray-50 transition-colors duration-200"
-                    aria-label="Filter templates by category"
+                  {/* Toutes les catégories */}
+                  <button
+                    onClick={() => setSelectedCategory(null)}
+                    className={`w-full flex items-center justify-between p-3 rounded-lg text-left transition-all duration-200 mb-2 ${
+                      !selectedCategory
+                        ? "bg-violet-100 text-violet-700 border border-violet-200"
+                        : "hover:bg-gray-100 text-gray-700"
+                    }`}
                   >
-                    {selectedCategory || "All categories"}
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">All categories</SelectItem>
-                    {categories.map((cat) => (
-                      <SelectItem key={cat} value={cat}>
-                        {cat.charAt(0).toUpperCase() + cat.slice(1)}
-                      </SelectItem>
+                    <span className="font-medium">All Templates</span>
+                    <span className="text-sm text-gray-500 bg-white px-2 py-1 rounded">
+                      {products.length}
+                    </span>
+                  </button>
+
+                  {/* Liste des catégories */}
+                  <div className="space-y-1">
+                    {categories.map((category) => (
+                      <button
+                        key={category}
+                        onClick={() => setSelectedCategory(category)}
+                        className={`w-full flex items-center justify-between p-3 rounded-lg text-left transition-all duration-200 ${
+                          selectedCategory === category
+                            ? "bg-violet-100 text-violet-700 border border-violet-200"
+                            : "hover:bg-gray-100 text-gray-700"
+                        }`}
+                      >
+                        <span className="font-medium">
+                          {category.charAt(0).toUpperCase() + category.slice(1)}
+                        </span>
+                        <span className="text-sm text-gray-500 bg-white px-2 py-1 rounded">
+                          {categorycounts[category]}
+                        </span>
+                      </button>
                     ))}
-                  </SelectContent>
-                </Select>
-              )}
-            </div>
-          </div>
-
-          {/* Templates Grid - Notion style */}
-          {filteredItems.length === 0 ? (
-            <div className="text-center py-16">
-              <div className="bg-gray-50 rounded-lg p-8 max-w-md mx-auto">
-                <svg
-                  className="w-12 h-12 text-gray-400 mx-auto mb-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                  />
-                </svg>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                  No templates found
-                </h3>
-                <p className="text-gray-600 mb-4">
-                  {searchQuery
-                    ? `No templates match "${searchQuery}". Try a different search term.`
-                    : "No templates match your current filters."}
-                </p>
-                <Button
-                  onClick={() => {
-                    setSelectedCategory(null);
-                    if (onClearSearch) {
-                      onClearSearch();
-                    }
-                  }}
-                  variant="outline"
-                  size="sm"
-                >
-                  Clear filters
-                </Button>
+                  </div>
+                </div>
               </div>
-            </div>
-          ) : (
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-2">
-              {filteredItems.map((item) => {
-                const isOwned = ownedTemplates.includes(item.name);
+            </aside>
 
-                return (
-                  <div
-                    key={item.id}
-                    className="group relative flex flex-col rounded-lg border border-gray-200 bg-white overflow-hidden hover:border-gray-300 transition-all duration-200 hover:shadow-lg"
+            {/* Contenu principal */}
+            <main className="flex-1 min-w-0">
+              {/* Header et filtres mobile */}
+              <div className="space-y-4 mb-8">
+                {/* Top row: Results counter */}
+                <div className="flex justify-between items-center">
+                  <div>
+                    <p className="text-lg font-semibold text-gray-900">
+                      {selectedCategory
+                        ? `${selectedCategory.charAt(0).toUpperCase() + selectedCategory.slice(1)} Templates`
+                        : "Templates"}
+                    </p>
+                    {selectedCategory && (
+                      <button
+                        onClick={() => setSelectedCategory(null)}
+                        className="text-sm text-violet-600 hover:text-violet-700 mt-1"
+                      >
+                        ← Back to all templates
+                      </button>
+                    )}
+                  </div>
+                  <div className="text-sm text-gray-500">
+                    {filteredItems.length} template
+                    {filteredItems.length !== 1 ? "s" : ""}
+                  </div>
+                </div>
+
+                {/* Filtres - Mobile et desktop */}
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Select
+                    value={sortOrder}
+                    onValueChange={(value) => setSortOrder(value)}
                   >
-                    <Link
-                      href={`/nextjs-templates/${item.slug}`}
-                      className="block relative aspect-[1200/630] bg-gray-50 overflow-hidden"
+                    <SelectTrigger
+                      className="w-full sm:w-[180px] border-gray-200 bg-white hover:bg-gray-50 transition-colors duration-200"
+                      aria-label="Sort templates"
                     >
-                      <Image
-                        src={
-                          item.openGraphImage ||
-                          item.imageUrl ||
-                          "/images/NoImage.jpg"
+                      {sortOrder === "newest" && "Newest first"}
+                      {sortOrder === "asc" && "Price: Low to High"}
+                      {sortOrder === "desc" && "Price: High to Low"}
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="newest">Newest first</SelectItem>
+                      <SelectItem value="asc">Price: Low to High</SelectItem>
+                      <SelectItem value="desc">Price: High to Low</SelectItem>
+                    </SelectContent>
+                  </Select>
+
+                  {/* Mobile category filter */}
+                  <div className="lg:hidden">
+                    {categories.length > 0 && (
+                      <Select
+                        value={selectedCategory ?? "all"}
+                        onValueChange={(value) =>
+                          setSelectedCategory(value === "all" ? null : value)
                         }
-                        alt={`${item.name} main preview`}
-                        fill
-                        className="object-cover w-full h-full"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
-                        quality={90}
-                      />
-
-                      {/* NEW Badge */}
-                      {new Date().getTime() -
-                        new Date(item.created_at).getTime() <
-                        14 * 24 * 60 * 60 * 1000 && (
-                        <span className="absolute top-3 right-3 bg-violet-600 text-white text-xs px-2 py-1 rounded font-medium">
-                          NEW
-                        </span>
-                      )}
-
-                      {/* Owned Badge */}
-                      {isOwned && (
-                        <span className="absolute bottom-3 right-3 bg-green-100 text-green-700 text-xs px-2 py-1 rounded">
-                          ✓ Owned
-                        </span>
-                      )}
-                    </Link>
-
-                    <div className="flex-1 flex flex-col justify-between p-5">
-                      <div>
-                        <Link
-                          className="text-lg font-semibold mb-2 text-gray-900 hover:text-violet-600 transition-colors duration-200"
-                          href={`/nextjs-templates/${item.slug}`}
+                      >
+                        <SelectTrigger
+                          className="w-full sm:w-[180px] border-gray-200 bg-white hover:bg-gray-50 transition-colors duration-200"
+                          aria-label="Filter templates by category"
                         >
-                          {item.name}
-                        </Link>
-                        <p className="text-gray-600 text-sm mb-4 line-clamp-2">
-                          {item.description ||
-                            "A beautifully crafted template ready for your next project."}
-                        </p>
+                          {selectedCategory || "All categories"}
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="all">All categories</SelectItem>
+                          {categories.map((cat) => (
+                            <SelectItem key={cat} value={cat}>
+                              {cat.charAt(0).toUpperCase() + cat.slice(1)} (
+                              {categorycounts[cat]})
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    )}
+                  </div>
 
-                        {/* Simple tech tags */}
-                        <div className="flex flex-wrap gap-1 mb-4">
-                          <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
-                            Next.js
-                          </span>
-                          <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
-                            Tailwind
-                          </span>
-                          <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
-                            TypeScript
-                          </span>
+                  {/* Clear filters button */}
+                  {(selectedCategory || searchQuery) && (
+                    <Button
+                      variant="outline"
+                      onClick={() => {
+                        setSelectedCategory(null);
+                        if (onClearSearch) {
+                          onClearSearch();
+                        }
+                      }}
+                      className="w-full sm:w-auto"
+                    >
+                      Clear filters
+                    </Button>
+                  )}
+                </div>
+              </div>
+
+              {/* Templates Grid */}
+              {filteredItems.length === 0 ? (
+                <div className="text-center py-16">
+                  <div className="bg-gray-50 rounded-lg p-8 max-w-md mx-auto">
+                    <svg
+                      className="w-12 h-12 text-gray-400 mx-auto mb-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                      />
+                    </svg>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                      No templates found
+                    </h3>
+                    <p className="text-gray-600 mb-4">
+                      {searchQuery
+                        ? `No templates match "${searchQuery}". Try a different search term.`
+                        : "No templates match your current filters."}
+                    </p>
+                    <Button
+                      onClick={() => {
+                        setSelectedCategory(null);
+                        if (onClearSearch) {
+                          onClearSearch();
+                        }
+                      }}
+                      variant="outline"
+                      size="sm"
+                    >
+                      Clear filters
+                    </Button>
+                  </div>
+                </div>
+              ) : (
+                <div className="grid gap-6 md:grid-cols-2">
+                  {filteredItems.map((item) => {
+                    const isOwned = ownedTemplates.includes(item.name);
+
+                    return (
+                      <div
+                        key={item.id}
+                        className="group relative flex flex-col rounded-lg border border-gray-200 bg-white overflow-hidden hover:border-gray-300 transition-all duration-200 hover:shadow-lg"
+                      >
+                        <Link
+                          href={`/nextjs-templates/${item.slug}`}
+                          className="block relative aspect-[1200/630] bg-gray-50 overflow-hidden"
+                        >
+                          <Image
+                            src={
+                              item.openGraphImage ||
+                              item.imageUrl ||
+                              "/images/NoImage.jpg"
+                            }
+                            alt={`${item.name} main preview`}
+                            fill
+                            className="object-cover w-full h-full"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
+                            quality={90}
+                          />
+
+                          {/* NEW Badge */}
+                          {new Date().getTime() -
+                            new Date(item.created_at).getTime() <
+                            14 * 24 * 60 * 60 * 1000 && (
+                            <span className="absolute top-3 right-3 bg-violet-600 text-white text-xs px-2 py-1 rounded font-medium">
+                              NEW
+                            </span>
+                          )}
+
+                          {/* Owned Badge */}
+                          {isOwned && (
+                            <span className="absolute bottom-3 right-3 bg-green-100 text-green-700 text-xs px-2 py-1 rounded">
+                              ✓ Owned
+                            </span>
+                          )}
+                        </Link>
+
+                        <div className="flex-1 flex flex-col justify-between p-5">
+                          <div>
+                            <Link
+                              className="text-lg font-semibold mb-2 text-gray-900 hover:text-violet-600 transition-colors duration-200"
+                              href={`/nextjs-templates/${item.slug}`}
+                            >
+                              {item.name}
+                            </Link>
+                            <p className="text-gray-600 text-sm mb-4 line-clamp-2">
+                              {item.description ||
+                                "A beautifully crafted template ready for your next project."}
+                            </p>
+
+                            {/* Tech tags + Category */}
+                            <div className="flex flex-wrap gap-1 mb-4">
+                              <span className="text-xs text-violet-600 bg-violet-100 px-2 py-1 rounded font-medium">
+                                {item.category.charAt(0).toUpperCase() +
+                                  item.category.slice(1)}
+                              </span>
+                              <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
+                                Next.js
+                              </span>
+                              <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
+                                Tailwind
+                              </span>
+                              <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
+                                TypeScript
+                              </span>
+                            </div>
+                          </div>
+
+                          {/* Action Buttons */}
+                          <div className="flex gap-2">
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              className="flex-1"
+                            >
+                              <Link
+                                href={`${item.demoUrl}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="w-full text-center"
+                              >
+                                Live Demo
+                              </Link>
+                            </Button>
+
+                            {isOwned ? (
+                              <Button
+                                asChild
+                                variant="outline"
+                                size="sm"
+                                className="flex-1"
+                              >
+                                <Link
+                                  href="/dashboard"
+                                  className="w-full text-center"
+                                >
+                                  Owned
+                                </Link>
+                              </Button>
+                            ) : (
+                              <Button
+                                variant="default"
+                                className="flex-1 bg-violet-800 hover:bg-violet-900 cursor-pointer"
+                                size="sm"
+                                onClick={() => {
+                                  if (!session) {
+                                    signIn();
+                                  } else if (session.user?.email) {
+                                    const email = encodeURIComponent(
+                                      session.user.email
+                                    );
+                                    const url = `${item.lemonLink}?checkout[email]=${email}`;
+                                    window.location.href = url;
+                                  }
+                                }}
+                              >
+                                {item.price === 0
+                                  ? "Free"
+                                  : `Buy Now - ${item.price}€`}
+                              </Button>
+                            )}
+                          </div>
                         </div>
                       </div>
-
-                      {/* Action Buttons - Notion style */}
-                      <div className="flex gap-2 ">
-                        <Button variant="outline">
-                          <Link
-                            href={`${item.demoUrl}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            Live Demo
-                          </Link>
-                        </Button>
-
-                        {isOwned ? (
-                          <Button asChild variant="outline">
-                            <Link href="/dashboard">Owned</Link>
-                          </Button>
-                        ) : (
-                          <Button
-                            variant="default"
-                            onClick={() => {
-                              if (!session) {
-                                signIn();
-                              } else if (session.user?.email) {
-                                const email = encodeURIComponent(
-                                  session.user.email
-                                );
-                                const url = `${item.lemonLink}?checkout[email]=${email}`;
-                                window.location.href = url;
-                              }
-                            }}
-                          >
-                            {item.price === 0
-                              ? "Download Free"
-                              : `Buy Now - ${item.price}€`}
-                          </Button>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          )}
+                    );
+                  })}
+                </div>
+              )}
+            </main>
+          </div>
         </div>
       </div>
     </div>

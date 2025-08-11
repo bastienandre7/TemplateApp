@@ -19,7 +19,7 @@ export default function HeaderCPN() {
 
   const navLinks = [
     { name: "Templates", path: "/nextjs-templates" },
-    { name: "Components", path: "/components" },
+    { name: "Components", path: "/nextjs-components" },
     { name: "Bundle", path: "/bundle/ultimate" },
     { name: "Docs", path: "/docs" },
     { name: "Contact", path: "/contact" },

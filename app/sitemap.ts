@@ -27,7 +27,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/components`,
+      url: `${baseUrl}/nextjs-components`,
       lastModified: new Date(),
       changeFrequency: "weekly" as const,
       priority: 0.9,
@@ -94,7 +94,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   });
 
   const componentRoutes = dbComponents.map((component) => ({
-    url: `${baseUrl}/components/${component.slug}`,
+    url: `${baseUrl}/nextjs-components/${component.slug}`,
     lastModified: component.updatedAt || new Date(),
     changeFrequency: "weekly" as const,
     priority: 0.8,

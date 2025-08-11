@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Free Next.js Components | BloomTPL",
+  title: "Free Next.js & Tailwind CSS Components Library | BloomTPL",
   description:
     "Beautiful, responsive components built with Tailwind CSS and React. Copy the code and paste into your project. 100% free.",
   keywords: [
@@ -16,14 +16,14 @@ export const metadata: Metadata = {
     "library",
   ],
   alternates: {
-    canonical: "https://bloomtpl.com/components",
+    canonical: "https://bloomtpl.com/nextjs-components",
   },
   openGraph: {
     title: "Free Next.js Components | BloomTPL",
     description:
       "Beautiful, responsive components built with Tailwind CSS and React. Copy the code and paste into your project.",
     type: "website",
-    url: "https://bloomtpl.com/components",
+    url: "https://bloomtpl.com/nextjs-components",
     images: [
       {
         url: "/og-image.png",
@@ -51,10 +51,10 @@ export default async function ComponentsPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <div className="pt-40 pb-16 components-background-style">
+      <div className="pt-40 pb-16">
         <div className="max-w-5xl mx-auto px-6 text-center">
-          <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight">
-            Free Next.js Components
+          <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight max-w-4xl">
+            Free Next.js & Tailwind CSS Components Library
           </h1>
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
             Beautiful, responsive components built with{" "}

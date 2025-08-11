@@ -69,7 +69,10 @@ export default function ComponentDetailClient({
       {/* Breadcrumb */}
       <div className="max-w-7xl mx-auto px-6 py-6">
         <nav className="flex items-center gap-2 text-sm text-gray-500">
-          <Link href="/components" className="hover:text-purple-600 transition">
+          <Link
+            href="/nextjs-components"
+            className="hover:text-purple-600 transition"
+          >
             Components
           </Link>
           <svg
@@ -269,7 +272,7 @@ export default function ComponentDetailClient({
         <div className="pt-8 border-t border-gray-200">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
             <Link
-              href="/components"
+              href="/nextjs-components"
               className="flex items-center gap-2 text-purple-600 hover:text-purple-700 font-medium transition"
             >
               <svg
