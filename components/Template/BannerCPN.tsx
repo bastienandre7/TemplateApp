@@ -27,12 +27,12 @@ export default function HeroBanner({
         <div className="mx-auto max-w-5xl px-6 lg:pt-20">
           <div className="text-center">
             <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight max-w-4xl">
-              Free & Premium Next.js Templates Under 40€
+              Best Free & Premium Next.js Templates Under 40€
             </h1>
 
             <p className="mx-auto max-w-2xl text-gray-700 mb-10 leading-relaxed font-normal">
-              Explore 10+ free and premium Next.js templates built with Tailwind
-              CSS, TypeScript, and React. Production-ready, beautifully
+              Explore 10+ best free and premium Next.js templates built with
+              Tailwind CSS, TypeScript, and React. Production-ready, beautifully
               designed, and optimized for SaaS, portfolios, e-commerce, and
               blogs — without the overpriced tag.
             </p>
