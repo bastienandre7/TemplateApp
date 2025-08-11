@@ -89,7 +89,7 @@ export default function HeroBanner({
                 <div className="flex-shrink-0">
                   <Image
                     src="/bundle-og-image.png"
-                    alt=""
+                    alt="Bundle Image"
                     width={200}
                     height={200}
                   />
