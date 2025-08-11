@@ -40,7 +40,7 @@ export default function FooterCPN() {
                 </li>
                 <li className="mb-3">
                   <Link
-                    href="/nextjs-templates/nextjs-tailwind-css-e-commerce-template"
+                    href="/nextjs-templates/free-nextjs-tailwind-css-e-commerce-template"
                     className="hover:text-purple-400 transition-colors"
                   >
                     E-Commerce
