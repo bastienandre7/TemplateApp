@@ -95,9 +95,9 @@ export default function HeroBanner({
                   />
                 </div>
                 <div className="flex-1 text-center md:text-left">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
+                  <h2 className="text-xl font-bold text-gray-900 mb-2">
                     Get All Templates Bundle
-                  </h3>
+                  </h2>
                   <p className="text-gray-600 mb-3">
                     Access all 8+ premium templates for one low price
                   </p>
@@ -159,6 +159,7 @@ export default function HeroBanner({
                   <input
                     type="text"
                     placeholder="Search templates..."
+                    name="Search templates"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     className="flex-1 px-2 sm:px-4 py-3 bg-transparent border-0 outline-none placeholder-gray-400 text-gray-900 text-sm sm:text-base min-w-0"
@@ -168,12 +169,14 @@ export default function HeroBanner({
                     type="submit"
                     className="bg-violet-600 hover:bg-violet-700 text-white px-3 sm:px-6 py-3 font-medium text-xs sm:text-sm transition-colors duration-200 whitespace-nowrap"
                   >
+                    <span className="sr-only">Search</span>
                     <span className="hidden sm:inline">Search</span>
                     <svg
                       className="w-4 h-4 sm:hidden"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
+                      aria-hidden="true"
                     >
                       <path
                         strokeLinecap="round"

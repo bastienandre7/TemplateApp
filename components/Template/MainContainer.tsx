@@ -137,9 +137,7 @@ export default function MainContainer({
             <aside className="hidden lg:block lg:w-64 lg:flex-shrink-0">
               <div className="sticky top-32">
                 <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                  <h3 className="font-semibold text-gray-900 mb-4">
-                    Categories
-                  </h3>
+                  <p className="font-semibold text-gray-900 mb-4">Categories</p>
 
                   {/* Toutes les catégories */}
                   <button
@@ -393,14 +391,14 @@ export default function MainContainer({
                           <div className="flex gap-2">
                             <Button
                               variant="outline"
-                              size="sm"
-                              className="flex-1"
+                              size="default"
+                              className="flex-1 p-0"
                             >
                               <Link
                                 href={`${item.demoUrl}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="w-full text-center"
+                                className="w-full text-center cursor-pointer py-2"
                               >
                                 Live Demo
                               </Link>
@@ -410,7 +408,7 @@ export default function MainContainer({
                               <Button
                                 asChild
                                 variant="outline"
-                                size="sm"
+                                size="default"
                                 className="flex-1"
                               >
                                 <Link
@@ -424,7 +422,7 @@ export default function MainContainer({
                               <Button
                                 variant="default"
                                 className="flex-1 bg-violet-800 hover:bg-violet-900 cursor-pointer"
-                                size="sm"
+                                size="default"
                                 onClick={() => {
                                   if (!session) {
                                     signIn();
