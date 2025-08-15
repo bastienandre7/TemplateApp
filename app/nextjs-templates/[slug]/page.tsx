@@ -112,29 +112,6 @@ export default async function TemplateDetailsPage({
       },
     },
     ...(product.price === 0 ? { isAccessibleForFree: true } : {}),
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.9",
-      reviewCount: "47",
-      bestRating: "5",
-      worstRating: "1",
-    },
-    review: [
-      {
-        "@type": "Review",
-        reviewRating: {
-          "@type": "Rating",
-          ratingValue: "5",
-          bestRating: "5",
-        },
-        author: {
-          "@type": "Person",
-          name: "Bastien",
-        },
-        reviewBody:
-          "Excellent Next.js template, very clean code and easy to customize.",
-      },
-    ],
   };
 
   return (
