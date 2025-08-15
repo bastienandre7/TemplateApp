@@ -106,7 +106,7 @@ export default function UltimateBundle() {
     <div className="min-h-screen">
       <div className="relative mx-auto">
         {/* Hero Section */}
-        <section className="text-center pt-32 mb-24 transition-all duration-1000 bundle-background-style px-4">
+        <section className="text-center pt-32 mb-24 transition-all duration-1000 px-4">
           <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
             <Sparkles className="w-4 h-4" />
             Most Popular Bundle
