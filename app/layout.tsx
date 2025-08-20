@@ -1,10 +1,10 @@
 import { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Inter } from "next/font/google";
 import { ReactNode } from "react";
 import "./globals.css";
 import LayoutShell from "./LayoutShell";
 
-const poppins = Poppins({ subsets: ["latin"], weight: ["400", "700"] });
+const poppins = Inter({ subsets: ["latin"], weight: ["400", "700"] });
 
 export const metadata: Metadata = {
   title: "10+ Best Free and Premium Next.js Templates (2025) | BloomTPL",

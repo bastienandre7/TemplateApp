@@ -11,7 +11,7 @@ import Image from "next/image";
 
 export default function ProductGallery({ images }: { images: string[] }) {
   return (
-    <div className="w-full max-w-screen-xl mx-auto flex flex-col items-center px-4">
+    <div className="w-full max-w-screen-xl mx-auto flex flex-col items-center px-4 lg:p-0">
       <Carousel
         opts={{
           align: "center",

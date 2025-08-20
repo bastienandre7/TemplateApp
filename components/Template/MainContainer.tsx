@@ -421,7 +421,7 @@ export default function MainContainer({
                             ) : (
                               <Button
                                 variant="default"
-                                className="flex-1 bg-violet-800 hover:bg-violet-900 cursor-pointer"
+                                className="flex-1 bg-blue-500 hover:bg-blue-600 cursor-pointer"
                                 size="default"
                                 onClick={() => {
                                   if (!session) {

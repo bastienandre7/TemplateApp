@@ -171,12 +171,12 @@ export default async function BlogPage() {
                   >
                     <Link href={`/blog/${post.slug.current}`} className="block">
                       {post.image?.asset?.url && (
-                        <div className="relative aspect-[16/9] bg-gray-100 overflow-hidden">
+                        <div className="relative aspect-[16/9] overflow-hidden bg-white">
                           <Image
                             src={post.image.asset.url}
                             alt={post.title}
                             fill
-                            className="object-cover group-hover:scale-105 transition-transform duration-300"
+                            className="object-cover p-2 rounded-2xl"
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                           />
                         </div>

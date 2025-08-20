@@ -26,9 +26,9 @@ export default function LayoutShell({ children }: { children: ReactNode }) {
         <main className="flex-1 mb">{children}</main>
         <FooterCPN />
       </div>
+      <SpeedInsights />
+      <Analytics />
       <CookieConsentGate>
-        <SpeedInsights />
-        <Analytics />
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-G87T4ZW9HC"
           strategy="afterInteractive"
