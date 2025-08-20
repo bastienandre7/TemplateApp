@@ -13,12 +13,23 @@ type LemonProduct = {
   };
 };
 
-export async function GET() {
-  try {
-    // 1. Récupère tous les templates depuis la base
-    const templates = await prisma.template.findMany();
+export async function GET(
+  _req: Request,
+  context: { params: Promise<{ category: string }> }
+) {
+  const { category } = await context.params;
+  const normalized = slugify(category);
 
-    // 2. (Optionnel) Récupère les infos LemonSqueezy pour enrichir (prix, buy_now_url, etc.)
+  try {
+    // Récupère tous les templates qui contiennent cette catégorie slugifiée
+    const templates = await prisma.template.findMany({
+      where: {
+        categoriesSlugs: {
+          has: normalized,
+        },
+      },
+    });
+
     const productsRes = await fetch(
       "https://api.lemonsqueezy.com/v1/products",
       {
@@ -30,9 +41,10 @@ export async function GET() {
         next: { revalidate: 60 },
       }
     );
+
     const productsJson = await productsRes.json();
 
-    // 3. Mappe les templates avec les infos LemonSqueezy
+    // Formatage des templates
     const formatted = templates.map((tpl) => {
       const lemon = (productsJson.data as LemonProduct[]).find(
         (product) => Number(product.id) === tpl.lemonId
@@ -63,9 +75,17 @@ export async function GET() {
 
     return NextResponse.json(formatted);
   } catch (error) {
-    console.error("Erreur API:", error);
-    return NextResponse.json({ error: "Erreur API" }, { status: 500 });
+    console.error("Erreur API catégorie:", error);
+    return NextResponse.json({ error: "Erreur serveur" }, { status: 500 });
   } finally {
     await prisma.$disconnect();
   }
+}
+
+function slugify(str: string): string {
+  return str
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, "-")
+    .replace(/[^\w\-]+/g, "");
 }

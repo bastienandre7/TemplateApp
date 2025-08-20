@@ -104,6 +104,8 @@ model Template {
   images         Json     // Tableau d'URLs d'images (hébergées sur Vercel Blob)
   openGraphImage String
   category       String
+  categories     String[]
+  categoriesSlugs     String[]
   tech           Json
   pages          Json
   extras         Json

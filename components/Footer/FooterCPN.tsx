@@ -76,82 +76,58 @@ export default function FooterCPN() {
                 </li>
                 <li>
                   <Link
-                    href="/nextjs-templates/landkit-nextjs-landing-page-starter-kit"
+                    href="/nextjs-templates/category/saas"
                     className="text-gray-400 hover:text-purple-400 transition-colors block"
                   >
-                    LandKit - Next.js Landing Page Starter Kit
+                    SaaS Templates
                   </Link>
                 </li>
                 <li>
                   <Link
-                    href="/nextjs-templates/shopbase-nextjs-e-commerce-boilerplate"
+                    href="/nextjs-templates/category/e-commerce"
                     className="text-gray-400 hover:text-purple-400 transition-colors block"
                   >
-                    ShopBase - Next.js E-commerce Boilerplate
+                    E-Commerce Templates
                   </Link>
                 </li>
                 <li>
                   <Link
-                    href="/nextjs-templates/blogstarter-next-js-tailwind-css-blog-starter-kit"
+                    href="/nextjs-templates/category/landing-page"
                     className="text-gray-400 hover:text-purple-400 transition-colors block"
                   >
-                    BlogStarter – Next.js Blog Starter Kit
+                    Landing Page Templates
                   </Link>
                 </li>
                 <li>
                   <Link
-                    href="/nextjs-templates/coresaas-next-js-tailwind-css-saas-boilerplate"
+                    href="/nextjs-templates/category/blog"
                     className="text-gray-400 hover:text-purple-400 transition-colors block"
                   >
-                    CoreSaaS – Next.js SaaS Boilerplate
+                    Blog Templates
                   </Link>
                 </li>
                 <li>
                   <Link
-                    href="/nextjs-templates/nextjs-tailwind-css-saas-template"
+                    href="/nextjs-templates/category/dashboard"
                     className="text-gray-400 hover:text-purple-400 transition-colors block"
                   >
-                    Velocity - Next.js SaaS Template
+                    Dashboard Templates
                   </Link>
                 </li>
                 <li>
                   <Link
-                    href="/nextjs-templates/free-nextjs-tailwind-css-restaurant-template"
+                    href="/nextjs-templates/category/portfolio"
                     className="text-gray-400 hover:text-purple-400 transition-colors block"
                   >
-                    Free Next.js Restaurant Template
+                    Portfolio Templates
                   </Link>
                 </li>
                 <li>
                   <Link
-                    href="/nextjs-templates/nextjs-tailwind-css-developer-portfolio-template"
+                    href="/nextjs-templates/category/restaurant"
                     className="text-gray-400 hover:text-purple-400 transition-colors block"
                   >
-                    Next.js Developer Portfolio Template
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/nextjs-templates/nextjs-tailwind-css-saas-dashboard-template"
-                    className="text-gray-400 hover:text-purple-400 transition-colors block"
-                  >
-                    Next.js SaaS Dashboard Template
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/nextjs-templates/nextjs-tailwind-css-blog-template"
-                    className="text-gray-400 hover:text-purple-400 transition-colors block"
-                  >
-                    Next.js Tailwind CSS Blog Template
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/nextjs-templates/free-nextjs-tailwind-css-e-commerce-template"
-                    className="text-gray-400 hover:text-purple-400 transition-colors block"
-                  >
-                    Free Next.js E-Commerce Template
+                    Restaurant Templates
                   </Link>
                 </li>
               </ul>

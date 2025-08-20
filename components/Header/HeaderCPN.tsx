@@ -36,64 +36,46 @@ export default function HeaderCPN() {
         "Browse our complete collection of Next.js templates and starter kits for various use cases.",
     },
     {
-      title: "LandKit - Next.js Landing Page Starter Kit",
-      href: "/nextjs-templates/landkit-nextjs-landing-page-starter-kit",
+      title: "SaaS Templates",
+      href: "/nextjs-templates/category/saas",
       description:
-        "Complete landing page starter with hero sections, feature grids, and conversion-focused design.",
+        "Launch your startup faster with premium SaaS templates built with Next.js and Tailwind CSS. Includes authentication, billing, and dashboards.",
     },
     {
-      title: "ShopBase - Next.js E-commerce Boilerplate",
-      href: "/nextjs-templates/shopbase-nextjs-e-commerce-boilerplate",
+      title: "Landing page",
+      href: "/nextjs-templates/category/landing-page",
       description:
-        "Full-featured e-commerce solution with product catalog, shopping cart, and payment integration.",
+        "Modern and responsive Next.js landing page templates designed for startups, products, and marketing campaigns.",
     },
     {
-      title: "BlogStarter – Next.js Blog Starter Kit",
-      href: "/nextjs-templates/blogstarter-next-js-tailwind-css-blog-starter-kit",
+      title: "Blog Templates",
+      href: "/nextjs-templates/category/blog",
       description:
-        "Modern blog template with post management, categories, tags, and responsive design.",
+        "Minimalist and fast-loading Next.js blog templates perfect for personal blogs, editorial sites, or content-driven projects.",
     },
     {
-      title: "CoreSaaS – Next.js SaaS Boilerplate",
-      href: "/nextjs-templates/coresaas-next-js-tailwind-css-saas-boilerplate",
+      title: "Portfolio Templates",
+      href: "/nextjs-templates/category/portfolio",
       description:
-        "Complete SaaS starter with authentication, billing, dashboard, and user management.",
+        "Showcase your work with clean and professional Next.js portfolio templates for developers, designers, and creatives.",
     },
     {
-      title: "Next.js SaaS Template",
-      href: "/nextjs-templates/nextjs-tailwind-css-saas-template",
+      title: "E-Commerce Templates",
+      href: "/nextjs-templates/category/e-commerce",
       description:
-        "Clean SaaS landing page with pricing tables, feature highlights, and customer testimonials.",
+        "Powerful Next.js e-commerce templates with shopping cart, product pages, and checkout features for modern online stores.",
     },
     {
-      title: "Free Next.js Restaurant Template",
-      href: "/nextjs-templates/free-nextjs-tailwind-css-restaurant-template",
+      title: "Dashboard Templates",
+      href: "/nextjs-templates/category/dashboard",
       description:
-        "Restaurant website template with menu display, reservations, and location information.",
+        "Feature-rich Next.js dashboard templates with charts, analytics, and admin panels for SaaS apps and business tools.",
     },
     {
-      title: "Next.js Developer Portfolio Template",
-      href: "/nextjs-templates/nextjs-tailwind-css-developer-portfolio-template",
+      title: "Restaurant Templates",
+      href: "/nextjs-templates/category/restaurant",
       description:
-        "Professional portfolio template showcasing projects, skills, and contact information.",
-    },
-    {
-      title: "Next.js SaaS Dashboard Template",
-      href: "/nextjs-templates/nextjs-tailwind-css-saas-dashboard-template",
-      description:
-        "Feature-rich dashboard with analytics, charts, tables, and administrative controls.",
-    },
-    {
-      title: "Next.js Blog Template",
-      href: "/nextjs-templates/nextjs-tailwind-css-blog-template",
-      description:
-        "Minimalist blog template with clean typography, search functionality, and SEO optimization.",
-    },
-    {
-      title: "Free Next.js E-Commerce Template",
-      href: "/nextjs-templates/free-nextjs-tailwind-css-e-commerce-template",
-      description:
-        "Open-source e-commerce template with product listings, cart functionality, and checkout flow.",
+        "Elegant and responsive Next.js restaurant templates with menus, reservations, and online ordering features.",
     },
   ];
 

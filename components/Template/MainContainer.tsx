@@ -25,6 +25,7 @@ type Product = {
   slug?: string;
   created_at: string;
   openGraphImage?: string;
+  categories: string[];
 };
 
 type Purchase = {
@@ -57,13 +58,17 @@ export default function MainContainer({
   }, [session]);
 
   const categories = Array.from(
-    new Set(products.map((p) => p.category).filter(Boolean))
+    new Set(
+      products.flatMap((p) => p.categories || [p.category]).filter(Boolean)
+    )
   );
 
   // Compter les templates par catégorie
   const categorycounts = categories.reduce(
     (acc, category) => {
-      acc[category] = products.filter((p) => p.category === category).length;
+      acc[category] = products.filter((p) =>
+        p.categories ? p.categories.includes(category) : p.category === category
+      ).length;
       return acc;
     },
     {} as Record<string, number>
@@ -72,12 +77,18 @@ export default function MainContainer({
   const filteredItems = [...products]
     .filter((p) => {
       const categoryMatch =
-        !selectedCategory || p.category === selectedCategory;
+        !selectedCategory ||
+        (p.categories
+          ? p.categories.includes(selectedCategory)
+          : p.category === selectedCategory);
 
       const searchMatch =
         !searchQuery ||
         p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        p.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        p.category?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        p.categories?.some((cat) =>
+          cat.toLowerCase().includes(searchQuery.toLowerCase())
+        ) ||
         (p.description &&
           p.description.toLowerCase().includes(searchQuery.toLowerCase()));
 

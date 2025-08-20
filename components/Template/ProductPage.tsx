@@ -63,7 +63,6 @@ export default function ProductPage({ template }: ProductPageProps) {
 
   const isOwned = ownedTemplates.includes(template.name);
 
-  // Affichage conditionnel pour éviter l'hydratation mismatch
   const renderActionButton = () => {
     if (isLoading || status === "loading") {
       return (
@@ -170,7 +169,7 @@ export default function ProductPage({ template }: ProductPageProps) {
                     className="ml-2"
                   />
                 </div>
-                <div>
+                <div suppressHydrationWarning>
                   Last Updated :{" "}
                   {new Date(template.updated_at).toLocaleDateString()}
                 </div>

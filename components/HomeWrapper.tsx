@@ -17,6 +17,7 @@ type Product = {
   slug?: string;
   created_at: string;
   openGraphImage?: string;
+  categories: string[];
 };
 
 export default function HomeWrapper({ products }: { products: Product[] }) {
