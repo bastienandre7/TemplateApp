@@ -54,7 +54,7 @@ export async function generateMetadata({
       description:
         "Browse our complete collection of Next.js templates and starter kits for SaaS, blogs, e-commerce, portfolios, dashboards, and more.",
       alternates: {
-        canonical: `/nextjs-templates/category/${category}`,
+        canonical: `https://bloomtpl.com/nextjs-templates/category/${category}`,
       },
     };
   }
@@ -63,17 +63,29 @@ export async function generateMetadata({
     title: meta.title,
     description: meta.description,
     alternates: {
-      canonical: `/nextjs-templates/category/${category}`,
+      canonical: `https://bloomtpl.com/nextjs-templates/category/${category}`,
     },
     openGraph: {
       title: meta.title,
       description: meta.description,
-      url: `/nextjs-templates/category/${category}`,
+      url: `https://bloomtpl.com/nextjs-templates/category/${category}`,
+      siteName: "BloomTPL",
+      locale: "en_US",
+      type: "website",
+      images: [
+        {
+          url: "https://bloomtpl.com/og-image.png",
+          width: 1200,
+          height: 630,
+          alt: "BloomTPL – Modern Next.js Templates",
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: meta.title,
       description: meta.description,
+      images: ["https://bloomtpl.com/og-image.png"],
     },
   };
 }

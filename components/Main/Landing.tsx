@@ -127,7 +127,7 @@ export default function LandingPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link
                 href="/nextjs-templates"
-                className="bg-violet-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-violet-700 transition-all hover:scale-105 flex items-center"
+                className="bg-blue-500 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-600 transition-all hover:scale-105 flex items-center"
               >
                 Browse Templates
                 <ArrowRight className="w-5 h-5 ml-2" />
@@ -318,7 +318,7 @@ export default function LandingPage() {
                     </span>
                     <Link
                       href={`${template.link}`}
-                      className="bg-violet-600 text-white px-4 py-2 rounded-lg hover:bg-violet-700 transition-colors"
+                      className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors"
                     >
                       {template.price === 0 ? "Get Free" : "Buy Now"}
                     </Link>
@@ -331,7 +331,7 @@ export default function LandingPage() {
           <div className="text-center mt-12">
             <Link
               href="/nextjs-templates"
-              className="bg-violet-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-violet-700 transition-colors inline-flex items-center"
+              className="bg-blue-500 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-600 transition-colors inline-flex items-center"
             >
               View All Templates
               <ChevronRight className="w-5 h-5 ml-2" />
