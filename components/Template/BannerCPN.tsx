@@ -167,7 +167,7 @@ export default function HeroBanner({
                   />
                   <button
                     type="submit"
-                    className="bg-violet-600 hover:bg-violet-700 text-white px-3 sm:px-6 py-3 font-medium text-xs sm:text-sm transition-colors duration-200 whitespace-nowrap"
+                    className="bg-indigo-600 hover:bg-indigo-700 text-white px-3 sm:px-6 py-3 font-medium text-xs sm:text-sm transition-colors duration-200 whitespace-nowrap"
                   >
                     <span className="sr-only">Search</span>
                     <span className="hidden sm:inline">Search</span>

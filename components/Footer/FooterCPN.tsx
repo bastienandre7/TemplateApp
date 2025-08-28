@@ -23,6 +23,12 @@ export default function FooterCPN() {
                   BloomTPL
                 </span>
                 <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg blur opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
+                {/* <Image
+                  src="/images/logo/bloom-white.png"
+                  alt="logo bloom"
+                  height="75"
+                  width="241"
+                /> */}
               </div>
             </Link>
 

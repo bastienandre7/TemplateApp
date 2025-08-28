@@ -7,7 +7,7 @@ import {
   SelectItem,
   SelectTrigger,
 } from "@/components/ui/select";
-import { signIn, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -95,7 +95,7 @@ export default function CategoryPage({
             <div className="text-center">
               <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight max-w-4xl">
                 Best Free & Premium{" "}
-                <span className="text-blue-500">{category}</span> Next.js
+                <span className="text-indigo-600">{category}</span> Next.js
                 Templates
               </h1>
 
@@ -258,7 +258,7 @@ export default function CategoryPage({
                     <div>
                       <Link
                         href="/nextjs-templates"
-                        className="font-bold text-violet-600 hover:text-violet-700 mt-1"
+                        className="font-bold text-indigo-600 hover:text-indigo-700 mt-1"
                       >
                         ← Back to all templates
                       </Link>
@@ -394,7 +394,7 @@ export default function CategoryPage({
                           <div className="flex-1 flex flex-col justify-between p-5">
                             <div>
                               <Link
-                                className="text-lg font-semibold mb-2 text-gray-900 hover:text-violet-600 transition-colors duration-200"
+                                className="text-lg font-semibold mb-2 text-gray-900 hover:text-indigo-600 transition-colors duration-200"
                                 href={`/nextjs-templates/${item.slug}`}
                               >
                                 {item.name}
@@ -406,13 +406,13 @@ export default function CategoryPage({
 
                               {/* Tech tags + Category */}
                               <div className="flex flex-wrap gap-1 mb-4">
-                                <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
+                                <span className="text-xs text-gray-600 bg-gray-100 px-2 py-1 rounded">
                                   Next.js
                                 </span>
-                                <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
+                                <span className="text-xs text-gray-600 bg-gray-100 px-2 py-1 rounded">
                                   Tailwind
                                 </span>
-                                <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
+                                <span className="text-xs text-gray-600 bg-gray-100 px-2 py-1 rounded">
                                   TypeScript
                                 </span>
                               </div>
@@ -429,48 +429,26 @@ export default function CategoryPage({
                                   href={`${item.demoUrl}`}
                                   target="_blank"
                                   rel="noopener noreferrer"
-                                  className="w-full text-center cursor-pointer py-2"
+                                  className="w-full text-center cursor-pointer py-2 font-semibold text-zinc-700"
                                 >
                                   Live Demo
                                 </Link>
                               </Button>
 
-                              {isOwned ? (
-                                <Button
-                                  asChild
-                                  variant="outline"
-                                  size="default"
-                                  className="flex-1"
-                                >
-                                  <Link
-                                    href="/dashboard"
-                                    className="w-full text-center"
-                                  >
-                                    Owned
-                                  </Link>
-                                </Button>
-                              ) : (
-                                <Button
-                                  variant="default"
-                                  className="flex-1 bg-blue-500 hover:bg-blue-600 cursor-pointer"
-                                  size="default"
-                                  onClick={() => {
-                                    if (!session) {
-                                      signIn();
-                                    } else if (session.user?.email) {
-                                      const email = encodeURIComponent(
-                                        session.user.email
-                                      );
-                                      const url = `${item.lemonLink}?checkout[email]=${email}`;
-                                      window.location.href = url;
-                                    }
-                                  }}
+                              <Button
+                                variant="outline"
+                                className="flex-1 cursor-pointer"
+                                size="default"
+                              >
+                                <Link
+                                  href={`/nextjs-templates/${item.slug}`}
+                                  className="w-full text-center py-2 font-semibold text-zinc-700"
                                 >
                                   {item.price === 0
                                     ? "Free"
                                     : `Buy Now - ${item.price}€`}
-                                </Button>
-                              )}
+                                </Link>
+                              </Button>
                             </div>
                           </div>
                         </div>

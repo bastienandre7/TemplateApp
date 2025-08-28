@@ -96,7 +96,7 @@ export default function ProductPage({ template }: ProductPageProps) {
             window.location.href = url;
           }
         }}
-        className="px-8 py-4 rounded-xl text-lg bg-blue-500 hover:bg-blue-600 text-white min-h-[56px] min-w-[48px] shadow-md w-full cursor-pointer"
+        className="px-8 py-4 rounded-xl text-lg bg-indigo-600 hover:bg-indigo-700 text-white min-h-[56px] min-w-[48px] shadow-md w-full cursor-pointer"
       >
         {template.price === 0 ? "Get FREE" : `Buy Now - ${template.price}€`}
       </Button>

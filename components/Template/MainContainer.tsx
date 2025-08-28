@@ -155,7 +155,7 @@ export default function MainContainer({
                     onClick={() => setSelectedCategory(null)}
                     className={`w-full flex items-center justify-between p-3 rounded-lg text-left transition-all duration-200 mb-2 ${
                       !selectedCategory
-                        ? "bg-violet-100 text-violet-700 border border-violet-200"
+                        ? "bg-indigo-100 text-indigo-700 border border-indigo-200"
                         : "hover:bg-gray-100 text-gray-700"
                     }`}
                   >
@@ -370,7 +370,7 @@ export default function MainContainer({
                         <div className="flex-1 flex flex-col justify-between p-5">
                           <div>
                             <Link
-                              className="text-lg font-semibold mb-2 text-gray-900 hover:text-violet-600 transition-colors duration-200"
+                              className="text-lg font-semibold mb-2 text-gray-900 hover:text-indigo-600 transition-colors duration-200"
                               href={`/nextjs-templates/${item.slug}`}
                             >
                               {item.name}
@@ -382,17 +382,17 @@ export default function MainContainer({
 
                             {/* Tech tags + Category */}
                             <div className="flex flex-wrap gap-1 mb-4">
-                              <span className="text-xs text-violet-600 bg-violet-100 px-2 py-1 rounded font-medium">
+                              <span className="text-xs text-indigo-600 bg-indigo-100 px-2 py-1 rounded font-medium">
                                 {item.category.charAt(0).toUpperCase() +
                                   item.category.slice(1)}
                               </span>
-                              <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
+                              <span className="text-xs text-gray-600 bg-gray-100 px-2 py-1 rounded">
                                 Next.js
                               </span>
-                              <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
+                              <span className="text-xs text-gray-600 bg-gray-100 px-2 py-1 rounded">
                                 Tailwind
                               </span>
-                              <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
+                              <span className="text-xs text-gray-600 bg-gray-100 px-2 py-1 rounded">
                                 TypeScript
                               </span>
                             </div>
@@ -409,7 +409,7 @@ export default function MainContainer({
                                 href={`${item.demoUrl}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="w-full text-center cursor-pointer py-2"
+                                className="w-full text-center cursor-pointer py-2 font-semibold text-zinc-700"
                               >
                                 Live Demo
                               </Link>
@@ -424,15 +424,15 @@ export default function MainContainer({
                               >
                                 <Link
                                   href="/dashboard"
-                                  className="w-full text-center"
+                                  className="w-full text-center font-semibold text-zinc-700"
                                 >
                                   Owned
                                 </Link>
                               </Button>
                             ) : (
                               <Button
-                                variant="default"
-                                className="flex-1 bg-blue-500 hover:bg-blue-600 cursor-pointer"
+                                variant="outline"
+                                className="flex-1 font-semibold text-zinc-700 cursor-pointer"
                                 size="default"
                                 onClick={() => {
                                   if (!session) {

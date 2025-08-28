@@ -8,7 +8,10 @@ import {
 
 export default function FaqAccordion() {
   return (
-    <section id="faq" className="max-w-4xl mx-auto pt-16 pb-32 px-4">
+    <section
+      id="faq"
+      className="max-w-4xl mx-auto pb-14 md:pb-20 lg:pb-24 px-4"
+    >
       <h2 className="text-3xl font-bold mb-4 text-center">FAQ – BloomTPL</h2>
       <Accordion type="multiple" className="w-full">
         <AccordionItem value="item-1">

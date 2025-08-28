@@ -167,6 +167,12 @@ export default function HeaderCPN() {
               <span className="self-center text-2xl font-bold whitespace-nowrap">
                 BloomTPL
               </span>
+              {/* <Image
+                src="/images/logo/bloom.png"
+                alt="logo bloom"
+                height="38"
+                width="129"
+              /> */}
             </Link>
           </div>
           <div className="hidden lg:flex items-center space-x-4 rtl:space-x-reverse">

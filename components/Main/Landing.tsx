@@ -5,14 +5,17 @@ import {
   Check,
   ChevronRight,
   Code,
+  Laptop,
+  Lock,
   Shield,
   Sparkles,
-  Star,
+  Wrench,
   Zap,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import FaqAccordion from "../Template/FaqAccordion";
+import { Button } from "../ui/button";
 
 export default function LandingPage() {
   const features = [
@@ -20,19 +23,37 @@ export default function LandingPage() {
       icon: <Code className="w-6 h-6" />,
       title: "Production Ready",
       description:
-        "All templates are built with industry best practices and ready for deployment",
+        "Launch faster with templates built on best practices and fully ready for deployment.",
     },
     {
       icon: <Zap className="w-6 h-6" />,
       title: "Lightning Fast",
       description:
-        "Optimized for performance with Next.js, Tailwind CSS, and modern web standards",
+        "Optimized for speed with Next.js 15 and Tailwind CSS, ensuring smooth performance.",
     },
     {
       icon: <Shield className="w-6 h-6" />,
       title: "SEO Optimized",
       description:
-        "Built-in SEO optimizations to help your projects rank better in search engines",
+        "Preconfigured for better rankings with clean code, metadata, and performance boosts.",
+    },
+    {
+      icon: <Wrench className="w-6 h-6" />,
+      title: "Fully Customizable",
+      description:
+        "Easily adapt every section to match your brand and project requirements.",
+    },
+    {
+      icon: <Laptop className="w-6 h-6" />,
+      title: "Responsive by Default",
+      description:
+        "Designed to look stunning on any device, from mobile to desktop.",
+    },
+    {
+      icon: <Lock className="w-6 h-6" />,
+      title: "Modern Tech Stack",
+      description:
+        "Built with the latest Next.js & Tailwind CSS standards for long-term maintainability.",
     },
   ];
 
@@ -65,76 +86,86 @@ export default function LandingPage() {
 
   const templates = [
     {
+      name: "LandKit - Next.js Landing Page Starter Kit",
+      slug: "landkit-nextjs-landing-page-starter-kit",
+      description:
+        "A modular Next.js landing page kit designed for startups, SaaS, and makers. Includes 10+ production-ready components styled with Tailwind CSS.",
+      category: "Landing Page",
+      price: 14.99,
+      image:
+        "https://9hn0rhd8ibpivln7.public.blob.vercel-storage.com/templates/Landkit%20Landing%20Page/og-image.png",
+      link: "/nextjs-templates/landkit-nextjs-landing-page-starter-kit",
+      demoUrl: "https://bloomtpl-landkit-landing-page.vercel.app/",
+    },
+    {
       name: "ShopBase - Next.js E-commerce Boilerplate",
+      slug: "shopbase-nextjs-e-commerce-boilerplate",
+      description:
+        "Production-ready Next.js e-commerce boilerplate with Stripe, cart, product management, and admin dashboard. Launch your online store in minutes.",
       category: "E-commerce",
       price: 39.99,
       image:
-        "https://9hn0rhd8ibpivln7.public.blob.vercel-storage.com/templates/ShopBase%20Template/preview-1.png",
-      features: ["Product Catalog", "Shopping Cart", "Checkout", "Admin Panel"],
+        "https://9hn0rhd8ibpivln7.public.blob.vercel-storage.com/templates/ShopBase%20Template/og.png",
       link: "/nextjs-templates/shopbase-nextjs-e-commerce-boilerplate",
+      demoUrl: "https://bloomtpl-shopbase-template.vercel.app/",
     },
     {
       name: "BlogStarter – Next.js Tailwind CSS Blog Starter Kit",
+      slug: "blogstarter-next-js-tailwind-css-blog-starter-kit",
+      description:
+        "BloomTPL BlogStarter is a modern blog starter kit with Next.js, Sanity.io & Tailwind CSS. Fast, customizable, and production-ready.",
       category: "Blog",
       price: 34.99,
       image:
-        "https://9hn0rhd8ibpivln7.public.blob.vercel-storage.com/templates/blogstarter-starterkit/preview-1-Ut1IqfyifGCJjOwKTY24nvq0VeytLw.png",
-      features: [
-        "Sanity CMS integration",
-        "Dark mode",
-        "Pre-built author and category pages",
-      ],
+        "https://9hn0rhd8ibpivln7.public.blob.vercel-storage.com/templates/blogstarter-starterkit/og.png",
       link: "/nextjs-templates/blogstarter-next-js-tailwind-css-blog-starter-kit",
+      demoUrl: "https://bloomtpl-blogstarter-starter-kit.vercel.app/",
     },
     {
       name: "CoreSaaS – Next.js Tailwind CSS SaaS Boilerplate",
+      slug: "coresaas-next-js-tailwind-css-saas-boilerplate",
+      description:
+        "Launch your SaaS faster with a complete starter kit: authentication, Stripe billing, admin dashboard, and user management – built with Next.js and Tailwind CSS.",
       category: "SaaS",
       price: 39.99,
       image:
-        "https://9hn0rhd8ibpivln7.public.blob.vercel-storage.com/templates/coresaas-boilerplate/preview-1-YllIsxFDT84vIBXLZP9vYY0gsVNJ03.png",
-      features: [
-        "Authentication",
-        "Stripe integration",
-        "Admin dashboard",
-        "Dark Mode",
-      ],
+        "https://9hn0rhd8ibpivln7.public.blob.vercel-storage.com/templates/coresaas-boilerplate/og.png",
       link: "/nextjs-templates/coresaas-next-js-tailwind-css-saas-boilerplate",
+      demoUrl: "https://bloomtpl-coresaas-template.vercel.app/",
     },
   ];
 
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative overflow-hidden pt-20">
+      <section className="relative overflow-hidden pt-20 border-b border-gray-200">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
           <div className="text-center">
-            <div className="inline-flex items-center px-4 py-2 bg-purple-100 text-purple-800 rounded-full text-sm font-medium mb-8">
-              <Star className="w-4 h-4 mr-2" />
-              10+ Premium Templates Available
-            </div>
-
-            <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight max-w-3xl mx-auto">
-              Premium Next.js Templates for Modern Web Apps
+            <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight max-w-5xl mx-auto">
+              Premium Next.js Templates, Boilerplates, Starter Kits and
+              Components
             </h1>
 
-            <p className="text-xl text-gray-600 mb-10 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-gray-600 mb-10 max-w-3xl mx-auto leading-relaxed">
               Kickstart your next project with our collection of
               production-ready Next.js templates and free React components.
-              Built with TypeScript, Tailwind CSS, and optimized for SEO and
-              performance.
+              Designed with TypeScript and Tailwind CSS, every template is
+              responsive, customizable, and built to scale. Optimized for SEO
+              and blazing-fast performance, our starter kits help you save time,
+              launch faster, and focus on growing your product.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link
                 href="/nextjs-templates"
-                className="bg-blue-500 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-600 transition-all hover:scale-105 flex items-center"
+                className="bg-indigo-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-indigo-700 transition-all hover:scale-105 flex items-center"
               >
                 Browse Templates
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Link>
               <Link
                 href="/nextjs-components"
-                className="test text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-emerald-500 transition-all hover:scale-105 flex items-center"
+                className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-lg font-semibold text-lg transition-all hover:scale-105 flex items-center"
               >
                 Free Components
                 <ArrowRight className="w-5 h-5 ml-2" />
@@ -144,14 +175,162 @@ export default function LandingPage() {
         </div>
       </section>
 
+      <section id="templates" className="py-14 md:py-20 lg:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl xl:text-[43px] font-bold text-gray-900 mb-4 tracking-tight">
+              Featured Templates
+            </h2>
+            <p className="text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Explore a curated selection of premium Next.js templates designed
+              to help you launch faster, save development time, and build
+              stunning web apps with ease.
+            </p>
+
+            <div className="flex flex-wrap justify-center gap-3 mt-6">
+              <Link
+                href="/nextjs-templates/category/saas"
+                className="text-sm font-medium text-indigo-600 bg-indigo-50 hover:bg-indigo-100 px-4 py-2 rounded-full transition"
+              >
+                SaaS Templates
+              </Link>
+              <Link
+                href="/nextjs-templates/category/e-commerce"
+                className="text-sm font-medium text-indigo-600 bg-indigo-50 hover:bg-indigo-100 px-4 py-2 rounded-full transition"
+              >
+                E-commerce
+              </Link>
+              <Link
+                href="/nextjs-templates/category/portfolio"
+                className="text-sm font-medium text-indigo-600 bg-indigo-50 hover:bg-indigo-100 px-4 py-2 rounded-full transition"
+              >
+                Portfolios
+              </Link>
+              <Link
+                href="/nextjs-templates/category/blog"
+                className="text-sm font-medium text-indigo-600 bg-indigo-50 hover:bg-indigo-100 px-4 py-2 rounded-full transition"
+              >
+                Blog
+              </Link>
+              <Link
+                href="/nextjs-templates/category/landing-page"
+                className="text-sm font-medium text-indigo-600 bg-indigo-50 hover:bg-indigo-100 px-4 py-2 rounded-full transition"
+              >
+                Landing Pages
+              </Link>
+            </div>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-2">
+            {templates.map((item, index) => {
+              return (
+                <div
+                  key={index}
+                  className="group relative flex flex-col rounded-lg border border-gray-200 bg-white overflow-hidden hover:border-gray-300 transition-all duration-200 hover:shadow-lg"
+                >
+                  <Link
+                    href={`/nextjs-templates/${item.slug}`}
+                    className="block relative aspect-[1200/630] bg-gray-50 overflow-hidden"
+                  >
+                    <Image
+                      src={item.image || "/images/NoImage.jpg"}
+                      alt={`${item.name} main preview`}
+                      fill
+                      className="object-cover w-full h-full"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
+                      quality={90}
+                    />
+                  </Link>
+
+                  <div className="flex-1 flex flex-col justify-between p-5">
+                    <div>
+                      <Link
+                        className="text-lg font-semibold mb-2 text-gray-900 hover:text-indigo-600 transition-colors duration-200"
+                        href={`/nextjs-templates/${item.slug}`}
+                      >
+                        {item.name}
+                      </Link>
+                      <p className="text-gray-600 text-sm mb-4 line-clamp-2">
+                        {item.description ||
+                          "A beautifully crafted template ready for your next project."}
+                      </p>
+
+                      {/* Tech tags + Category */}
+                      <div className="flex flex-wrap gap-1 mb-4">
+                        <span className="text-xs text-indigo-600 bg-indigo-100 px-2 py-1 rounded font-medium">
+                          {item.category.charAt(0).toUpperCase() +
+                            item.category.slice(1)}
+                        </span>
+                        <span className="text-xs text-gray-600 bg-gray-100 px-2 py-1 rounded">
+                          Next.js
+                        </span>
+                        <span className="text-xs text-gray-600 bg-gray-100 px-2 py-1 rounded">
+                          Tailwind
+                        </span>
+                        <span className="text-xs text-gray-600 bg-gray-100 px-2 py-1 rounded">
+                          TypeScript
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Action Buttons */}
+                    <div className="flex gap-2">
+                      <Button
+                        variant="outline"
+                        size="default"
+                        className="flex-1 p-0"
+                      >
+                        <Link
+                          href={`${item.demoUrl}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-full text-center cursor-pointer py-2 font-semibold text-zinc-700"
+                        >
+                          Live Demo
+                        </Link>
+                      </Button>
+
+                      <Button
+                        variant="outline"
+                        className="flex-1 cursor-pointer"
+                        size="default"
+                      >
+                        <Link
+                          href={`${item.link}`}
+                          className="w-full text-center py-2 font-semibold text-zinc-700"
+                        >
+                          {item.price === 0
+                            ? "Free"
+                            : `Buy Now - ${item.price}€`}
+                        </Link>
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="text-center mt-12">
+            <Link
+              href="/nextjs-templates"
+              className="bg-indigo-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-indigo-700 transition-colors inline-flex items-center"
+            >
+              View All Templates
+              <ChevronRight className="w-5 h-5 ml-2" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Features Section */}
       <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl xl:text-[43px] font-bold text-gray-900 mb-4 tracking-tight">
               Why Choose Our Templates?
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-gray-600 max-w-2xl mx-auto">
               Every template is crafted with attention to detail and modern
               development practices
             </p>
@@ -179,17 +358,13 @@ export default function LandingPage() {
       </section>
 
       {/* Free Components Section */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-14 md:py-20 lg:py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center px-4 py-2 bg-red-100 text-red-800 rounded-full text-sm font-medium mb-6">
-              <Check className="w-4 h-4 mr-2" />
-              100% Free Components
-            </div>
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl xl:text-[43px] font-bold text-gray-900 mb-4 tracking-tight">
               Start Building with Free Components
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-gray-600 max-w-2xl mx-auto">
               Beautiful, responsive components built with Tailwind CSS and
               React. Copy the code and paste into your project.
             </p>
@@ -260,95 +435,15 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Templates Preview */}
-      <section id="templates" className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Premium Templates
-            </h2>
-            <p className="text-xl text-gray-600">
-              Complete solutions for your next big project
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {templates.map((template, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-xl transition-all hover:-translate-y-1"
-              >
-                <div className="aspect-video bg-gradient-to-br from-purple-100 to-blue-100 relative border-b">
-                  <Image
-                    src={template.image || "/images/NoImage.jpg"}
-                    alt={`${template.name} main preview`}
-                    fill
-                    className="object-cover w-full h-full"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
-                    quality={90}
-                  />
-                  <span className="absolute top-4 left-4 bg-white px-3 py-1 rounded-full text-sm font-medium text-gray-700">
-                    {template.category}
-                  </span>
-                  {template.price === 0 && (
-                    <span className="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium">
-                      FREE
-                    </span>
-                  )}
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                    <Link href={template.link} className="hover:underline">
-                      {template.name}
-                    </Link>
-                  </h3>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {template.features.map((feature, idx) => (
-                      <span
-                        key={idx}
-                        className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded"
-                      >
-                        {feature}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-2xl font-bold">
-                      {template.price === 0 ? "FREE" : `${template.price}€`}
-                    </span>
-                    <Link
-                      href={`${template.link}`}
-                      className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors"
-                    >
-                      {template.price === 0 ? "Get Free" : "Buy Now"}
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <Link
-              href="/nextjs-templates"
-              className="bg-blue-500 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-600 transition-colors inline-flex items-center"
-            >
-              View All Templates
-              <ChevronRight className="w-5 h-5 ml-2" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
       {/* Bundle Promotion Section */}
-      <section className="py-24 bg-gradient-to-br from-yellow-50 to-orange-100">
+      <section className="py-14 md:py-20 lg:py-24 bg-gradient-to-br from-yellow-50 to-orange-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="inline-flex items-center px-4 py-2 bg-yellow-200 text-yellow-900 rounded-full text-sm font-medium mb-6">
             <Sparkles className="w-4 h-4 mr-2" />
             Special Offer
           </div>
 
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
             Get All Templates in One Powerful Bundle
           </h2>
 
@@ -385,13 +480,13 @@ export default function LandingPage() {
       </section>
 
       {/* Social Proof Alternative */}
-      <section className="py-24 bg-white">
+      <section className="py-14 md:py-20 lg:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl xl:text-[43px] font-bold text-gray-900 mb-4 tracking-tight">
               Built with Industry Standards
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-gray-600">
               Every template follows modern development best practices
             </p>
           </div>
@@ -456,89 +551,10 @@ export default function LandingPage() {
 
       <FaqAccordion />
 
-      {/* <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Explore Our Collection
-            </h2>
-            <p className="text-lg text-gray-600">
-              Quick access to popular templates and components
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-gray-50 rounded-xl p-8">
-              <h3 className="text-xl font-semibold text-gray-900 mb-6">
-                Popular Templates
-              </h3>
-              <div className="space-y-3">
-                <Link
-                  href="/nextjs-templates/nextjs-tailwind-css-restaurant-template"
-                  className="block text-purple-600 hover:text-purple-700 hover:underline"
-                >
-                  Restaurant Template
-                </Link>
-                <Link
-                  href="/nextjs-templates/nextjs-tailwind-css-saas-template"
-                  className="block text-purple-600 hover:text-purple-700 hover:underline"
-                >
-                  SaaS Template
-                </Link>
-                <Link
-                  href="/nextjs-templates/nextjs-tailwind-css-e-commerce-template"
-                  className="block text-purple-600 hover:text-purple-700 hover:underline"
-                >
-                  E-Commerce Template
-                </Link>
-                <Link
-                  href="/nextjs-templates/landkit-nextjs-landing-page-starter-kit"
-                  className="block text-purple-600 hover:text-purple-700 hover:underline"
-                >
-                  Landing Page Kit
-                </Link>
-              </div>
-            </div>
-
-            <div className="bg-gray-50 rounded-xl p-8">
-              <h3 className="text-xl font-semibold text-gray-900 mb-6">
-                Popular Components
-              </h3>
-              <div className="space-y-3">
-                <Link
-                  href="/components/contact-form"
-                  className="block text-red-600 hover:text-red-700 hover:underline"
-                >
-                  Contact Form
-                </Link>
-                <Link
-                  href="/components/simple-footer"
-                  className="block text-red-600 hover:text-red-700 hover:underline"
-                >
-                  Simple Footer
-                </Link>
-                <Link
-                  href="/components/pricing-section"
-                  className="block text-red-600 hover:text-red-700 hover:underline"
-                >
-                  Pricing Section
-                </Link>
-                <Link
-                  href="/components/hero-section"
-                  className="block text-red-600 hover:text-red-700 hover:underline"
-                >
-                  Hero Section
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> */}
-
       {/* CTA Section */}
-      <section className="py-24 bg-gradient-to-br from-slate-50 to-gray-100">
+      <section className="py-14 md:py-20 lg:py-24 bg-gradient-to-br from-slate-50 to-gray-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+          <h2 className="text-3xl md:text-4xl xl:text-[43px] font-bold text-gray-900 mb-6 tracking-tight">
             Start Building Your Next Project Today
           </h2>
           <p className="text-xl text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
@@ -549,7 +565,7 @@ export default function LandingPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link
               href="/nextjs-templates"
-              className="bg-violet-600 hover:bg-violet-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center group"
+              className="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center group"
             >
               Browse All Templates
               <svg
