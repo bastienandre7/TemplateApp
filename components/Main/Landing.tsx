@@ -140,36 +140,49 @@ export default function LandingPage() {
       {/* Hero Section */}
       <section className="relative overflow-hidden pt-20 border-b border-gray-200">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
-          <div className="text-center">
-            <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight max-w-5xl mx-auto">
-              Premium Next.js Templates, Boilerplates, Starter Kits and
-              Components
-            </h1>
+          <div className="flex flex-col lg:flex-row items-center gap-12">
+            {/* Colonne texte */}
+            <div className="flex-1 text-center lg:text-left">
+              <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight max-w-5xl">
+                Premium Next.js Templates, Boilerplates, Starter Kits and
+                Components
+              </h1>
+              <p className="text-gray-600 mb-10 max-w-3xl leading-relaxed">
+                Kickstart your next project with our collection of
+                production-ready Next.js templates and free React components.
+                Designed with TypeScript and Tailwind CSS, every template is
+                responsive, customizable, and built to scale. Optimized for SEO
+                and blazing-fast performance, our starter kits help you save
+                time, launch faster, and focus on growing your product.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center">
+                <Link
+                  href="/nextjs-templates"
+                  className="bg-indigo-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-indigo-700 transition-all hover:scale-105 flex items-center"
+                >
+                  Browse Templates
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Link>
+                <Link
+                  href="/nextjs-components"
+                  className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-lg font-semibold text-lg transition-all hover:scale-105 flex items-center"
+                >
+                  Free Components
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Link>
+              </div>
+            </div>
 
-            <p className="text-gray-600 mb-10 max-w-3xl mx-auto leading-relaxed">
-              Kickstart your next project with our collection of
-              production-ready Next.js templates and free React components.
-              Designed with TypeScript and Tailwind CSS, every template is
-              responsive, customizable, and built to scale. Optimized for SEO
-              and blazing-fast performance, our starter kits help you save time,
-              launch faster, and focus on growing your product.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link
-                href="/nextjs-templates"
-                className="bg-indigo-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-indigo-700 transition-all hover:scale-105 flex items-center"
-              >
-                Browse Templates
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Link>
-              <Link
-                href="/nextjs-components"
-                className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-lg font-semibold text-lg transition-all hover:scale-105 flex items-center"
-              >
-                Free Components
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Link>
+            {/* Colonne mockups */}
+            <div className="flex-1 relative flex justify-center items-center">
+              <Image
+                src="/images/banner.png"
+                alt="Desktop Banner Image"
+                width={800}
+                height={640}
+                className="shadow-2xl rounded-xl transform rotate-[-3deg] hover:rotate-0 transition-transform duration-500"
+                priority
+              />
             </div>
           </div>
         </div>

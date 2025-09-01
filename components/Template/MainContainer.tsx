@@ -32,15 +32,7 @@ type Purchase = {
   template: string;
 };
 
-export default function MainContainer({
-  products,
-  searchQuery = "",
-  onClearSearch,
-}: {
-  products: Product[];
-  searchQuery?: string;
-  onClearSearch?: () => void;
-}) {
+export default function MainContainer({ products }: { products: Product[] }) {
   const [sortOrder, setSortOrder] = useState("newest");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [ownedTemplates, setOwnedTemplates] = useState<string[]>([]);
@@ -74,6 +66,9 @@ export default function MainContainer({
     {} as Record<string, number>
   );
 
+  // Suppression de toute logique liée à l'ancienne searchbar
+  // Notamment : searchQuery, onClearSearch, et tout ce qui s'y rapporte
+
   const filteredItems = [...products]
     .filter((p) => {
       const categoryMatch =
@@ -82,17 +77,7 @@ export default function MainContainer({
           ? p.categories.includes(selectedCategory)
           : p.category === selectedCategory);
 
-      const searchMatch =
-        !searchQuery ||
-        p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        p.category?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        p.categories?.some((cat) =>
-          cat.toLowerCase().includes(searchQuery.toLowerCase())
-        ) ||
-        (p.description &&
-          p.description.toLowerCase().includes(searchQuery.toLowerCase()));
-
-      return categoryMatch && searchMatch;
+      return categoryMatch;
     })
     .sort((a, b) => {
       if (sortOrder === "asc") return a.price - b.price;
@@ -111,37 +96,6 @@ export default function MainContainer({
     >
       <div className="relative z-10 px-4">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            {searchQuery && (
-              <div className="mt-4 p-3 bg-purple-50 border border-purple-200 rounded-lg inline-flex items-center gap-3">
-                <p className="text-sm text-purple-700">
-                  Searching for:{" "}
-                  <span className="font-medium">&quot;{searchQuery}&quot;</span>
-                </p>
-                <button
-                  onClick={onClearSearch}
-                  className="flex items-center justify-center w-5 h-5 text-purple-500 hover:text-purple-700 hover:bg-purple-100 rounded-full transition-colors duration-200"
-                  aria-label="Clear search"
-                  title="Clear search"
-                >
-                  <svg
-                    className="w-3 h-3"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
-                </button>
-              </div>
-            )}
-          </div>
-
           {/* Layout avec sidebar sur desktop */}
           <div className="lg:flex lg:gap-8">
             {/* Sidebar - Categories (Desktop uniquement) */}
@@ -265,22 +219,6 @@ export default function MainContainer({
                       </Select>
                     )}
                   </div>
-
-                  {/* Clear filters button */}
-                  {(selectedCategory || searchQuery) && (
-                    <Button
-                      variant="outline"
-                      onClick={() => {
-                        setSelectedCategory(null);
-                        if (onClearSearch) {
-                          onClearSearch();
-                        }
-                      }}
-                      className="w-full sm:w-auto"
-                    >
-                      Clear filters
-                    </Button>
-                  )}
                 </div>
               </div>
 
@@ -305,17 +243,10 @@ export default function MainContainer({
                       No templates found
                     </h3>
                     <p className="text-gray-600 mb-4">
-                      {searchQuery
-                        ? `No templates match "${searchQuery}". Try a different search term.`
-                        : "No templates match your current filters."}
+                      No templates match your current filters.
                     </p>
                     <Button
-                      onClick={() => {
-                        setSelectedCategory(null);
-                        if (onClearSearch) {
-                          onClearSearch();
-                        }
-                      }}
+                      onClick={() => setSelectedCategory(null)}
                       variant="outline"
                       size="sm"
                     >

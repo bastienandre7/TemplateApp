@@ -1,4 +1,5 @@
 import ProductPage from "@/components/Template/ProductPage";
+import { getProductBySlug } from "@/lib/getProductBySlug";
 import { notFound } from "next/navigation";
 
 export async function generateMetadata({
@@ -8,19 +9,14 @@ export async function generateMetadata({
 }) {
   const { slug } = await params;
 
-  const res = await fetch(
-    `${process.env.NEXTAUTH_URL}/api/products/slug/${slug}`,
-    { cache: "no-store" }
-  );
+  const product = await getProductBySlug(slug);
 
-  if (!res.ok) {
+  if (!product) {
     return {
       title: "Template Not Found – BloomTPL",
       description: "This template does not exist or is no longer available.",
     };
   }
-
-  const product = await res.json();
 
   return {
     title: `${product.name} | BloomTPL`,
@@ -62,14 +58,9 @@ export default async function TemplateDetailsPage({
 }) {
   const { slug } = await params;
 
-  const res = await fetch(
-    `${process.env.NEXTAUTH_URL}/api/products/slug/${slug}`,
-    { cache: "no-store" }
-  );
+  const product = await getProductBySlug(slug);
 
-  if (!res.ok) return notFound();
-
-  const product = await res.json();
+  if (!product) return notFound();
 
   const jsonLd = {
     "@context": "https://schema.org",

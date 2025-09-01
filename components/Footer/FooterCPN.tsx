@@ -334,6 +334,14 @@ export default function FooterCPN() {
                   </li>
                   <li>
                     <a
+                      href="/refund-policy"
+                      className="text-gray-400 hover:text-white transition-colors"
+                    >
+                      Refund Policy
+                    </a>
+                  </li>
+                  <li>
+                    <a
                       href="/terms-of-use"
                       className="text-gray-400 hover:text-white transition-colors"
                     >

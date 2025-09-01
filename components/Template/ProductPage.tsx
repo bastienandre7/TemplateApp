@@ -2,7 +2,7 @@
 
 import ProductGallery from "@/components/Template/ProductGallery";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Check, Sparkles } from "lucide-react";
+import { ArrowRight, Check, CheckCheck, Sparkles } from "lucide-react";
 import { signIn, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -25,6 +25,7 @@ interface Product {
   tech?: string[];
   pages?: string[];
   extras?: string[];
+  openGraphImage?: string;
 }
 
 type Purchase = {
@@ -106,76 +107,79 @@ export default function ProductPage({ template }: ProductPageProps) {
   return (
     <div className="pt-16 md:pt-4 bg-white text-black min-h-screen">
       <div className="max-w-screen-xl mx-auto px-8 xl:px-4 py-20 sm:py-32">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center">
-            {/* Main Title */}
-            <div>
-              <h1 className="mb-4 text-xl font-bold leading-tight text-black xs:text-2xl sm:text-3xl md:text-[34px] lg:text-3xl xl:text-[40px]">
-                {template.name}
-              </h1>
+        <div className=" mx-auto">
+          <section className="flex flex-col lg:flex-row items-center gap-12">
+            {/* Colonne texte */}
+            <div className="flex-1 text-center lg:text-left space-y-6">
+              <div className="space-y-4">
+                <h1 className="text-xl xs:text-2xl sm:text-3xl md:text-[34px] lg:text-3xl xl:text-[40px] font-bold leading-tight text-black">
+                  {template.name}
+                </h1>
+                <p className="max-w-2xl mx-auto lg:mx-0 text-gray-600 leading-relaxed animate-fadeIn">
+                  {template.description}
+                </p>
+              </div>
 
-              <p className="max-w-3xl mx-auto text-base md:text-xl text-gray-800 leading-relaxed">
-                {template.description}
-              </p>
-            </div>
-
-            {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 py-4 my-4">
-              {template.demoUrl && (
-                <Link
-                  href={`${template.demoUrl}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full"
-                >
-                  <Button
-                    variant="outline"
-                    className="inline-flex items-center gap-2 border-2 border-gray-200 hover:border-purple-300 text-gray-700 hover:text-purple-700 px-8 py-4 rounded-xl text-lg font-medium transition-all duration-200 hover:shadow-lg min-h-[56px] w-full w-full cursor-pointer"
+              {/* Boutons */}
+              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                {template.demoUrl && (
+                  <Link
+                    href={template.demoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full"
                   >
-                    <svg
-                      className="w-5 h-5"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
+                    <Button
+                      variant="outline"
+                      className="inline-flex items-center gap-2 border-2 border-gray-200 hover:border-purple-300 text-gray-700 hover:text-purple-700 px-8 py-4 rounded-xl text-lg font-medium transition-all duration-200 hover:shadow-lg min-h-[56px] w-full cursor-pointer"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                      />
-                    </svg>
-                    Live Demo
-                  </Button>
-                </Link>
-              )}
-
-              {renderActionButton()}
-            </div>
-          </div>
-
-          {/* Gallery Section */}
-          {template.images && template.images.length > 0 && (
-            <div className="mt-6">
-              <ProductGallery images={template.images} />
-              <div className="py-4 flex flex-col md:flex-row justify-between gap-2">
-                <div className="flex items-center">
-                  Built with Next.js{" "}
-                  <Image
-                    src="/images/logo/nextLogo.png"
-                    alt="nextLogo"
-                    height="20"
-                    width="20"
-                    className="ml-2"
-                  />
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                        />
+                      </svg>
+                      Live Demo
+                    </Button>
+                  </Link>
+                )}
+                {renderActionButton()}
+              </div>
+              <div className="mt-6 flex gap-2 text-sm text-gray-600">
+                <div className="flex items-center gap-2">
+                  <CheckCheck className="w-4 h-4 text-green-600" />
+                  <span>Lifetime access</span>
                 </div>
-                <div suppressHydrationWarning>
-                  Last Updated :{" "}
-                  {new Date(template.updated_at).toLocaleDateString()}
+                <div className="flex items-center gap-2">
+                  <CheckCheck className="w-4 h-4 text-green-600" />
+                  <span>Free updates</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCheck className="w-4 h-4 text-green-600" />
+                  <span>Commercial license</span>
                 </div>
               </div>
             </div>
-          )}
+
+            {/* Colonne image */}
+            <div className="flex-1 flex justify-center items-center">
+              <Image
+                src={template.openGraphImage || "/og-image.png"}
+                alt="Divider"
+                width={1200}
+                height={630}
+                className="mx-auto my-8 rounded-lg shadow-lg"
+                priority
+              />
+            </div>
+          </section>
 
           <div className="space-y-12 pt-8">
             <div className="">
@@ -187,6 +191,28 @@ export default function ProductPage({ template }: ProductPageProps) {
                 );
               })}
             </div>
+            {/* Gallery Section */}
+            {template.images && template.images.length > 0 && (
+              <div className="mt-6">
+                <ProductGallery images={template.images} />
+                <div className="py-4 flex flex-col md:flex-row justify-between gap-2">
+                  <div className="flex items-center">
+                    Built with Next.js{" "}
+                    <Image
+                      src="/images/logo/nextLogo.png"
+                      alt="nextLogo"
+                      height="20"
+                      width="20"
+                      className="ml-2"
+                    />
+                  </div>
+                  <div suppressHydrationWarning>
+                    Last Updated :{" "}
+                    {new Date(template.updated_at).toLocaleDateString()}
+                  </div>
+                </div>
+              </div>
+            )}
 
             <div className="mx-auto py-2">
               <h2 className="text-3xl font-bold mb-8 text-gray-900">
