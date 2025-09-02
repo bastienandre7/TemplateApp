@@ -8,6 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
+import FaqAccordion from "./FaqAccordion";
 import PaymentMethodSection from "./PaymentMethodSection";
 
 interface Product {
@@ -299,7 +300,9 @@ export default function ProductPage({ template }: ProductPageProps) {
 
         <PaymentMethodSection />
 
-        <div className="mt-16 flex flex-col sm:flex-row justify-center items-center gap-8 text-center">
+        <FaqAccordion />
+
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-8 text-center">
           <p className="text-3xl md:text-4xl font-bold text-gray-900">
             Ready to launch with this template?
           </p>

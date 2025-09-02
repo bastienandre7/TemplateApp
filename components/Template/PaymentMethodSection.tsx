@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function PaymentMethodSection() {
   return (
-    <div className="w-full max-w-4xl mx-auto p-6 bg-white text-center">
+    <div className="w-full max-w-4xl mx-auto p-6 mb-12 bg-white text-center">
       <div className="flex flex-wrap items-center justify-center gap-2 bg-green-50 px-4 py-2 rounded-full border border-green-200 mb-4">
         <Shield className="h-5 w-5 text-green-600 flex-shrink-0" />
 
@@ -37,78 +37,6 @@ export default function PaymentMethodSection() {
           width={810}
           height={64}
         />
-        {/* <Image src="/images/logo/visa.svg" alt="visa" width={50} height={20} />
-        <Image
-          src="/images/logo/paypal.svg"
-          alt="paypal"
-          width={50}
-          height={20}
-        />
-        <Image
-          src="/images/logo/mastercard.svg"
-          alt="mastercard"
-          width={50}
-          height={20}
-        />
-        <Image src="/images/logo/amex.svg" alt="amex" width={50} height={20} />
-
-        <Image
-          src="/images/logo/discover.svg"
-          alt="discover"
-          width={50}
-          height={20}
-        />
-
-        <Image
-          src="/images/logo/apple-pay.svg"
-          alt="apple-pay"
-          width={50}
-          height={20}
-        />
-
-        <Image
-          src="/images/logo/google-pay.svg"
-          alt="google-pay"
-          width={50}
-          height={20}
-        />
-
-        <Image src="/images/logo/jcb.svg" alt="jcb" width={50} height={20} />
-
-        <Image
-          src="/images/logo/unionpay.svg"
-          alt="unionpay"
-          width={50}
-          height={20}
-        />
-
-        <Image
-          src="/images/logo/dinersclub.svg"
-          alt="dinersclub"
-          width={50}
-          height={20}
-        />
-
-        <Image
-          src="/images/logo/bank-transfer.svg"
-          alt="bank-transfer"
-          width={50}
-          height={20}
-        />
-
-        <Image
-          src="/images/logo/alipay.svg"
-          alt="alipay"
-          width={50}
-          height={20}
-        />
-
-        <Image
-          src="/images/logo/wechat-pay.svg"
-          alt="wechat-pay"
-          width={50}
-          height={20}
-        /> */}
       </div>
     </div>
   );

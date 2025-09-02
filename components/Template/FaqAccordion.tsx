@@ -73,12 +73,25 @@ export default function FaqAccordion() {
             Squeezy. Payments are secure and processed with SSL encryption.
           </AccordionContent>
         </AccordionItem>
-        <AccordionItem value="item-9">
+        <AccordionItem value="item-7">
           <AccordionTrigger>Do you offer refunds?</AccordionTrigger>
           <AccordionContent>
             Due to the digital nature of our products, we do not offer refunds.
             If you have any issues with your download or need help, contact our
-            support and we’ll do our best to help.
+            support and we’ll do our best to help.{" "}
+            <a href="/refund-policy" className="text-blue-500 underline">
+              Refund Policy
+            </a>
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-8">
+          <AccordionTrigger>
+            Can I customize the templates to match my brand?
+          </AccordionTrigger>
+          <AccordionContent>
+            Of course, all templates use Tailwind and a clear structure, so you
+            can easily change colors, fonts, sections, and add your own
+            components.
           </AccordionContent>
         </AccordionItem>
       </Accordion>
