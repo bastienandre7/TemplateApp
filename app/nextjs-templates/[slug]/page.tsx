@@ -82,7 +82,7 @@ export default async function TemplateDetailsPage({
     productID: product.slug,
     offers: {
       "@type": "Offer",
-      priceCurrency: "EUR",
+      priceCurrency: "USD",
       price: product.price.toFixed(2),
       availability: "https://schema.org/InStock",
       url: `https://bloomtpl.com/nextjs-templates/${product.slug}`,

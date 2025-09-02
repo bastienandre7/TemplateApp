@@ -121,7 +121,7 @@ export default async function TemplatePage() {
               image: product.openGraphImage || product.imageUrl,
               offers: {
                 "@type": "Offer",
-                priceCurrency: "EUR",
+                priceCurrency: "USD",
                 price: product.price.toFixed(2),
                 availability: "https://schema.org/InStock",
                 seller: {
