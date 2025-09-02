@@ -26,8 +26,9 @@ export default function PaymentMethodSection() {
       </div>
 
       <div className="text-gray-500 text-sm mb-6">
-        <p>A VAT receipt will be provided via email</p>
-        <p>after making purchase</p>
+        <p>One-time payment, no subscription</p>
+        <p>Instant access to your files after purchase</p>
+        <p>A VAT receipt will be provided via email after making purchase</p>
       </div>
 
       <div className="flex flex-wrap justify-center items-center gap-3">

@@ -3,6 +3,7 @@ import { useState } from "react";
 
 export default function PromoBanner() {
   const [copied, setCopied] = useState(false);
+  const [visible, setVisible] = useState(true);
 
   const handleCopy = () => {
     navigator.clipboard.writeText("BLOOM50");
@@ -10,9 +11,11 @@ export default function PromoBanner() {
     setTimeout(() => setCopied(false), 2000);
   };
 
+  if (!visible) return null;
+
   return (
     <div className="w-full z-[60]">
-      <div className="flex items-center justify-center gap-3 bg-black text-white px-6 py-2 font-semibold text-base">
+      <div className="flex items-center justify-center gap-3 bg-black text-white px-6 py-2 font-semibold text-base relative">
         <span className="bg-purple-100 text-purple-700 px-2 py-0.5 rounded text-xs font-bold mr-2 hidden md:block">
           🎉 Limited Offer
         </span>
@@ -23,7 +26,7 @@ export default function PromoBanner() {
               BLOOM50
             </span>
           </p>
-          <b className="hidden md:block text-sm">Only for the first 10 users</b>
+          <b className="hidden md:block text-sm">Only for the first 3 users</b>
           <span className="mx-2 text-purple-200 hidden md:block">|</span>
           <button
             type="button"
@@ -39,6 +42,13 @@ export default function PromoBanner() {
             </span>
           )}
         </div>
+        <button
+          onClick={() => setVisible(false)}
+          className="absolute right-2 top-1 text-white hover:text-purple-300 text-lg px-2 py-1 rounded transition"
+          aria-label="Close promo banner"
+        >
+          ×
+        </button>
       </div>
     </div>
   );

@@ -94,6 +94,53 @@ export default function FaqAccordion() {
             components.
           </AccordionContent>
         </AccordionItem>
+        <AccordionItem value="item-9">
+          <AccordionTrigger>
+            What do I get when I purchase a template?
+          </AccordionTrigger>
+          <AccordionContent>
+            <div className="border rounded-2xl bg-gray-50 p-6">
+              <h3 className="text-lg font-semibold mb-4">What you get</h3>
+              <ul className="space-y-3 text-sm text-gray-700">
+                <li className="flex items-start gap-2">
+                  <span className="text-green-600">✅</span>
+                  <span>
+                    Instant access – download your template .zip file right
+                    after purchase
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-green-600">🔄</span>
+                  <span>
+                    Lifetime updates – get all future improvements for free
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-green-600">🗂</span>
+                  <span>
+                    Full source code – clean, production-ready codebase
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-green-600">📜</span>
+                  <span>
+                    Commercial license – use it for personal & client projects
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-10">
+          <AccordionTrigger>
+            Can I download the templates anytime?
+          </AccordionTrigger>
+          <AccordionContent>
+            Absolutely! Simply log in to your account, head over to the
+            dashboard section, and enjoy instant access to all your templates —
+            anytime, day or night.
+          </AccordionContent>
+        </AccordionItem>
       </Accordion>
     </section>
   );

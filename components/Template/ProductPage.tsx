@@ -100,7 +100,7 @@ export default function ProductPage({ template }: ProductPageProps) {
         }}
         className="px-8 py-4 rounded-xl text-lg bg-indigo-600 hover:bg-indigo-700 text-white min-h-[56px] min-w-[48px] shadow-md w-full cursor-pointer"
       >
-        {template.price === 0 ? "Get FREE" : `Buy Now - ${template.price}€`}
+        {template.price === 0 ? "Get FREE" : `Buy Now - $${template.price}`}
       </Button>
     );
   };
@@ -156,7 +156,7 @@ export default function ProductPage({ template }: ProductPageProps) {
               <div className="mt-6 flex gap-2 text-sm text-gray-600">
                 <div className="flex items-center gap-2">
                   <CheckCheck className="w-4 h-4 text-green-600" />
-                  <span>Lifetime access</span>
+                  <span>Instant & Lifetime access</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCheck className="w-4 h-4 text-green-600" />
@@ -269,8 +269,7 @@ export default function ProductPage({ template }: ProductPageProps) {
             <p className="text-lg text-gray-700 max-w-2xl mx-auto mb-8">
               Access <strong>8 premium templates</strong> including SaaS,
               eCommerce, Portfolio, Blog & more – all for{" "}
-              <strong className="text-green-600">just 39.99€</strong> with code{" "}
-              <code className="font-semibold">BLOOM50</code>.
+              <strong className="text-green-600">just $49</strong>.
             </p>
 
             <Link

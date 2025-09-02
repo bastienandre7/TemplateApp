@@ -314,7 +314,7 @@ export default function LandingPage() {
                         >
                           {item.price === 0
                             ? "Free"
-                            : `Buy Now - ${item.price}€`}
+                            : `Buy Now - $${item.price}`}
                         </Link>
                       </Button>
                     </div>
@@ -463,8 +463,7 @@ export default function LandingPage() {
           <p className="text-lg text-gray-700 max-w-2xl mx-auto mb-8">
             Access <strong>8 premium templates</strong> including SaaS,
             eCommerce, Portfolio, Blog & more – all for{" "}
-            <strong className="text-green-600">just 39.99€</strong> with code{" "}
-            <code className="font-semibold">BLOOM50</code>.
+            <strong className="text-green-600">just $49</strong>.
           </p>
 
           <Link

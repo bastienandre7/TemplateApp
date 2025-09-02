@@ -18,13 +18,13 @@ export default function UltimateBundle() {
     {
       name: "LandKit",
       description: "Next.js Landing Page Starter Kit with 10+ components",
-      price: "14.99€",
+      price: "13",
       features: ["Next.js", "Tailwind CSS", "TypeScript", "10+ Components"],
     },
     {
       name: "ShopBase",
       description: "Complete e-commerce boilerplate with Stripe integration",
-      price: "39.99€",
+      price: "29",
       features: [
         "Stripe Integration",
         "Product Management",
@@ -35,7 +35,7 @@ export default function UltimateBundle() {
     {
       name: "BlogStarter",
       description: "Next.js blog starter kit powered by Sanity.io",
-      price: "34.99€",
+      price: "29",
       features: [
         "Sanity.io CMS",
         "SEO Optimized",
@@ -46,7 +46,7 @@ export default function UltimateBundle() {
     {
       name: "CoreSaaS",
       description: "Complete SaaS starter kit with authentication & billing",
-      price: "39.99€",
+      price: "29",
       features: [
         "Authentication",
         "Stripe Billing",
@@ -57,13 +57,13 @@ export default function UltimateBundle() {
     {
       name: "SaaS Dark Template",
       description: "Modern dark-mode SaaS UI template",
-      price: "19.99€",
+      price: "19",
       features: ["Dark Mode", "Modern UI", "Responsive", "Fast Performance"],
     },
     {
       name: "Portfolio Template",
       description: "Professional developer portfolio template",
-      price: "9.99€",
+      price: "13",
       features: [
         "Next.js 15",
         "Professional Design",
@@ -74,7 +74,7 @@ export default function UltimateBundle() {
     {
       name: "Dashboard Template",
       description: "Modern SaaS dashboard for admin panels",
-      price: "19.99€",
+      price: "13",
       features: [
         "Admin Panel",
         "Data Visualization",
@@ -85,7 +85,7 @@ export default function UltimateBundle() {
     {
       name: "Blog Template",
       description: "Minimalist blog template for personal sites",
-      price: "19.99€",
+      price: "19",
       features: [
         "Minimalist Design",
         "Fast Loading",
@@ -99,7 +99,7 @@ export default function UltimateBundle() {
     (sum, template) => sum + parseFloat(template.price.replace("€", "")),
     0
   );
-  const bundlePrice = 79.99;
+  const bundlePrice = 49;
   const bundlePriceWithDiscount = bundlePrice * 0.5;
 
   return (
@@ -127,13 +127,13 @@ export default function UltimateBundle() {
           <div className="bg-white rounded-2xl p-8 shadow-2xl max-w-md mx-auto mb-8 border">
             <div className="text-center mb-6">
               <div className="text-sm text-slate-500 line-through mb-1">
-                Regular Price: {totalValue.toFixed(2)}€
+                Regular Price: ${totalValue.toFixed(2)}
               </div>
               <div className="text-sm text-slate-500 mb-2">
-                Bundle Price: {bundlePrice}€
+                Bundle Price: ${bundlePrice}
               </div>
               <div className="text-4xl font-bold text-slate-900 mb-2">
-                {bundlePriceWithDiscount.toFixed(2)}€
+                ${bundlePriceWithDiscount.toFixed(2)}
               </div>
               <div className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold inline-block">
                 Code BLOOM50: Save 50%
@@ -192,7 +192,7 @@ export default function UltimateBundle() {
                     {template.name}
                   </h3>
                   <div className="text-lg font-bold text-blue-600">
-                    {template.price}
+                    ${template.price}
                   </div>
                 </div>
                 <p className="text-slate-600 mb-4">{template.description}</p>
@@ -315,13 +315,13 @@ export default function UltimateBundle() {
 
               <div className="mb-6">
                 <div className="text-sm opacity-75 line-through mb-1">
-                  Regular Price: {totalValue.toFixed(2)}€
+                  Regular Price: ${totalValue.toFixed(2)}
                 </div>
                 <div className="text-sm opacity-75 mb-1">
-                  Bundle: {bundlePrice}€
+                  Bundle: ${bundlePrice}
                 </div>
                 <div className="text-3xl font-bold mb-2">
-                  Only {bundlePriceWithDiscount.toFixed(2)}€
+                  Only ${bundlePriceWithDiscount.toFixed(2)}
                 </div>
                 <div className="bg-white/20 backdrop-blur px-4 py-2 rounded-full text-sm font-semibold inline-block">
                   Code BLOOM50: 50% OFF
@@ -340,7 +340,7 @@ export default function UltimateBundle() {
                 }}
                 className="inline-block bg-white text-blue-600 px-10 py-5 rounded-2xl text-xl font-bold hover:bg-gray-50 transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl mb-4"
               >
-                Get Instant Access – {bundlePriceWithDiscount.toFixed(2)}€
+                Get Instant Access – ${bundlePriceWithDiscount.toFixed(2)}
               </button>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm opacity-75">

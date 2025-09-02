@@ -379,7 +379,7 @@ export default function MainContainer({ products }: { products: Product[] }) {
                               >
                                 {item.price === 0
                                   ? "Free"
-                                  : `Buy Now - ${item.price}€`}
+                                  : `Buy Now - $${item.price}`}
                               </Button>
                             )}
                           </div>

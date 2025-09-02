@@ -106,10 +106,10 @@ export default function HeroBanner({ products }: { products: Product[] }) {
                   </p>
                   <div className="flex items-center justify-center md:justify-start gap-3">
                     <span className="text-2xl font-bold text-green-600">
-                      39.99€
+                      $49
                     </span>
                     <span className="text-lg text-gray-500 line-through">
-                      199.99€
+                      $160+
                     </span>
                     <span className="bg-red-100 text-red-700 px-2 py-1 rounded text-sm font-medium">
                       Save 70%
