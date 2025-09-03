@@ -17,19 +17,12 @@ export default function FooterCPN() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-12">
           {/* Brand section */}
           <div className="lg:col-span-4 space-y-6">
-            <Link href="/" className="inline-flex items-center group">
-              <div className="relative">
-                <span className="text-3xl font-bold text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-pink-400 transition-all duration-300">
-                  BloomTPL
-                </span>
-                <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg blur opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
-                {/* <Image
-                  src="/images/logo/bloom-white.png"
-                  alt="logo bloom"
-                  height="75"
-                  width="241"
-                /> */}
-              </div>
+            <Link
+              href="/"
+              className="text-white flex items-center space-x-3 rtl:space-x-reverse group self-center text-2xl whitespace-nowrap logo-font"
+            >
+              Bloom
+              <span className="text-indigo-600">TPL</span>
             </Link>
 
             <p className="text-gray-300 leading-relaxed max-w-sm">

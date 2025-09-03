@@ -162,17 +162,10 @@ export default function HeaderCPN() {
           <div className="flex items-center space-x-8 rtl:space-x-reverse">
             <Link
               href="/"
-              className="flex items-center space-x-3 rtl:space-x-reverse group"
+              className="flex items-center space-x-3 rtl:space-x-reverse group self-center text-2xl whitespace-nowrap logo-font"
             >
-              <span className="self-center text-2xl font-bold whitespace-nowrap">
-                BloomTPL
-              </span>
-              {/* <Image
-                src="/images/logo/bloom.png"
-                alt="logo bloom"
-                height="38"
-                width="129"
-              /> */}
+              Bloom
+              <span className="text-indigo-600">TPL</span>
             </Link>
           </div>
           <div className="hidden lg:flex items-center space-x-4 rtl:space-x-reverse">
