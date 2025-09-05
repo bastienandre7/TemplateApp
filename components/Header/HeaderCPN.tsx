@@ -162,7 +162,7 @@ export default function HeaderCPN() {
           <div className="flex items-center space-x-8 rtl:space-x-reverse">
             <Link
               href="/"
-              className="flex items-center space-x-3 rtl:space-x-reverse group self-center text-2xl whitespace-nowrap logo-font"
+              className="flex items-center space-x-3 rtl:space-x-reverse group self-center text-3xl whitespace-nowrap logo-font"
             >
               Bloom
               <span className="text-indigo-600">TPL</span>

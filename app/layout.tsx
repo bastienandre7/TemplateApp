@@ -1,11 +1,11 @@
 import { Metadata } from "next";
-import { Inter, Lexend_Deca } from "next/font/google";
+import { Fugaz_One, Inter } from "next/font/google";
 import { ReactNode } from "react";
 import "./globals.css";
 import LayoutShell from "./LayoutShell";
 
 const poppins = Inter({ subsets: ["latin"], weight: ["400", "700"] });
-const lexend = Lexend_Deca({ subsets: ["latin"], weight: ["500"] });
+const fugaz = Fugaz_One({ subsets: ["latin"], weight: ["400"] });
 
 export const metadata: Metadata = {
   title: "10+ Best Free and Premium Next.js Templates (2025) | BloomTPL",
@@ -71,7 +71,7 @@ export const viewport = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${poppins.className} ${lexend.style} antialiased`}>
+      <body className={`${poppins.className} ${fugaz.style} antialiased`}>
         <LayoutShell>{children}</LayoutShell>
       </body>
     </html>
