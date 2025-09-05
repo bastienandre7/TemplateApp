@@ -1,5 +1,8 @@
+import { authOptions } from "@/auth";
 import ProductPage from "@/components/Template/ProductPage";
 import { getProductBySlug } from "@/lib/getProductBySlug";
+import { getPurchasesByEmail } from "@/lib/getPurchasesByEmail";
+import { getServerSession } from "next-auth";
 import { notFound } from "next/navigation";
 
 export async function generateMetadata({
@@ -57,10 +60,16 @@ export default async function TemplateDetailsPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-
   const product = await getProductBySlug(slug);
 
   if (!product) return notFound();
+
+  const session = await getServerSession(authOptions);
+  let purchases: { template: string }[] = [];
+
+  if (session?.user?.email) {
+    purchases = await getPurchasesByEmail(session.user.email);
+  }
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -107,7 +116,7 @@ export default async function TemplateDetailsPage({
 
   return (
     <>
-      <ProductPage template={product} />
+      <ProductPage template={product} purchases={purchases} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

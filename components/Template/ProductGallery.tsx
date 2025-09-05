@@ -29,6 +29,7 @@ export default function ProductGallery({ images }: { images: string[] }) {
                   height={600}
                   unoptimized
                   className="rounded-xl object-cover w-full h-auto max-h-[800px]"
+                  priority={idx === 0}
                 />
               </div>
             </CarouselItem>

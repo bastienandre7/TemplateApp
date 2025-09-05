@@ -6,7 +6,6 @@ import { ArrowRight, Check, CheckCheck, Sparkles } from "lucide-react";
 import { signIn, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import FaqAccordion from "./FaqAccordion";
 import PaymentMethodSection from "./PaymentMethodSection";
@@ -29,48 +28,23 @@ interface Product {
   openGraphImage?: string;
 }
 
-type Purchase = {
-  template: string;
-};
-
 interface ProductPageProps {
   template: Product;
+  purchases: { template: string }[];
 }
 
-export default function ProductPage({ template }: ProductPageProps) {
-  const [ownedTemplates, setOwnedTemplates] = useState<string[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+export default function ProductPage({ template, purchases }: ProductPageProps) {
   const { data: session, status } = useSession();
 
-  useEffect(() => {
-    if (status === "loading") return;
-
-    if (session?.user?.email) {
-      fetch("/api/purchases")
-        .then((res) => res.json())
-        .then((data: Purchase[]) => {
-          const owned = data.map((purchase) => purchase.template);
-          setOwnedTemplates(owned);
-        })
-        .catch((error) => {
-          console.error("Error retrieving purchases:", error);
-        })
-        .finally(() => {
-          setIsLoading(false);
-        });
-    } else {
-      setIsLoading(false);
-    }
-  }, [session, status]);
-
-  const isOwned = ownedTemplates.includes(template.name);
+  // Détermine si le template est possédé
+  const isOwned = purchases.some((p) => p.template === template.name);
 
   const renderActionButton = () => {
-    if (isLoading || status === "loading") {
+    if (status === "loading") {
       return (
         <Button
           disabled
-          className="px-8 py-4 rounded-xl text-lg bg-gray-400 text-white min-h-[48px] min-w-[48px] shadow-md opacity-60"
+          className="w-full px-8 py-4 rounded-xl text-lg bg-gray-400 text-white min-h-[48px] min-w-[48px] shadow-md opacity-60"
         >
           Loading...
         </Button>
@@ -79,9 +53,9 @@ export default function ProductPage({ template }: ProductPageProps) {
 
     if (isOwned) {
       return (
-        <Link href="/dashboard">
-          <Button className="px-8 py-4 rounded-xl text-lg bg-purple-600 hover:bg-purple-700 text-white min-h-[48px] min-w-[48px] shadow-md">
-            Owned
+        <Link href="/dashboard" className="w-full">
+          <Button className="w-full px-8 py-4 rounded-xl text-lg bg-purple-600 hover:bg-purple-700 text-white min-h-[56px] min-w-[48px] shadow-md cursor-pointer">
+            Download Template
           </Button>
         </Link>
       );

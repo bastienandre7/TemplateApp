@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { Suspense, useState } from "react";
+import CodePreview from "./CodePreview";
 
-// On ne dépend plus de FreeComponent du data local
 interface ComponentDetailClientProps {
   component: {
     slug: string;
@@ -13,7 +13,6 @@ interface ComponentDetailClientProps {
     image: string;
     demoUrl?: string;
     code?: string;
-    // Ajoute d'autres propriétés si besoin (isInteractive, etc.)
   };
 }
 
@@ -22,17 +21,15 @@ export default function ComponentDetailClient({
 }: ComponentDetailClientProps) {
   const [copied, setCopied] = useState(false);
 
-  // Utilise directement le code du composant passé en props
   const sourceCode = comp.code
     ? comp.code
-        .replace(/\\r/g, "") // supprime tous les \r
-        .replace(/\\n/g, "\n") // remplace \n par retour à la ligne
-        .replace(/\\\"/g, '"') // remplace \" par "
-        .replace(/\\t/g, "\t") // remplace \t par tabulation (optionnel)
+        .replace(/\\r/g, "")
+        .replace(/\\n/g, "\n")
+        .replace(/\\\"/g, '"')
+        .replace(/\\t/g, "\t")
     : "";
 
   const handleCopy = () => {
-    // Nettoie le code pour le rendre collable
     const cleanCode = (comp.code ?? "")
       .replace(/\\r/g, "")
       .replace(/\\n/g, "\n")
@@ -46,21 +43,16 @@ export default function ComponentDetailClient({
     setTimeout(() => setCopied(false), 2000);
   };
 
-  // 🎯 Preview via iframe si demoUrl existe
   function PreviewSection() {
-    // Utilise comp.demoUrl si présent, sinon construit l'URL avec le slug
     const previewUrl = `https://components-app-delta.vercel.app/${comp.slug}`;
 
     return (
-      <div className="w-full h-full min-h-[400px] relative flex items-center justify-center">
-        <iframe
-          src={previewUrl}
-          className="w-full h-[400px] border-0 rounded-lg bg-white"
-          title={`${comp.name} Preview`}
-          loading="lazy"
-          sandbox="allow-scripts allow-same-origin"
-        />
-      </div>
+      <iframe
+        src={previewUrl}
+        className="w-full h-[400px] border-0 rounded-lg bg-white"
+        title={`${comp.name} Preview`}
+        sandbox="allow-scripts allow-same-origin"
+      />
     );
   }
 
@@ -119,6 +111,7 @@ export default function ComponentDetailClient({
         </div>
 
         {/* Preview Section */}
+        {/* Preview Section */}
         <div className="mb-12">
           <div className="bg-gray-50 border border-gray-200 rounded-xl overflow-hidden">
             <div className="flex items-center justify-between bg-white border-b border-gray-200 px-6 py-4">
@@ -127,9 +120,8 @@ export default function ComponentDetailClient({
                 Interactive
               </div>
             </div>
-            <div className="p-8 min-h-[300px] flex items-center justify-center bg-white">
-              <PreviewSection />
-            </div>
+
+            <PreviewSection />
           </div>
         </div>
 
@@ -196,9 +188,13 @@ export default function ComponentDetailClient({
               </div>
             </div>
             <div className="p-6 overflow-x-auto">
-              <pre className="text-sm text-gray-300 font-mono leading-relaxed">
-                <code>{sourceCode}</code>
-              </pre>
+              <Suspense
+                fallback={
+                  <div className="h-40 bg-gray-800 animate-pulse rounded-xl" />
+                }
+              >
+                <CodePreview sourceCode={sourceCode} />
+              </Suspense>
             </div>
           </div>
         </div>
@@ -255,14 +251,12 @@ export default function ComponentDetailClient({
                 <code className="bg-gray-100 px-2 py-1 rounded text-gray-800">
                   react
                 </code>
-                <span className="text-gray-500">^18.0.0</span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 bg-cyan-500 rounded-full"></span>
                 <code className="bg-gray-100 px-2 py-1 rounded text-gray-800">
                   tailwindcss
                 </code>
-                <span className="text-gray-500">^3.0.0</span>
               </div>
             </div>
           </div>

@@ -95,6 +95,7 @@ export default function HeroBanner({ products }: { products: Product[] }) {
                     alt="Bundle Image"
                     width={200}
                     height={200}
+                    priority
                   />
                 </div>
                 <div className="flex-1 text-center md:text-left">

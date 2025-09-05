@@ -5,7 +5,7 @@ import "./globals.css";
 import LayoutShell from "./LayoutShell";
 
 const poppins = Inter({ subsets: ["latin"], weight: ["400", "700"] });
-const lexend = Lexend_Deca({ subsets: ["latin"], weight: ["400", "700"] });
+const lexend = Lexend_Deca({ subsets: ["latin"], weight: ["500"] });
 
 export const metadata: Metadata = {
   title: "10+ Best Free and Premium Next.js Templates (2025) | BloomTPL",
