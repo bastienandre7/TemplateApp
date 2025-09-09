@@ -152,6 +152,8 @@ export default function ProductPage({ template, purchases }: ProductPageProps) {
                 height={630}
                 className="mx-auto my-8 rounded-lg shadow-lg"
                 priority
+                fetchPriority="high"
+                loading="eager"
               />
             </div>
           </section>

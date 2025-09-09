@@ -27,7 +27,6 @@ export default function ProductGallery({ images }: { images: string[] }) {
                   alt={`Product image ${idx + 1}`}
                   width={1200}
                   height={600}
-                  unoptimized
                   className="rounded-xl object-cover w-full h-auto max-h-[800px]"
                   priority={idx === 0}
                 />

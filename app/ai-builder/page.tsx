@@ -1,13 +1,40 @@
 "use client";
 
 import { useChat } from "@ai-sdk/react";
+import { signIn, useSession } from "next-auth/react";
 import { useEffect, useRef, useState } from "react";
 
 export default function AIBuilder() {
   const [input, setInput] = useState("");
-  const { messages, sendMessage } = useChat();
-  const messagesEndRef = useRef<HTMLDivElement>(null);
   const [generatedCode, setGeneratedCode] = useState("");
+  const [error, setError] = useState("");
+  const [usageInfo, setUsageInfo] = useState<{
+    currentUsage: number;
+    limit: number;
+    plan: string;
+  } | null>(null);
+  const [loading, setLoading] = useState(false);
+
+  const { data: session } = useSession();
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  const { messages, sendMessage } = useChat({
+    onFinish: () => setLoading(false),
+    onError: (error) => {
+      setLoading(false);
+      try {
+        const errorData = JSON.parse(error.message);
+        setError(errorData.error);
+        setUsageInfo({
+          currentUsage: errorData.currentUsage,
+          limit: errorData.limit,
+          plan: errorData.plan,
+        });
+      } catch {
+        setError("Une erreur s'est produite");
+      }
+    },
+  });
 
   // Scroll automatique vers le bas
   useEffect(() => {
@@ -18,7 +45,6 @@ export default function AIBuilder() {
   useEffect(() => {
     const lastAI = [...messages].reverse().find((m) => m.role === "assistant");
     if (lastAI) {
-      // Cherche un bloc de code dans la réponse
       const codeMatch = lastAI.parts
         .map((p) => (p.type === "text" ? p.text : ""))
         .join("\n")
@@ -31,19 +57,68 @@ export default function AIBuilder() {
     }
   }, [messages]);
 
+  if (!session) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-screen">
+        <h1 className="text-2xl font-bold mb-4">Connexion requise</h1>
+        <p className="text-gray-600 mb-4">
+          Vous devez être connecté pour utiliser l&apos;AI Builder.
+        </p>
+        <button
+          onClick={() => signIn()}
+          className="bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition"
+        >
+          Se connecter
+        </button>
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col w-full max-w-5xl mx-auto py-16 mt-20 min-h-screen px-2">
       <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight max-w-5xl">
         AI Builder - Generate Next.js 15 Components & Pages
       </h1>
+      <a
+        href="https://bloom-tpl.lemonsqueezy.com/buy/46cfd4c4-de9c-49e0-bb83-c087ab672218" // Remplace par l'ID de ton produit
+        className="text-indigo-600 hover:text-indigo-800 underline"
+      >
+        Passer au plan PRO pour plus d&apos;utilisations →
+      </a>
+
+      {/* Affichage des erreurs de limite */}
+      {error && (
+        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+          <p className="font-semibold">{error}</p>
+          {usageInfo && (
+            <div className="text-sm mt-2">
+              <p>
+                Utilisation: {usageInfo.currentUsage}/{usageInfo.limit} (Plan{" "}
+                {usageInfo.plan})
+              </p>
+              {usageInfo.plan === "FREE" && (
+                <a
+                  href="https://bloom-tpl.lemonsqueezy.com/buy/46cfd4c4-de9c-49e0-bb83-c087ab672218" // Remplace par l'ID de ton produit
+                  className="text-indigo-600 hover:text-indigo-800 underline"
+                >
+                  Passer au plan PRO pour plus d&apos;utilisations →
+                </a>
+              )}
+            </div>
+          )}
+        </div>
+      )}
+
       <form
         onSubmit={(e) => {
           e.preventDefault();
           if (input.trim()) {
+            setError(""); // Reset error
+            setLoading(true);
             sendMessage({
               text: `Create a Next.js 15 component or page in TypeScript with Tailwind CSS.
 Follow these conventions:
-- “use client” if client-side interaction
+- "use client" if client-side interaction
 - export default
 - responsive layout (mobile-first)
 - no third-party UI libraries
@@ -61,12 +136,15 @@ Specifications: ${input}`,
           placeholder="Describe the component or page to be generated..."
           onChange={(e) => setInput(e.currentTarget.value)}
           autoFocus
+          disabled={loading} // Changé de 'loading' à 'isLoading'
         />
         <button
           type="submit"
-          className="bg-indigo-600 text-white px-4 py-3 rounded-lg font-semibold hover:bg-purple-700 transition"
+          className="bg-indigo-600 text-white px-4 py-3 rounded-lg font-semibold hover:bg-purple-700 transition disabled:opacity-50"
+          disabled={loading} // Changé de 'loading' à 'isLoading'
         >
-          Generate
+          {loading ? "Génération..." : "Generate"}{" "}
+          {/* Changé de 'loading' à 'isLoading' */}
         </button>
       </form>
 
@@ -91,7 +169,7 @@ Specifications: ${input}`,
         </div>
       )}
 
-      {/* Historique des messages (optionnel) */}
+      {/* Historique des messages */}
       <div className="flex-1 overflow-y-auto mb-4 space-y-4">
         {messages.map((message) => (
           <div

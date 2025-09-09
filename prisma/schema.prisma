@@ -11,6 +11,17 @@ enum Role {
   USER
   ADMIN
 }
+
+enum PlanType {
+  FREE
+  PRO
+}
+
+enum SubscriptionStatus {
+  ACTIVE
+  CANCELLED
+  EXPIRED
+}
  
 model User {
   id            String          @id @default(cuid())
@@ -77,6 +88,31 @@ model Purchase {
   createdAt DateTime @default(now())
 }
 
+// Modèle pour gérer les abonnements
+model Subscription {
+  id               String             @id @default(cuid())
+  userEmail        String             @unique
+  plan             PlanType           @default(FREE)
+  status           SubscriptionStatus @default(ACTIVE)
+  lemonSqueezyId   String?            // ID de l'abonnement Lemon Squeezy
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
+
+  @@map("subscriptions")
+}
+
+// Modèle pour tracker l'usage de l'AI
+model AIUsage {
+  id         String   @id @default(cuid())
+  userEmail  String
+  date       DateTime @db.Date
+  usageCount Int      @default(0)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@unique([userEmail, date])
+  @@map("ai_usage")
+}
  
 // Optional for WebAuthn support
 model Authenticator {
