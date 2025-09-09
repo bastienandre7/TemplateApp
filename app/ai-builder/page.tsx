@@ -80,7 +80,7 @@ export default function AIBuilder() {
         AI Builder - Generate Next.js 15 Components & Pages
       </h1>
       <a
-        href="https://bloom-tpl.lemonsqueezy.com/buy/46cfd4c4-de9c-49e0-bb83-c087ab672218" // Remplace par l'ID de ton produit
+        href="https://bloom-tpl.lemonsqueezy.com/buy/a626e413-5644-48ad-a65b-e5b398d145b7" // Remplace par l'ID de ton produit
         className="text-indigo-600 hover:text-indigo-800 underline"
       >
         Passer au plan PRO pour plus d&apos;utilisations →
@@ -98,7 +98,7 @@ export default function AIBuilder() {
               </p>
               {usageInfo.plan === "FREE" && (
                 <a
-                  href="https://bloom-tpl.lemonsqueezy.com/buy/46cfd4c4-de9c-49e0-bb83-c087ab672218" // Remplace par l'ID de ton produit
+                  href="https://bloom-tpl.lemonsqueezy.com/buy/a626e413-5644-48ad-a65b-e5b398d145b7" // Remplace par l'ID de ton produit
                   className="text-indigo-600 hover:text-indigo-800 underline"
                 >
                   Passer au plan PRO pour plus d&apos;utilisations →
