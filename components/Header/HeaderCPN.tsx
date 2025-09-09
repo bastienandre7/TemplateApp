@@ -23,6 +23,8 @@ export default function HeaderCPN() {
   const navLinks = [
     { name: "Templates", path: "/nextjs-templates" },
     { name: "Components", path: "/nextjs-components" },
+    { name: "AI Builder", path: "/ai-builder" },
+    { name: "Pricing", path: "/pricing" },
     { name: "Bundle", path: "/bundle/ultimate" },
     { name: "Docs", path: "/docs" },
     { name: "Contact", path: "/contact" },
@@ -216,7 +218,7 @@ export default function HeaderCPN() {
                     asChild
                     className={navigationMenuTriggerStyle()}
                   >
-                    <Link href="/docs">Docs</Link>
+                    <Link href="/ai-builder">AI Builder</Link>
                   </NavigationMenuLink>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
@@ -224,7 +226,7 @@ export default function HeaderCPN() {
                     asChild
                     className={navigationMenuTriggerStyle()}
                   >
-                    <Link href="/contact">Contact</Link>
+                    <Link href="/pricing">Pricing</Link>
                   </NavigationMenuLink>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
@@ -253,6 +255,23 @@ export default function HeaderCPN() {
                             <div className="font-medium">Blog</div>
                             <div className="text-muted-foreground">
                               Read our latest blog posts.
+                            </div>
+                          </Link>
+                        </NavigationMenuLink>
+                        <NavigationMenuLink asChild>
+                          <Link href="/docs">
+                            <div className="font-medium">Docs</div>
+                            <div className="text-muted-foreground">
+                              Find guides, references, and tutorials.
+                            </div>
+                          </Link>
+                        </NavigationMenuLink>
+
+                        <NavigationMenuLink asChild>
+                          <Link href="/contact">
+                            <div className="font-medium">Contact</div>
+                            <div className="text-muted-foreground">
+                              Get in touch with our team.
                             </div>
                           </Link>
                         </NavigationMenuLink>

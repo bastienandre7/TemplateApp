@@ -1,99 +1,127 @@
 import { authOptions } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { openai } from "@ai-sdk/openai";
-import { convertToModelMessages, streamText, UIMessage } from "ai";
+import { generateText } from "ai";
 import { getServerSession } from "next-auth";
 
 export const maxDuration = 30;
 
 async function getUserPlan(email: string): Promise<"FREE" | "PRO"> {
   const subscription = await prisma.subscription.findUnique({
-    where: { userEmail: email }, // Corrigé: userEmail au lieu de user_email
+    where: { userEmail: email },
   });
-  return subscription?.plan || "FREE"; // Corrigé: "FREE" au lieu de "free"
+  return subscription?.plan || "FREE";
 }
 
 async function getUserUsage(email: string): Promise<number> {
   const today = new Date().toISOString().split("T")[0];
   const usage = await prisma.aIUsage.findUnique({
-    // Corrigé: aIUsage au lieu de aiUsage
     where: {
       userEmail_date: {
-        // Corrigé: userEmail_date au lieu de user_email_date
-        userEmail: email, // Corrigé: userEmail au lieu de user_email
+        userEmail: email,
         date: new Date(today),
       },
     },
   });
-  return usage?.usageCount || 0; // Corrigé: usageCount au lieu de usage_count
+  return usage?.usageCount || 0;
 }
 
 async function incrementUsage(email: string): Promise<void> {
   const today = new Date().toISOString().split("T")[0];
   await prisma.aIUsage.upsert({
-    // Corrigé: aIUsage au lieu de aiUsage
     where: {
       userEmail_date: {
-        // Corrigé: userEmail_date au lieu de user_email_date
-        userEmail: email, // Corrigé: userEmail au lieu de user_email
+        userEmail: email,
         date: new Date(today),
       },
     },
     update: {
       usageCount: {
-        // Corrigé: usageCount au lieu de usage_count
         increment: 1,
       },
     },
     create: {
-      userEmail: email, // Corrigé: userEmail au lieu de user_email
+      userEmail: email,
       date: new Date(today),
-      usageCount: 1, // Corrigé: usageCount au lieu de usage_count
+      usageCount: 1,
     },
   });
 }
 
 export async function POST(req: Request) {
-  const session = await getServerSession(authOptions);
+  try {
+    const session = await getServerSession(authOptions);
 
-  if (!session?.user?.email) {
-    return new Response("Unauthorized", { status: 401 });
+    if (!session?.user?.email) {
+      return new Response("Unauthorized", { status: 401 });
+    }
+
+    const userEmail = session.user.email;
+    const userPlan = await getUserPlan(userEmail);
+    const currentUsage = await getUserUsage(userEmail);
+
+    const limits = {
+      FREE: 1,
+      PRO: 100,
+    };
+
+    if (currentUsage >= limits[userPlan]) {
+      return new Response(
+        JSON.stringify({
+          error: `Daily limit reached. ${userPlan} Plan : ${limits[userPlan]} requests per day.`,
+          currentUsage,
+          limit: limits[userPlan],
+          plan: userPlan,
+        }),
+        {
+          status: 429,
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+    }
+
+    // ✅ Parse le JSON avec validation
+    const body = await req.json();
+    const { messages } = body;
+
+    if (!messages || !Array.isArray(messages) || messages.length === 0) {
+      return new Response(
+        JSON.stringify({ error: "Messages array is required" }),
+        { status: 400, headers: { "Content-Type": "application/json" } }
+      );
+    }
+
+    await incrementUsage(userEmail);
+
+    // ✅ Utilise generateText pour une réponse JSON
+    const result = await generateText({
+      model: openai("gpt-4o"),
+      messages: messages.map((msg) => ({
+        role: msg.role as "user" | "assistant" | "system",
+        content: msg.content,
+      })),
+      system: `You are a code-only generator. Rules:
+1. Output executable TypeScript/JSX ONLY
+2. No text, no explanations, no markdown
+3. Start directly with code (imports/"use client")
+4. End with "export default function ComponentName() { ... }"
+5. Do NOT use "const Component = () =>"
+6. Use Tailwind CSS
+7. Must be responsive
+
+STRICT: Always use "export default function <Name>()" as the component definition.
+VIOLATION = FAILURE. Code only.`,
+    });
+
+    return new Response(JSON.stringify({ content: result.text }), {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
+    });
+  } catch (error) {
+    console.error("Chat API error:", error);
+    return new Response(JSON.stringify({ error: "Internal server error" }), {
+      status: 500,
+      headers: { "Content-Type": "application/json" },
+    });
   }
-
-  const userEmail = session.user.email;
-  const userPlan = await getUserPlan(userEmail);
-  const currentUsage = await getUserUsage(userEmail);
-
-  const limits = {
-    FREE: 1,
-    PRO: 100,
-  };
-
-  if (currentUsage >= limits[userPlan]) {
-    return new Response(
-      JSON.stringify({
-        error: `Limite quotidienne atteinte. Plan ${userPlan}: ${limits[userPlan]} requêtes par jour.`,
-        currentUsage,
-        limit: limits[userPlan],
-        plan: userPlan,
-      }),
-      {
-        status: 429,
-        headers: { "Content-Type": "application/json" },
-      }
-    );
-  }
-
-  const { messages }: { messages: UIMessage[] } = await req.json();
-
-  await incrementUsage(userEmail);
-
-  const result = streamText({
-    model: openai("gpt-4o"),
-    messages: convertToModelMessages(messages),
-    system:
-      "Tu es un assistant qui génère du code React/Next.js. Réponds toujours avec du code complet et fonctionnel dans des blocs de code markdown.",
-  });
-
-  return result.toUIMessageStreamResponse();
 }

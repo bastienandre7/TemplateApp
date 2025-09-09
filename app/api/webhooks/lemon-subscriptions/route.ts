@@ -36,10 +36,6 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  console.log(
-    `Processing subscription event: ${eventName} for ${customerEmail}`
-  );
-
   try {
     switch (eventName) {
       case "subscription_created":
@@ -109,12 +105,10 @@ export async function POST(req: NextRequest) {
         break;
 
       case "subscription_payment_failed":
-        // Optionnel : gérer les échecs de paiement
-        console.log(`Payment failed for subscription ${subscriptionId}`);
         break;
 
       default:
-        console.log(`Unhandled event: ${eventName}`);
+        break;
     }
 
     return NextResponse.json({ success: true });

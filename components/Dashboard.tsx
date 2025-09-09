@@ -4,12 +4,14 @@ import { Button } from "@/components/ui/button";
 import {
   Calendar,
   Clock,
+  CreditCard,
   Download,
   FileText,
   Package,
   ShoppingBag,
   Trophy,
   User,
+  X,
 } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
@@ -24,15 +26,33 @@ type Purchase = {
   variantId: number;
 };
 
+type Subscription = {
+  id: string;
+  userEmail: string;
+  plan: "FREE" | "PRO";
+  status: "ACTIVE" | "CANCELLED" | "PAUSED";
+  lemonSqueezyId?: string;
+  createdAt: string;
+  updatedAt: string;
+};
+
 export default function DashboardSection() {
   const { data: session, status } = useSession();
   const [purchases, setPurchases] = useState<Purchase[]>([]);
+  const [subscription, setSubscription] = useState<Subscription | null>(null);
+  const [cancellingSubscription, setCancellingSubscription] = useState(false);
 
   useEffect(() => {
     if (session?.user?.email) {
+      // Fetch purchases
       fetch("/api/purchases")
         .then((res) => res.json())
         .then((data) => setPurchases(data));
+
+      // Fetch subscription data
+      fetch("/api/subscription")
+        .then((res) => res.json())
+        .then((data) => setSubscription(data));
     }
   }, [session]);
 
@@ -48,9 +68,50 @@ export default function DashboardSection() {
 
       const data = await res.json();
       window.location.href = data.url;
-    } catch (err) {
-      alert("Unable to download file. Please try again later.");
-      console.error(err);
+    } catch {
+      alert(
+        "Unable to download file. Please contact support for assistance.\n\nSupport: bloomtpl@gmail.com"
+      );
+    }
+  };
+
+  // Handle subscription cancellation
+  const handleCancelSubscription = async () => {
+    if (!subscription?.lemonSqueezyId) {
+      alert(
+        "Unable to cancel subscription. Please contact support for assistance.\n\nSupport: bloomtpl@gmail.com"
+      );
+      return;
+    }
+
+    setCancellingSubscription(true);
+
+    try {
+      const response = await fetch("/api/cancel-subscription", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ subscriptionId: subscription.lemonSqueezyId }),
+      });
+
+      if (response.ok) {
+        setSubscription((prev) =>
+          prev ? { ...prev, status: "CANCELLED" } : null
+        );
+        alert(
+          "Subscription cancelled successfully. You'll retain access until the end of your billing period."
+        );
+      } else {
+        const error = await response.json();
+        alert(
+          `Failed to cancel subscription. Please contact support for assistance.\n\nError: ${error.error || error.message}\nSupport: bloomtpl@gmail.com`
+        );
+      }
+    } catch {
+      alert(
+        "An error occurred while cancelling your subscription. Please contact support for assistance.\n\nSupport: bloomtpl@gmail.com"
+      );
+    } finally {
+      setCancellingSubscription(false);
     }
   };
 
@@ -120,6 +181,101 @@ export default function DashboardSection() {
       </div>
 
       <div className="max-w-7xl mx-auto">
+        {/* AI Builder Subscription Section */}
+        <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden mb-8">
+          <div className="p-6 lg:p-8 border-b border-gray-100">
+            <div className="flex items-center gap-3 mb-2">
+              <div className="p-2 bg-indigo-100 rounded-lg">
+                <CreditCard className="h-5 w-5 text-indigo-600" />
+              </div>
+              <h2 className="text-2xl font-bold text-gray-900">
+                AI Builder Subscription
+              </h2>
+            </div>
+            <p className="text-gray-600">
+              Manage your AI Component Builder subscription
+            </p>
+          </div>
+
+          <div className="p-6 lg:p-8">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+              <div>
+                <div className="flex items-center gap-3 mb-2">
+                  <span
+                    className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                      subscription?.plan === "PRO"
+                        ? "bg-green-100 text-green-800"
+                        : "bg-gray-100 text-gray-800"
+                    }`}
+                  >
+                    {subscription?.plan || "FREE"} Plan
+                  </span>
+                  <span
+                    className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                      subscription?.status === "ACTIVE"
+                        ? "bg-green-100 text-green-800"
+                        : subscription?.status === "CANCELLED"
+                          ? "bg-red-100 text-red-800"
+                          : "bg-gray-100 text-gray-800"
+                    }`}
+                  >
+                    {subscription?.status || "ACTIVE"}
+                  </span>
+                </div>
+                <p className="text-sm text-gray-600">
+                  {subscription?.plan === "PRO"
+                    ? "100 AI requests per day • Premium support"
+                    : "1 AI request per day"}
+                </p>
+                {subscription?.plan === "PRO" &&
+                  subscription?.status === "CANCELLED" && (
+                    <p className="text-sm text-amber-600 mt-1">
+                      Your subscription will remain active until the end of your
+                      billing period.
+                    </p>
+                  )}
+              </div>
+
+              <div className="flex gap-3">
+                {!subscription || subscription.plan === "FREE" ? (
+                  <Button
+                    onClick={() => (window.location.href = "/pricing")}
+                    className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-lg transition-colors"
+                  >
+                    Upgrade to Pro
+                  </Button>
+                ) : subscription.status === "ACTIVE" ? (
+                  <Button
+                    onClick={handleCancelSubscription}
+                    disabled={cancellingSubscription}
+                    variant="outline"
+                    className="border-red-200 text-red-600 hover:bg-red-50 px-6 py-2 rounded-lg transition-colors"
+                  >
+                    {cancellingSubscription ? (
+                      <div className="flex items-center gap-2">
+                        <div className="w-4 h-4 border-2 border-red-600 border-t-transparent rounded-full animate-spin"></div>
+                        Cancelling...
+                      </div>
+                    ) : (
+                      <div className="flex items-center gap-2">
+                        <X className="h-4 w-4" />
+                        Cancel Subscription
+                      </div>
+                    )}
+                  </Button>
+                ) : (
+                  <Button
+                    onClick={() => (window.location.href = "/pricing")}
+                    className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-lg transition-colors"
+                  >
+                    Reactivate Subscription
+                  </Button>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Stats Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-all duration-200">
