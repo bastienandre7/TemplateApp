@@ -1,31 +1,29 @@
-"use client";
-
-import ProductGallery from "@/components/Template/ProductGallery";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Check, CheckCheck, Sparkles } from "lucide-react";
-import { signIn, useSession } from "next-auth/react";
+import { Check, Eye, Monitor, Shield, Zap } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import FaqAccordion from "./FaqAccordion";
 import PaymentMethodSection from "./PaymentMethodSection";
+import BundleCTASection from "./details/BundleCTASection";
+import DynamicBuyButton from "./details/DynamicBuyButton";
+import WhatYouGetSection from "./details/WhatYouGetSection";
 
 interface Product {
   id: number;
   name: string;
   description?: string;
   price: number;
-  imageUrl?: string;
   demoUrl: string;
   lemonLink: string;
   features: string[];
   slug: string;
-  images?: string[];
   updated_at: string;
   tech?: string[];
   pages?: string[];
   extras?: string[];
   openGraphImage?: string;
+  performanceImage?: string;
 }
 
 interface ProductPageProps {
@@ -34,255 +32,305 @@ interface ProductPageProps {
 }
 
 export default function ProductPage({ template, purchases }: ProductPageProps) {
-  const { data: session, status } = useSession();
-
-  // Détermine si le template est possédé
-  const isOwned = purchases.some((p) => p.template === template.name);
-
-  const renderActionButton = () => {
-    if (status === "loading") {
-      return (
-        <Button
-          disabled
-          className="w-full px-8 py-4 rounded-xl text-lg bg-gray-400 text-white min-h-[48px] min-w-[48px] shadow-md opacity-60"
-        >
-          Loading...
-        </Button>
-      );
-    }
-
-    if (isOwned) {
-      return (
-        <Link href="/dashboard" className="w-full">
-          <Button className="w-full px-8 py-4 rounded-xl text-lg bg-purple-600 hover:bg-purple-700 text-white min-h-[56px] min-w-[48px] shadow-md cursor-pointer">
-            Download Template
-          </Button>
-        </Link>
-      );
-    }
-
-    return (
-      <Button
-        onClick={() => {
-          if (!session) {
-            signIn();
-          } else if (session.user?.email) {
-            const email = encodeURIComponent(session.user.email);
-            const url = `${template.lemonLink}?checkout[email]=${email}`;
-            window.location.href = url;
-          }
-        }}
-        className="px-8 py-4 rounded-xl text-lg bg-indigo-600 hover:bg-indigo-700 text-white min-h-[56px] min-w-[48px] shadow-md w-full cursor-pointer"
-      >
-        {template.price === 0 ? "Get FREE" : `Buy Now - $${template.price}`}
-      </Button>
-    );
-  };
-
   return (
-    <div className="pt-16 md:pt-4 bg-white text-black min-h-screen">
+    <div className="pt-16 md:pt-4 text-black min-h-screen">
       <div className="max-w-screen-xl mx-auto px-8 xl:px-4 py-20 sm:py-32">
-        <div className=" mx-auto">
-          <section className="flex flex-col lg:flex-row items-center gap-12">
-            {/* Colonne texte */}
-            <div className="flex-1 text-center lg:text-left space-y-6">
-              <div className="space-y-4">
-                <h1 className="text-xl xs:text-2xl sm:text-3xl md:text-[34px] lg:text-3xl xl:text-[40px] font-bold leading-tight text-black">
+        {/* Hero Section - Style Clay */}
+        <section className="relative overflow-hidden bg-white rounded-3xl shadow-2xl border border-gray-100 p-8 lg:p-12 mb-16">
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5"></div>
+          <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-blue-200/20 to-purple-200/20 rounded-full -translate-y-48 translate-x-48"></div>
+
+          <div className="relative z-10 flex flex-col lg:flex-row items-center gap-12">
+            {/* Content */}
+            <div className="flex-1 text-center lg:text-left space-y-8">
+              <div className="space-y-6">
+                <h1 className="text-4xl lg:text-5xl font-bold leading-tight bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
                   {template.name}
                 </h1>
-                <p className="max-w-2xl mx-auto lg:mx-0 text-gray-600 leading-relaxed animate-fadeIn">
+                <p className="text-xl text-gray-600 leading-relaxed max-w-2xl">
                   {template.description}
                 </p>
               </div>
 
-              {/* Boutons */}
-              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+              {/* Quick Stats */}
+              <div className="flex flex-wrap gap-6 text-sm">
+                <div className="flex items-center gap-2 bg-green-50 px-3 py-2 rounded-xl">
+                  <Check className="w-4 h-4 text-green-600" />
+                  <span className="text-green-700 font-medium">
+                    Instant Access
+                  </span>
+                </div>
+                <div className="flex items-center gap-2 bg-blue-50 px-3 py-2 rounded-xl">
+                  <Shield className="w-4 h-4 text-blue-600" />
+                  <span className="text-blue-700 font-medium">
+                    Commercial License
+                  </span>
+                </div>
+                <div className="flex items-center gap-2 bg-purple-50 px-3 py-2 rounded-xl">
+                  <Zap className="w-4 h-4 text-purple-600" />
+                  <span className="text-purple-700 font-medium">
+                    Free Updates
+                  </span>
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4">
                 {template.demoUrl && (
                   <Link
                     href={template.demoUrl}
                     target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full"
+                    className="flex-1"
                   >
                     <Button
                       variant="outline"
-                      className="inline-flex items-center gap-2 border-2 border-gray-200 hover:border-purple-300 text-gray-700 hover:text-purple-700 px-8 py-4 rounded-xl text-lg font-medium transition-all duration-200 hover:shadow-lg min-h-[56px] w-full cursor-pointer"
+                      className="w-full min-h-[56px] px-8 py-4 rounded-2xl text-lg border-2 border-gray-200 hover:border-blue-300 text-gray-700 hover:text-blue-700 hover:bg-blue-50 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
                     >
-                      <svg
-                        className="w-5 h-5"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                        />
-                      </svg>
+                      <Eye className="w-5 h-5" />
                       Live Demo
                     </Button>
                   </Link>
                 )}
-                {renderActionButton()}
-              </div>
-              <div className="mt-6 flex gap-2 text-sm text-gray-600">
-                <div className="flex items-center gap-2">
-                  <CheckCheck className="w-4 h-4 text-green-600" />
-                  <span>Instant & Lifetime access</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCheck className="w-4 h-4 text-green-600" />
-                  <span>Free updates</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCheck className="w-4 h-4 text-green-600" />
-                  <span>Commercial license</span>
+                <div className="flex-1">
+                  <DynamicBuyButton template={template} purchases={purchases} />
                 </div>
               </div>
             </div>
 
-            {/* Colonne image */}
-            <div className="flex-1 flex justify-center items-center">
-              <Image
-                src={template.openGraphImage || "/og-image.png"}
-                alt="Divider"
-                width={1200}
-                height={630}
-                className="mx-auto my-8 rounded-lg shadow-lg"
-                priority
-                fetchPriority="high"
-                loading="eager"
-              />
-            </div>
-          </section>
-
-          <div className="space-y-12 pt-8">
-            <div className="">
-              {template.pages?.map((description, idx) => {
-                return (
-                  <div className="mb-4" key={idx}>
-                    <ReactMarkdown>{description}</ReactMarkdown>
-                  </div>
-                );
-              })}
-            </div>
-            {/* Gallery Section */}
-            {template.images && template.images.length > 0 && (
-              <div className="mt-6">
-                <ProductGallery images={template.images} />
-                <div className="py-4 flex flex-col md:flex-row justify-between gap-2">
-                  <div className="flex items-center">
-                    Built with Next.js{" "}
-                    <Image
-                      src="/images/logo/nextLogo.png"
-                      alt="nextLogo"
-                      height="20"
-                      width="20"
-                      className="ml-2"
-                    />
-                  </div>
-                  <div suppressHydrationWarning>
-                    Last Updated :{" "}
-                    {new Date(template.updated_at).toLocaleDateString()}
-                  </div>
-                </div>
-              </div>
-            )}
-
-            <div className="mx-auto py-2">
-              <h2 className="text-3xl font-bold mb-8 text-gray-900">
-                Key Features
-              </h2>
-
-              <ul className="space-y-6 list-disc list-inside leading-relaxed">
-                {template.extras?.map((feature, idx) => {
-                  const { title, description } = parseDescriptionText(feature);
-                  return (
-                    <li key={idx}>
-                      <span className="font-semibold">{title}:</span>{" "}
-                      <span className="text-gray-700">{description}</span>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-
-            <div className="mt-12">
-              <h2 className="text-2xl font-bold mb-6">Tech Stack</h2>
-              <div className="grid gap-6 md:grid-cols-2">
-                {template.tech?.map((tech, i) => {
-                  const { title, description } = parseDescriptionText(tech);
-                  return (
-                    <div
-                      key={i}
-                      className="p-4 border rounded-xl bg-white shadow-sm hover:shadow-md transition"
-                    >
-                      <h3 className="text-lg font-semibold">{title}</h3>
-                      <p className="text-gray-600 text-sm mt-2">
-                        {description}
-                      </p>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <section className="mt-12 py-12 w-full bg-gradient-to-br from-yellow-50 to-orange-100 border border-yellow-200 rounded-2xl">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div className="inline-flex items-center px-4 py-2 bg-yellow-200 text-yellow-900 rounded-full text-sm font-medium mb-6">
-              <Sparkles className="w-4 h-4 mr-2" />
-              Special Offer
-            </div>
-
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Get All Templates in One Powerful Bundle
-            </h2>
-
-            <p className="text-lg text-gray-700 max-w-2xl mx-auto mb-8">
-              Access <strong>8 premium templates</strong> including SaaS,
-              eCommerce, Portfolio, Blog & more – all for{" "}
-              <strong className="text-green-600">just $49</strong>.
-            </p>
-
-            <Link
-              href="/bundle/ultimate"
-              className="inline-flex items-center gap-2 bg-yellow-500 text-white px-8 py-4 rounded-xl text-lg font-bold hover:bg-yellow-600 transition-all hover:scale-105 shadow-lg"
-            >
-              View the Bundle
-              <ArrowRight className="w-5 h-5" />
-            </Link>
-
-            <div className="mt-6 flex flex-col sm:flex-row justify-center items-center gap-6 text-sm text-gray-600">
-              <div className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-green-500" />
-                Lifetime access
-              </div>
-              <div className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-green-500" />
-                Future templates included
-              </div>
-              <div className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-green-500" />
-                Commercial license
+            {/* Hero Image */}
+            <div className="flex-1">
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-200 to-purple-200 rounded-2xl transform rotate-3"></div>
+                <Image
+                  src={template.openGraphImage || "/og-image.png"}
+                  alt={template.name}
+                  width={1200}
+                  height={630}
+                  className="relative rounded-2xl shadow-2xl"
+                  priority
+                  fetchPriority="high"
+                  sizes="(max-width: 640px) 100vw, (max-width: 768px) 90vw, (max-width: 1024px) 50vw, 551px"
+                />
               </div>
             </div>
           </div>
         </section>
 
-        <PaymentMethodSection />
+        <WhatYouGetSection />
 
+        {/* Pages Description */}
+        {template.pages && template.pages.length > 0 && (
+          <section className="mb-16">
+            <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-8">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                Template Overview
+              </h2>
+              <div className="prose prose-lg max-w-none text-gray-800">
+                {template.pages.map((description, idx) => (
+                  <div key={idx} className="mb-4">
+                    <ReactMarkdown>{description}</ReactMarkdown>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Technical Specs - Amélioré */}
+        <section className="mb-16">
+          <div className="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden">
+            <div className="bg-gradient-to-r from-gray-50 to-blue-50 px-8 py-6 border-b border-gray-100">
+              <h2 className="text-2xl font-bold text-gray-900 flex items-center gap-3">
+                <Monitor className="w-6 h-6 text-blue-600" />
+                Technical Specifications
+              </h2>
+            </div>
+
+            <div className="p-8">
+              {/* ✅ Performance Image Section */}
+              {template.performanceImage && (
+                <div className="mb-8">
+                  <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                    <Zap className="w-5 h-5 text-green-600" />
+                    Lighthouse Performance Score
+                  </h3>
+                  <div className="bg-gradient-to-br from-green-50 to-blue-50 rounded-2xl p-6 border border-green-100">
+                    <div className="flex justify-center">
+                      <Image
+                        src={template.performanceImage}
+                        alt={`${template.name} Lighthouse Performance Report`}
+                        width={956}
+                        height={118}
+                        className="rounded-xl border border-gray-200 shadow-sm max-w-full"
+                        loading="lazy"
+                        style={{ width: "auto", height: "auto" }}
+                      />
+                    </div>
+                    <div className="mt-4 text-center">
+                      <span className="inline-flex items-center px-3 py-1 bg-green-100 text-green-800 text-sm font-medium rounded-full">
+                        ✓ Real Lighthouse Results
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Tech Stack Badges */}
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div className="text-center p-4 bg-gray-50 rounded-xl">
+                  <div className="text-2xl font-bold mb-1">Next.js 15</div>
+                  <div className="text-sm text-gray-600">Framework</div>
+                </div>
+                <div className="text-center p-4 bg-gray-50 rounded-xl">
+                  <div className="text-2xl font-bold mb-1">TypeScript</div>
+                  <div className="text-sm text-gray-600">Language</div>
+                </div>
+                <div className="text-center p-4 bg-gray-50 rounded-xl">
+                  <div className="text-2xl font-bold mb-1">Tailwind</div>
+                  <div className="text-sm text-gray-600">Styling</div>
+                </div>
+                <div className="text-center p-4 bg-gray-50 rounded-xl">
+                  <div className="text-2xl font-bold mb-1">Responsive</div>
+                  <div className="text-sm text-gray-600">Design</div>
+                </div>
+              </div>
+
+              {/* Tech Details */}
+              {template.tech && (
+                <div className="grid md:grid-cols-2 gap-6">
+                  {template.tech.map((tech, i) => {
+                    const { title, description } = parseDescriptionText(tech);
+                    return (
+                      <div
+                        key={i}
+                        className="flex items-start gap-4 p-4 bg-gray-50 rounded-xl"
+                      >
+                        <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                          <Check className="w-4 h-4 text-blue-600" />
+                        </div>
+                        <div>
+                          <h3 className="font-semibold text-gray-900">
+                            {title}
+                          </h3>
+                          <p className="text-gray-600 text-sm mt-1">
+                            {description}
+                          </p>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+          </div>
+        </section>
+
+        {/* Features Grid */}
+        {template.extras && template.extras.length > 0 && (
+          <section className="mb-16">
+            <div className="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden">
+              <div className="bg-gradient-to-r from-violet-50 to-pink-50 px-8 py-6 border-b border-gray-100">
+                <h2 className="text-2xl font-bold text-gray-900 flex items-center gap-3">
+                  <Zap className="w-6 h-6 text-violet-600" />
+                  Premium Features
+                </h2>
+                <p className="text-gray-600 mt-2">
+                  Everything you need to build a professional application
+                </p>
+              </div>
+
+              <div className="p-8">
+                <div className="grid md:grid-cols-2 gap-6">
+                  {template.extras.map((feature, idx) => {
+                    const { title, description } =
+                      parseDescriptionText(feature);
+                    return (
+                      <div
+                        key={idx}
+                        className="group flex items-start gap-4 p-6 bg-gray-50 rounded-xl hover:bg-gray-100 transition-all duration-300"
+                      >
+                        {/* Icône/Badge */}
+                        <div className="flex-shrink-0">
+                          <div className="w-10 h-10 bg-gradient-to-br from-violet-500 to-violet-600 rounded-xl flex items-center justify-center text-white font-bold text-sm group-hover:scale-110 transition-transform duration-300">
+                            {idx + 1}
+                          </div>
+                        </div>
+
+                        {/* Contenu */}
+                        <div className="flex-1">
+                          <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-violet-600 transition-colors duration-300">
+                            {title}
+                          </h3>
+                          <p className="text-gray-600 text-sm leading-relaxed">
+                            {description}
+                          </p>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+
+        <BundleCTASection />
+        <PaymentMethodSection />
         <FaqAccordion />
 
-        <div className="flex flex-col sm:flex-row justify-center items-center gap-8 text-center">
-          <p className="text-3xl md:text-4xl font-bold text-gray-900">
-            Ready to launch with this template?
-          </p>
-          <div>{renderActionButton()}</div>
-        </div>
+        {/* Final CTA */}
+        <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 rounded-3xl p-12 text-white">
+          <div className="absolute inset-0">
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10"></div>
+            <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-cyan-400/20 to-blue-400/20 rounded-full -translate-y-48 translate-x-48 blur-3xl"></div>
+            <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-br from-purple-400/20 to-pink-400/20 rounded-full translate-y-40 -translate-x-40 blur-3xl"></div>
+          </div>
+
+          <div className="relative z-10 text-center space-y-8">
+            <h2 className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+              Start Building Today
+            </h2>
+
+            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+              Production-ready code, modern architecture, and everything you
+              need to ship fast
+            </p>
+
+            <div className="flex flex-col gap-4 justify-center items-center max-w-md mx-auto">
+              <DynamicBuyButton template={template} purchases={purchases} />
+              {template.demoUrl && (
+                <Link
+                  href={template.demoUrl}
+                  target="_blank"
+                  className="flex-1 w-full"
+                >
+                  <Button
+                    variant="outline"
+                    className="w-full min-h-[56px] px-8 py-4 rounded-2xl text-lg border-2 border-gray-200 hover:border-blue-300 text-gray-700 hover:text-blue-700 hover:bg-blue-50 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
+                  >
+                    <Eye className="w-5 h-5" />
+                    Live Demo
+                  </Button>
+                </Link>
+              )}
+            </div>
+
+            <div className="flex items-center justify-center gap-8 text-sm text-gray-400 pt-6">
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                Instant Download
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                TypeScript Ready
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
+                Next.js 15
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   );

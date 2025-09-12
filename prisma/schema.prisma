@@ -139,6 +139,7 @@ model Template {
   demoUrl        String
   images         Json     // Tableau d'URLs d'images (hébergées sur Vercel Blob)
   openGraphImage String
+  performanceImage String?
   category       String
   categories     String[]
   categoriesSlugs     String[]

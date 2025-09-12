@@ -58,13 +58,13 @@ export async function GET(
       slug: tpl.slug,
       demoUrl: tpl.demoUrl || "",
       frameworks: tpl.tech ? [tpl.tech] : [],
-      images: tpl.images || [],
       tech: tpl.tech || [],
       category: tpl.category || "Uncategorized",
       openGraphImage: tpl.openGraphImage || "/images/og-template.png",
       updated_at: product.attributes.created_at,
       pages: tpl.pages || [],
       extras: tpl.extras || [],
+      performanceImage: tpl.performanceImage || null,
     };
 
     return NextResponse.json(formatted);

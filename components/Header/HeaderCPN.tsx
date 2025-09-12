@@ -79,6 +79,12 @@ export default function HeaderCPN() {
       description:
         "Elegant and responsive Next.js restaurant templates with menus, reservations, and online ordering features.",
     },
+    {
+      title: "Agency Templates",
+      href: "/nextjs-templates/category/agency",
+      description:
+        "Professional Next.js agency templates with portfolios, services, team sections, and client testimonials for creative agencies.",
+    },
   ];
 
   const components: { title: string; href: string; description: string }[] = [
