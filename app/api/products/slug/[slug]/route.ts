@@ -22,7 +22,6 @@ export async function GET(
 ) {
   const { slug } = await context.params;
 
-  // 1. Récupère le template depuis la base
   const tpl = await prisma.template.findUnique({ where: { slug } });
 
   if (!tpl) {
@@ -30,23 +29,56 @@ export async function GET(
   }
 
   try {
-    // 2. Récupère les infos LemonSqueezy
-    const response = await fetch(`https://api.lemonsqueezy.com/v1/products`, {
-      headers: {
-        Authorization: `Bearer ${process.env.LEMON_API_KEY}`,
-        Accept: "application/vnd.api+json",
-      },
-      next: { revalidate: 60 },
-    });
+    let allProducts: LemonProduct[] = [];
+    let page = 1;
+    let hasMore = true;
 
-    const json = await response.json();
-    const products: LemonProduct[] = json.data;
+    while (hasMore) {
+      const response = await fetch(
+        `https://api.lemonsqueezy.com/v1/products?page[size]=100&page[number]=${page}`,
+        {
+          headers: {
+            Authorization: `Bearer ${process.env.LEMON_API_KEY}`,
+            Accept: "application/vnd.api+json",
+          },
+          next: { revalidate: 60 },
+        }
+      );
+
+      const json = await response.json();
+      const products: LemonProduct[] = json.data;
+
+      allProducts = [...allProducts, ...products];
+
+      // Vérifie s'il y a d'autres pages
+      hasMore = json.meta?.page?.last_page > page;
+      page++;
+    }
 
     // 3. Trouve le produit LemonSqueezy correspondant à lemonId
-    const product = products.find((p) => Number(p.id) === tpl.lemonId);
+    const product = allProducts.find((p) => Number(p.id) === tpl.lemonId);
 
     if (!product) {
-      throw new Error("Produit Lemon non trouvé");
+      // Fallback - Retourne les données de la DB
+      const fallbackFormatted = {
+        id: tpl.id,
+        name: tpl.name,
+        price: 49, // Prix par défaut
+        description: tpl.description || "",
+        lemonLink: `https://bloomtpl.lemonsqueezy.com/checkout/buy/${tpl.lemonId}`,
+        slug: tpl.slug,
+        demoUrl: tpl.demoUrl || "",
+        frameworks: tpl.tech ? [tpl.tech] : [],
+        tech: tpl.tech || [],
+        category: tpl.category || "Uncategorized",
+        openGraphImage: tpl.openGraphImage || "/images/og-template.png",
+        updated_at: tpl.updatedAt.toISOString(),
+        pages: tpl.pages || [],
+        extras: tpl.extras || [],
+        performanceImage: tpl.performanceImage || null,
+      };
+
+      return NextResponse.json(fallbackFormatted);
     }
 
     const formatted = {
@@ -69,7 +101,7 @@ export async function GET(
 
     return NextResponse.json(formatted);
   } catch (error) {
-    console.error("Erreur API Lemon:", error);
+    console.error(error);
     return NextResponse.json(
       { error: "Erreur produit introuvable" },
       { status: 500 }
