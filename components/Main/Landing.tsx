@@ -93,7 +93,7 @@ export default function LandingPage() {
       category: "Landing Page",
       price: 14.99,
       image:
-        "https://9hn0rhd8ibpivln7.public.blob.vercel-storage.com/templates/Landkit%20Landing%20Page/og-image.png",
+        "https://9hn0rhd8ibpivln7.public.blob.vercel-storage.com/templates/Landkit%20Landing%20Page/og-image-v2-opti.webp",
       link: "/nextjs-templates/landkit-nextjs-landing-page-starter-kit",
       demoUrl: "https://bloomtpl-landkit-landing-page.vercel.app/",
     },
@@ -105,7 +105,7 @@ export default function LandingPage() {
       category: "E-commerce",
       price: 39.99,
       image:
-        "https://9hn0rhd8ibpivln7.public.blob.vercel-storage.com/templates/ShopBase%20Template/og.png",
+        "https://9hn0rhd8ibpivln7.public.blob.vercel-storage.com/templates/ShopBase%20Template/og-image-v2-opti.webp",
       link: "/nextjs-templates/shopbase-nextjs-e-commerce-boilerplate",
       demoUrl: "https://bloomtpl-shopbase-template.vercel.app/",
     },
@@ -117,7 +117,7 @@ export default function LandingPage() {
       category: "Blog",
       price: 34.99,
       image:
-        "https://9hn0rhd8ibpivln7.public.blob.vercel-storage.com/templates/blogstarter-starterkit/og.png",
+        "https://9hn0rhd8ibpivln7.public.blob.vercel-storage.com/templates/blogstarter-starterkit/og-image-v2-opti.webp",
       link: "/nextjs-templates/blogstarter-next-js-tailwind-css-blog-starter-kit",
       demoUrl: "https://bloomtpl-blogstarter-starter-kit.vercel.app/",
     },
@@ -129,7 +129,7 @@ export default function LandingPage() {
       category: "SaaS",
       price: 39.99,
       image:
-        "https://9hn0rhd8ibpivln7.public.blob.vercel-storage.com/templates/coresaas-boilerplate/og.png",
+        "https://9hn0rhd8ibpivln7.public.blob.vercel-storage.com/templates/coresaas-boilerplate/og-opti.webp",
       link: "/nextjs-templates/coresaas-next-js-tailwind-css-saas-boilerplate",
       demoUrl: "https://bloomtpl-coresaas-template.vercel.app/",
     },
@@ -176,7 +176,7 @@ export default function LandingPage() {
             {/* Colonne mockups */}
             <div className="flex-1 relative flex justify-center items-center">
               <Image
-                src="/images/banner.png"
+                src="/images/banner-opti.webp"
                 alt="Desktop Banner Image"
                 width={800}
                 height={640}
