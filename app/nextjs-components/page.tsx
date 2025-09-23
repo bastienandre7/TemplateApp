@@ -43,9 +43,7 @@ export const metadata: Metadata = {
 };
 
 export default async function ComponentsPage() {
-  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/components`, {
-    cache: "no-store",
-  });
+  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/components`);
   const data = await res.json();
 
   return (

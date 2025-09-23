@@ -9,12 +9,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const res = await fetch(
-    `${process.env.NEXTAUTH_URL}/api/components/${slug}`,
-    {
-      cache: "no-store",
-    }
-  );
+  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/components/${slug}`);
   if (!res.ok) {
     return {
       title: "Component Not Found | BloomTPL",
@@ -71,12 +66,7 @@ export default async function ComponentDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const res = await fetch(
-    `${process.env.NEXTAUTH_URL}/api/components/${slug}`,
-    {
-      cache: "no-store",
-    }
-  );
+  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/components/${slug}`);
   if (!res.ok) {
     notFound();
   }

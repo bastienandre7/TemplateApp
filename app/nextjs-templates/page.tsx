@@ -40,9 +40,7 @@ export const metadata: Metadata = {
 };
 
 export default async function TemplatePage() {
-  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/products`, {
-    cache: "no-store",
-  });
+  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/products`);
   const data = await res.json();
 
   const jsonLd = {
