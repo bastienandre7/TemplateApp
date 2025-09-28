@@ -4,8 +4,16 @@ import { ReactNode } from "react";
 import "./globals.css";
 import LayoutShell from "./LayoutShell";
 
-const poppins = Inter({ subsets: ["latin"], weight: ["400", "700"] });
-const fugaz = Fugaz_One({ subsets: ["latin"], weight: ["400"] });
+const poppins = Inter({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  display: "swap",
+});
+const fugaz = Fugaz_One({
+  subsets: ["latin"],
+  weight: ["400"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "10+ Best Free and Premium Next.js Templates (2025) | BloomTPL",
