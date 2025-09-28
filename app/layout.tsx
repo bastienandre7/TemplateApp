@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { Fugaz_One, Inter } from "next/font/google";
+import { Inter } from "next/font/google";
 import { ReactNode } from "react";
 import "./globals.css";
 import LayoutShell from "./LayoutShell";
@@ -7,11 +7,6 @@ import LayoutShell from "./LayoutShell";
 const poppins = Inter({
   subsets: ["latin"],
   weight: ["400", "700"],
-  display: "swap",
-});
-const fugaz = Fugaz_One({
-  subsets: ["latin"],
-  weight: ["400"],
   display: "swap",
 });
 
@@ -79,7 +74,7 @@ export const viewport = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${poppins.className} ${fugaz.style} antialiased`}>
+      <body className={`${poppins.className} antialiased`}>
         <LayoutShell>{children}</LayoutShell>
       </body>
     </html>

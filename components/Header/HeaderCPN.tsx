@@ -1,5 +1,6 @@
 "use client";
 import { useScrollHeader } from "@/hooks/useScrollHeader";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -167,18 +168,27 @@ export default function HeaderCPN() {
       <PromoBanner />
       <nav className="transition-all duration-300 px-6 py-4">
         <div className="max-w-screen-xl mx-auto w-full flex items-center justify-between">
-          <div className="flex items-center space-x-8 rtl:space-x-reverse">
-            <Link
-              href="/"
-              className="flex items-center space-x-3 rtl:space-x-reverse group self-center text-3xl whitespace-nowrap logo-font"
-            >
-              Bloom
-              <span className="text-indigo-600">TPL</span>
-            </Link>
-          </div>
+          <Link href="/" className="hover:bg-white lg:hidden">
+            <Image src="/icons/favicon.ico" alt="Logo" width={32} height={32} />
+          </Link>
           <div className="hidden lg:flex items-center space-x-4 rtl:space-x-reverse">
             <NavigationMenu viewport={false}>
               <NavigationMenuList>
+                <NavigationMenuItem>
+                  <NavigationMenuLink
+                    asChild
+                    className={navigationMenuTriggerStyle()}
+                  >
+                    <Link href="/" className="hover:bg-white">
+                      <Image
+                        src="/icons/favicon.ico"
+                        alt="Logo"
+                        width={32}
+                        height={32}
+                      />
+                    </Link>
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
                 <NavigationMenuItem>
                   <NavigationMenuTrigger>Templates</NavigationMenuTrigger>
                   <NavigationMenuContent>
@@ -224,15 +234,7 @@ export default function HeaderCPN() {
                     asChild
                     className={navigationMenuTriggerStyle()}
                   >
-                    <Link href="/ai-builder">AI Builder</Link>
-                  </NavigationMenuLink>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <NavigationMenuLink
-                    asChild
-                    className={navigationMenuTriggerStyle()}
-                  >
-                    <Link href="/pricing">Pricing</Link>
+                    <Link href="/contact">Contact</Link>
                   </NavigationMenuLink>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
@@ -274,10 +276,19 @@ export default function HeaderCPN() {
                         </NavigationMenuLink>
 
                         <NavigationMenuLink asChild>
-                          <Link href="/contact">
-                            <div className="font-medium">Contact</div>
+                          <Link href="/ai-builder">
+                            <div className="font-medium">AI Builder</div>
                             <div className="text-muted-foreground">
-                              Get in touch with our team.
+                              Create and customize AI components.
+                            </div>
+                          </Link>
+                        </NavigationMenuLink>
+
+                        <NavigationMenuLink asChild>
+                          <Link href="/pricing">
+                            <div className="font-medium">Pricing</div>
+                            <div className="text-muted-foreground">
+                              View our pricing plans and options.
                             </div>
                           </Link>
                         </NavigationMenuLink>

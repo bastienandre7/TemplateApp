@@ -33,7 +33,7 @@ export default function AuthButton() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="outline" className="text-black relative">
-          {session.user?.name || "My Account"}
+          {"My Account"}
           {/* Badge admin */}
           {isAdmin && !loading && (
             <span className="absolute -top-1 -right-1 w-3 h-3 bg-purple-500 rounded-full border-2 border-white"></span>
