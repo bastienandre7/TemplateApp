@@ -8,7 +8,7 @@ import {
 
 export default function FaqAccordion() {
   return (
-    <section className="pb-20">
+    <section className="py-20">
       <div className="max-w-4xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16">

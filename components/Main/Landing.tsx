@@ -1,14 +1,26 @@
 "use client";
 
+import { Badge } from "@/components/ui/badge";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 import {
   ArrowRight,
   Check,
   ChevronRight,
   Code,
+  Download,
   Laptop,
   Lock,
   Shield,
   Sparkles,
+  Star,
   Wrench,
   Zap,
 } from "lucide-react";
@@ -54,6 +66,32 @@ export default function LandingPage() {
       title: "Modern Tech Stack",
       description:
         "Built with the latest Next.js & Tailwind CSS standards for long-term maintainability.",
+    },
+  ];
+
+  const categories = [
+    { name: "SaaS", href: "/nextjs-templates/category/saas" },
+    {
+      name: "E-commerce",
+      href: "/nextjs-templates/category/e-commerce",
+    },
+    {
+      name: "Portfolio",
+      href: "/nextjs-templates/category/portfolio",
+    },
+    { name: "Blog", href: "/nextjs-templates/category/blog" },
+    {
+      name: "Landing Page",
+      href: "/nextjs-templates/category/landing-page",
+    },
+    { name: "Agency", href: "/nextjs-templates/category/agency" },
+    {
+      name: "Restaurant",
+      href: "/nextjs-templates/category/restaurant",
+    },
+    {
+      name: "Dashboard",
+      href: "/nextjs-templates/category/dashboard",
     },
   ];
 
@@ -135,215 +173,305 @@ export default function LandingPage() {
     },
   ];
 
+  const freeTemplates = [
+    {
+      name: "Free Next.js Tailwind CSS E-Commerce Template",
+      slug: "free-nextjs-tailwind-css-e-commerce-template",
+      description:
+        "Free modern e-commerce template built with Tailwind CSS. Fast, responsive, and perfect for launching your digital store.",
+      category: "E-commerce",
+      price: 0.0,
+      image:
+        "https://9hn0rhd8ibpivln7.public.blob.vercel-storage.com/templates/e-commerce-template/og-opti.webp",
+      link: "/nextjs-templates/free-nextjs-tailwind-css-e-commerce-template",
+      demoUrl: "https://bloomtpl-ecommerce-template.vercel.app/",
+    },
+    {
+      name: "ShopBase - Next.js E-commerce Boilerplate",
+      slug: "shopbase-nextjs-e-commerce-boilerplate",
+      description:
+        "Production-ready Next.js e-commerce boilerplate with Stripe, cart, product management, and admin dashboard. Launch your online store in minutes.",
+      category: "E-commerce",
+      price: 39.99,
+      image:
+        "https://9hn0rhd8ibpivln7.public.blob.vercel-storage.com/templates/ShopBase%20Template/og-image-v2-opti.webp",
+      link: "/nextjs-templates/shopbase-nextjs-e-commerce-boilerplate",
+      demoUrl: "https://bloomtpl-shopbase-template.vercel.app/",
+    },
+    {
+      name: "BlogStarter – Next.js Tailwind CSS Blog Starter Kit",
+      slug: "blogstarter-next-js-tailwind-css-blog-starter-kit",
+      description:
+        "BloomTPL BlogStarter is a modern blog starter kit with Next.js, Sanity.io & Tailwind CSS. Fast, customizable, and production-ready.",
+      category: "Blog",
+      price: 34.99,
+      image:
+        "https://9hn0rhd8ibpivln7.public.blob.vercel-storage.com/templates/blogstarter-starterkit/og-image-v2-opti.webp",
+      link: "/nextjs-templates/blogstarter-next-js-tailwind-css-blog-starter-kit",
+      demoUrl: "https://bloomtpl-blogstarter-starter-kit.vercel.app/",
+    },
+  ];
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative overflow-hidden pt-20 border-b border-gray-200">
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
+      <section className="bg-background relative overflow-hidden pt-20 pb-16">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
           <div className="flex flex-col lg:flex-row items-center gap-12">
-            {/* Colonne texte */}
-            <div className="flex-1 text-center lg:text-left">
-              <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight max-w-5xl">
-                Premium Next.js Templates, Boilerplates, Starter Kits and
-                Components
-              </h1>
-              <p className="text-gray-600 mb-10 max-w-3xl leading-relaxed">
-                Kickstart your next project with our collection of
-                production-ready Next.js templates and free React components.
-                Designed with TypeScript and Tailwind CSS, every template is
-                responsive, customizable, and built to scale. Optimized for SEO
-                and blazing-fast performance, our starter kits help you save
-                time, launch faster, and focus on growing your product.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center">
-                <Link
-                  href="/nextjs-templates"
-                  className="bg-indigo-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-indigo-700 transition-all hover:scale-105 flex items-center"
+            <div className="flex-1 text-center lg:text-left space-y-8">
+              <div className="space-y-6">
+                <Badge variant="secondary" className="text-sm font-medium">
+                  <Sparkles className="w-4 h-4 mr-2" />
+                  Premium Next.js Templates
+                </Badge>
+
+                <h1 className="text-4xl md:text-6xl font-bold text-gray-900 leading-tight tracking-tight">
+                  Build Faster with
+                  <span className="text-primary"> Premium Templates</span>
+                </h1>
+
+                <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl">
+                  Kickstart your next project with our collection of
+                  production-ready Next.js templates and free React components.
+                  Built with TypeScript, Tailwind CSS, and modern best
+                  practices.
+                </p>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button size="lg" className="text-lg px-8 py-6" asChild>
+                  <Link href="/nextjs-templates">
+                    Browse Templates
+                    <ArrowRight className="w-5 h-5 ml-2" />
+                  </Link>
+                </Button>
+
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="text-lg px-8 py-6"
+                  asChild
                 >
-                  Browse Templates
-                  <ArrowRight className="w-5 h-5 ml-2" />
-                </Link>
-                <Link
-                  href="/nextjs-components"
-                  className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-lg font-semibold text-lg transition-all hover:scale-105 flex items-center"
-                >
-                  Free Components
-                  <ArrowRight className="w-5 h-5 ml-2" />
-                </Link>
+                  <Link href="/nextjs-components">
+                    Free Components
+                    <Download className="w-5 h-5 ml-2" />
+                  </Link>
+                </Button>
+              </div>
+
+              <div className="flex items-center gap-6 text-sm text-muted-foreground">
+                <div className="flex items-center gap-2">
+                  <Check className="w-4 h-4 text-green-500" />
+                  Production Ready
+                </div>
+                <div className="flex items-center gap-2">
+                  <Check className="w-4 h-4 text-green-500" />
+                  TypeScript & Tailwind
+                </div>
+                <div className="flex items-center gap-2">
+                  <Check className="w-4 h-4 text-green-500" />
+                  Lifetime Updates
+                </div>
               </div>
             </div>
 
-            {/* Colonne mockups */}
-            <div className="flex-1 relative flex justify-center items-center">
-              <Image
-                src="/images/banner-opti.webp"
-                alt="Desktop Banner Image"
-                width={800}
-                height={640}
-                className="shadow-2xl rounded-xl transform rotate-[-3deg] hover:rotate-0 transition-transform duration-500"
-                priority
-              />
+            <div className="flex-1 relative">
+              <div className="relative">
+                <Image
+                  src="/images/banner-opti.webp"
+                  alt="Desktop Banner Image"
+                  width={800}
+                  height={640}
+                  className="shadow-2xl rounded-2xl transform hover:rotate-0 transition-transform duration-500"
+                  priority
+                />
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="templates" className="py-14 md:py-20 lg:py-24 bg-white">
+      {/* Latest Templates Section */}
+      <section className="py-8 md:py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl xl:text-[43px] font-bold text-gray-900 mb-4 tracking-tight">
-              Featured Templates
+            <Badge variant="secondary" className="mb-4">
+              <Star className="w-4 h-4 mr-2" />
+              Latest Templates
+            </Badge>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              Premium Next.js Templates
             </h2>
-            <p className="text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Explore a curated selection of premium Next.js templates designed
-              to help you launch faster, save development time, and build
-              stunning web apps with ease.
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Discover our newest premium Next.js templates built with modern
+              best practices
             </p>
-
-            <div className="flex flex-wrap justify-center gap-3 mt-6">
-              <Link
-                href="/nextjs-templates/category/saas"
-                className="text-sm font-medium text-indigo-600 bg-indigo-50 hover:bg-indigo-100 px-4 py-2 rounded-full transition"
+          </div>
+          <div className="flex flex-wrap justify-center gap-2 mb-12">
+            <Button
+              key="All"
+              variant="default"
+              size="sm"
+              className="text-sm font-medium"
+              asChild
+            >
+              <Link href="/">All</Link>
+            </Button>
+            {categories.map((category) => (
+              <Button
+                key={category.name}
+                variant="outline"
+                size="sm"
+                className="text-sm font-medium"
+                asChild
               >
-                SaaS Templates
-              </Link>
-              <Link
-                href="/nextjs-templates/category/e-commerce"
-                className="text-sm font-medium text-indigo-600 bg-indigo-50 hover:bg-indigo-100 px-4 py-2 rounded-full transition"
-              >
-                E-commerce
-              </Link>
-              <Link
-                href="/nextjs-templates/category/portfolio"
-                className="text-sm font-medium text-indigo-600 bg-indigo-50 hover:bg-indigo-100 px-4 py-2 rounded-full transition"
-              >
-                Portfolios
-              </Link>
-              <Link
-                href="/nextjs-templates/category/blog"
-                className="text-sm font-medium text-indigo-600 bg-indigo-50 hover:bg-indigo-100 px-4 py-2 rounded-full transition"
-              >
-                Blog
-              </Link>
-              <Link
-                href="/nextjs-templates/category/landing-page"
-                className="text-sm font-medium text-indigo-600 bg-indigo-50 hover:bg-indigo-100 px-4 py-2 rounded-full transition"
-              >
-                Landing Pages
-              </Link>
-            </div>
+                <Link href={category.href}>{category.name}</Link>
+              </Button>
+            ))}
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2">
-            {templates.map((item, index) => {
-              return (
-                <div
-                  key={index}
-                  className="group relative flex flex-col rounded-lg border border-gray-200 bg-white overflow-hidden hover:border-gray-300 transition-all duration-200 hover:shadow-lg"
-                >
-                  <Link
-                    href={`/nextjs-templates/${item.slug}`}
-                    className="block relative aspect-[1200/630] bg-gray-50 overflow-hidden"
-                  >
-                    <Image
-                      src={item.image || "/images/NoImage.jpg"}
-                      alt={`${item.name} main preview`}
-                      fill
-                      className="object-cover w-full h-full"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
-                      quality={90}
-                    />
-                  </Link>
-
-                  <div className="flex-1 flex flex-col justify-between p-5">
-                    <div>
-                      <Link
-                        className="text-lg font-semibold mb-2 text-gray-900 hover:text-indigo-600 transition-colors duration-200"
-                        href={`/nextjs-templates/${item.slug}`}
-                      >
-                        {item.name}
-                      </Link>
-                      <p className="text-gray-600 text-sm mb-4 line-clamp-2">
-                        {item.description ||
-                          "A beautifully crafted template ready for your next project."}
-                      </p>
-
-                      {/* Tech tags + Category */}
-                      <div className="flex flex-wrap gap-1 mb-4">
-                        <span className="text-xs text-indigo-600 bg-indigo-100 px-2 py-1 rounded font-medium">
-                          {item.category.charAt(0).toUpperCase() +
-                            item.category.slice(1)}
-                        </span>
-                        <span className="text-xs text-gray-600 bg-gray-100 px-2 py-1 rounded">
-                          Next.js
-                        </span>
-                        <span className="text-xs text-gray-600 bg-gray-100 px-2 py-1 rounded">
-                          Tailwind
-                        </span>
-                        <span className="text-xs text-gray-600 bg-gray-100 px-2 py-1 rounded">
-                          TypeScript
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Action Buttons */}
-                    <div className="flex gap-2">
-                      <Button
-                        variant="outline"
-                        size="default"
-                        className="flex-1 p-0"
-                      >
-                        <Link
-                          href={`${item.demoUrl}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="w-full text-center cursor-pointer py-2 font-semibold text-zinc-700"
-                        >
-                          Live Demo
-                        </Link>
-                      </Button>
-
-                      <Button
-                        variant="outline"
-                        className="flex-1 cursor-pointer"
-                        size="default"
-                      >
-                        <Link
-                          href={`${item.link}`}
-                          className="w-full text-center py-2 font-semibold text-zinc-700"
-                        >
-                          {item.price === 0
-                            ? "Free"
-                            : `Buy Now - $${item.price}`}
-                        </Link>
-                      </Button>
-                    </div>
-                  </div>
+          <div className="grid md:grid-cols-2 gap-8">
+            {templates.map((template, index) => (
+              <Card
+                key={index}
+                className="overflow-hidden hover:shadow-xl transition-all hover:-translate-y-1"
+              >
+                <div className="aspect-[1200/630] relative bg-gray-50">
+                  <Image
+                    src={template.image || "/images/NoImage.jpg"}
+                    alt={`${template.name} preview`}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
+                  />
                 </div>
-              );
-            })}
+
+                <CardHeader>
+                  <div className="flex items-center justify-between mb-2">
+                    <Badge variant="secondary">{template.category}</Badge>
+                  </div>
+                  <CardTitle className="text-xl">
+                    <Link
+                      href={`/nextjs-templates/${template.slug}`}
+                      className="hover:text-primary transition-colors"
+                    >
+                      {template.name}
+                    </Link>
+                  </CardTitle>
+                  <CardDescription className="line-clamp-2">
+                    {template.description}
+                  </CardDescription>
+                </CardHeader>
+
+                <CardFooter className="flex gap-2">
+                  <Button variant="outline" className="flex-1" asChild>
+                    <Link
+                      href={template.demoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Live Demo
+                    </Link>
+                  </Button>
+                  <Button className="flex-1" asChild>
+                    <Link href={template.link}>
+                      Buy Now - ${template.price}
+                    </Link>
+                  </Button>
+                </CardFooter>
+              </Card>
+            ))}
           </div>
 
           <div className="text-center mt-12">
-            <Link
-              href="/nextjs-templates"
-              className="bg-indigo-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-indigo-700 transition-colors inline-flex items-center"
-            >
-              View All Templates
-              <ChevronRight className="w-5 h-5 ml-2" />
-            </Link>
+            <Button size="lg" asChild>
+              <Link href="/nextjs-templates">
+                View All Templates
+                <ChevronRight className="w-5 h-5 ml-2" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Free Next.js Components Section */}
+      <section className="py-8 md:py-20 bg-muted/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <Badge variant="secondary" className="mb-4">
+              <Download className="w-4 h-4 mr-2" />
+              100% Free
+            </Badge>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              Free Next.js Templates
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Download our free, fully responsive Next.js templates built with
+              Tailwind CSS and React.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {freeTemplates.map((template, index) => (
+              <Card
+                key={index}
+                className="overflow-hidden hover:shadow-xl transition-all hover:-translate-y-1"
+              >
+                <div className="aspect-[1200/630] relative bg-gray-50">
+                  <Image
+                    src={template.image || "/images/NoImage.jpg"}
+                    alt={`${template.name} preview`}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
+                  />
+                </div>
+
+                <CardHeader>
+                  <div className="flex items-center justify-between mb-2">
+                    <Badge variant="secondary">{template.category}</Badge>
+                  </div>
+                  <CardTitle className="text-xl">
+                    <Link
+                      href={`/nextjs-templates/${template.slug}`}
+                      className="hover:text-primary transition-colors"
+                    >
+                      {template.name}
+                    </Link>
+                  </CardTitle>
+                  <CardDescription className="line-clamp-2">
+                    {template.description}
+                  </CardDescription>
+                </CardHeader>
+
+                <CardFooter className="flex gap-2">
+                  <Button variant="outline" className="flex-1" asChild>
+                    <Link
+                      href={template.demoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Live Demo
+                    </Link>
+                  </Button>
+                  <Button className="flex-1" asChild>
+                    <Link href={template.link}>Free</Link>
+                  </Button>
+                </CardFooter>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section className="py-12 bg-white">
+      <section className="py-8 md:py-20 bg-muted/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl xl:text-[43px] font-bold text-gray-900 mb-4 tracking-tight">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
               Why Choose Our Templates?
             </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Every template is crafted with attention to detail and modern
               development practices
             </p>
@@ -351,104 +479,27 @@ export default function LandingPage() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {features.map((feature, index) => (
-              <div
+              <Card
                 key={index}
-                className="text-center p-8 rounded-2xl border border-gray-100 hover:border-purple-200 hover:shadow-lg transition-all"
+                className="text-center hover:shadow-lg transition-all"
               >
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-purple-100 text-purple-600 rounded-xl mb-6">
-                  {feature.icon}
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                  {feature.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {feature.description}
-                </p>
-              </div>
+                <CardHeader>
+                  <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 text-primary rounded-xl mb-4 mx-auto">
+                    {feature.icon}
+                  </div>
+                  <CardTitle className="text-xl">{feature.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-base leading-relaxed">
+                    {feature.description}
+                  </CardDescription>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Free Components Section */}
-      <section className="py-14 md:py-20 lg:py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl xl:text-[43px] font-bold text-gray-900 mb-4 tracking-tight">
-              Start Building with Free Components
-            </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Beautiful, responsive components built with Tailwind CSS and
-              React. Copy the code and paste into your project.
-            </p>
-          </div>
-
-          {/* Free Components Preview */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {freeComponents.map((component) => (
-              <div
-                key={component.name}
-                className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-xl transition-all hover:-translate-y-1"
-              >
-                <div className="aspect-video bg-gradient-to-br from-green-100 to-blue-100 relative flex items-center justify-center">
-                  <Image
-                    src={component.image}
-                    alt={component.name}
-                    fill
-                    className="object-cover object-center group-hover:scale-105 transition-transform duration-200"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    quality={90}
-                  />
-                  <span className="absolute top-4 left-4 test text-white px-3 py-1 rounded-full text-sm font-medium">
-                    FREE
-                  </span>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                    {component.name}
-                  </h3>
-                  <p className="text-gray-600 mb-4">{component.description}</p>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    <span className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">
-                      Tailwind CSS
-                    </span>
-                    <span className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">
-                      React
-                    </span>
-                    <span className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">
-                      TypeScript
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-2xl font-bold">FREE</span>
-                    <Link
-                      href={`${component.link}`}
-                      className="test text-white px-4 py-2 rounded-lg hover:bg-emerald-500 transition-colors"
-                    >
-                      View Code
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center">
-            <Link
-              href="/nextjs-components"
-              className="test text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-red-800 transition-colors inline-flex items-center mb-4"
-            >
-              Browse All Free Components
-              <ChevronRight className="w-5 h-5 ml-2" />
-            </Link>
-            <p className="text-sm text-gray-500">
-              No signup required • Copy & paste ready • Always free
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Bundle Promotion Section */}
       <section className="py-14 md:py-20 lg:py-24 bg-gradient-to-br from-yellow-50 to-orange-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="inline-flex items-center px-4 py-2 bg-yellow-200 text-yellow-900 rounded-full text-sm font-medium mb-6">
@@ -491,160 +542,162 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Social Proof Alternative */}
-      <section className="py-14 md:py-20 lg:py-24 bg-white">
+      {/* Free Components Section */}
+      <section className="py-8 md:py-20 bg-muted/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl xl:text-[43px] font-bold text-gray-900 mb-4 tracking-tight">
-              Built with Industry Standards
+            <Badge variant="secondary" className="mb-4">
+              <Download className="w-4 h-4 mr-2" />
+              100% Free
+            </Badge>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              Free Next.js Components
             </h2>
-            <p className="text-gray-600">
-              Every template follows modern development best practices
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Beautiful, responsive components built with Tailwind CSS and
+              React. Copy the code and paste into your project.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 items-center justify-center">
-            <div className="text-center p-6">
-              <div className="inline-flex items-center justify-center w-20 h-20 bg-blue-50 rounded-xl mb-4 mx-auto">
-                <Image
-                  src="/svg/typescript.svg"
-                  alt="TypeScript"
-                  width={56}
-                  height={56}
-                  className="w-14 h-14"
-                />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                TypeScript
-              </h3>
-              <p className="text-gray-600">
-                Type-safe code for better development experience
-              </p>
-            </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {freeComponents.map((component) => (
+              <Card
+                key={component.name}
+                className="overflow-hidden hover:shadow-xl transition-all hover:-translate-y-1"
+              >
+                <div className="aspect-video relative bg-gradient-to-br from-green-100 to-blue-100">
+                  <Image
+                    src={component.image}
+                    alt={component.name}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
+                  <Badge variant="secondary" className="absolute top-4 left-4">
+                    FREE
+                  </Badge>
+                </div>
 
-            <div className="text-center p-6">
-              <div className="inline-flex items-center justify-center w-20 h-20 bg-cyan-50 rounded-xl mb-4 mx-auto">
-                <Image
-                  src="/svg/tailwind.svg"
-                  alt="Tailwind CSS"
-                  width={56}
-                  height={56}
-                  className="w-14 h-14"
-                />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                Tailwind CSS
-              </h3>
-              <p className="text-gray-600">
-                Utility-first CSS framework for rapid styling
-              </p>
-            </div>
+                <CardHeader>
+                  <CardTitle className="text-xl">{component.name}</CardTitle>
+                  <CardDescription>{component.description}</CardDescription>
+                </CardHeader>
 
-            <div className="text-center p-6">
-              <div className="inline-flex items-center justify-center w-20 h-20 bg-gray-50 rounded-xl mb-4 mx-auto">
-                <Image
-                  src="/svg/nextjs-icon.svg"
-                  alt="Next.js"
-                  width={56}
-                  height={56}
-                  className="w-14 h-14"
-                />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                Next.js
-              </h3>
-              <p className="text-gray-600">
-                Latest React framework with App Router
-              </p>
-            </div>
+                <CardFooter className="flex items-center">
+                  <Button asChild>
+                    <Link className="w-full" href={component.link}>
+                      View Code
+                    </Link>
+                  </Button>
+                </CardFooter>
+              </Card>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Button size="lg" variant="outline" asChild>
+              <Link href="/nextjs-components">
+                Browse All Free Components
+                <ChevronRight className="w-5 h-5 ml-2" />
+              </Link>
+            </Button>
+            <p className="text-sm text-muted-foreground mt-4">
+              No signup required • Copy & paste ready • Always free
+            </p>
           </div>
         </div>
       </section>
 
+      {/* Social Proof Section */}
+      <section className="py-8 md:py-20 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              Built with Industry Standards
+            </h2>
+            <p className="text-xl text-muted-foreground">
+              Every template follows modern development best practices
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                name: "Next.js",
+                icon: "/svg/nextjs-icon.svg",
+                description: "Latest React framework with App Router",
+              },
+              {
+                name: "TypeScript",
+                icon: "/svg/typescript.svg",
+                description: "Type-safe code for better development experience",
+              },
+              {
+                name: "Tailwind CSS",
+                icon: "/svg/tailwind.svg",
+                description: "Utility-first CSS framework for rapid styling",
+              },
+            ].map((tech) => (
+              <Card
+                key={tech.name}
+                className="text-center hover:shadow-lg transition-all"
+              >
+                <CardHeader>
+                  <div className="inline-flex items-center justify-center w-20 h-20 bg-muted rounded-xl mb-4 mx-auto">
+                    <Image
+                      src={tech.icon}
+                      alt={tech.name}
+                      width={56}
+                      height={56}
+                      className="w-14 h-14"
+                    />
+                  </div>
+                  <CardTitle className="text-xl">{tech.name}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-base">
+                    {tech.description}
+                  </CardDescription>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <Separator className="my-0" />
+
       <FaqAccordion />
 
       {/* CTA Section */}
-      <section className="py-14 md:py-20 lg:py-24 bg-gradient-to-br from-slate-50 to-gray-100">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl xl:text-[43px] font-bold text-gray-900 mb-6 tracking-tight">
-            Start Building Your Next Project Today
-          </h2>
-          <p className="text-xl text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
-            Choose from our collection of premium Next.js templates and launch
-            faster than ever before
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link
-              href="/nextjs-templates"
-              className="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center group"
-            >
-              Browse All Templates
-              <svg
-                className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-            </Link>
-            <Link
-              href="/nextjs-components"
-              className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-lg font-semibold text-lg hover:border-red-700 hover:text-red-700 transition-all duration-200"
-            >
-              Try Free Components
-            </Link>
+      <section className="py-8 md:py-20 bg-muted/30">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
+          <div className="space-y-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+              Start Building Your Next Project Today
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Choose from our collection of premium Next.js templates and launch
+              faster than ever before
+            </p>
           </div>
 
-          <div className="mt-12 flex justify-center items-center space-x-8 text-sm text-gray-500">
-            <div className="flex items-center">
-              <svg
-                className="w-5 h-5 text-green-500 mr-2"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              Production Ready
-            </div>
-            <div className="flex items-center">
-              <svg
-                className="w-5 h-5 text-green-500 mr-2"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              TypeScript & Tailwind
-            </div>
-            <div className="flex items-center">
-              <svg
-                className="w-5 h-5 text-green-500 mr-2"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              Lifetime Updates
-            </div>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button size="lg" className="text-lg px-8 py-6" asChild>
+              <Link href="/nextjs-templates">
+                Browse All Templates
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Link>
+            </Button>
+
+            <Button
+              size="lg"
+              variant="outline"
+              className="text-lg px-8 py-6"
+              asChild
+            >
+              <Link href="/nextjs-components">Try Free Components</Link>
+            </Button>
           </div>
         </div>
       </section>

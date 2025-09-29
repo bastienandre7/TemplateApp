@@ -19,11 +19,7 @@ export default function AuthButton() {
 
   if (!session) {
     return (
-      <Button
-        variant="default"
-        className="bg-indigo-600"
-        onClick={() => signIn()}
-      >
+      <Button variant="default" onClick={() => signIn()}>
         Sign In
       </Button>
     );

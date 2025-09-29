@@ -2,6 +2,13 @@
 
 import { Button } from "@/components/ui/button";
 import {
+  Card,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
   Select,
   SelectContent,
   SelectItem,
@@ -11,6 +18,7 @@ import { signIn, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { Badge } from "../ui/badge";
 
 type Product = {
   id: number;
@@ -90,10 +98,7 @@ export default function MainContainer({ products }: { products: Product[] }) {
     });
 
   return (
-    <div
-      id="templates"
-      className="w-full mx-auto text-black relative bg-white mb-24"
-    >
+    <div id="templates" className="w-full mx-auto text-black relative pb-24">
       <div className="relative z-10 px-4">
         <div className="max-w-7xl mx-auto">
           {/* Layout avec sidebar sur desktop */}
@@ -101,43 +106,40 @@ export default function MainContainer({ products }: { products: Product[] }) {
             {/* Sidebar - Categories (Desktop uniquement) */}
             <aside className="hidden lg:block lg:w-64 lg:flex-shrink-0">
               <div className="sticky top-32">
-                <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
+                <div className="bg-sidebar rounded-lg p-6 border border-gray-200 shadow-sm">
                   <p className="font-semibold text-gray-900 mb-4">Categories</p>
 
                   {/* Toutes les catégories */}
-                  <button
+                  <Button
+                    variant={!selectedCategory ? "default" : "outline"}
+                    className="w-full flex items-center justify-between mb-4 px-3 py-3 rounded-lg text-left transition-all duration-200"
                     onClick={() => setSelectedCategory(null)}
-                    className={`w-full flex items-center justify-between p-3 rounded-lg text-left transition-all duration-200 mb-2 ${
-                      !selectedCategory
-                        ? "bg-indigo-100 text-indigo-700 border border-indigo-200"
-                        : "hover:bg-gray-100 text-gray-700"
-                    }`}
                   >
                     <span className="font-medium">All Templates</span>
-                    <span className="text-sm text-gray-500 bg-white px-2 py-1 rounded">
+                    <span className="text-sm px-2 py-1 rounded">
                       {products.length}
                     </span>
-                  </button>
+                  </Button>
 
                   {/* Liste des catégories */}
-                  <div className="space-y-1">
+                  <div className="space-y-4">
                     {categories.map((category) => (
-                      <button
+                      <Button
                         key={category}
+                        size={"lg"}
+                        variant={
+                          selectedCategory === category ? "default" : "outline"
+                        }
+                        className="w-full flex items-center justify-between px-3 py-3 rounded-lg text-left transition-all duration-200"
                         onClick={() => setSelectedCategory(category)}
-                        className={`w-full flex items-center justify-between p-3 rounded-lg text-left transition-all duration-200 ${
-                          selectedCategory === category
-                            ? "bg-violet-100 text-violet-700 border border-violet-200"
-                            : "hover:bg-gray-100 text-gray-700"
-                        }`}
                       >
                         <span className="font-medium">
                           {category.charAt(0).toUpperCase() + category.slice(1)}
                         </span>
-                        <span className="text-sm text-gray-500 bg-white px-2 py-1 rounded">
+                        <span className="text-sm px-2 py-1 rounded">
                           {categorycounts[category]}
                         </span>
-                      </button>
+                      </Button>
                     ))}
                   </div>
                 </div>
@@ -159,7 +161,7 @@ export default function MainContainer({ products }: { products: Product[] }) {
                     {selectedCategory && (
                       <button
                         onClick={() => setSelectedCategory(null)}
-                        className="text-sm text-violet-600 hover:text-violet-700 mt-1"
+                        className="text-sm text-primary hover:underline mt-2"
                       >
                         ← Back to all templates
                       </button>
@@ -260,27 +262,22 @@ export default function MainContainer({ products }: { products: Product[] }) {
                     const isOwned = ownedTemplates.includes(item.name);
 
                     return (
-                      <div
+                      <Card
                         key={item.id}
-                        className="group relative flex flex-col rounded-lg border border-gray-200 bg-white overflow-hidden hover:border-gray-300 transition-all duration-200 hover:shadow-lg"
+                        className="overflow-hidden hover:shadow-xl transition-all hover:-translate-y-1"
                       >
-                        <Link
-                          href={`/nextjs-templates/${item.slug}`}
-                          className="block relative aspect-[1200/630] bg-gray-50 overflow-hidden"
-                        >
+                        <div className="aspect-[1200/630] relative bg-gray-50">
                           <Image
                             src={
                               item.openGraphImage ||
                               item.imageUrl ||
                               "/images/NoImage.jpg"
                             }
-                            alt={`${item.name} main preview`}
+                            alt={`${item.name} preview`}
                             fill
-                            className="object-cover w-full h-full"
+                            className="object-cover"
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
-                            quality={90}
                           />
-
                           {/* NEW Badge */}
                           {new Date().getTime() -
                             new Date(item.created_at).getTime() <
@@ -296,76 +293,51 @@ export default function MainContainer({ products }: { products: Product[] }) {
                               ✓ Owned
                             </span>
                           )}
-                        </Link>
+                        </div>
 
-                        <div className="flex-1 flex flex-col justify-between p-5">
-                          <div>
+                        <CardHeader>
+                          <div className="flex items-center justify-between mb-2">
+                            <Badge variant="secondary">{item.category}</Badge>
+                          </div>
+                          <CardTitle className="text-xl line-clamp-1">
                             <Link
-                              className="text-lg font-semibold mb-2 text-gray-900 hover:text-indigo-600 transition-colors duration-200"
                               href={`/nextjs-templates/${item.slug}`}
+                              className="hover:text-primary transition-colors"
                             >
                               {item.name}
                             </Link>
-                            <p className="text-gray-600 text-sm mb-4 line-clamp-2">
-                              {item.description ||
-                                "A beautifully crafted template ready for your next project."}
-                            </p>
+                          </CardTitle>
+                          <CardDescription className="line-clamp-2">
+                            {item.description ||
+                              "A beautifully crafted template ready for your next project."}
+                          </CardDescription>
+                        </CardHeader>
 
-                            {/* Tech tags + Category */}
-                            <div className="flex flex-wrap gap-1 mb-4">
-                              <span className="text-xs text-indigo-600 bg-indigo-100 px-2 py-1 rounded font-medium">
-                                {item.category.charAt(0).toUpperCase() +
-                                  item.category.slice(1)}
-                              </span>
-                              <span className="text-xs text-gray-600 bg-gray-100 px-2 py-1 rounded">
-                                Next.js
-                              </span>
-                              <span className="text-xs text-gray-600 bg-gray-100 px-2 py-1 rounded">
-                                Tailwind
-                              </span>
-                              <span className="text-xs text-gray-600 bg-gray-100 px-2 py-1 rounded">
-                                TypeScript
-                              </span>
-                            </div>
-                          </div>
-
-                          {/* Action Buttons */}
-                          <div className="flex gap-2">
-                            <Button
-                              variant="outline"
-                              size="default"
-                              className="flex-1 p-0"
+                        <CardFooter className="flex gap-2">
+                          <Button variant="outline" className="flex-1" asChild>
+                            <Link
+                              href={item.demoUrl ?? "#"}
+                              target="_blank"
+                              rel="noopener noreferrer"
                             >
-                              <Link
-                                href={`${item.demoUrl}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="w-full text-center cursor-pointer py-2 font-semibold text-zinc-700"
-                              >
-                                Live Demo
-                              </Link>
+                              Live Demo
+                            </Link>
+                          </Button>
+                          {isOwned ? (
+                            <Button
+                              asChild
+                              variant="outline"
+                              className="flex-1"
+                            >
+                              <Link href="/dashboard">Owned</Link>
                             </Button>
-
-                            {isOwned ? (
-                              <Button
-                                asChild
-                                variant="outline"
-                                size="default"
-                                className="flex-1"
-                              >
-                                <Link
-                                  href="/dashboard"
-                                  className="w-full text-center font-semibold text-zinc-700"
-                                >
-                                  Owned
-                                </Link>
-                              </Button>
-                            ) : (
-                              <Button
-                                variant="outline"
-                                className="flex-1 font-semibold text-zinc-700 cursor-pointer"
-                                size="default"
-                                onClick={() => {
+                          ) : (
+                            <Button
+                              className="flex-1"
+                              asChild={item.price === 0 ? true : false}
+                              variant={item.price === 0 ? "outline" : "default"}
+                              onClick={() => {
+                                if (item.price > 0) {
                                   if (!session) {
                                     signIn();
                                   } else if (session.user?.email) {
@@ -375,16 +347,20 @@ export default function MainContainer({ products }: { products: Product[] }) {
                                     const url = `${item.lemonLink}?checkout[email]=${email}`;
                                     window.location.href = url;
                                   }
-                                }}
-                              >
-                                {item.price === 0
-                                  ? "Free"
-                                  : `Buy Now - $${item.price}`}
-                              </Button>
-                            )}
-                          </div>
-                        </div>
-                      </div>
+                                }
+                              }}
+                            >
+                              {item.price === 0 ? (
+                                <Link href={`/nextjs-templates/${item.slug}`}>
+                                  Free
+                                </Link>
+                              ) : (
+                                `Buy Now - $${item.price}`
+                              )}
+                            </Button>
+                          )}
+                        </CardFooter>
+                      </Card>
                     );
                   })}
                 </div>

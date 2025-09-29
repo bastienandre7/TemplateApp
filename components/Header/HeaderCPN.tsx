@@ -161,8 +161,8 @@ export default function HeaderCPN() {
     <header
       className={`transform transition-all duration-300 z-50 left-0 right-0 ${
         isFixed
-          ? `fixed top-0 shadow-lg translate-y-0 bg-white`
-          : "absolute bg-white"
+          ? `fixed top-0 shadow-lg translate-y-0 bg-background`
+          : "absolute bg-background"
       }`}
     >
       <PromoBanner />

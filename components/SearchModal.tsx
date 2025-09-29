@@ -62,7 +62,7 @@ export default function SearchModal({ products }: { products: Product[] }) {
       <div className="mx-auto max-w-lg mb-16 px-4">
         <button
           onClick={() => setIsOpen(true)}
-          className="flex items-center w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 text-left text-gray-600 hover:border-gray-300 transition"
+          className="flex items-center w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-left text-gray-600 hover:border-gray-300 transition"
         >
           <svg
             className="h-5 w-5 text-gray-400 mr-2"

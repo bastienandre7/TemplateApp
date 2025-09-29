@@ -33,84 +33,70 @@ interface ProductPageProps {
 
 export default function ProductPage({ template, purchases }: ProductPageProps) {
   return (
-    <div className="pt-16 md:pt-4 text-black min-h-screen">
+    <div className="pt-16 md:pt-4 text-black bg-background min-h-screen">
       <div className="max-w-screen-xl mx-auto px-8 xl:px-4 py-20 sm:py-32">
         {/* Hero Section - Style Clay */}
-        <section className="relative overflow-hidden bg-white rounded-3xl shadow-2xl border border-gray-100 p-8 lg:p-12 mb-16">
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5"></div>
-          <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-blue-200/20 to-purple-200/20 rounded-full -translate-y-48 translate-x-48"></div>
-
-          <div className="relative z-10 flex flex-col lg:flex-row items-center gap-12">
-            {/* Content */}
-            <div className="flex-1 text-center lg:text-left space-y-8">
-              <div className="space-y-6">
-                <h1 className="text-4xl lg:text-5xl font-bold leading-tight bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
-                  {template.name}
-                </h1>
-                <p className="text-xl text-gray-600 leading-relaxed max-w-2xl">
-                  {template.description}
-                </p>
-              </div>
-
-              {/* Quick Stats */}
-              <div className="flex flex-wrap gap-6 text-sm">
-                <div className="flex items-center gap-2 bg-green-50 px-3 py-2 rounded-xl">
-                  <Check className="w-4 h-4 text-green-600" />
-                  <span className="text-green-700 font-medium">
-                    Instant Access
-                  </span>
-                </div>
-                <div className="flex items-center gap-2 bg-blue-50 px-3 py-2 rounded-xl">
-                  <Shield className="w-4 h-4 text-blue-600" />
-                  <span className="text-blue-700 font-medium">
-                    Commercial License
-                  </span>
-                </div>
-                <div className="flex items-center gap-2 bg-purple-50 px-3 py-2 rounded-xl">
-                  <Zap className="w-4 h-4 text-purple-600" />
-                  <span className="text-purple-700 font-medium">
-                    Free Updates
-                  </span>
-                </div>
-              </div>
-
-              {/* Action Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4">
-                {template.demoUrl && (
-                  <Link
-                    href={template.demoUrl}
-                    target="_blank"
-                    className="flex-1"
-                  >
-                    <Button
-                      variant="outline"
-                      className="w-full min-h-[56px] px-8 py-4 rounded-2xl text-lg border-2 border-gray-200 hover:border-blue-300 text-gray-700 hover:text-blue-700 hover:bg-blue-50 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
-                    >
-                      <Eye className="w-5 h-5" />
-                      Live Demo
-                    </Button>
-                  </Link>
-                )}
-                <div className="flex-1">
-                  <DynamicBuyButton template={template} purchases={purchases} />
-                </div>
-              </div>
-            </div>
-
-            {/* Hero Image */}
-            <div className="flex-1">
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-200 to-purple-200 rounded-2xl transform rotate-3"></div>
+        <section className="mb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-4 md:gap-12 items-center">
+            {/* Colonne gauche : Titre + Image + Description */}
+            <div className="flex flex-col">
+              <h1 className="text-foreground leading-tighter text-3xl md:text-4xl font-semibold tracking-tight text-balance lg:leading-[1.1] lg:font-semibold xl:tracking-tighter mb-6">
+                {template.name}
+              </h1>
+              <div
+                className="relative w-full aspect-[1200/630] mb-6"
+                id="template-image"
+              >
+                <div className="absolute inset-0 template-background-style rounded-2xl"></div>
                 <Image
                   src={template.openGraphImage || "/og-image.png"}
                   alt={template.name}
-                  width={1200}
-                  height={630}
-                  className="relative rounded-2xl shadow-2xl"
+                  fill
+                  className="relative rounded-2xl shadow-xl object-cover"
                   priority
-                  fetchPriority="high"
-                  sizes="(max-width: 640px) 100vw, (max-width: 768px) 90vw, (max-width: 1024px) 50vw, 551px"
+                  sizes="100vw"
                 />
+              </div>
+            </div>
+
+            {/* Colonne droite : Card boutons + avantages */}
+            <div className="flex items-center h-full">
+              <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8 flex flex-col gap-6 w-full">
+                <div className="flex flex-col gap-4">
+                  <p className="text-muted-foreground mb-2">
+                    {template.description}
+                  </p>
+                  {template.demoUrl && (
+                    <Button
+                      variant="outline"
+                      className="w-full min-h-[56px] px-8 py-4 rounded-xl text-lg border border-gray-200 hover:border-blue-300 text-gray-700 hover:text-blue-700 hover:bg-blue-50 transition"
+                      asChild
+                    >
+                      <Link href={template.demoUrl} target="_blank">
+                        <Eye className="w-5 h-5 mr-2" />
+                        Live Demo
+                      </Link>
+                    </Button>
+                  )}
+                  <DynamicBuyButton template={template} purchases={purchases} />
+                </div>
+                <div className="py-2">
+                  <div className="border-t border-gray-200"></div>
+                </div>
+                <div className="flex flex-col gap-4">
+                  <span className="inline-flex w-auto self-start items-center gap-2 bg-green-50 text-green-700 px-2 py-1 rounded-full text-sm font-medium whitespace-nowrap">
+                    <Check className="w-4 h-4" />
+                    Instant Access
+                  </span>
+                  <span className="inline-flex w-auto self-start items-center gap-2 bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm font-medium">
+                    <Shield className="w-4 h-4" />
+                    Commercial License
+                  </span>
+                  <span className="inline-flex w-auto self-start items-center gap-2 bg-purple-50 text-purple-700 px-3 py-1 rounded-full text-sm font-medium">
+                    <Zap className="w-4 h-4" />
+                    Free Updates
+                  </span>
+                </div>
               </div>
             </div>
           </div>
