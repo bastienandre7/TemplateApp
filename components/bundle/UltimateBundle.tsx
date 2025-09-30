@@ -103,7 +103,7 @@ export default function UltimateBundle() {
   const bundlePriceWithDiscount = bundlePrice * 0.5;
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background">
       <div className="relative mx-auto">
         {/* Hero Section */}
         <section className="text-center pt-32 mb-24 transition-all duration-1000 px-4">

@@ -55,6 +55,7 @@ export default function ProductPage({ template, purchases }: ProductPageProps) {
                   className="relative rounded-2xl shadow-xl object-cover"
                   priority
                   sizes="100vw"
+                  fetchPriority="high"
                 />
               </div>
             </div>

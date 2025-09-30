@@ -1,6 +1,8 @@
+import { Button } from "./ui/button";
+
 export default function Contact() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       <div className="pt-32 pb-16 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <div className="inline-flex items-center bg-gradient-to-r from-purple-100 to-purple-50 border border-purple-200 text-purple-700 px-4 py-2 rounded-full text-sm font-medium shadow-sm mb-8">
@@ -21,10 +23,7 @@ export default function Contact() {
           </div>
 
           <h1 className="text-5xl sm:text-6xl font-bold text-gray-900 mb-6">
-            Contact{" "}
-            <span className="bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent">
-              BloomTPL
-            </span>
+            Contact <span className="text-primary">BloomTPL</span>
           </h1>
 
           <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
@@ -121,12 +120,13 @@ export default function Contact() {
                 ></textarea>
               </div>
 
-              <button
+              <Button
                 type="submit"
-                className="w-full py-4 px-8 bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 transform hover:-translate-y-0.5"
+                variant="default"
+                className="w-full py-6 px-8"
               >
                 Send Message
-              </button>
+              </Button>
             </form>
           </div>
         </div>

@@ -67,7 +67,7 @@ export default function Docs() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-purple-50/30">
+    <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <div className="pt-32 pb-12 lg:pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
@@ -77,10 +77,7 @@ export default function Docs() {
               Documentation
             </div>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 lg:mb-6 px-4">
-              How It{" "}
-              <span className="text-transparent bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text">
-                Works
-              </span>
+              How It <span className="text-primary">Works</span>
             </h1>
             <p className="text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed px-4">
               Get your premium Next.js template up and running in minutes.
@@ -109,7 +106,7 @@ export default function Docs() {
                   >
                     <div className="flex items-center gap-3 lg:gap-4">
                       <div className="flex items-center justify-center w-10 h-10 lg:w-12 lg:h-12 bg-purple-100 rounded-xl">
-                        <Icon className="h-5 w-5 lg:h-6 lg:w-6 text-purple-600" />
+                        <Icon className="h-5 w-5 lg:h-6 lg:w-6 text-primary" />
                       </div>
                       <span className="text-3xl lg:text-4xl font-bold text-gray-600">
                         {step.number}

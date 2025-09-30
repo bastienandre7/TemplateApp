@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import { type Metadata } from "next";
 import Link from "next/link";
 
@@ -38,7 +39,7 @@ export const metadata: Metadata = {
 
 export default function LicensePage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <div className="pt-32 pb-16 px-4">
         <div className="max-w-4xl mx-auto text-center">
@@ -60,10 +61,7 @@ export default function LicensePage() {
           </div>
 
           <h1 className="text-5xl sm:text-6xl font-bold text-gray-900 mb-6">
-            Template{" "}
-            <span className="bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent">
-              License
-            </span>
+            Template <span className="text-primary">License</span>
           </h1>
 
           <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
@@ -273,25 +271,24 @@ export default function LicensePage() {
                 templates, or need clarification on any licensing terms,
                 we&apos;re here to help.
               </p>
-              <Link
-                href="/contact"
-                className="inline-flex items-center bg-purple-600 hover:bg-purple-700 text-white font-semibold px-6 py-3 rounded-xl transition-colors duration-200"
-              >
-                Contact Us
-                <svg
-                  className="w-4 h-4 ml-2"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </Link>
+              <Button variant="default" asChild>
+                <Link href="/contact" className="inline-flex items-center">
+                  Contact Us
+                  <svg
+                    className="w-4 h-4 ml-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </Link>
+              </Button>
             </div>
           </div>
         </div>

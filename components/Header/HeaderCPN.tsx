@@ -168,7 +168,7 @@ export default function HeaderCPN() {
       <PromoBanner />
       <nav className="transition-all duration-300 px-6 py-4">
         <div className="max-w-screen-xl mx-auto w-full flex items-center justify-between">
-          <Link href="/" className="hover:bg-white lg:hidden">
+          <Link href="/" className="hover:bg-white focus:bg-white lg:hidden">
             <Image src="/icons/favicon.ico" alt="Logo" width={32} height={32} />
           </Link>
           <div className="hidden lg:flex items-center space-x-4 rtl:space-x-reverse">
@@ -179,7 +179,7 @@ export default function HeaderCPN() {
                     asChild
                     className={navigationMenuTriggerStyle()}
                   >
-                    <Link href="/" className="hover:bg-white">
+                    <Link href="/" className="hover:bg-white focus:bg-white">
                       <Image
                         src="/icons/favicon.ico"
                         alt="Logo"

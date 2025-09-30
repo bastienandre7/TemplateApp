@@ -284,6 +284,7 @@ export default function LandingPage() {
                   height={640}
                   className="shadow-2xl rounded-2xl transform hover:rotate-0 transition-transform duration-500"
                   priority
+                  fetchPriority="high"
                 />
               </div>
             </div>

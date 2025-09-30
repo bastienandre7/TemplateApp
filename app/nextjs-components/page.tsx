@@ -1,4 +1,5 @@
 import ComponentsClient from "@/components/ComponentsClient";
+import { Button } from "@/components/ui/button";
 import { Metadata } from "next";
 import Link from "next/link";
 
@@ -47,7 +48,7 @@ export default async function ComponentsPage() {
   const data = await res.json();
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <div className="pt-40 pb-16">
         <div className="max-w-5xl mx-auto px-6 text-center">
@@ -56,8 +57,8 @@ export default async function ComponentsPage() {
           </h1>
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
             Beautiful, responsive components built with{" "}
-            <span className="text-red-700 font-semibold">Tailwind CSS</span> and{" "}
-            <span className="text-red-700 font-semibold">React</span>. Copy the
+            <span className="text-primary font-semibold">Tailwind CSS</span> and{" "}
+            <span className="text-primary font-semibold">React</span>. Copy the
             code and paste into your project.
           </p>
 
@@ -149,25 +150,27 @@ export default async function ComponentsPage() {
             Explore our premium Next.js templates with complete designs,
             authentication, and more.
           </p>
-          <Link
-            href="/nextjs-templates"
-            className="inline-flex items-center gap-2 bg-red-700 text-white px-8 py-4 rounded-xl font-semibold hover:bg-red-800 transition text-lg"
-          >
-            View Premium Templates
-            <svg
-              className="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+          <Button variant="default" asChild>
+            <Link
+              href="/nextjs-templates"
+              className="inline-flex items-center gap-2 px-10 py-6 rounded-xl font-semibold text-lg"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M13 7l5 5m0 0l-5 5m5-5H6"
-              />
-            </svg>
-          </Link>
+              View Premium Templates
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M13 7l5 5m0 0l-5 5m5-5H6"
+                />
+              </svg>
+            </Link>
+          </Button>
         </div>
       </div>
     </div>

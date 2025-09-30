@@ -57,7 +57,7 @@ export default function ComponentDetailClient({
   }
 
   return (
-    <div className="pt-32 bg-white min-h-screen">
+    <div className="pt-32 bg-background min-h-screen">
       {/* Breadcrumb */}
       <div className="max-w-7xl mx-auto px-6 py-6">
         <nav className="flex items-center gap-2 text-sm text-gray-500">
