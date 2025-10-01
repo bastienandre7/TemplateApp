@@ -51,25 +51,26 @@ export default function FooterCPN() {
               </p>
             </div>
 
-            {/* Newsletter signup */}
-            {/* <div className="space-y-3">
-              <h3 className="text-white font-semibold text-sm uppercase tracking-wide">
-                Newsletter
+            <div className="space-y-3">
+              <h3 className="text-gray-900 font-semibold text-sm uppercase tracking-wide">
+                Your Feedback
               </h3>
-              <div className="flex gap-2">
-                <div className="relative flex-1">
-                  <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
-                  <input
-                    type="email"
-                    placeholder="your@email.com"
-                    className="w-full bg-gray-800/50 border border-gray-700 rounded-lg pl-10 pr-4 py-2.5 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
-                  />
-                </div>
-                <button className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-4 py-2.5 rounded-lg font-medium transition-all hover:shadow-lg hover:shadow-purple-500/25 hover:scale-105">
-                  Subscribe
-                </button>
-              </div>
-            </div> */}
+              <a
+                href="https://fr.trustpilot.com/review/bloomtpl.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-green-800 hover:bg-green-900 text-white px-4 py-2.5 rounded-lg font-medium transition-all hover:shadow-lg hover:scale-105"
+              >
+                Review us on
+                <Image
+                  src="/svg/trustpilot-logo-white-icon.svg"
+                  alt="Trustpilot"
+                  width={100}
+                  height={25}
+                  className="inline-block"
+                />
+              </a>
+            </div>
           </div>
 
           {/* Links sections */}

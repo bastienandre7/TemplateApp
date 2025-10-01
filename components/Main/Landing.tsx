@@ -175,15 +175,15 @@ export default function LandingPage() {
 
   const freeTemplates = [
     {
-      name: "Free Next.js Tailwind CSS E-Commerce Template",
-      slug: "free-nextjs-tailwind-css-e-commerce-template",
+      name: "BloomShop - Free Next.js Tailwind CSS E-Commerce Template",
+      slug: "bloomshop-free-nextjs-tailwind-css-e-commerce-template",
       description:
         "Free modern e-commerce template built with Tailwind CSS. Fast, responsive, and perfect for launching your digital store.",
       category: "E-commerce",
       price: 0.0,
       image:
-        "https://9hn0rhd8ibpivln7.public.blob.vercel-storage.com/templates/e-commerce-template/og-opti.webp",
-      link: "/nextjs-templates/free-nextjs-tailwind-css-e-commerce-template",
+        "https://9hn0rhd8ibpivln7.public.blob.vercel-storage.com/templates/e-commerce-template/og-2-opti.webp",
+      link: "/nextjs-templates/bloomshop-free-nextjs-tailwind-css-e-commerce-template",
       demoUrl: "https://bloomtpl-ecommerce-template.vercel.app/",
     },
     {
