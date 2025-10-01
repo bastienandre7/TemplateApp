@@ -187,28 +187,16 @@ export default function LandingPage() {
       demoUrl: "https://bloomtpl-ecommerce-template.vercel.app/",
     },
     {
-      name: "ShopBase - Next.js E-commerce Boilerplate",
-      slug: "shopbase-nextjs-e-commerce-boilerplate",
+      name: "Free Next.js Tailwind CSS Restaurant Template",
+      slug: "free-nextjs-tailwind-css-restaurant-template",
       description:
-        "Production-ready Next.js e-commerce boilerplate with Stripe, cart, product management, and admin dashboard. Launch your online store in minutes.",
-      category: "E-commerce",
-      price: 39.99,
+        "Free modern restaurant website template built with Next.js and Tailwind CSS. Perfect for showcasing a menu and attracting local food lovers.",
+      category: "Restaurant",
+      price: 0.0,
       image:
-        "https://9hn0rhd8ibpivln7.public.blob.vercel-storage.com/templates/ShopBase%20Template/og-image-v2-opti.webp",
-      link: "/nextjs-templates/shopbase-nextjs-e-commerce-boilerplate",
-      demoUrl: "https://bloomtpl-shopbase-template.vercel.app/",
-    },
-    {
-      name: "BlogStarter – Next.js Tailwind CSS Blog Starter Kit",
-      slug: "blogstarter-next-js-tailwind-css-blog-starter-kit",
-      description:
-        "BloomTPL BlogStarter is a modern blog starter kit with Next.js, Sanity.io & Tailwind CSS. Fast, customizable, and production-ready.",
-      category: "Blog",
-      price: 34.99,
-      image:
-        "https://9hn0rhd8ibpivln7.public.blob.vercel-storage.com/templates/blogstarter-starterkit/og-image-v2-opti.webp",
-      link: "/nextjs-templates/blogstarter-next-js-tailwind-css-blog-starter-kit",
-      demoUrl: "https://bloomtpl-blogstarter-starter-kit.vercel.app/",
+        "https://9hn0rhd8ibpivln7.public.blob.vercel-storage.com/templates/restaurant-template/og-image-v2-opti.webp",
+      link: "/nextjs-templates/free-nextjs-tailwind-css-restaurant-template",
+      demoUrl: "https://bloomtpl-restaurant-template.vercel.app/",
     },
   ];
 
@@ -412,7 +400,7 @@ export default function LandingPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 gap-8">
             {freeTemplates.map((template, index) => (
               <Card
                 key={index}
