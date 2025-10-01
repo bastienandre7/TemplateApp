@@ -18,13 +18,13 @@ export default function UltimateBundle() {
     {
       name: "LandKit",
       description: "Next.js Landing Page Starter Kit with 10+ components",
-      price: "13",
+      price: "9.99",
       features: ["Next.js", "Tailwind CSS", "TypeScript", "10+ Components"],
     },
     {
       name: "ShopBase",
       description: "Complete e-commerce boilerplate with Stripe integration",
-      price: "29",
+      price: "19.99",
       features: [
         "Stripe Integration",
         "Product Management",
@@ -35,7 +35,7 @@ export default function UltimateBundle() {
     {
       name: "BlogStarter",
       description: "Next.js blog starter kit powered by Sanity.io",
-      price: "29",
+      price: "19.99",
       features: [
         "Sanity.io CMS",
         "SEO Optimized",
@@ -46,7 +46,7 @@ export default function UltimateBundle() {
     {
       name: "CoreSaaS",
       description: "Complete SaaS starter kit with authentication & billing",
-      price: "29",
+      price: "19.99",
       features: [
         "Authentication",
         "Stripe Billing",
@@ -55,15 +55,15 @@ export default function UltimateBundle() {
       ],
     },
     {
-      name: "SaaS Dark Template",
+      name: "Velocity SaaS Template",
       description: "Modern dark-mode SaaS UI template",
-      price: "19",
+      price: "13.99",
       features: ["Dark Mode", "Modern UI", "Responsive", "Fast Performance"],
     },
     {
       name: "Portfolio Template",
       description: "Professional developer portfolio template",
-      price: "13",
+      price: "9.99",
       features: [
         "Next.js 15",
         "Professional Design",
@@ -74,7 +74,7 @@ export default function UltimateBundle() {
     {
       name: "Dashboard Template",
       description: "Modern SaaS dashboard for admin panels",
-      price: "13",
+      price: "9.99",
       features: [
         "Admin Panel",
         "Data Visualization",
@@ -85,12 +85,23 @@ export default function UltimateBundle() {
     {
       name: "Blog Template",
       description: "Minimalist blog template for personal sites",
-      price: "19",
+      price: "9.99",
       features: [
         "Minimalist Design",
         "Fast Loading",
         "SEO Ready",
         "Mobile First",
+      ],
+    },
+    {
+      name: "Orbit Template",
+      description: "Complete Agency template",
+      price: "19.99",
+      features: [
+        "Modern Design",
+        "Dynamic Portfolio",
+        "Full Featured Blog",
+        "SEO Optimised",
       ],
     },
   ];
@@ -99,8 +110,7 @@ export default function UltimateBundle() {
     (sum, template) => sum + parseFloat(template.price.replace("€", "")),
     0
   );
-  const bundlePrice = 49;
-  const bundlePriceWithDiscount = bundlePrice * 0.5;
+  const bundlePrice = 49.99;
 
   return (
     <div className="min-h-screen bg-background">
@@ -119,9 +129,9 @@ export default function UltimateBundle() {
           </h1>
 
           <p className="text-xl text-slate-700 max-w-3xl mx-auto mb-8 leading-relaxed">
-            Launch faster with <strong>8 premium templates</strong> designed to
-            help you build modern web applications. Everything you need to start
-            your next project.
+            Launch faster with <strong>All premium templates</strong> designed
+            to help you build modern web applications. Everything you need to
+            start your next project.
           </p>
 
           <div className="bg-white rounded-2xl p-8 shadow-2xl max-w-md mx-auto mb-8 border">
@@ -129,11 +139,9 @@ export default function UltimateBundle() {
               <div className="text-sm text-slate-500 line-through mb-1">
                 Regular Price: ${totalValue.toFixed(2)}
               </div>
-              <div className="text-sm text-slate-500 mb-2">
-                Bundle Price: ${bundlePrice}
-              </div>
+              <div className="text-sm text-slate-500 mb-2">Bundle Price:</div>
               <div className="text-4xl font-bold text-slate-900 mb-2">
-                ${bundlePriceWithDiscount.toFixed(2)}
+                ${bundlePrice}
               </div>
               <div className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold inline-block">
                 Code BLOOM50: Save 50%
@@ -176,8 +184,8 @@ export default function UltimateBundle() {
               What&apos;s Inside the Bundle?
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              8 premium templates worth {totalValue.toFixed(2)}€, yours for just{" "}
-              {bundlePriceWithDiscount.toFixed(2)}€
+              All premium templates worth ${totalValue.toFixed(2)}, yours for
+              just ${bundlePrice}
             </p>
           </div>
 
@@ -317,14 +325,8 @@ export default function UltimateBundle() {
                 <div className="text-sm opacity-75 line-through mb-1">
                   Regular Price: ${totalValue.toFixed(2)}
                 </div>
-                <div className="text-sm opacity-75 mb-1">
-                  Bundle: ${bundlePrice}
-                </div>
                 <div className="text-3xl font-bold mb-2">
-                  Only ${bundlePriceWithDiscount.toFixed(2)}
-                </div>
-                <div className="bg-white/20 backdrop-blur px-4 py-2 rounded-full text-sm font-semibold inline-block">
-                  Code BLOOM50: 50% OFF
+                  Only ${bundlePrice}
                 </div>
               </div>
 
@@ -340,7 +342,7 @@ export default function UltimateBundle() {
                 }}
                 className="inline-block bg-white text-blue-600 px-10 py-5 rounded-2xl text-xl font-bold hover:bg-gray-50 transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl mb-4"
               >
-                Get Instant Access – ${bundlePriceWithDiscount.toFixed(2)}
+                Get Instant Access
               </button>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm opacity-75">

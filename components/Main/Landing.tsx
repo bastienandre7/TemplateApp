@@ -501,9 +501,9 @@ export default function LandingPage() {
           </h2>
 
           <p className="text-lg text-gray-700 max-w-2xl mx-auto mb-8">
-            Access <strong>8 premium templates</strong> including SaaS,
+            Access <strong>All premium templates</strong> including SaaS,
             eCommerce, Portfolio, Blog & more – all for{" "}
-            <strong className="text-green-600">just $49</strong>.
+            <strong className="text-green-600">just $49.99</strong>.
           </p>
 
           <Link

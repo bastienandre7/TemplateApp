@@ -334,10 +334,12 @@ export default function MainContainer({ products }: { products: Product[] }) {
                           ) : (
                             <Button
                               className="flex-1"
-                              asChild={item.price === 0 ? true : false}
-                              variant={item.price === 0 ? "outline" : "default"}
+                              asChild={Number(item.price) === 0}
+                              variant={
+                                Number(item.price) === 0 ? "outline" : "default"
+                              }
                               onClick={() => {
-                                if (item.price > 0) {
+                                if (Number(item.price) > 0) {
                                   if (!session) {
                                     signIn();
                                   } else if (session.user?.email) {
@@ -350,7 +352,7 @@ export default function MainContainer({ products }: { products: Product[] }) {
                                 }
                               }}
                             >
-                              {item.price === 0 ? (
+                              {Number(item.price) === 0 ? (
                                 <Link href={`/nextjs-templates/${item.slug}`}>
                                   Free
                                 </Link>
