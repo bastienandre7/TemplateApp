@@ -28,6 +28,20 @@ export async function GET(
           has: normalized,
         },
       },
+      select: {
+        lemonId: true,
+        name: true,
+        description: true,
+        slug: true,
+        demoUrl: true,
+        category: true,
+        createdAt: true,
+        openGraphImage: true,
+        tech: true,
+        pages: true,
+        extras: true,
+        categories: true,
+      },
     });
 
     const productsRes = await fetch(
@@ -53,10 +67,6 @@ export async function GET(
         id: tpl.lemonId,
         name: tpl.name,
         price: lemon?.attributes?.price ? lemon.attributes.price / 100 : 0,
-        imageUrl:
-          Array.isArray(tpl.images) && tpl.images.length > 0
-            ? tpl.images[0]
-            : "/images/NoImage.jpg",
         description: tpl.description,
         lemonLink: lemon?.attributes?.buy_now_url || "",
         slug: tpl.slug,
@@ -68,7 +78,6 @@ export async function GET(
         tech: tpl.tech,
         pages: tpl.pages,
         extras: tpl.extras,
-        images: tpl.images,
         categories: tpl.categories,
       };
     });

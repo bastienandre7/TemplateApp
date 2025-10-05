@@ -16,7 +16,22 @@ type LemonProduct = {
 export async function GET() {
   try {
     // 1. Récupère tous les templates depuis la base
-    const templates = await prisma.template.findMany();
+    const templates = await prisma.template.findMany({
+      select: {
+        lemonId: true,
+        name: true,
+        description: true,
+        slug: true,
+        demoUrl: true,
+        category: true,
+        createdAt: true,
+        openGraphImage: true,
+        tech: true,
+        pages: true,
+        extras: true,
+        categories: true,
+      },
+    });
 
     // 2. (Optionnel) Récupère les infos LemonSqueezy pour enrichir (prix, buy_now_url, etc.)
     const productsRes = await fetch(
@@ -41,10 +56,6 @@ export async function GET() {
         id: tpl.lemonId,
         name: tpl.name,
         price: lemon?.attributes?.price ? lemon.attributes.price / 100 : 0,
-        imageUrl:
-          Array.isArray(tpl.images) && tpl.images.length > 0
-            ? tpl.images[0]
-            : "/images/NoImage.jpg",
         description: tpl.description,
         lemonLink: lemon?.attributes?.buy_now_url || "",
         slug: tpl.slug,
@@ -56,7 +67,6 @@ export async function GET() {
         tech: tpl.tech,
         pages: tpl.pages,
         extras: tpl.extras,
-        images: tpl.images,
         categories: tpl.categories,
       };
     });
