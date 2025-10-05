@@ -22,7 +22,25 @@ export async function GET(
 ) {
   const { slug } = await context.params;
 
-  const tpl = await prisma.template.findUnique({ where: { slug } });
+  const tpl = await prisma.template.findUnique({
+    where: { slug },
+    select: {
+      id: true,
+      slug: true,
+      name: true,
+      description: true,
+      demoUrl: true,
+      openGraphImage: true,
+      category: true,
+      tech: true,
+      pages: true,
+      extras: true,
+      lemonId: true,
+      updatedAt: true,
+      performanceImage: true,
+      // images: false <-- inutile, non sélectionné
+    },
+  });
 
   if (!tpl) {
     return NextResponse.json({ error: "Template not found" }, { status: 404 });
