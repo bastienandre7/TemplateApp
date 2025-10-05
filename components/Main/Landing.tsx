@@ -204,7 +204,7 @@ export default function LandingPage() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="bg-background relative overflow-hidden pt-20 pb-16">
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 pt-20">
           <div className="flex flex-col lg:flex-row items-center gap-12">
             <div className="flex-1 text-center lg:text-left space-y-8">
               <div className="space-y-6">
@@ -282,7 +282,7 @@ export default function LandingPage() {
 
       {/* Latest Templates Section */}
       <section className="py-8 md:py-20 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-16">
             <Badge variant="secondary" className="mb-4">
               <Star className="w-4 h-4 mr-2" />
@@ -385,7 +385,7 @@ export default function LandingPage() {
 
       {/* Free Next.js Components Section */}
       <section className="py-8 md:py-20 bg-muted/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-16">
             <Badge variant="secondary" className="mb-4">
               <Download className="w-4 h-4 mr-2" />
@@ -455,7 +455,7 @@ export default function LandingPage() {
 
       {/* Features Section */}
       <section className="py-8 md:py-20 bg-muted/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
               Why Choose Our Templates?
@@ -490,7 +490,7 @@ export default function LandingPage() {
       </section>
 
       <section className="py-14 md:py-20 lg:py-24 bg-gradient-to-br from-yellow-50 to-orange-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center">
           <div className="inline-flex items-center px-4 py-2 bg-yellow-200 text-yellow-900 rounded-full text-sm font-medium mb-6">
             <Sparkles className="w-4 h-4 mr-2" />
             Special Offer
@@ -533,7 +533,7 @@ export default function LandingPage() {
 
       {/* Free Components Section */}
       <section className="py-8 md:py-20 bg-muted/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-16">
             <Badge variant="secondary" className="mb-4">
               <Download className="w-4 h-4 mr-2" />
@@ -599,7 +599,7 @@ export default function LandingPage() {
 
       {/* Social Proof Section */}
       <section className="py-8 md:py-20 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
               Built with Industry Standards
@@ -660,7 +660,7 @@ export default function LandingPage() {
 
       {/* CTA Section */}
       <section className="py-8 md:py-20 bg-muted/30">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-8">
           <div className="space-y-4">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">
               Start Building Your Next Project Today

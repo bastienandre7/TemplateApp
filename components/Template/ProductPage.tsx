@@ -3,6 +3,7 @@ import { Check, Eye, Monitor, Shield, Zap } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
+import { Separator } from "../ui/separator";
 import FaqAccordion from "./FaqAccordion";
 import PaymentMethodSection from "./PaymentMethodSection";
 import BundleCTASection from "./details/BundleCTASection";
@@ -34,15 +35,16 @@ interface ProductPageProps {
 export default function ProductPage({ template, purchases }: ProductPageProps) {
   return (
     <div className="pt-16 md:pt-4 text-black bg-background min-h-screen">
-      <div className="max-w-screen-xl mx-auto px-8 xl:px-4 py-20 sm:py-32">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-20 sm:py-32">
         {/* Hero Section - Style Clay */}
         <section className="mb-16">
-          <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-4 md:gap-12 items-center">
-            {/* Colonne gauche : Titre + Image + Description */}
+          {/* Titre hors de la grille */}
+          <h1 className="text-foreground leading-tighter text-3xl md:text-4xl font-semibold tracking-tight text-balance lg:leading-[1.1] lg:font-semibold xl:tracking-tighter mb-8">
+            {template.name}
+          </h1>
+          <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-4 items-center">
+            {/* Colonne gauche : Image + Description */}
             <div className="flex flex-col">
-              <h1 className="text-foreground leading-tighter text-3xl md:text-4xl font-semibold tracking-tight text-balance lg:leading-[1.1] lg:font-semibold xl:tracking-tighter mb-6">
-                {template.name}
-              </h1>
               <div
                 className="relative w-full aspect-[1200/630] mb-6"
                 id="template-image"
@@ -61,16 +63,18 @@ export default function ProductPage({ template, purchases }: ProductPageProps) {
             </div>
 
             {/* Colonne droite : Card boutons + avantages */}
-            <div className="flex items-center h-full">
-              <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8 flex flex-col gap-6 w-full">
-                <div className="flex flex-col gap-4">
-                  <p className="text-muted-foreground mb-2">
+            <div className="flex items-center sm:items-start h-full px-0 lg:px-8">
+              <div className="w-full max-w-screen lg:max-w-md bg-background p-0 flex flex-col">
+                <div className="pb-0">
+                  <p className="text-accent-foreground mb-2 text-base">
                     {template.description}
                   </p>
+                </div>
+                <div className="flex flex-col gap-4 pt-4">
                   {template.demoUrl && (
                     <Button
                       variant="outline"
-                      className="w-full min-h-[56px] px-8 py-4 rounded-xl text-lg border border-gray-200 hover:border-blue-300 text-gray-700 hover:text-blue-700 hover:bg-blue-50 transition"
+                      className="w-full min-h-[56px] bg-white px-8 py-4 rounded-xl text-lg border border-gray-200 hover:border-blue-300 text-gray-700 hover:text-blue-700 hover:bg-blue-50 transition"
                       asChild
                     >
                       <Link href={template.demoUrl} target="_blank">
@@ -81,19 +85,17 @@ export default function ProductPage({ template, purchases }: ProductPageProps) {
                   )}
                   <DynamicBuyButton template={template} purchases={purchases} />
                 </div>
-                <div className="py-2">
-                  <div className="border-t border-gray-200"></div>
-                </div>
-                <div className="flex flex-col gap-4">
-                  <span className="inline-flex w-auto self-start items-center gap-2 bg-green-50 text-green-700 px-2 py-1 rounded-full text-sm font-medium whitespace-nowrap">
+                <Separator className="my-4" />
+                <div className="flex flex-col items-center lg:items-start gap-2 pt-0">
+                  <span className="inline-flex items-center gap-2 bg-green-50 text-green-700 px-2 py-1 rounded-full text-sm font-medium whitespace-nowrap">
                     <Check className="w-4 h-4" />
                     Instant Access
                   </span>
-                  <span className="inline-flex w-auto self-start items-center gap-2 bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm font-medium">
+                  <span className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 px-2 py-1 rounded-full text-sm font-medium whitespace-nowrap">
                     <Shield className="w-4 h-4" />
                     Commercial License
                   </span>
-                  <span className="inline-flex w-auto self-start items-center gap-2 bg-purple-50 text-purple-700 px-3 py-1 rounded-full text-sm font-medium">
+                  <span className="inline-flex items-center gap-2 bg-purple-50 text-purple-700 px-2 py-1 rounded-full text-sm font-medium whitespace-nowrap">
                     <Zap className="w-4 h-4" />
                     Free Updates
                   </span>

@@ -166,8 +166,8 @@ export default function HeaderCPN() {
       }`}
     >
       <PromoBanner />
-      <nav className="transition-all duration-300 px-6 py-4">
-        <div className="max-w-screen-xl mx-auto w-full flex items-center justify-between">
+      <nav className="max-w-7xl mx-auto transition-all duration-300 px-4 sm:px-6 py-4">
+        <div className=" w-full flex items-center justify-between">
           <Link href="/" className="hover:bg-white focus:bg-white lg:hidden">
             <Image src="/icons/favicon.ico" alt="Logo" width={32} height={32} />
           </Link>
@@ -177,7 +177,7 @@ export default function HeaderCPN() {
                 <NavigationMenuItem>
                   <NavigationMenuLink
                     asChild
-                    className={navigationMenuTriggerStyle()}
+                    className={`${navigationMenuTriggerStyle()} pl-0`}
                   >
                     <Link href="/" className="hover:bg-white focus:bg-white">
                       <Image
@@ -306,7 +306,7 @@ export default function HeaderCPN() {
             <button
               type="button"
               onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center p-2 w-10 h-10 justify-center text-gray-600 rounded-lg lg:hidden hover:bg-purple-50 hover:text-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-200 transition-all duration-200"
+              className="inline-flex items-center p-2 pr-0 w-10 h-10 justify-center text-gray-600 rounded-lg lg:hidden hover:bg-purple-50 hover:text-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-200 transition-all duration-200"
               aria-expanded={isOpen}
             >
               <span className="sr-only">Open main menu</span>

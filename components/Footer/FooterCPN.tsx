@@ -13,7 +13,7 @@ export default function FooterCPN() {
       {/* <div className="absolute inset-0 bg-gradient-to-r from-purple-100/20 via-transparent to-blue-100/20" />
       <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-px h-24 bg-gradient-to-b from-purple-200/50 to-transparent" /> */}
 
-      <div className="relative mx-auto w-full max-w-screen-xl p-6 py-12 lg:py-16">
+      <div className="relative mx-auto w-full max-w-screen-xl px-4 sm:px-6 py-12 lg:py-16">
         {/* Main footer content */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-12">
           {/* Brand section */}
