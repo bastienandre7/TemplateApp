@@ -34,7 +34,7 @@ export async function POST(req: NextRequest) {
   }
 
   const template = item.product_name;
-  const variantId = item.product_variant_id;
+  const variantId = item.variant_id;
 
   if (!template || !variantId) {
     return NextResponse.json(
