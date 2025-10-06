@@ -116,7 +116,7 @@ export default function UltimateBundle() {
     <div className="min-h-screen bg-background">
       <div className="relative mx-auto">
         {/* Hero Section */}
-        <section className="text-center pt-32 mb-24 transition-all duration-1000 px-4">
+        <section className="text-center pt-32 mb-24 transition-all duration-1000 px-4 sm:px-6">
           <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
             <Sparkles className="w-4 h-4" />
             Most Popular Bundle
@@ -178,7 +178,7 @@ export default function UltimateBundle() {
         </section>
 
         {/* What's Included */}
-        <section className="mb-24 max-w-6xl mx-auto px-4">
+        <section className="mb-24 max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4 text-slate-900">
               What&apos;s Inside the Bundle?
@@ -233,7 +233,7 @@ export default function UltimateBundle() {
         </section>
 
         {/* Benefits */}
-        <section className="mb-24 max-w-6xl mx-auto px-4">
+        <section className="mb-24 max-w-7xl mx-auto px-4 sm:px-6">
           <h2 className="text-4xl font-bold mb-12 text-center text-slate-900">
             Why Choose the Ultimate Bundle?
           </h2>
@@ -280,7 +280,7 @@ export default function UltimateBundle() {
         </section>
 
         {/* FAQ */}
-        <section className="mb-24 max-w-6xl mx-auto px-4">
+        <section className="mb-24 max-w-7xl mx-auto px-4 sm:px-6">
           <h2 className="text-4xl font-bold mb-12 text-center text-slate-900">
             Frequently Asked Questions
           </h2>
@@ -311,7 +311,7 @@ export default function UltimateBundle() {
         </section>
 
         {/* Final CTA */}
-        <section className="text-center pb-32 max-w-6xl mx-auto px-4">
+        <section className="text-center pb-32 max-w-7xl mx-auto px-4 sm:px-6">
           <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl p-12 text-white relative overflow-hidden">
             <div className="relative">
               <h2 className="text-4xl font-bold mb-4">

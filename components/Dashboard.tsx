@@ -117,7 +117,7 @@ export default function DashboardSection() {
 
   if (status === "loading") {
     return (
-      <div className="min-h-screen pt-32 pb-16 px-4 sm:px-6 lg:px-8">
+      <div className="min-h-screen pt-32 pb-16 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
           <div className="animate-pulse">
             <div className="h-8 bg-gray-200 rounded-md w-1/3 mb-4"></div>
@@ -152,9 +152,9 @@ export default function DashboardSection() {
   }).length;
 
   return (
-    <div className="min-h-screen pt-32 pb-16 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen pt-32 pb-16">
       {/* Hero Section */}
-      <div className="max-w-7xl mx-auto mb-12">
+      <div className="max-w-7xl mx-auto mb-12 px-4 sm:px-6">
         <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-600 via-purple-700 to-indigo-800 p-8 lg:p-12">
           <div className="absolute inset-0 bg-black/20"></div>
           <div className="relative z-10">
@@ -180,7 +180,7 @@ export default function DashboardSection() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* AI Builder Subscription Section */}
         <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden mb-8">
           <div className="p-6 lg:p-8 border-b border-gray-100">

@@ -59,7 +59,7 @@ export default function ComponentDetailClient({
   return (
     <div className="pt-32 bg-background min-h-screen">
       {/* Breadcrumb */}
-      <div className="max-w-7xl mx-auto px-6 py-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6">
         <nav className="flex items-center gap-2 text-sm text-gray-500">
           <Link
             href="/nextjs-components"
@@ -84,7 +84,7 @@ export default function ComponentDetailClient({
         </nav>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 pb-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-20">
         {/* Header Section */}
         <div className="mb-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">{comp.name}</h1>

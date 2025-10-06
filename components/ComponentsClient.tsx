@@ -36,7 +36,7 @@ export default function ComponentsClient({
 
   return (
     <div>
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex flex-wrap gap-2 justify-center">
           <button
             onClick={() => setSelectedCategory("all")}
@@ -70,7 +70,7 @@ export default function ComponentsClient({
       </div>
 
       {/* Components Grid */}
-      <div className="max-w-6xl mx-auto px-6 py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-16">
         {filteredComponents.length === 0 ? (
           <div className="text-center py-20">
             <div className="bg-gray-50 rounded-lg p-12 max-w-md mx-auto">
