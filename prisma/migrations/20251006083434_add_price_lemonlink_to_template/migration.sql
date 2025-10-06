@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "Template" ADD COLUMN     "lemonLink" TEXT NOT NULL DEFAULT '',
+ADD COLUMN     "price" INTEGER NOT NULL DEFAULT 0;
