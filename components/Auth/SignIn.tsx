@@ -90,7 +90,7 @@ export default function SignIn() {
             className={`w-full p-2 rounded-lg ${
               emailSent || loading
                 ? "bg-gray-400 cursor-not-allowed"
-                : "bg-blue-600 hover:bg-blue-700 text-white"
+                : "bg-primary hover:bg-foreground text-white"
             }`}
           >
             {loading
@@ -124,7 +124,7 @@ export default function SignIn() {
         </p>
 
         <div className="text-center">
-          <Link href="/" className="text-sm text-blue-600 hover:underline">
+          <Link href="/" className="text-sm hover:underline">
             ← Back to Menu
           </Link>
         </div>

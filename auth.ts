@@ -24,14 +24,31 @@ export const authOptions: AuthOptions = {
           subject: "Sign in to BloomTPL",
           html: `
             <div style="font-family: 'Inter', Arial, sans-serif; padding: 32px; background-color: #f4f6fb; color: #111;">
-              <div style="max-width: 520px; margin: auto; background: #fff; padding: 32px 28px; border-radius: 12px; box-shadow: 0 4px 24px 0 #0001;">
-                <h2 style="margin-bottom: 18px; font-size: 1.5rem; color: #111;">Sign in to <span style="color:#6366f1;">BloomTPL</span></h2>
-                <p style="margin-bottom: 28px; color: #444;">Click the button below to securely log into your account:</p>
-                <a href="${url}" style="display:inline-block; padding: 14px 32px; background: linear-gradient(90deg,#6366f1,#0ea5e9); color: #fff; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1rem; letter-spacing: 0.01em;">Sign In</a>
-                <p style="margin-top: 36px; font-size: 13px; color: #888;">If you didn't request this, you can safely ignore this email.<br><br>
-                <span style="color:#bbb;">&copy; ${new Date().getFullYear()} BloomTPL</span></p>
-              </div>
-            </div>
+  <div style="max-width: 520px; margin: auto; background: #fff; padding: 36px 32px; border-radius: 16px; box-shadow: 0 4px 24px 0 #0001;">
+    <div style="text-align: center; margin-bottom: 24px;">
+      <img src="https://bloomtpl.com/icons/favicon.ico" alt="BloomTPL Logo" width="48" height="48" style="margin-bottom: 12px;" />
+      <h2 style="margin: 0 0 10px 0; font-size: 2rem; color: #111; font-weight: 700;">
+        Welcome to <span style="color:#6366f1;">BloomTPL</span>
+      </h2>
+      <p style="margin: 0; color: #6366f1; font-size: 1.1rem; font-weight: 500;">
+        Your Next.js Template Hub
+      </p>
+    </div>
+    <p style="margin-bottom: 28px; color: #444; font-size: 1rem; text-align: center;">
+      Hello,<br>
+      To securely log into your BloomTPL account, simply click the button below:
+    </p>
+    <div style="text-align: center; margin-bottom: 32px;">
+      <a href="${url}" style="display:inline-block; padding: 16px 40px; background: #6366f1; color: #fff; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 1.1rem; letter-spacing: 0.01em; box-shadow: 0 2px 8px #6366f133;">
+        Sign In to BloomTPL
+      </a>
+    </div>
+    <p style="margin-top: 0; font-size: 13px; color: #888; text-align: center;">
+      If you did not request this email, you can safely ignore it.<br><br>
+      <span style="color:#bbb;">&copy; ${new Date().getFullYear()} BloomTPL</span>
+    </p>
+  </div>
+</div>
           `,
         });
       },
@@ -40,13 +57,11 @@ export const authOptions: AuthOptions = {
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
-      allowDangerousEmailAccountLinking: true,
     }),
 
     GitHubProvider({
       clientId: process.env.GITHUB_CLIENT_ID!,
       clientSecret: process.env.GITHUB_CLIENT_SECRET!,
-      allowDangerousEmailAccountLinking: true,
     }),
   ],
   callbacks: {
@@ -54,7 +69,6 @@ export const authOptions: AuthOptions = {
       if (session?.user && user) {
         session.user.id = user.id;
 
-        // Récupérer le rôle depuis la DB
         const dbUser = await prisma.user.findUnique({
           where: { id: user.id },
           select: { role: true },
@@ -68,13 +82,13 @@ export const authOptions: AuthOptions = {
     async jwt({ token, user }: { token: JWT; user?: User }) {
       if (user) {
         token.id = user.id;
-        // Le rôle sera récupéré dans le callback session
       }
       return token;
     },
   },
   pages: {
     signIn: "/auth/signin",
+    error: "/auth/error",
   },
   secret: process.env.AUTH_SECRET,
 };

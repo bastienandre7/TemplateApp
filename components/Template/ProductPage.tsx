@@ -74,7 +74,7 @@ export default function ProductPage({ template, purchases }: ProductPageProps) {
                   {template.demoUrl && (
                     <Button
                       variant="outline"
-                      className="w-full min-h-[56px] bg-white px-8 py-4 rounded-xl text-lg border border-gray-200 hover:border-blue-300 text-gray-700 hover:text-blue-700 hover:bg-blue-50 transition"
+                      className="w-full min-h-[56px] bg-white px-8 py-4 text-lg border border-gray-200 hover:border-blue-300 text-gray-700 hover:text-blue-700 hover:bg-blue-50 transition"
                       asChild
                     >
                       <Link href={template.demoUrl} target="_blank">

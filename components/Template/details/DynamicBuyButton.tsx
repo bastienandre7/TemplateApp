@@ -55,10 +55,10 @@ export default function DynamicBuyButton({
           window.location.href = url;
         }
       }}
-      className={`w-full px-8 py-4 rounded-2xl text-lg min-h-[56px] shadow-xl hover:shadow-2xl transform transition-all duration-300 cursor-pointer ${
+      className={`w-full px-8 py-4 text-lg min-h-[56px] shadow-xl hover:shadow-2xl transform transition-all duration-300 cursor-pointer ${
         variant === "dark"
           ? "bg-white text-slate-900 hover:bg-gray-100"
-          : "bg-indigo-600 hover:bg-indigo-700 text-white"
+          : "bg-primary hover:bg-foreground text-white"
       }`}
     >
       {template.price === 0 ? "Get FREE" : `Buy Now - $${template.price}`}
