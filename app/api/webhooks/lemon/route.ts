@@ -3,7 +3,7 @@ import crypto from "crypto";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
-  const rawBody = await req.text(); // important: raw body, pas .json()
+  const rawBody = await req.text();
   const signature = req.headers.get("x-signature");
 
   if (!signature || !process.env.LEMON_WEBHOOK_SECRET) {
@@ -23,31 +23,41 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Invalid signature" }, { status: 401 });
   }
 
-  // Reparse body now that we’ve verified the signature
   const body = JSON.parse(rawBody);
 
   const email = body?.data?.attributes?.user_email;
-  const orderItems = body?.data?.attributes?.order_items;
+  const item = body?.data?.attributes?.first_order_item;
 
-  if (!email || !orderItems || !Array.isArray(orderItems)) {
+  if (!email || !item) {
     console.error("Invalid payload:", body);
     return NextResponse.json({ error: "Invalid payload" }, { status: 400 });
   }
 
-  for (const item of orderItems) {
-    const template = item.product_name;
-    const variantId = item.product_id;
+  const template = item.product_name;
+  const variantId = item.product_id;
 
-    if (!template || !variantId) continue;
-
-    await prisma.purchase.create({
-      data: {
-        email,
-        template,
-        variantId,
-      },
-    });
+  if (!template || !variantId) {
+    return NextResponse.json(
+      { error: "Missing template or variantId" },
+      { status: 400 }
+    );
   }
+
+  // Vérifie si déjà enregistré
+  const already = await prisma.purchase.findFirst({
+    where: { email, template, variantId },
+  });
+  if (already) {
+    return NextResponse.json({ success: true });
+  }
+
+  await prisma.purchase.create({
+    data: {
+      email,
+      template,
+      variantId,
+    },
+  });
 
   return NextResponse.json({ success: true });
 }
