@@ -1,5 +1,6 @@
 import ComponentsClient from "@/components/ComponentsClient";
 import { Button } from "@/components/ui/button";
+import { prisma } from "@/lib/prisma";
 import { Metadata } from "next";
 import Link from "next/link";
 
@@ -44,8 +45,7 @@ export const metadata: Metadata = {
 };
 
 export default async function ComponentsPage() {
-  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/components`);
-  const data = await res.json();
+  const data = await prisma.component.findMany();
 
   return (
     <div className="min-h-screen bg-background">

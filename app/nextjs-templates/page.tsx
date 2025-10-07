@@ -1,4 +1,5 @@
 import HomeWrapper from "@/components/HomeWrapper";
+import { prisma } from "@/lib/prisma";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -40,8 +41,41 @@ export const metadata: Metadata = {
 };
 
 export default async function TemplatePage() {
-  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/products`);
-  const data = await res.json();
+  const data = await prisma.template.findMany({
+    select: {
+      lemonId: true,
+      name: true,
+      description: true,
+      slug: true,
+      demoUrl: true,
+      category: true,
+      createdAt: true,
+      openGraphImage: true,
+      tech: true,
+      pages: true,
+      extras: true,
+      categories: true,
+      price: true,
+      lemonLink: true,
+    },
+  });
+
+  // Mapping vers le type Product attendu par HomeWrapper
+  const products = data.map((tpl) => ({
+    id: tpl.lemonId,
+    name: tpl.name,
+    description: tpl.description,
+    price: tpl.price,
+    imageUrl: tpl.openGraphImage || "/og-image.png",
+    demoUrl: tpl.demoUrl,
+    lemonLink: tpl.lemonLink,
+    type: "template" as const,
+    category: tpl.category,
+    slug: tpl.slug,
+    created_at: tpl.createdAt.toISOString(),
+    openGraphImage: tpl.openGraphImage,
+    categories: tpl.categories,
+  }));
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -94,53 +128,39 @@ export default async function TemplatePage() {
         name: "Next.js Templates",
         description:
           "Discover premium Next.js templates for 10–40€, built with Tailwind CSS & TypeScript. Fast, SEO-friendly, and ready for production.",
-        numberOfItems: data.length,
-        itemListElement: data.slice(0, 10).map(
-          (
-            product: {
-              slug: string;
-              name: string;
-              description: string;
-              price: number;
-              openGraphImage?: string;
-              imageUrl: string;
-              category: string;
-            },
-            index: number
-          ) => ({
-            "@type": "ListItem",
-            position: index + 1,
-            item: {
-              "@type": "Product",
-              "@id": `https://bloomtpl.com/nextjs-templates/${product.slug}`,
-              name: product.name,
-              description: product.description,
-              url: `https://bloomtpl.com/nextjs-templates/${product.slug}`,
-              image: product.openGraphImage || product.imageUrl,
-              offers: {
-                "@type": "Offer",
-                priceCurrency: "USD",
-                price: product.price.toFixed(2),
-                availability: "https://schema.org/InStock",
-                seller: {
-                  "@id": "https://bloomtpl.com/#organization",
-                },
-              },
-              brand: {
+        numberOfItems: products.length,
+        itemListElement: products.slice(0, 10).map((product, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          item: {
+            "@type": "Product",
+            "@id": `https://bloomtpl.com/nextjs-templates/${product.slug}`,
+            name: product.name,
+            description: product.description,
+            url: `https://bloomtpl.com/nextjs-templates/${product.slug}`,
+            image: product.imageUrl,
+            offers: {
+              "@type": "Offer",
+              priceCurrency: "USD",
+              price: product.price.toFixed(2),
+              availability: "https://schema.org/InStock",
+              seller: {
                 "@id": "https://bloomtpl.com/#organization",
               },
-              category: product.category,
             },
-          })
-        ),
+            brand: {
+              "@id": "https://bloomtpl.com/#organization",
+            },
+            category: product.category,
+          },
+        })),
       },
     ],
   };
 
   return (
     <>
-      <HomeWrapper products={data} />
-
+      <HomeWrapper products={products} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

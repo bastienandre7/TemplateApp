@@ -17,7 +17,6 @@ interface Product {
   price: number;
   demoUrl: string;
   lemonLink: string;
-  features: string[];
   slug: string;
   updated_at: string;
   tech?: string[];

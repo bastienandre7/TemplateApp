@@ -2,8 +2,16 @@ import { authOptions } from "@/auth";
 import ProductPage from "@/components/Template/ProductPage";
 import { getProductBySlug } from "@/lib/getProductBySlug";
 import { getPurchasesByEmail } from "@/lib/getPurchasesByEmail";
+import { prisma } from "@/lib/prisma";
 import { getServerSession } from "next-auth";
 import { notFound } from "next/navigation";
+
+export async function generateStaticParams() {
+  const templates = await prisma.template.findMany({
+    select: { slug: true },
+  });
+  return templates.map((tpl) => ({ slug: tpl.slug }));
+}
 
 export async function generateMetadata({
   params,

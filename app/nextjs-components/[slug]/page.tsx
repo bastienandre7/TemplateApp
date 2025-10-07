@@ -1,6 +1,14 @@
 import ComponentDetailClient from "@/components/ComponentDetailClient";
+import { prisma } from "@/lib/prisma";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
+
+export async function generateStaticParams() {
+  const components = await prisma.component.findMany({
+    select: { slug: true },
+  });
+  return components.map((comp) => ({ slug: comp.slug }));
+}
 
 // Générer les métadonnées dynamiquement
 export async function generateMetadata({

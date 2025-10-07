@@ -2,6 +2,20 @@ import CategoryPage from "@/components/Template/category/CategoryPage";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+import { prisma } from "@/lib/prisma";
+
+export async function generateStaticParams() {
+  const categories = await prisma.template.findMany({
+    select: { categoriesSlugs: true },
+  });
+
+  const allSlugs = [
+    ...new Set(categories.flatMap((tpl) => tpl.categoriesSlugs)),
+  ];
+
+  return allSlugs.map((category) => ({ category }));
+}
+
 const categoryMeta: Record<string, { title: string; description: string }> = {
   saas: {
     title: "SaaS Next.js Templates – Launch Your Startup Faster",
