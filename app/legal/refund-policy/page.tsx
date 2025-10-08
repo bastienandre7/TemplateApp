@@ -5,13 +5,13 @@ export const metadata: Metadata = {
   description:
     "Read BloomTPL’s refund policy to understand when refunds are granted and when they are not. Clear guidelines for product issues, technical support, and fair use.",
   alternates: {
-    canonical: "https://bloomtpl.com/refund-policy",
+    canonical: "https://bloomtpl.com/legal/refund-policy",
   },
   openGraph: {
     title: "Refund Policy – BloomTPL",
     description:
       "Read BloomTPL’s refund policy to understand when refunds are granted and when they are not. Clear guidelines for product issues, technical support, and fair use.",
-    url: "https://bloomtpl.com/refund-policy",
+    url: "https://bloomtpl.com/legal/refund-policy",
     siteName: "BloomTPL",
     locale: "en_US",
     type: "website",

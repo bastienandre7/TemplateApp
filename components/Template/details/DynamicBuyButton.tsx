@@ -36,7 +36,7 @@ export default function DynamicBuyButton({
   if (isOwned) {
     return (
       <Link href="/dashboard" className="w-full">
-        <Button className="w-full px-8 py-4 rounded-2xl text-lg bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white min-h-[56px] shadow-xl hover:shadow-2xl transform transition-all duration-300 flex items-center justify-center gap-2">
+        <Button className="w-full px-8 py-4 text-lg bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white min-h-[56px] shadow-xl hover:shadow-2xl transform transition-all duration-300 flex items-center justify-center gap-2">
           <Download className="w-5 h-5" />
           Download Template
         </Button>

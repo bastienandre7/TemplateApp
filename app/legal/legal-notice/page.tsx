@@ -6,13 +6,13 @@ export const metadata: Metadata = {
   description:
     "Find legal details, copyright ownership, and contact information regarding the BloomTPL brand, website, and all template-related content and assets.",
   alternates: {
-    canonical: "https://bloomtpl.com/legal-notice",
+    canonical: "https://bloomtpl.com/legal/legal-notice",
   },
   openGraph: {
     title: "Legal Notice – BloomTPL",
     description:
       "Find legal details, copyright ownership, and contact information regarding the BloomTPL brand, website, and all template-related content and assets.",
-    url: "https://bloomtpl.com/legal-notice",
+    url: "https://bloomtpl.com/legal/legal-notice",
     siteName: "BloomTPL",
     locale: "en_US",
     type: "website",
