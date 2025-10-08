@@ -1,5 +1,5 @@
 import HeaderCPN from "@/components/Header/HeaderCPN";
-import TermsOfUse from "@/components/TermsOfUse";
+import TermsOfUse from "@/components/legal/TermsOfUse";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

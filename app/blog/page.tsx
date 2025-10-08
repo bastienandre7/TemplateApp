@@ -100,11 +100,11 @@ export default async function BlogPage() {
 
   return (
     <>
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-background">
         {/* Hero Section */}
         <div className="pt-32 pb-16 px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center bg-gradient-to-r from-purple-100 to-purple-50 border border-purple-200 text-purple-700 px-4 py-2 rounded-full text-sm font-medium shadow-sm mb-8">
+            <div className="inline-flex items-center bg-gradient-to-r from-purple-100 to-purple-50 border border-purple-200 text-chart-3 px-4 py-2 rounded-full text-sm font-medium shadow-sm mb-8">
               <svg
                 className="w-4 h-4 mr-2"
                 fill="none"
@@ -122,10 +122,7 @@ export default async function BlogPage() {
             </div>
 
             <h1 className="text-5xl sm:text-6xl font-bold text-gray-900 mb-6">
-              <span className="bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent">
-                BloomTPL
-              </span>{" "}
-              Blog
+              <span className="text-primary">BloomTPL</span> Blog
             </h1>
 
             <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
@@ -163,7 +160,7 @@ export default async function BlogPage() {
                 </div>
               </div>
             ) : (
-              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+              <div className="grid gap-8 md:grid-cols-2">
                 {posts.map((post) => (
                   <article
                     key={post._id}
@@ -186,7 +183,7 @@ export default async function BlogPage() {
                         <div className="flex items-center gap-2 text-xs text-gray-500 mb-3">
                           {post.author?.name && (
                             <>
-                              <span className="font-medium text-purple-600">
+                              <span className="font-medium text-primary">
                                 {post.author.name}
                               </span>
                               <span>•</span>
@@ -206,7 +203,7 @@ export default async function BlogPage() {
                           </time>
                         </div>
 
-                        <h2 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-purple-700 transition-colors duration-200 line-clamp-2">
+                        <h2 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-primary transition-colors duration-200 line-clamp-2">
                           {post.title}
                         </h2>
 
@@ -216,7 +213,7 @@ export default async function BlogPage() {
                           </p>
                         )}
 
-                        <div className="mt-4 inline-flex items-center text-purple-600 text-sm font-medium group-hover:text-purple-700 transition-colors duration-200">
+                        <div className="mt-4 inline-flex items-center text-primary text-sm font-medium group-hover:text-chart-2 transition-colors duration-200">
                           Read more
                           <svg
                             className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-200"

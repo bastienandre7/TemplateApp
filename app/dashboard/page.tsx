@@ -1,5 +1,5 @@
 import { authOptions } from "@/auth";
-import DashboardSection from "@/components/Dashboard";
+import DashboardSection from "@/components/Dashboard/Dashboard";
 import type { Metadata } from "next";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";

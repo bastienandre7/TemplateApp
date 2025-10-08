@@ -20,24 +20,24 @@ export default function SuccessClient() {
             setDownloadUrl(data.downloadUrl);
           }
         })
-        .catch((err) => console.error("Erreur récupération lien:", err));
+        .catch((err) => console.error("Error retrieving link:", err));
     }
   }, [sessionId]);
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">
-      <h1 className="text-3xl font-bold">Merci pour votre achat !</h1>
-      <p className="mt-4">Votre template est prêt à être téléchargé :</p>
+      <h1 className="text-3xl font-bold">Thank you for your purchase!</h1>
+      <p className="mt-4">Your template is ready to download:</p>
       {downloadUrl ? (
         <a
           href={downloadUrl}
           className="mt-4 px-6 py-3 bg-blue-500 text-white rounded-lg"
           download
         >
-          Télécharger mon template
+          Download my template
         </a>
       ) : (
-        <p className="mt-4">Récupération du lien en cours...</p>
+        <p className="mt-4">Retrieving link...</p>
       )}
     </div>
   );

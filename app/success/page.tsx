@@ -4,7 +4,7 @@ import { Suspense } from "react";
 
 export default function SuccessPage() {
   return (
-    <Suspense fallback={<p className="p-8 text-center">Chargement...</p>}>
+    <Suspense fallback={<p className="p-8 text-center">Loading...</p>}>
       <SuccessClient />
     </Suspense>
   );

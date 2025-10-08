@@ -1,4 +1,4 @@
-import ComponentsClient from "@/components/ComponentsClient";
+import ComponentsClient from "@/components/components/ComponentsClient";
 import { Button } from "@/components/ui/button";
 import { prisma } from "@/lib/prisma";
 import { Metadata } from "next";

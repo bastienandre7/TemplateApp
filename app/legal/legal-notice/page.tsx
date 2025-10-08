@@ -1,4 +1,4 @@
-import LegalNotice from "@/components/LegalNotice";
+import LegalNotice from "@/components/legal/LegalNotice";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

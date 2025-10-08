@@ -1,4 +1,4 @@
-import Docs from "@/components/Docs";
+import Docs from "@/components/docs/Docs";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

@@ -9,11 +9,11 @@ import Script from "next/script";
 import { ReactNode } from "react";
 import { Providers } from "./providers";
 
-const CookieBanner = dynamic(() => import("@/components/CookieBanner"), {
+const CookieBanner = dynamic(() => import("@/components/layout/CookieBanner"), {
   ssr: false,
 });
 const CookieConsentGate = dynamic(
-  () => import("@/components/CookieConsentGate"),
+  () => import("@/components/layout/CookieConsentGate"),
   { ssr: false }
 );
 

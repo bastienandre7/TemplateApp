@@ -327,7 +327,7 @@ export default function FooterCPN() {
                 <ul className="space-y-3 text-sm">
                   <li>
                     <a
-                      href="/privacy-policy"
+                      href="/legal/privacy-policy"
                       className="text-gray-600 hover:underline transition-colors"
                     >
                       Privacy Policy
@@ -335,7 +335,7 @@ export default function FooterCPN() {
                   </li>
                   <li>
                     <a
-                      href="/refund-policy"
+                      href="/legal/refund-policy"
                       className="text-gray-600 hover:underline transition-colors"
                     >
                       Refund Policy
@@ -343,7 +343,7 @@ export default function FooterCPN() {
                   </li>
                   <li>
                     <a
-                      href="/terms-of-use"
+                      href="/legal/terms-of-use"
                       className="text-gray-600 hover:underline transition-colors"
                     >
                       Terms of Use
@@ -351,7 +351,7 @@ export default function FooterCPN() {
                   </li>
                   <li>
                     <a
-                      href="/legal-notice"
+                      href="/legal/legal-notice"
                       className="text-gray-600 hover:underline transition-colors"
                     >
                       Legal Notice

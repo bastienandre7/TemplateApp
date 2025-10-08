@@ -1,4 +1,4 @@
-import AIBuilderComponent from "@/components/AIBuilderComponent";
+import AIBuilderComponent from "@/components/AI-Builder/AIBuilderComponent";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

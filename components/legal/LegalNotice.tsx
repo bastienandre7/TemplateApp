@@ -1,7 +1,7 @@
 export default function LegalNotice() {
   return (
-    <div>
-      <div className="flex justify-center gap-4 mt-8 mb-4">
+    <div className="bg-background">
+      <div className="flex justify-center gap-4 pt-32 mb-4">
         <a href="#english">
           <button className="px-4 py-2 rounded-lg border bg-white hover:bg-gray-100 text-sm font-medium">
             🇬🇧 English Version

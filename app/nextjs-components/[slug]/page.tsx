@@ -1,4 +1,4 @@
-import ComponentDetailClient from "@/components/ComponentDetailClient";
+import ComponentDetailClient from "@/components/components/ComponentDetailClient";
 import { prisma } from "@/lib/prisma";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";

@@ -1,4 +1,4 @@
-import HomeWrapper from "@/components/HomeWrapper";
+import HomeWrapper from "@/components/Template/HomeWrapper";
 import { prisma } from "@/lib/prisma";
 import type { Metadata } from "next";
 

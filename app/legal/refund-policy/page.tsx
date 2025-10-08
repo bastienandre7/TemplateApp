@@ -85,7 +85,7 @@ export default function RefundPolicyPage() {
         </section>
 
         {/* Commitment */}
-        <section className="bg-gray-50 border border-gray-200 rounded-2xl p-6">
+        <section className="bg-white border border-gray-200 rounded-2xl p-6">
           <h3 className="text-xl font-semibold text-gray-900 mb-3">
             💬 Our Commitment
           </h3>

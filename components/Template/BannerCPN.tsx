@@ -1,6 +1,6 @@
 "use client";
 
-import SearchModal from "../SearchModal";
+import SearchModal from "./SearchModal";
 
 type Product = {
   id: number;

@@ -92,7 +92,7 @@ export default function PricingPage() {
 
   return (
     <>
-      <div className="min-h-screen py-20">
+      <div className="min-h-screen py-20 bg-background">
         <div className="max-w-6xl mx-auto px-4 mt-20">
           {/* Header */}
           <div className="text-center mb-16">

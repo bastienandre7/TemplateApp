@@ -1,5 +1,6 @@
 "use client";
 
+import { DeleteAccountButton } from "@/components/Dashboard/DeleteAccountButton";
 import { Button } from "@/components/ui/button";
 import {
   Calendar,
@@ -16,7 +17,6 @@ import {
 import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 import { useEffect, useState } from "react";
-import { DeleteAccountButton } from "./DeleteAccountButton";
 
 type Purchase = {
   id: string;
@@ -152,10 +152,10 @@ export default function DashboardSection() {
   }).length;
 
   return (
-    <div className="min-h-screen pt-32 pb-16">
+    <div className="min-h-screen pt-32 pb-16 bg-background">
       {/* Hero Section */}
       <div className="max-w-7xl mx-auto mb-12 px-4 sm:px-6">
-        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-600 via-purple-700 to-indigo-800 p-8 lg:p-12">
+        <div className="relative overflow-hidden rounded-2xl bg-chart-4 p-8 lg:p-12">
           <div className="absolute inset-0 bg-black/20"></div>
           <div className="relative z-10">
             <div className="flex items-center gap-3 mb-4">

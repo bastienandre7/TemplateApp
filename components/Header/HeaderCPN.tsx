@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import PromoBanner from "../PromoBanner";
+import PromoBanner from "../layout/PromoBanner";
 import {
   NavigationMenu,
   NavigationMenuContent,
