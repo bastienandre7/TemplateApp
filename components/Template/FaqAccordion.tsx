@@ -5,6 +5,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import Link from "next/link";
 
 export default function FaqAccordion() {
   return (
@@ -130,9 +131,30 @@ export default function FaqAccordion() {
                 Do you offer refunds?
               </AccordionTrigger>
               <AccordionContent className="px-8 pb-6 text-gray-600 leading-relaxed">
-                Due to the digital nature of our products, we do not offer
-                refunds. If you have any issues with your download or need help,
-                contact our support and we&apos;ll do our best to help.{" "}
+                Yes! You can request a refund within{" "}
+                <span className="font-semibold text-black">24 hours</span> of
+                your purchase if you have a valid reason (for example, technical
+                issues or the template not working as described).
+                <br />
+                <br />
+                To request a refund, simply contact us at{" "}
+                <a
+                  href="mailto:bloomtpl@gmail.com"
+                  className="text-blue-600 hover:text-blue-700 underline transition-colors"
+                >
+                  bloomtpl@gmail.com
+                </a>{" "}
+                or{" "}
+                <Link
+                  href="/contact"
+                  className="text-blue-600 hover:text-blue-700 underline transition-colors"
+                >
+                  use our contact form
+                </Link>{" "}
+                with your order details and reason for your request.
+                <br />
+                <br />
+                For more information, please read our{" "}
                 <a
                   href="/refund-policy"
                   className="text-blue-600 hover:text-blue-700 underline transition-colors"

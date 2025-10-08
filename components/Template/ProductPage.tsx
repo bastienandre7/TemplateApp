@@ -98,6 +98,10 @@ export default function ProductPage({ template, purchases }: ProductPageProps) {
                     <Zap className="w-4 h-4" />
                     Free Updates
                   </span>
+                  <span className="inline-flex items-center gap-2 bg-yellow-50 text-yellow-700 px-2 py-1 rounded-full text-sm font-medium whitespace-nowrap">
+                    <Shield className="w-4 h-4" />
+                    24h Refund Guarantee
+                  </span>
                 </div>
               </div>
             </div>
