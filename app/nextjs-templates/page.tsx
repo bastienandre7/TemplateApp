@@ -57,15 +57,15 @@ export default async function TemplatePage() {
       categories: true,
       price: true,
       lemonLink: true,
+      images: false,
     },
   });
 
-  // Mapping vers le type Product attendu par HomeWrapper
   const products = data.map((tpl) => ({
     id: tpl.lemonId,
     name: tpl.name,
     description: tpl.description,
-    price: tpl.price,
+    price: tpl.price ? tpl.price / 100 : 0,
     imageUrl: tpl.openGraphImage || "/og-image.png",
     demoUrl: tpl.demoUrl,
     lemonLink: tpl.lemonLink,
