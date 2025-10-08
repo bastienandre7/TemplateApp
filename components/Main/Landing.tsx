@@ -351,7 +351,7 @@ export default function LandingPage() {
                   <div className="flex items-center justify-between mb-2">
                     <Badge variant="secondary">{template.category}</Badge>
                   </div>
-                  <CardTitle className="text-xl">
+                  <CardTitle className="text-xl line-clamp-1">
                     <Link
                       href={`/nextjs-templates/${template.slug}`}
                       className="hover:text-primary transition-colors"
@@ -432,7 +432,7 @@ export default function LandingPage() {
                   <div className="flex items-center justify-between mb-2">
                     <Badge variant="secondary">{template.category}</Badge>
                   </div>
-                  <CardTitle className="text-xl">
+                  <CardTitle className="text-xl line-clamp-1">
                     <Link
                       href={`/nextjs-templates/${template.slug}`}
                       className="hover:text-primary transition-colors"
