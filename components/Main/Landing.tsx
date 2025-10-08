@@ -199,15 +199,15 @@ export default function LandingPage() {
       demoUrl: "https://bloomtpl-restaurant-template.vercel.app/",
     },
     {
-      name: "Next.js Tailwind CSS Blog Template",
-      slug: "nextjs-tailwind-css-blog-template",
+      name: "BloomBlog - Free Next.js Tailwind CSS Blog Template",
+      slug: "bloomblog-free-nextjs-tailwind-css-blog-template",
       description:
         "Minimalist blog template built with Next.js and Tailwind CSS. Clean, fast, and perfect for launching your personal blog, journal, or editorial site.",
       category: "Blog",
       price: 0.0,
       image:
         "https://9hn0rhd8ibpivln7.public.blob.vercel-storage.com/templates/blog-template/og-opti.webp",
-      link: "/nextjs-templates/nextjs-tailwind-css-blog-template",
+      link: "/nextjs-templates/bloomblog-free-nextjs-tailwind-css-blog-template",
       demoUrl: "https://bloomtpl-blog-template.vercel.app/",
     },
   ];
