@@ -48,12 +48,12 @@ export default function PrivacyPolicy() {
           </p>
 
           <li className="mb-4">
-            <a href="/terms-of-use" className="hover:underline">
+            <a href="/legal/terms-of-use" className="hover:underline">
               Terms of Use
             </a>
           </li>
           <li className="mb-4">
-            <a href="/legal-notice" className="hover:underline">
+            <a href="/legal/legal-notice" className="hover:underline">
               Legal Notice
             </a>
           </li>
@@ -362,12 +362,12 @@ export default function PrivacyPolicy() {
           </p>
 
           <li className="mb-4">
-            <a href="/terms-of-use" className="hover:underline">
+            <a href="/legal/terms-of-use" className="hover:underline">
               Conditions Générales d’Utilisation
             </a>
           </li>
           <li className="mb-4">
-            <a href="/legal-notice" className="hover:underline">
+            <a href="/legal/legal-notice" className="hover:underline">
               Mentions Légales
             </a>
           </li>
