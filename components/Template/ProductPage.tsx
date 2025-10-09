@@ -24,6 +24,7 @@ interface Product {
   extras?: string[];
   openGraphImage?: string;
   performanceImage?: string;
+  docLink?: string;
 }
 
 interface ProductPageProps {
@@ -102,6 +103,16 @@ export default function ProductPage({ template, purchases }: ProductPageProps) {
                     <Shield className="w-4 h-4" />
                     24h Refund Guarantee
                   </span>
+                  {template.docLink && (
+                    <Link
+                      href={template.docLink}
+                      target="_blank"
+                      className="inline-flex items-center gap-2 bg-gray-50 text-gray-700 px-2 py-1 rounded-full text-sm font-medium whitespace-nowrap hover:bg-gray-100 transition underline"
+                    >
+                      <Monitor className="w-4 h-4" />
+                      How to install & use
+                    </Link>
+                  )}
                 </div>
               </div>
             </div>
@@ -266,6 +277,60 @@ export default function ProductPage({ template, purchases }: ProductPageProps) {
           </section>
         )}
 
+        <section className="mb-16">
+          <div className="grid md:grid-cols-2 gap-8 bg-white rounded-3xl shadow-xl border border-gray-100 p-8">
+            {/* Colonne gauche : Features */}
+            <div>
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                Premium Features
+              </h2>
+              <div className="grid gap-6">
+                {template.extras?.map((feature, idx) => {
+                  const { title, description } = parseDescriptionText(feature);
+                  return (
+                    <div
+                      key={idx}
+                      className="flex items-start gap-4 p-4 bg-gray-50 rounded-xl"
+                    >
+                      <div>
+                        <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                          {title}
+                        </h3>
+                        <p className="text-gray-600 text-sm">{description}</p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+            {/* Colonne droite : File Explorer */}
+            <div>
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                Project Structure
+              </h2>
+              <pre className="bg-gray-50 rounded-xl p-4 text-sm text-gray-800 overflow-x-auto">
+                {`
+├── app/
+│   ├── page.tsx
+│   ├── layout.tsx
+│   └── ...
+├── components/
+│   ├── Header.tsx
+│   ├── Footer.tsx
+│   └── ...
+├── public/
+│   └── ...
+├── prisma/
+│   └── schema.prisma
+├── tailwind.config.js
+├── package.json
+└── ...
+`}
+              </pre>
+            </div>
+          </div>
+        </section>
+
         <BundleCTASection />
         <PaymentMethodSection />
         <FaqAccordion />
@@ -298,7 +363,7 @@ export default function ProductPage({ template, purchases }: ProductPageProps) {
                 >
                   <Button
                     variant="outline"
-                    className="w-full min-h-[56px] px-8 py-4 rounded-2xl text-lg border-2 border-gray-200 hover:border-blue-300 text-gray-700 hover:text-blue-700 hover:bg-blue-50 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full min-h-[56px] px-8 py-4 text-lg border-2 border-gray-200 hover:border-blue-300 text-gray-700 hover:text-blue-700 hover:bg-blue-50 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <Eye className="w-5 h-5" />
                     Live Demo

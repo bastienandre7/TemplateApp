@@ -1,4 +1,4 @@
-import Docs from "@/components/docs/Docs";
+import DocsHomePage from "@/components/docs/DocsHomePage";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -45,7 +45,6 @@ export const metadata: Metadata = {
   },
 };
 
-// Add JSON-LD structured data for better SEO
 export default function Page() {
   const jsonLd = {
     "@context": "https://schema.org",
@@ -88,7 +87,7 @@ export default function Page() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <Docs />
+      <DocsHomePage />
     </>
   );
 }

@@ -57,7 +57,6 @@ export default async function TemplatePage() {
       categories: true,
       price: true,
       lemonLink: true,
-      images: false,
     },
   });
 

@@ -137,7 +137,6 @@ model Template {
   name           String
   description    String
   demoUrl        String
-  images         Json     // Tableau d'URLs d'images (hébergées sur Vercel Blob)
   openGraphImage String
   performanceImage String?
   category       String
@@ -148,6 +147,8 @@ model Template {
   extras         Json
   price          Int      @default(0)
   lemonLink      String   @default("")
+  docLink        String   @default("")
+  structure      String   @default("")
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
 }

@@ -19,6 +19,7 @@ export const getProductBySlug = async (slug: string) => {
       performanceImage: true,
       price: true,
       lemonLink: true,
+      docLink: true,
     },
   });
 
@@ -48,5 +49,6 @@ export const getProductBySlug = async (slug: string) => {
       ? tpl.extras.filter((t) => typeof t === "string")
       : [],
     performanceImage: tpl.performanceImage || undefined,
+    docLink: tpl.docLink || undefined,
   };
 };
