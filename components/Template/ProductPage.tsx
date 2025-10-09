@@ -25,6 +25,7 @@ interface Product {
   openGraphImage?: string;
   performanceImage?: string;
   docLink?: string;
+  structure?: string;
 }
 
 interface ProductPageProps {
@@ -228,63 +229,18 @@ export default function ProductPage({ template, purchases }: ProductPageProps) {
           </div>
         </section>
 
-        {/* Features Grid */}
-        {template.extras && template.extras.length > 0 && (
-          <section className="mb-16">
-            <div className="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden">
-              <div className="bg-gradient-to-r from-violet-50 to-pink-50 px-8 py-6 border-b border-gray-100">
-                <h2 className="text-2xl font-bold text-gray-900 flex items-center gap-3">
-                  <Zap className="w-6 h-6 text-violet-600" />
-                  Premium Features
-                </h2>
-                <p className="text-gray-600 mt-2">
-                  Everything you need to build a professional application
-                </p>
-              </div>
-
-              <div className="p-8">
-                <div className="grid md:grid-cols-2 gap-6">
-                  {template.extras.map((feature, idx) => {
-                    const { title, description } =
-                      parseDescriptionText(feature);
-                    return (
-                      <div
-                        key={idx}
-                        className="group flex items-start gap-4 p-6 bg-gray-50 rounded-xl hover:bg-gray-100 transition-all duration-300"
-                      >
-                        {/* Icône/Badge */}
-                        <div className="flex-shrink-0">
-                          <div className="w-10 h-10 bg-gradient-to-br from-violet-500 to-violet-600 rounded-xl flex items-center justify-center text-white font-bold text-sm group-hover:scale-110 transition-transform duration-300">
-                            {idx + 1}
-                          </div>
-                        </div>
-
-                        {/* Contenu */}
-                        <div className="flex-1">
-                          <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-violet-600 transition-colors duration-300">
-                            {title}
-                          </h3>
-                          <p className="text-gray-600 text-sm leading-relaxed">
-                            {description}
-                          </p>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            </div>
-          </section>
-        )}
-
         <section className="mb-16">
-          <div className="grid md:grid-cols-2 gap-8 bg-white rounded-3xl shadow-xl border border-gray-100 p-8">
+          <div
+            className={`grid ${template.structure ? "md:grid-cols-2" : "grid-cols-1"} gap-8`}
+          >
             {/* Colonne gauche : Features */}
-            <div>
+            <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-6">
                 Premium Features
               </h2>
-              <div className="grid gap-6">
+              <div
+                className={`grid ${template.structure ? "grid-cols-1" : "md:grid-cols-2"} gap-6`}
+              >
                 {template.extras?.map((feature, idx) => {
                   const { title, description } = parseDescriptionText(feature);
                   return (
@@ -304,30 +260,16 @@ export default function ProductPage({ template, purchases }: ProductPageProps) {
               </div>
             </div>
             {/* Colonne droite : File Explorer */}
-            <div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">
-                Project Structure
-              </h2>
-              <pre className="bg-gray-50 rounded-xl p-4 text-sm text-gray-800 overflow-x-auto">
-                {`
-├── app/
-│   ├── page.tsx
-│   ├── layout.tsx
-│   └── ...
-├── components/
-│   ├── Header.tsx
-│   ├── Footer.tsx
-│   └── ...
-├── public/
-│   └── ...
-├── prisma/
-│   └── schema.prisma
-├── tailwind.config.js
-├── package.json
-└── ...
-`}
-              </pre>
-            </div>
+            {template.structure && (
+              <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-8">
+                <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                  Project Structure
+                </h2>
+                <pre className="bg-gray-50 rounded-xl p-4 text-sm text-gray-800 overflow-x-auto">
+                  {template.structure}
+                </pre>
+              </div>
+            )}
           </div>
         </section>
 
