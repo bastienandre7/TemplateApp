@@ -1,4 +1,11 @@
 import DocBreadcrump from "@/components/docs/DocBreadcrump";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://bloomtpl.com/docs/base",
+  },
+};
 
 export default function BaseTemplateDocsPage() {
   return (
