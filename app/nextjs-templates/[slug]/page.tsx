@@ -104,13 +104,15 @@ export default async function TemplateDetailsPage({
       availability: "https://schema.org/InStock",
       url: `https://bloomtpl.com/nextjs-templates/${product.slug}`,
       priceValidUntil: "2025-12-31",
-      eligibleRegion: {
+      applicableCountry: {
         "@type": "Country",
-        name: "Worldwide",
+        name: "US",
       },
       hasMerchantReturnPolicy: {
         "@type": "MerchantReturnPolicy",
-        returnPolicyCategory: "NoReturns",
+        returnPolicyCategory:
+          "https://schema.org/MerchantReturnFiniteReturnWindow",
+        merchantReturnDays: 1,
       },
       itemCondition: "https://schema.org/NewCondition",
       seller: {
@@ -119,7 +121,14 @@ export default async function TemplateDetailsPage({
         url: "https://bloomtpl.com",
       },
     },
-    ...(product.price === 0 ? { isAccessibleForFree: true } : {}),
+    ...(product.price === 0
+      ? {
+          "@type": "SoftwareApplication",
+          applicationCategory: "DeveloperApplication",
+          operatingSystem: "Web Browser",
+          isAccessibleForFree: true,
+        }
+      : {}),
   };
 
   return (

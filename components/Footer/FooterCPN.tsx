@@ -149,6 +149,14 @@ export default function FooterCPN() {
                     Restaurant Templates
                   </Link>
                 </li>
+                <li>
+                  <Link
+                    href="/nextjs-templates/category/agency"
+                    className="text-gray-600 hover:text-purple-400 transition-colors block"
+                  >
+                    Agency Templates
+                  </Link>
+                </li>
               </ul>
             </div>
 

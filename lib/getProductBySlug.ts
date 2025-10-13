@@ -21,6 +21,7 @@ export const getProductBySlug = async (slug: string) => {
       lemonLink: true,
       docLink: true,
       structure: true,
+      variants: true,
     },
   });
 
@@ -52,5 +53,6 @@ export const getProductBySlug = async (slug: string) => {
     performanceImage: tpl.performanceImage || undefined,
     docLink: tpl.docLink || undefined,
     structure: tpl.structure || undefined,
+    variants: tpl.variants || undefined,
   };
 };

@@ -1,13 +1,20 @@
 import { Button } from "@/components/ui/button";
-import { Check, Eye, Monitor, Shield, Zap } from "lucide-react";
+import {
+  BookOpen,
+  CalendarCheck,
+  Check,
+  Eye,
+  Monitor,
+  Zap,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import { Separator } from "../ui/separator";
 import FaqAccordion from "./FaqAccordion";
 import PaymentMethodSection from "./PaymentMethodSection";
-import BundleCTASection from "./details/BundleCTASection";
 import DynamicBuyButton from "./details/DynamicBuyButton";
+import PricingSection from "./details/PricingSection";
 import WhatYouGetSection from "./details/WhatYouGetSection";
 
 interface Product {
@@ -26,6 +33,17 @@ interface Product {
   performanceImage?: string;
   docLink?: string;
   structure?: string;
+  variants?: {
+    solo: Variant;
+    studio: Variant;
+    unlimited: Variant;
+    [key: string]: Variant;
+  };
+}
+
+interface Variant {
+  price: number;
+  link: string;
 }
 
 interface ProductPageProps {
@@ -67,15 +85,13 @@ export default function ProductPage({ template, purchases }: ProductPageProps) {
             <div className="flex items-center sm:items-start h-full px-0 lg:px-8">
               <div className="w-full max-w-screen lg:max-w-md bg-background p-0 flex flex-col">
                 <div className="pb-0">
-                  <p className="text-accent-foreground mb-2 text-base">
-                    {template.description}
-                  </p>
+                  <p className="mb-2 text-base">{template.description}</p>
                 </div>
                 <div className="flex flex-col gap-4 pt-4">
                   {template.demoUrl && (
                     <Button
                       variant="outline"
-                      className="w-full min-h-[56px] bg-white px-8 py-4 text-lg border border-gray-200 hover:border-blue-300 text-gray-700 hover:text-blue-700 hover:bg-blue-50 transition"
+                      className="w-full min-h-[56px] px-8 py-4 text-lg hover:bg-gray-50 transition"
                       asChild
                     >
                       <Link href={template.demoUrl} target="_blank">
@@ -88,30 +104,23 @@ export default function ProductPage({ template, purchases }: ProductPageProps) {
                 </div>
                 <Separator className="my-4" />
                 <div className="flex flex-col items-center lg:items-start gap-2 pt-0">
-                  <span className="inline-flex items-center gap-2 bg-green-50 text-green-700 px-2 py-1 rounded-full text-sm font-medium whitespace-nowrap">
-                    <Check className="w-4 h-4" />
-                    Instant Access
+                  <span className="inline-flex items-center gap-2 px-2 py-1 rounded-full text-sm font-medium whitespace-nowrap">
+                    <Monitor className="w-4 h-4" />
+                    Built with Next.js 15
                   </span>
-                  <span className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 px-2 py-1 rounded-full text-sm font-medium whitespace-nowrap">
-                    <Shield className="w-4 h-4" />
-                    Commercial License
-                  </span>
-                  <span className="inline-flex items-center gap-2 bg-purple-50 text-purple-700 px-2 py-1 rounded-full text-sm font-medium whitespace-nowrap">
-                    <Zap className="w-4 h-4" />
-                    Free Updates
-                  </span>
-                  <span className="inline-flex items-center gap-2 bg-yellow-50 text-yellow-700 px-2 py-1 rounded-full text-sm font-medium whitespace-nowrap">
-                    <Shield className="w-4 h-4" />
-                    24h Refund Guarantee
+                  <span className="inline-flex items-center gap-2 bg-gray-50 px-2 py-1 rounded-full text-sm font-medium whitespace-nowrap">
+                    <CalendarCheck className="w-4 h-4" />
+                    Last Update:{" "}
+                    {new Date(template.updated_at).toLocaleDateString()}
                   </span>
                   {template.docLink && (
                     <Link
                       href={template.docLink}
                       target="_blank"
-                      className="inline-flex items-center gap-2 bg-gray-50 text-gray-700 px-2 py-1 rounded-full text-sm font-medium whitespace-nowrap hover:bg-gray-100 transition underline"
+                      className="inline-flex items-center gap-2 px-2 py-1 rounded-full text-sm font-medium whitespace-nowrap hover:bg-indigo-100 transition underline"
                     >
-                      <Monitor className="w-4 h-4" />
-                      How to install & use
+                      <BookOpen className="w-4 h-4" />
+                      Documentation
                     </Link>
                   )}
                 </div>
@@ -273,7 +282,7 @@ export default function ProductPage({ template, purchases }: ProductPageProps) {
           </div>
         </section>
 
-        <BundleCTASection />
+        {template.variants && <PricingSection variants={template.variants} />}
         <PaymentMethodSection />
         <FaqAccordion />
 

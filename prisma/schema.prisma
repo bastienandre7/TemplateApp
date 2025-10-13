@@ -149,6 +149,7 @@ model Template {
   lemonLink      String   @default("")
   docLink        String   @default("")
   structure      String   @default("")
+  variants       Json?
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
 }
