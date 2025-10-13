@@ -14,7 +14,7 @@ import {
   SelectItem,
   SelectTrigger,
 } from "@/components/ui/select";
-import { signIn, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -334,31 +334,16 @@ export default function MainContainer({ products }: { products: Product[] }) {
                           ) : (
                             <Button
                               className="flex-1"
-                              asChild={Number(item.price) === 0}
+                              asChild
                               variant={
                                 Number(item.price) === 0 ? "outline" : "default"
                               }
-                              onClick={() => {
-                                if (Number(item.price) > 0) {
-                                  if (!session) {
-                                    signIn();
-                                  } else if (session.user?.email) {
-                                    const email = encodeURIComponent(
-                                      session.user.email
-                                    );
-                                    const url = `${item.lemonLink}?checkout[email]=${email}`;
-                                    window.location.href = url;
-                                  }
-                                }
-                              }}
                             >
-                              {Number(item.price) === 0 ? (
-                                <Link href={`/nextjs-templates/${item.slug}`}>
-                                  Free
-                                </Link>
-                              ) : (
-                                `Buy Now - $${item.price}`
-                              )}
+                              <Link href={`/nextjs-templates/${item.slug}`}>
+                                {Number(item.price) === 0
+                                  ? "Free"
+                                  : `Buy Now - $${item.price}`}
+                              </Link>
                             </Button>
                           )}
                         </CardFooter>
