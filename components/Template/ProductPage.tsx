@@ -15,7 +15,7 @@ import FaqAccordion from "./FaqAccordion";
 import PaymentMethodSection from "./PaymentMethodSection";
 import DynamicBuyButton from "./details/DynamicBuyButton";
 import PricingSection from "./details/PricingSection";
-import WhatYouGetSection from "./details/WhatYouGetSection";
+import ProjectStructureModal from "./details/ProjectStructureModal";
 
 export interface Product {
   id: number;
@@ -91,7 +91,7 @@ export default function ProductPage({ template, purchases }: ProductPageProps) {
                   {template.demoUrl && (
                     <Button
                       variant="outline"
-                      className="w-full min-h-[56px] px-8 py-4 text-lg hover:bg-gray-50 transition"
+                      className="w-full bg-white min-h-[56px] px-8 py-4 text-lg hover:bg-gray-50 transition"
                       asChild
                     >
                       <Link href={template.demoUrl} target="_blank">
@@ -129,16 +129,11 @@ export default function ProductPage({ template, purchases }: ProductPageProps) {
           </div>
         </section>
 
-        <WhatYouGetSection />
-
         {/* Pages Description */}
         {template.pages && template.pages.length > 0 && (
           <section className="mb-16">
-            <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">
-                Template Overview
-              </h2>
-              <div className="prose prose-lg max-w-none text-gray-800">
+            <div className="">
+              <div className="prose prose-lg max-w-none">
                 {template.pages.map((description, idx) => (
                   <div key={idx} className="mb-4">
                     <ReactMarkdown>{description}</ReactMarkdown>
@@ -149,25 +144,71 @@ export default function ProductPage({ template, purchases }: ProductPageProps) {
           </section>
         )}
 
-        {/* Technical Specs - Amélioré */}
-        <section className="mb-16">
-          <div className="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden">
-            <div className="bg-gradient-to-r from-gray-50 to-blue-50 px-8 py-6 border-b border-gray-100">
+        <section className="my-24">
+          <div className="max-w-5xl mx-auto text-center mb-12">
+            <h2 className="text-2xl font-bold text-gray-900">
+              Features & What’s Included
+            </h2>
+            <p className="text-gray-600 mt-3">
+              Everything you get with this template — production-ready pages, UI
+              components, and full documentation to help you launch faster.
+            </p>
+          </div>
+
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {template.extras?.map((feature, idx) => {
+              const { title, description } = parseDescriptionText(feature);
+              return (
+                <div
+                  key={idx}
+                  className="p-5 border border-gray-100 rounded-2xl bg-white hover:bg-gray-50 transition"
+                >
+                  <h3 className="text-base font-semibold text-gray-900">
+                    {title}
+                  </h3>
+                  <p className="text-sm text-gray-600 mt-2">{description}</p>
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link
+              href={template.docLink || "#"}
+              className="text-sm text-indigo-600 underline"
+              target={template.docLink ? "_blank" : undefined}
+            >
+              Quick install & usage guide
+            </Link>
+
+            {template.structure && (
+              <ProjectStructureModal structure={template.structure} />
+            )}
+          </div>
+        </section>
+
+        <section className="mb-20">
+          <div className="rounded-3xl border border-gray-200 bg-gray-100/40 backdrop-blur-sm overflow-hidden">
+            {/* Header */}
+            <div className="px-8 pt-10 pb-6 border-b border-gray-200">
               <h2 className="text-2xl font-bold text-gray-900 flex items-center gap-3">
-                <Monitor className="w-6 h-6 text-blue-600" />
+                <Monitor className="w-6 h-6 text-indigo-600" />
                 Technical Specifications
               </h2>
+              <p className="text-sm text-gray-600 mt-2 max-w-2xl">
+                Key technologies, framework versions, and verified performance
+                results that power this template.
+              </p>
             </div>
 
             <div className="p-8">
-              {/* ✅ Performance Image Section */}
               {template.performanceImage && (
-                <div className="mb-8">
-                  <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                <div className="mb-12">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
                     <Zap className="w-5 h-5 text-green-600" />
                     Lighthouse Performance Score
                   </h3>
-                  <div className="bg-gradient-to-br from-green-50 to-blue-50 rounded-2xl p-6 border border-green-100">
+                  <div className="bg-gradient-to-br from-green-50 to-blue-50/50 rounded-2xl p-6 border border-green-100/70">
                     <div className="flex justify-center">
                       <Image
                         src={template.performanceImage}
@@ -181,34 +222,34 @@ export default function ProductPage({ template, purchases }: ProductPageProps) {
                     </div>
                     <div className="mt-4 text-center">
                       <span className="inline-flex items-center px-3 py-1 bg-green-100 text-green-800 text-sm font-medium rounded-full">
-                        ✓ Real Lighthouse Results
+                        ✓ Verified Lighthouse Results
                       </span>
                     </div>
                   </div>
                 </div>
               )}
 
-              {/* Tech Stack Badges */}
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                <div className="text-center p-4 bg-gray-50 rounded-xl">
-                  <div className="text-2xl font-bold mb-1">Next.js 15</div>
-                  <div className="text-sm text-gray-600">Framework</div>
-                </div>
-                <div className="text-center p-4 bg-gray-50 rounded-xl">
-                  <div className="text-2xl font-bold mb-1">TypeScript</div>
-                  <div className="text-sm text-gray-600">Language</div>
-                </div>
-                <div className="text-center p-4 bg-gray-50 rounded-xl">
-                  <div className="text-2xl font-bold mb-1">Tailwind</div>
-                  <div className="text-sm text-gray-600">Styling</div>
-                </div>
-                <div className="text-center p-4 bg-gray-50 rounded-xl">
-                  <div className="text-2xl font-bold mb-1">Responsive</div>
-                  <div className="text-sm text-gray-600">Design</div>
-                </div>
+              {/* Tech stack badges */}
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                {[
+                  { label: "Framework", value: "Next.js 15" },
+                  { label: "Language", value: "TypeScript" },
+                  { label: "Styling", value: "Tailwind CSS" },
+                  { label: "Design", value: "Responsive" },
+                ].map((item, i) => (
+                  <div
+                    key={i}
+                    className="text-center p-5 bg-white/60 border border-gray-200 rounded-2xl hover:bg-white/80 transition-colors"
+                  >
+                    <div className="text-lg font-semibold text-gray-900 mb-1">
+                      {item.value}
+                    </div>
+                    <div className="text-sm text-gray-600">{item.label}</div>
+                  </div>
+                ))}
               </div>
 
-              {/* Tech Details */}
+              {/* Technical details */}
               {template.tech && (
                 <div className="grid md:grid-cols-2 gap-6">
                   {template.tech.map((tech, i) => {
@@ -216,10 +257,10 @@ export default function ProductPage({ template, purchases }: ProductPageProps) {
                     return (
                       <div
                         key={i}
-                        className="flex items-start gap-4 p-4 bg-gray-50 rounded-xl"
+                        className="flex items-start gap-4 p-5 bg-white/60 border border-gray-200 rounded-2xl hover:bg-white/80 transition-colors"
                       >
-                        <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                          <Check className="w-4 h-4 text-blue-600" />
+                        <div className="w-9 h-9 bg-indigo-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                          <Check className="w-4 h-4 text-indigo-600" />
                         </div>
                         <div>
                           <h3 className="font-semibold text-gray-900">
@@ -238,73 +279,29 @@ export default function ProductPage({ template, purchases }: ProductPageProps) {
           </div>
         </section>
 
-        <section className="mb-16">
-          <div
-            className={`grid ${template.structure ? "md:grid-cols-2" : "grid-cols-1"} gap-8`}
-          >
-            {/* Colonne gauche : Features */}
-            <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">
-                Premium Features
-              </h2>
-              <div
-                className={`grid ${template.structure ? "grid-cols-1" : "md:grid-cols-2"} gap-6`}
-              >
-                {template.extras?.map((feature, idx) => {
-                  const { title, description } = parseDescriptionText(feature);
-                  return (
-                    <div
-                      key={idx}
-                      className="flex items-start gap-4 p-4 bg-gray-50 rounded-xl"
-                    >
-                      <div>
-                        <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                          {title}
-                        </h3>
-                        <p className="text-gray-600 text-sm">{description}</p>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-            {/* Colonne droite : File Explorer */}
-            {template.structure && (
-              <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">
-                  Project Structure
-                </h2>
-                <pre className="bg-gray-50 rounded-xl p-4 text-sm text-gray-800 overflow-x-auto">
-                  {template.structure}
-                </pre>
-              </div>
-            )}
-          </div>
-        </section>
-
         {template.variants && <PricingSection variants={template.variants} />}
         <PaymentMethodSection />
         <FaqAccordion />
 
-        {/* Final CTA */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 rounded-3xl p-12 text-white">
+        <section className="relative overflow-hidden rounded-3xl bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 py-20 text-white mt-0 md:mt-12">
+          {/* Glow background */}
           <div className="absolute inset-0">
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10"></div>
-            <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-cyan-400/20 to-blue-400/20 rounded-full -translate-y-48 translate-x-48 blur-3xl"></div>
-            <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-br from-purple-400/20 to-pink-400/20 rounded-full translate-y-40 -translate-x-40 blur-3xl"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 via-blue-500/10 to-transparent" />
+            <div className="absolute top-1/2 left-1/2 w-[800px] h-[800px] -translate-x-1/2 -translate-y-1/2 bg-blue-600/20 blur-[120px] rounded-full" />
           </div>
 
-          <div className="relative z-10 text-center space-y-8">
-            <h2 className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+          <div className="relative z-10 text-center space-y-10 px-6">
+            <h2 className="text-4xl lg:text-5xl font-bold tracking-tight bg-gradient-to-r from-white via-indigo-200 to-blue-200 bg-clip-text text-transparent">
               Start Building Today
             </h2>
 
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed">
               Production-ready code, modern architecture, and everything you
-              need to ship fast
+              need to ship faster.
             </p>
 
-            <div className="flex flex-col gap-4 justify-center items-center max-w-md mx-auto">
+            {/* CTA buttons */}
+            <div className="flex flex-col sm:flex-row justify-center gap-4 max-w-md mx-auto">
               <DynamicBuyButton template={template} purchases={purchases} />
               {template.demoUrl && (
                 <Link
@@ -314,7 +311,7 @@ export default function ProductPage({ template, purchases }: ProductPageProps) {
                 >
                   <Button
                     variant="outline"
-                    className="w-full min-h-[56px] px-8 py-4 text-lg border-2 border-gray-200 hover:border-blue-300 text-gray-700 hover:text-blue-700 hover:bg-blue-50 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full min-h-[56px] px-8 py-4 text-lg border border-gray-600 text-gray-800 hover:bg-white/10 hover:border-gray-400 hover:text-white transition-all duration-300 flex items-center justify-center gap-2"
                   >
                     <Eye className="w-5 h-5" />
                     Live Demo
@@ -323,19 +320,18 @@ export default function ProductPage({ template, purchases }: ProductPageProps) {
               )}
             </div>
 
-            <div className="flex items-center justify-center gap-8 text-sm text-gray-400 pt-6">
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                Instant Download
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
-                TypeScript Ready
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
-                Next.js 15
-              </div>
+            {/* Small highlights */}
+            <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-400 pt-8">
+              {[
+                { color: "bg-green-400", label: "Instant Download" },
+                { color: "bg-blue-400", label: "TypeScript Ready" },
+                { color: "bg-purple-400", label: "Next.js 15" },
+              ].map((item, i) => (
+                <div key={i} className="flex items-center gap-2">
+                  <div className={`w-2 h-2 ${item.color} rounded-full`} />
+                  {item.label}
+                </div>
+              ))}
             </div>
           </div>
         </section>

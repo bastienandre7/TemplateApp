@@ -52,10 +52,10 @@ export default function DynamicBuyButton({
       className={`w-full px-8 py-4 text-lg min-h-[56px] shadow-xl hover:shadow-2xl transform transition-all duration-300 cursor-pointer ${
         variant === "dark"
           ? "bg-white text-slate-900 hover:bg-gray-100"
-          : "bg-chart-2 hover:bg-foreground text-white"
+          : "bg-primary hover:bg-foreground text-white"
       }`}
     >
-      See Pricing Options
+      Purchase Now
     </Button>
   );
 }

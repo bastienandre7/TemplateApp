@@ -6,11 +6,13 @@ import Link from "next/link";
 interface PricingBuyButtonProps {
   link: string;
   label: string;
+  buttonClass?: string; // <-- nouvelle prop pour personnaliser la couleur du bouton
 }
 
 export default function PricingBuyButton({
   link,
   label,
+  buttonClass,
 }: PricingBuyButtonProps) {
   const { status, data } = useSession();
 
@@ -18,7 +20,9 @@ export default function PricingBuyButton({
   const email = data?.user?.email;
   const linkWithEmail =
     email && link.includes("lemonsqueezy.com")
-      ? `${link}${link.includes("?") ? "&" : "?"}checkout[email]=${encodeURIComponent(email)}`
+      ? `${link}${link.includes("?") ? "&" : "?"}checkout[email]=${encodeURIComponent(
+          email
+        )}`
       : link;
 
   const handleClick = () => {
@@ -30,7 +34,7 @@ export default function PricingBuyButton({
   return (
     <Button
       variant="default"
-      className="w-full py-6 my-2 text-lg"
+      className={`w-full py-6 my-4 font-semibold text-lg ${buttonClass ?? ""}`}
       asChild={status === "authenticated"}
       onClick={handleClick}
       disabled={status === "loading"}

@@ -17,17 +17,33 @@ interface PricingSectionProps {
   variants: Variants;
 }
 
-const licenseIcons = {
-  solo: <Crown className="w-6 h-6 text-yellow-500 mb-2" />,
-  studio: <Users className="w-6 h-6 text-blue-500 mb-2" />,
-  unlimited: <Infinity className="w-6 h-6 text-purple-700 mb-2" />,
+// styles pour chaque licence (utilise les couleurs de la card)
+const licenseStyles = {
+  solo: {
+    iconClass: "text-yellow-500",
+    borderClass: "border-yellow-300",
+    titleClass: "text-yellow-700",
+    buttonClass: "bg-yellow-600 text-white hover:bg-yellow-700",
+  },
+  studio: {
+    iconClass: "text-blue-500",
+    borderClass: "border-blue-300",
+    titleClass: "text-blue-700",
+    buttonClass: "bg-blue-600 text-white hover:bg-blue-700",
+  },
+  unlimited: {
+    iconClass: "text-purple-700",
+    borderClass: "border-purple-300",
+    titleClass: "text-purple-700",
+    buttonClass: "bg-purple-600 text-white hover:bg-purple-700",
+  },
 };
 
 export default function PricingSection({ variants }: PricingSectionProps) {
   return (
     <section id="pricing-section" className="py-12">
       <div className="">
-        <div className="text-center pb-6">
+        <div className="text-center pb-12">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">
             Launch Faster with a One-Time License
           </h2>
@@ -42,9 +58,15 @@ export default function PricingSection({ variants }: PricingSectionProps) {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Solo License */}
           {variants.solo && (
-            <div className="p-8 bg-white border border-yellow-300 shadow-xl rounded-2xl text-center flex flex-col items-center hover:shadow-2xl transition">
-              {licenseIcons.solo}
-              <div className="font-bold text-xl mb-2 text-yellow-700">
+            <div
+              className={`p-8 bg-white border ${licenseStyles.solo.borderClass} shadow-xl rounded-2xl text-center flex flex-col items-center hover:shadow-2xl transition`}
+            >
+              <Crown
+                className={`w-6 h-6 ${licenseStyles.solo.iconClass} mb-2`}
+              />
+              <div
+                className={`font-bold text-xl mb-2 ${licenseStyles.solo.titleClass}`}
+              >
                 Solo License
               </div>
               <div className="text-4xl font-extrabold mb-2 text-gray-900 flex items-center justify-center gap-2">
@@ -53,7 +75,11 @@ export default function PricingSection({ variants }: PricingSectionProps) {
                   /Lifetime
                 </span>
               </div>
-              <PricingBuyButton link={variants.solo.link} label="Buy Now" />
+              <PricingBuyButton
+                link={variants.solo.link}
+                label="Buy Now"
+                buttonClass={licenseStyles.solo.buttonClass}
+              />
               <ul className="mt-2 text-left text-sm text-gray-700 space-y-3 w-full">
                 <li className="flex items-center">
                   <Check className="text-green-500 mr-2" /> Instant Access to
@@ -86,9 +112,15 @@ export default function PricingSection({ variants }: PricingSectionProps) {
           )}
           {/* Studio License */}
           {variants.studio && (
-            <div className="p-8 bg-white border border-blue-300 shadow-xl rounded-2xl text-center flex flex-col items-center hover:shadow-2xl transition">
-              {licenseIcons.studio}
-              <div className="font-bold text-xl mb-2 text-blue-700">
+            <div
+              className={`p-8 bg-gradient-to-br from-blue-50 to-white md:scale-105 ring-2 ring-blue-300 border ${licenseStyles.studio.borderClass} shadow-xl rounded-2xl text-center flex flex-col items-center hover:shadow-2xl transition`}
+            >
+              <Users
+                className={`w-6 h-6 ${licenseStyles.studio.iconClass} mb-2`}
+              />
+              <div
+                className={`font-bold text-xl mb-2 ${licenseStyles.studio.titleClass}`}
+              >
                 Studio License
               </div>
               <div className="text-4xl font-extrabold mb-2 text-gray-900 flex items-center justify-center gap-2">
@@ -97,7 +129,11 @@ export default function PricingSection({ variants }: PricingSectionProps) {
                   /Lifetime
                 </span>
               </div>
-              <PricingBuyButton link={variants.studio.link} label="Buy Now" />
+              <PricingBuyButton
+                link={variants.studio.link}
+                label="Buy Now"
+                buttonClass={licenseStyles.studio.buttonClass}
+              />
               <ul className="mt-2 text-left text-sm text-gray-700 space-y-3 w-full">
                 <li className="flex items-center">
                   <Check className="text-green-500 mr-2" /> Instant Access to
@@ -130,9 +166,15 @@ export default function PricingSection({ variants }: PricingSectionProps) {
           )}
           {/* Unlimited License */}
           {variants.unlimited && (
-            <div className="p-8 bg-white border border-purple-300 shadow-xl rounded-2xl text-center flex flex-col items-center hover:shadow-2xl transition">
-              {licenseIcons.unlimited}
-              <div className="font-bold text-xl mb-2 text-purple-700">
+            <div
+              className={`p-8 bg-white border ${licenseStyles.unlimited.borderClass} shadow-xl rounded-2xl text-center flex flex-col items-center hover:shadow-2xl transition`}
+            >
+              <Infinity
+                className={`w-6 h-6 ${licenseStyles.unlimited.iconClass} mb-2`}
+              />
+              <div
+                className={`font-bold text-xl mb-2 ${licenseStyles.unlimited.titleClass}`}
+              >
                 Unlimited License
               </div>
               <div className="text-4xl font-extrabold mb-2 text-gray-900 flex items-center justify-center gap-2">
@@ -144,6 +186,7 @@ export default function PricingSection({ variants }: PricingSectionProps) {
               <PricingBuyButton
                 link={variants.unlimited.link}
                 label="Buy Unlimited"
+                buttonClass={licenseStyles.unlimited.buttonClass}
               />
               <ul className="mt-2 text-left text-sm text-gray-700 space-y-3 w-full">
                 <li className="flex items-center">
@@ -178,14 +221,12 @@ export default function PricingSection({ variants }: PricingSectionProps) {
         </div>
       </div>
       <div className="mt-12 text-center">
-        <div className="inline-flex items-center gap-2 px-6 py-5 rounded-full bg-white shadow-lg">
-          <span className="text-lg font-semibold">
-            Get this template{" "}
-            <span className="font-bold">plus every other template</span> with
-            the{" "}
+        <div className="inline-flex items-center gap-2 px-6 py-5 rounded-full bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 shadow-lg text-gray-900 border border-gray-200">
+          <span>
+            Get this template plus every other template with the{" "}
             <Link
               href="/bundle/ultimate"
-              className="underline font-bold hover:text-yellow-300 transition"
+              className="underline font-semibold hover:text-yellow-600 transition"
             >
               All-Access Pass
             </Link>{" "}
