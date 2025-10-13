@@ -10,22 +10,21 @@ export async function generateStaticParams() {
   return components.map((comp) => ({ slug: comp.slug }));
 }
 
-// Générer les métadonnées dynamiquement
 export async function generateMetadata({
-  params,
+  params: paramsPromise,
 }: {
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  const { slug } = await params;
-  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/components/${slug}`);
-  if (!res.ok) {
+  const { slug } = await paramsPromise;
+  const comp = await prisma.component.findUnique({
+    where: { slug },
+  });
+  if (!comp) {
     return {
       title: "Component Not Found | BloomTPL",
       description: "The component you're looking for doesn't exist.",
     };
   }
-  const comp = await res.json();
-
   return {
     title: `${comp.name} - Free React Component | BloomTPL`,
     description: `${comp.description} Copy this free component built with React and Tailwind CSS.`,
@@ -45,7 +44,7 @@ export async function generateMetadata({
       title: `${comp.name} - Free React Component`,
       description: `${comp.description} Built with React and Tailwind CSS.`,
       type: "article",
-      url: `https://bloomtpl.com/nextjs-components/${slug}`,
+      url: `https://bloomtpl.com/nextjs-components/${comp.slug}`,
       images: [
         {
           url: comp.image,
@@ -62,23 +61,23 @@ export async function generateMetadata({
       images: [comp.image],
     },
     alternates: {
-      canonical: `https://bloomtpl.com/nextjs-components/${slug}`,
+      canonical: `https://bloomtpl.com/nextjs-components/${comp.slug}`,
     },
   };
 }
 
-// Server Component principal
 export default async function ComponentDetailPage({
-  params,
+  params: paramsPromise,
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const { slug } = await params;
-  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/components/${slug}`);
-  if (!res.ok) {
+  const { slug } = await paramsPromise;
+
+  const comp = await prisma.component.findUnique({
+    where: { slug },
+  });
+  if (!comp) {
     notFound();
   }
-  const comp = await res.json();
-
   return <ComponentDetailClient component={comp} />;
 }

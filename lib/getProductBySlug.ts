@@ -1,4 +1,4 @@
-import type { Product } from "@/components/Template/ProductPage";
+import type { Product } from "@/components/TemplateDetails/ProductPage";
 import { prisma } from "@/lib/prisma";
 
 export const getProductBySlug = async (slug: string) => {

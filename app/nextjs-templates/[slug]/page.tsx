@@ -1,5 +1,5 @@
 import { authOptions } from "@/auth";
-import ProductPage from "@/components/Template/ProductPage";
+import ProductPage from "@/components/TemplateDetails/ProductPage";
 import { getProductBySlug } from "@/lib/getProductBySlug";
 import { getPurchasesByEmail } from "@/lib/getPurchasesByEmail";
 import { prisma } from "@/lib/prisma";

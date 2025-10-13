@@ -43,7 +43,7 @@ export default function LicensePage() {
       {/* Hero Section */}
       <div className="pt-32 pb-16 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center bg-gradient-to-r from-purple-100 to-purple-50 border border-purple-200 text-purple-700 px-4 py-2 rounded-full text-sm font-medium shadow-sm mb-8">
+          <div className="inline-flex items-center bg-primary/10 border border-primary text-primary px-4 py-2 rounded-full text-sm font-medium shadow-sm mb-8">
             <svg
               className="w-4 h-4 mr-2"
               fill="none"
@@ -93,63 +93,57 @@ export default function LicensePage() {
                 </svg>
                 What You Can Do
               </h2>
-              <div className="grid md:grid-cols-2 gap-4 text-sm text-green-800">
-                <div className="flex items-start">
-                  <svg
-                    className="w-4 h-4 mr-2 mt-0.5 text-green-600"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  Use for unlimited personal projects
-                </div>
-                <div className="flex items-start">
-                  <svg
-                    className="w-4 h-4 mr-2 mt-0.5 text-green-600"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  Use for unlimited commercial projects
-                </div>
-                <div className="flex items-start">
-                  <svg
-                    className="w-4 h-4 mr-2 mt-0.5 text-green-600"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  Modify and customize as needed
-                </div>
-                <div className="flex items-start">
-                  <svg
-                    className="w-4 h-4 mr-2 mt-0.5 text-green-600"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  Create client work and charge for it
-                </div>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm text-green-800 border-collapse">
+                  <thead>
+                    <tr className="bg-green-100">
+                      <th className="py-2 px-4 font-semibold text-left">
+                        License Type
+                      </th>
+                      <th className="py-2 px-4 font-semibold text-left">
+                        Allowed Projects
+                      </th>
+                      <th className="py-2 px-4 font-semibold text-left">
+                        Commercial Use
+                      </th>
+                      <th className="py-2 px-4 font-semibold text-left">
+                        Client Work
+                      </th>
+                      <th className="py-2 px-4 font-semibold text-left">
+                        Lifetime Updates
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="py-2 px-4 font-bold text-yellow-700">
+                        Solo
+                      </td>
+                      <td className="py-2 px-4">1 project</td>
+                      <td className="py-2 px-4">✔️</td>
+                      <td className="py-2 px-4">✔️</td>
+                      <td className="py-2 px-4">✔️</td>
+                    </tr>
+                    <tr>
+                      <td className="py-2 px-4 font-bold text-blue-700">
+                        Studio
+                      </td>
+                      <td className="py-2 px-4">Up to 5 projects</td>
+                      <td className="py-2 px-4">✔️</td>
+                      <td className="py-2 px-4">✔️</td>
+                      <td className="py-2 px-4">✔️</td>
+                    </tr>
+                    <tr>
+                      <td className="py-2 px-4 font-bold text-purple-700">
+                        Unlimited
+                      </td>
+                      <td className="py-2 px-4">Unlimited projects</td>
+                      <td className="py-2 px-4">✔️</td>
+                      <td className="py-2 px-4">✔️</td>
+                      <td className="py-2 px-4">✔️</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
 
@@ -262,7 +256,7 @@ export default function LicensePage() {
             </div>
 
             {/* Contact Section */}
-            <div className="mt-12 p-6 bg-purple-50 border border-purple-200 rounded-xl">
+            <div className="mt-12 p-6 bg-primary/10 border border-primary rounded-xl">
               <h3 className="text-xl font-semibold text-gray-900 mb-4">
                 Questions About Licensing?
               </h3>

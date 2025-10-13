@@ -1,4 +1,10 @@
+import DynamicBuyButton from "@/components/TemplateDetails/DynamicBuyButton";
+import FaqAccordion from "@/components/TemplateDetails/FaqAccordion";
+import PaymentMethodSection from "@/components/TemplateDetails/PaymentMethodSection";
+import PricingSection from "@/components/TemplateDetails/PricingSection";
+import ProjectStructureModal from "@/components/TemplateDetails/ProjectStructureModal";
 import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 import {
   BookOpen,
   CalendarCheck,
@@ -10,12 +16,6 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
-import { Separator } from "../ui/separator";
-import FaqAccordion from "./FaqAccordion";
-import PaymentMethodSection from "./PaymentMethodSection";
-import DynamicBuyButton from "./details/DynamicBuyButton";
-import PricingSection from "./details/PricingSection";
-import ProjectStructureModal from "./details/ProjectStructureModal";
 
 export interface Product {
   id: number;

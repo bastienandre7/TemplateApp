@@ -1,8 +1,23 @@
-import CategoryPage from "@/components/Template/category/CategoryPage";
+import CategoryPage from "@/components/TemplateCategory/CategoryPage";
+import { prisma } from "@/lib/prisma";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-
-import { prisma } from "@/lib/prisma";
+// Define Product type (adjust fields as needed or import from your types module)
+type Product = {
+  id: number;
+  name: string;
+  description?: string;
+  price: number;
+  imageUrl: string;
+  demoUrl?: string;
+  lemonLink: string;
+  type: "template" | "component";
+  category: string;
+  categories: string;
+  slug?: string;
+  created_at: string;
+  openGraphImage?: string;
+};
 
 export async function generateStaticParams() {
   const categories = await prisma.template.findMany({
@@ -111,16 +126,35 @@ export default async function Category({
 }) {
   const { category } = await paramsPromise;
 
-  const res = await fetch(
-    `${process.env.NEXTAUTH_URL}/api/products/category/${category}`,
-    { next: { revalidate: 60 } }
-  );
+  const templatesRaw = await prisma.template.findMany({
+    where: {
+      categoriesSlugs: { has: category },
+    },
+    orderBy: { updatedAt: "desc" },
+  });
 
-  if (!res.ok) {
+  if (!templatesRaw || templatesRaw.length === 0) {
     notFound();
   }
 
-  const templates = await res.json();
+  // Transforme les objets pour matcher le type Product
+  const templates: Product[] = templatesRaw.map((tpl) => ({
+    id: tpl.id,
+    name: tpl.name,
+    description: tpl.description ?? "",
+    price: tpl.price ?? 0,
+    imageUrl:
+      tpl.openGraphImage ?? tpl.performanceImage ?? "/images/NoImage.jpg",
+    demoUrl: tpl.demoUrl ?? "",
+    lemonLink: tpl.lemonLink ?? "",
+    type: "template",
+    category: tpl.category ?? "",
+    categories: Array.isArray(tpl.categories) ? tpl.categories.join(", ") : "",
+    slug: tpl.slug,
+    created_at: tpl.createdAt ? tpl.createdAt.toISOString() : "",
+    openGraphImage: tpl.openGraphImage ?? undefined,
+    // Ajoute d'autres champs si besoin
+  }));
 
   return <CategoryPage products={templates} category={unslugify(category)} />;
 }

@@ -162,7 +162,10 @@ export default function CategoryPage({
           </div>
         </div>
       </section>
-      <div id="templates" className="w-full mx-auto text-black relative pb-24">
+      <div
+        id="templates"
+        className="w-full mx-auto text-black relative pb-24 max-w-7xl"
+      >
         <div className="relative z-10 px-4">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
@@ -386,9 +389,7 @@ export default function CategoryPage({
                                 }
                               >
                                 <Link href={`/nextjs-templates/${item.slug}`}>
-                                  {item.price === 0
-                                    ? "Free"
-                                    : `Buy Now - $${item.price}`}
+                                  {item.price === 0 ? "Free" : `Buy Now`}
                                 </Link>
                               </Button>
                             )}

@@ -26,7 +26,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import FaqAccordion from "../Template/FaqAccordion";
+import FaqAccordion from "../TemplateDetails/FaqAccordion";
 import { Button } from "../ui/button";
 
 export default function LandingPage() {
@@ -375,9 +375,7 @@ export default function LandingPage() {
                     </Link>
                   </Button>
                   <Button className="flex-1" asChild>
-                    <Link href={template.link}>
-                      Buy Now - ${template.price}
-                    </Link>
+                    <Link href={template.link}>Buy Now</Link>
                   </Button>
                 </CardFooter>
               </Card>

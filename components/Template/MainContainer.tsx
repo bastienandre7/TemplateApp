@@ -340,9 +340,7 @@ export default function MainContainer({ products }: { products: Product[] }) {
                               }
                             >
                               <Link href={`/nextjs-templates/${item.slug}`}>
-                                {Number(item.price) === 0
-                                  ? "Free"
-                                  : `Buy Now - $${item.price}`}
+                                {Number(item.price) === 0 ? "Free" : `Buy Now`}
                               </Link>
                             </Button>
                           )}
