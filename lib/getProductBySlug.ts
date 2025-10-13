@@ -1,3 +1,4 @@
+import type { Product } from "@/components/Template/ProductPage";
 import { prisma } from "@/lib/prisma";
 
 export const getProductBySlug = async (slug: string) => {
@@ -27,6 +28,35 @@ export const getProductBySlug = async (slug: string) => {
 
   if (!tpl) return null;
 
+  // Correction ici : parser variants si c'est une string
+  let parsedVariants: Product["variants"] | undefined = undefined;
+  if (tpl.variants) {
+    if (typeof tpl.variants === "string") {
+      try {
+        const parsed = JSON.parse(tpl.variants);
+        if (
+          typeof parsed === "object" &&
+          parsed !== null &&
+          "solo" in parsed &&
+          "studio" in parsed &&
+          "unlimited" in parsed
+        ) {
+          parsedVariants = parsed as Product["variants"];
+        }
+      } catch {
+        parsedVariants = undefined;
+      }
+    } else if (
+      typeof tpl.variants === "object" &&
+      tpl.variants !== null &&
+      "solo" in tpl.variants &&
+      "studio" in tpl.variants &&
+      "unlimited" in tpl.variants
+    ) {
+      parsedVariants = tpl.variants as unknown as Product["variants"];
+    }
+  }
+
   return {
     id: tpl.id,
     name: tpl.name,
@@ -53,6 +83,6 @@ export const getProductBySlug = async (slug: string) => {
     performanceImage: tpl.performanceImage || undefined,
     docLink: tpl.docLink || undefined,
     structure: tpl.structure || undefined,
-    variants: tpl.variants || undefined,
+    variants: parsedVariants,
   };
 };

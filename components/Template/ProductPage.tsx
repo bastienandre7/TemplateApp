@@ -17,7 +17,7 @@ import DynamicBuyButton from "./details/DynamicBuyButton";
 import PricingSection from "./details/PricingSection";
 import WhatYouGetSection from "./details/WhatYouGetSection";
 
-interface Product {
+export interface Product {
   id: number;
   name: string;
   description?: string;
