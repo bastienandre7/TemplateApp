@@ -81,7 +81,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/bundle/ultimate`,
+      url: `${baseUrl}/all-access-pass`,
       lastModified: new Date(),
       changeFrequency: "weekly" as const,
       priority: 0.9,
