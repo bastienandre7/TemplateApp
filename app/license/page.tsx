@@ -147,6 +147,77 @@ export default function LicensePage() {
               </div>
             </div>
 
+            {/* All Access Pass Licenses */}
+            <div className="mb-12 p-6 bg-blue-50 border border-blue-200 rounded-xl">
+              <h2 className="text-xl font-bold text-blue-900 mb-4 flex items-center">
+                <svg
+                  className="w-6 h-6 mr-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 4v16m8-8H4"
+                  />
+                </svg>
+                All Access Pass Licenses
+              </h2>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm text-blue-800 border-collapse">
+                  <thead>
+                    <tr className="bg-blue-100">
+                      <th className="py-2 px-4 font-semibold text-left">
+                        License
+                      </th>
+                      <th className="py-2 px-4 font-semibold text-left">
+                        Projects Allowed
+                      </th>
+                      <th className="py-2 px-4 font-semibold text-left">
+                        Commercial Use
+                      </th>
+                      <th className="py-2 px-4 font-semibold text-left">
+                        Lifetime Updates
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="py-2 px-4 font-bold text-yellow-700">
+                        Solo
+                      </td>
+                      <td className="py-2 px-4">1 per template</td>
+                      <td className="py-2 px-4">✔️</td>
+                      <td className="py-2 px-4">✔️</td>
+                    </tr>
+                    <tr>
+                      <td className="py-2 px-4 font-bold text-blue-700">
+                        Studio
+                      </td>
+                      <td className="py-2 px-4">5 per template</td>
+                      <td className="py-2 px-4">✔️</td>
+                      <td className="py-2 px-4">✔️</td>
+                    </tr>
+                    <tr>
+                      <td className="py-2 px-4 font-bold text-purple-700">
+                        Unlimited
+                      </td>
+                      <td className="py-2 px-4">Unlimited</td>
+                      <td className="py-2 px-4">✔️</td>
+                      <td className="py-2 px-4">✔️</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p className="mt-4 text-blue-900 text-sm">
+                The All Access Pass gives you lifetime access to all current and
+                future BloomTPL templates, with the license of your choice. See
+                above for details on each license.
+              </p>
+            </div>
+
             {/* Detailed License Terms */}
             <div className="prose prose-lg max-w-none">
               <h2 className="text-2xl font-bold text-gray-900 mb-6">

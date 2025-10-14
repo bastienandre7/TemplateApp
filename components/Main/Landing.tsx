@@ -499,43 +499,56 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section className="py-14 md:py-20 lg:py-24 bg-gradient-to-br from-yellow-50 to-orange-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center">
-          <div className="inline-flex items-center px-4 py-2 bg-yellow-200 text-yellow-900 rounded-full text-sm font-medium mb-6">
-            <Sparkles className="w-4 h-4 mr-2" />
-            Special Offer
+      <section className="relative py-24 border-t border-b border-slate-200">
+        {/* Subtle grid background */}
+        <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(to_right,rgba(226,232,240,.4)_1px,transparent_1px),linear-gradient(to_bottom,rgba(226,232,240,.4)_1px,transparent_1px)] bg-[size:48px_48px]" />
+
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 text-center">
+          <div className="inline-flex items-center px-4 py-1.5 bg-slate-100 text-slate-700 rounded-full text-sm font-medium mb-6">
+            <Sparkles className="w-4 h-4 mr-2 text-yellow-600" />
+            Limited Time Offer
           </div>
 
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
-            Get All Templates in One Powerful Bundle
+          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-slate-900 mb-5">
+            Get Access to <span className="text-slate-700">Every Template</span>{" "}
+            for One Price
           </h2>
 
-          <p className="text-lg text-gray-700 max-w-2xl mx-auto mb-8">
-            Access <strong>All premium templates</strong> including SaaS,
-            eCommerce, Portfolio, Blog & more – all for{" "}
-            <strong className="text-green-600">just $49.99</strong>.
+          <p className="text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto mb-10">
+            Unlock <strong>all premium BloomTPL templates</strong> — including
+            SaaS, eCommerce, Portfolio, and more — for{" "}
+            <span className="text-slate-900 font-semibold">$49.99</span>.
+            Lifetime access, future updates included.
           </p>
 
-          <Link
-            href="/bundle/ultimate"
-            className="inline-flex items-center gap-2 bg-yellow-500 text-white px-8 py-4 rounded-xl text-lg font-bold hover:bg-yellow-600 transition-all hover:scale-105 shadow-lg"
-          >
-            View the Bundle
-            <ArrowRight className="w-5 h-5" />
-          </Link>
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <Link
+              href="/all-access-pass"
+              className="inline-flex items-center justify-center rounded-full bg-slate-900 text-white px-8 py-4 text-base font-semibold shadow-sm hover:bg-slate-800 transition-colors"
+            >
+              Get the All Access Pass
+              <ArrowRight className="w-5 h-5 ml-2" />
+            </Link>
+            <Link
+              href="/nextjs-templates"
+              className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white/60 backdrop-blur-sm text-slate-900 px-8 py-4 text-base font-semibold hover:bg-white transition-colors"
+            >
+              Browse Templates
+            </Link>
+          </div>
 
-          <div className="mt-6 flex flex-col sm:flex-row justify-center items-center gap-6 text-sm text-gray-600">
+          <div className="mt-12 flex flex-col sm:flex-row justify-center items-center gap-6 text-slate-600 text-sm">
             <div className="flex items-center gap-2">
               <Check className="w-4 h-4 text-green-500" />
-              Lifetime access
-            </div>
-            <div className="flex items-center gap-2">
-              <Check className="w-4 h-4 text-green-500" />
-              Future templates included
+              Lifetime updates
             </div>
             <div className="flex items-center gap-2">
               <Check className="w-4 h-4 text-green-500" />
               Commercial license
+            </div>
+            <div className="flex items-center gap-2">
+              <Check className="w-4 h-4 text-green-500" />
+              New templates every month
             </div>
           </div>
         </div>

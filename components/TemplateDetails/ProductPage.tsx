@@ -11,6 +11,7 @@ import {
   Check,
   Eye,
   Monitor,
+  Smartphone,
   Zap,
 } from "lucide-react";
 import Image from "next/image";
@@ -232,15 +233,58 @@ export default function ProductPage({ template, purchases }: ProductPageProps) {
               {/* Tech stack badges */}
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
                 {[
-                  { label: "Framework", value: "Next.js 15" },
-                  { label: "Language", value: "TypeScript" },
-                  { label: "Styling", value: "Tailwind CSS" },
-                  { label: "Design", value: "Responsive" },
+                  {
+                    label: "Framework",
+                    value: "Next.js 15",
+                    icon: (
+                      <Image
+                        src="/svg/nextjs-icon.svg"
+                        alt="Next.js"
+                        width={32}
+                        height={32}
+                        className="mx-auto mb-2"
+                      />
+                    ),
+                  },
+                  {
+                    label: "Language",
+                    value: "TypeScript",
+                    icon: (
+                      <Image
+                        src="/svg/typescript.svg"
+                        alt="TypeScript"
+                        width={32}
+                        height={32}
+                        className="mx-auto mb-2"
+                      />
+                    ),
+                  },
+                  {
+                    label: "Styling",
+                    value: "Tailwind CSS",
+                    icon: (
+                      <Image
+                        src="/svg/tailwind.svg"
+                        alt="Tailwind CSS"
+                        width={32}
+                        height={32}
+                        className="mx-auto mb-2"
+                      />
+                    ),
+                  },
+                  {
+                    label: "Design",
+                    value: "Responsive",
+                    icon: (
+                      <Smartphone className="mx-auto mb-2 w-8 h-8 text-slate-500" />
+                    ),
+                  },
                 ].map((item, i) => (
                   <div
                     key={i}
                     className="text-center p-5 bg-white/60 border border-gray-200 rounded-2xl hover:bg-white/80 transition-colors"
                   >
+                    {item.icon}
                     <div className="text-lg font-semibold text-gray-900 mb-1">
                       {item.value}
                     </div>

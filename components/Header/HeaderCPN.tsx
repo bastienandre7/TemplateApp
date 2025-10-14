@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import PromoBanner from "../layout/PromoBanner";
+import { Button } from "../ui/button";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -22,11 +23,11 @@ export default function HeaderCPN() {
   const { isFixed } = useScrollHeader();
 
   const navLinks = [
+    { name: "All Access Pass", path: "/all-access-pass" },
     { name: "Templates", path: "/nextjs-templates" },
     { name: "Components", path: "/nextjs-components" },
     { name: "AI Builder", path: "/ai-builder" },
     { name: "Pricing", path: "/pricing" },
-    { name: "Bundle", path: "/bundle/ultimate" },
     { name: "Docs", path: "/docs" },
     { name: "Contact", path: "/contact" },
   ];
@@ -226,14 +227,6 @@ export default function HeaderCPN() {
                     asChild
                     className={navigationMenuTriggerStyle()}
                   >
-                    <Link href="/bundle/ultimate">Bundle</Link>
-                  </NavigationMenuLink>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <NavigationMenuLink
-                    asChild
-                    className={navigationMenuTriggerStyle()}
-                  >
                     <Link href="/contact">Contact</Link>
                   </NavigationMenuLink>
                 </NavigationMenuItem>
@@ -303,10 +296,18 @@ export default function HeaderCPN() {
           {/* Bouton de connexion et menu mobile */}
           <div className="flex items-center space-x-2 rtl:space-x-reverse">
             <AuthButton />
+            <Button
+              variant="outline"
+              className="hidden md:flex ml-2 border-violet-200 text-violet-700 hover:bg-violet-50"
+              asChild
+            >
+              <Link href="/all-access-pass">All Access Pass</Link>
+            </Button>
+
             <button
               type="button"
               onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center p-2 pr-0 w-10 h-10 justify-center text-gray-600 rounded-lg lg:hidden hover:bg-purple-50 hover:text-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-200 transition-all duration-200"
+              className="inline-flex items-center py-2 pr-0 w-10 h-10 justify-center text-gray-600 rounded-lg lg:hidden hover:bg-purple-50 hover:text-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-200 transition-all duration-200"
               aria-expanded={isOpen}
             >
               <span className="sr-only">Open main menu</span>

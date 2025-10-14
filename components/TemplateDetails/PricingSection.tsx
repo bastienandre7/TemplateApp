@@ -225,7 +225,7 @@ export default function PricingSection({ variants }: PricingSectionProps) {
           <span>
             Get this template plus every other template with the{" "}
             <Link
-              href="/bundle/ultimate"
+              href="/all-access-pass"
               className="underline font-semibold hover:text-yellow-600 transition"
             >
               All-Access Pass
