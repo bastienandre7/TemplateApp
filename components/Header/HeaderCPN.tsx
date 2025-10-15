@@ -24,7 +24,7 @@ export default function HeaderCPN() {
 
   const navLinks = [
     { name: "All Access Pass", path: "/all-access-pass" },
-    { name: "Templates", path: "/nextjs-templates" },
+    { name: "Next.js Templates", path: "/nextjs-templates" },
     { name: "Components", path: "/nextjs-components" },
     { name: "AI Builder", path: "/ai-builder" },
     { name: "Pricing", path: "/pricing" },
@@ -86,6 +86,12 @@ export default function HeaderCPN() {
       href: "/nextjs-templates/category/agency",
       description:
         "Professional Next.js agency templates with portfolios, services, team sections, and client testimonials for creative agencies.",
+    },
+    {
+      title: "Free Templates",
+      href: "/nextjs-templates/category/free",
+      description:
+        "Explore our collection of free Next.js templates, built with modern design and best practices in mind.",
     },
   ];
 
@@ -416,7 +422,9 @@ function ListItem({
     <li {...props}>
       <NavigationMenuLink asChild>
         <Link href={href}>
-          <div className="text-sm leading-none font-medium">{title}</div>
+          <div className="text-sm leading-none font-medium underline">
+            {title}
+          </div>
           <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
             {children}
           </p>

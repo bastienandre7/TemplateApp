@@ -157,6 +157,14 @@ export default function FooterCPN() {
                     Agency Templates
                   </Link>
                 </li>
+                <li>
+                  <Link
+                    href="/nextjs-templates/category/free"
+                    className="text-gray-600 hover:text-purple-400 transition-colors block"
+                  >
+                    Free Templates
+                  </Link>
+                </li>
               </ul>
             </div>
 

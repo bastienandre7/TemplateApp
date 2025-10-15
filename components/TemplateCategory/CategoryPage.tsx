@@ -43,11 +43,13 @@ type Purchase = {
 export default function CategoryPage({
   products,
   category,
+  seo,
   searchQuery = "",
   onClearSearch,
 }: {
   products: Product[];
   category: string;
+  seo?: { h1: string; h2: string; paragraph: string };
   searchQuery?: string;
   onClearSearch?: () => void;
 }) {
@@ -99,65 +101,20 @@ export default function CategoryPage({
         itemType="https://schema.org/WebSite"
       >
         <div className="relative pt-4">
-          <div className="mx-auto max-w-7xl px-6 lg:pt-20">
-            <div className="text-center">
-              <h1 className="text-foreground leading-tighter text-4xl font-semibold tracking-tight text-balance lg:leading-[1.1] lg:font-semibold xl:text-5xl xl:tracking-tighter mb-6">
-                Best Free & Premium{" "}
-                <span className="text-primary">{category}</span> Next.js
-                Templates
+          <div className="mx-auto max-w-5xl px-6 pt-20">
+            <div className="text-left md:text-center">
+              <h1 className="text-foreground mb-4 text-4xl font-semibold leading-tight tracking-tight text-balance lg:text-5xl lg:leading-[1.1]">
+                {seo?.h1 || `Best Free & Premium ${category} Next.js Templates`}
               </h1>
-
-              <p className="mx-auto max-w-2xl text-gray-700 mb-10 leading-relaxed font-normal">
-                Explore best free and premium {category} Next.js templates built
-                with Tailwind CSS, TypeScript, and React. Production-ready, SEO
-                optimised beautifully designed without the overpriced tag.
+              {seo?.h2 && (
+                <h2 className="text-foreground/90 mb-6 text-xl font-medium tracking-tight text-balance lg:text-2xl">
+                  {seo.h2}
+                </h2>
+              )}
+              <p className="mx-auto max-w-3xl text-muted-foreground mb-10 leading-relaxed font-normal">
+                {seo?.paragraph ||
+                  `Explore best free and premium ${category} Next.js templates built with Tailwind CSS, TypeScript, and React. Production-ready, SEO optimised beautifully designed without the overpriced tag.`}
               </p>
-
-              {/* Quick features */}
-              <div className="flex flex-wrap justify-center gap-6 mb-12 text-sm text-gray-500">
-                <div className="flex items-center gap-2">
-                  <svg
-                    className="w-4 h-4 text-green-500"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  Unlimited Project Usage
-                </div>
-                <div className="flex items-center gap-2">
-                  <svg
-                    className="w-4 h-4 text-green-500"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  Free Lifetime Updates
-                </div>
-                <div className="flex items-center gap-2">
-                  <svg
-                    className="w-4 h-4 text-green-500"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  Production Ready
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -167,7 +124,7 @@ export default function CategoryPage({
         className="w-full mx-auto text-black relative pb-24 max-w-7xl"
       >
         <div className="relative z-10 px-4">
-          <div className="max-w-7xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
               {searchQuery && (
                 <div className="mt-4 p-3 bg-purple-50 border border-purple-200 rounded-lg inline-flex items-center gap-3">

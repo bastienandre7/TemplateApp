@@ -67,6 +67,68 @@ const categoryMeta: Record<string, { title: string; description: string }> = {
     description:
       "Elegant and responsive Next.js restaurant templates with menus, reservations, and online ordering features.",
   },
+  agency: {
+    title: "Agency Next.js Templates – Build Stunning Agency Websites",
+    description:
+      "Discover professional Next.js templates for agencies and studios. Beautifully designed, responsive, and optimized for showcasing your portfolio and services.",
+  },
+  free: {
+    title: "Free Next.js Templates – High-Quality & Open Source",
+    description:
+      "Explore our collection of free Next.js templates, built with modern design and best practices in mind.",
+  },
+};
+
+const seoContent: Record<
+  string,
+  { h1: string; h2: string; paragraph: string }
+> = {
+  saas: {
+    h1: "Next.js SaaS Templates Built with Tailwind CSS",
+    h2: "Launch your startup faster with complete SaaS boilerplates",
+    paragraph: `Browse high-quality SaaS templates built with Next.js 15 and Tailwind CSS. Each template includes authentication, Stripe billing, dashboards, and everything you need to launch a modern SaaS product faster.`,
+  },
+  "landing-page": {
+    h1: "Next.js Landing Page Templates for Startups & Products",
+    h2: "Modern, responsive, and optimized for conversions",
+    paragraph: `Discover modern Next.js landing page templates designed for startups, apps, and digital products. Built with Tailwind CSS, React, and TypeScript for performance, SEO, and flexibility.`,
+  },
+  blog: {
+    h1: "Next.js Blog Templates for Content Creators",
+    h2: "Minimal, SEO-friendly, and lightning fast",
+    paragraph: `Explore beautifully designed Next.js blog templates built with Tailwind CSS. Perfect for personal blogs, editorial sites, and content-driven projects — ready to publish instantly.`,
+  },
+  portfolio: {
+    h1: "Next.js Portfolio Templates for Developers & Designers",
+    h2: "Showcase your projects and skills in style",
+    paragraph: `Clean and modern Next.js portfolio templates built with Tailwind CSS. Ideal for freelancers, developers, and creatives who want to present their work online with a professional touch.`,
+  },
+  "e-commerce": {
+    h1: "Next.js E-Commerce Templates for Online Stores",
+    h2: "Sell products faster with modern Next.js shop templates",
+    paragraph: `Powerful Next.js e-commerce templates with product pages, cart, and checkout features. Built with Tailwind CSS for speed, responsiveness, and smooth shopping experiences.`,
+  },
+  dashboard: {
+    h1: "Next.js Dashboard Templates for SaaS & Analytics",
+    h2: "Build admin panels and dashboards effortlessly",
+    paragraph: `Feature-rich Next.js dashboard templates built with Tailwind CSS. Includes charts, analytics, and responsive layouts ideal for SaaS apps, admin panels, and internal tools.`,
+  },
+  restaurant: {
+    h1: "Next.js Restaurant Templates for Modern Food Businesses",
+    h2: "Menus, reservations, and online ordering ready to go",
+    paragraph: `Elegant Next.js restaurant templates built with Tailwind CSS. Perfect for showcasing your menu, attracting local customers, and taking online reservations easily.`,
+  },
+  agency: {
+    h1: "Next.js Agency Templates for Creative Studios & Agencies",
+    h2: "Build stunning agency websites with modern Next.js designs",
+    paragraph: `Professional Next.js templates for digital agencies, creative studios, and freelancers. Built with Tailwind CSS for fast performance, elegant layouts, and easy customization to showcase your services and projects.`,
+  },
+
+  free: {
+    h1: "Free Next.js Templates – Beautiful & Open Source",
+    h2: "High-quality designs without paying a cent",
+    paragraph: `Explore our collection of free Next.js templates built with Tailwind CSS. Fast, responsive, and perfect for startups, portfolios, and blogs — open source and easy to customize.`,
+  },
 };
 
 export async function generateMetadata({
@@ -79,7 +141,8 @@ export async function generateMetadata({
 
   if (!meta) {
     return {
-      title: "Next.js Templates – Explore All Categories",
+      title:
+        "Next.js Templates by Category – SaaS, Blog, Portfolio & More | BloomTPL",
       description:
         "Browse our complete collection of Next.js templates and starter kits for SaaS, blogs, e-commerce, portfolios, dashboards, and more.",
       alternates: {
@@ -156,7 +219,19 @@ export default async function Category({
     // Ajoute d'autres champs si besoin
   }));
 
-  return <CategoryPage products={templates} category={unslugify(category)} />;
+  const seo = seoContent[category] ?? {
+    h1: "Next.js Templates by Category",
+    h2: "",
+    paragraph: "",
+  };
+
+  return (
+    <CategoryPage
+      products={templates}
+      category={unslugify(category)}
+      seo={seo}
+    />
+  );
 }
 
 function unslugify(str: string): string {
