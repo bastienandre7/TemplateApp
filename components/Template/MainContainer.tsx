@@ -99,7 +99,7 @@ export default function MainContainer({ products }: { products: Product[] }) {
 
   return (
     <div id="templates" className="w-full mx-auto text-black relative pb-24">
-      <div className="relative z-10 px-4 sm:px-6">
+      <div className="relative z-10 px-6">
         <div className="max-w-7xl mx-auto">
           {/* Layout avec sidebar sur desktop */}
           <div className="lg:flex lg:gap-8">

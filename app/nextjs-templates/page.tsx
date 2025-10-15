@@ -3,9 +3,9 @@ import { prisma } from "@/lib/prisma";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Best Free & Premium Next.js Templates Under 40€ (2025) | BloomTPL",
+  title: "Best Next.js & Tailwind Templates (Free + Premium) | BloomTPL",
   description:
-    "Discover best free and premium Next.js templates under 40€, built with Tailwind CSS & TypeScript. Fast, SEO-friendly, and ready for production.",
+    "Explore free and premium Next.js templates built with Tailwind CSS & TypeScript. Perfect for SaaS, blogs, e-commerce, portfolios, and more.",
   metadataBase: new URL("https://bloomtpl.com"),
   alternates: {
     canonical: "https://bloomtpl.com/nextjs-templates",
@@ -13,9 +13,9 @@ export const metadata: Metadata = {
   robots:
     "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
   openGraph: {
-    title: "Best Free & Premium Next.js Templates Under 40€ (2025) | BloomTPL",
+    title: "Best Next.js & Tailwind Templates (Free + Premium) | BloomTPL",
     description:
-      "Discover best free and premium Next.js templates under 40€, built with Tailwind CSS & TypeScript. Fast, SEO-friendly, and ready for production.",
+      "Explore free and premium Next.js templates built with Tailwind CSS & TypeScript. Perfect for SaaS, blogs, e-commerce, portfolios, and more.",
     url: "https://bloomtpl.com/nextjs-templates",
     siteName: "BloomTPL",
     locale: "en_US",
@@ -31,9 +31,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Best Free & Premium Next.js Templates Under 40€ (2025) | BloomTPL",
+    title: "Best Next.js & Tailwind Templates (Free + Premium) | BloomTPL",
     description:
-      "Discover best free and premium Next.js templates under 40€, built with Tailwind CSS & TypeScript. Fast, SEO-friendly, and ready for production.",
+      "Explore free and premium Next.js templates built with Tailwind CSS & TypeScript. Perfect for SaaS, blogs, e-commerce, portfolios, and more.",
     images: ["https://bloomtpl.com/og-image.png"],
   },
   creator: "BloomTPL",
