@@ -1,5 +1,17 @@
 "use client";
 import { useScrollHeader } from "@/hooks/useScrollHeader";
+import {
+  Activity,
+  Briefcase,
+  FileText,
+  Grid,
+  LayoutDashboard,
+  Palette,
+  ShoppingCart,
+  Star,
+  UtensilsCrossed,
+  Zap,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -26,72 +38,77 @@ export default function HeaderCPN() {
     { name: "All Access Pass", path: "/all-access-pass" },
     { name: "Next.js Templates", path: "/nextjs-templates" },
     { name: "Components", path: "/nextjs-components" },
-    { name: "AI Builder", path: "/ai-builder" },
-    { name: "Pricing", path: "/pricing" },
+    // { name: "AI Builder", path: "/ai-builder" },
+    // { name: "Pricing", path: "/pricing" },
     { name: "Docs", path: "/docs" },
     { name: "Contact", path: "/contact" },
   ];
 
-  const templates: { title: string; href: string; description: string }[] = [
+  const templates: {
+    title: string;
+    href: string;
+    description: string;
+    icon: React.ReactNode;
+  }[] = [
     {
       title: "All Templates",
       href: "/nextjs-templates",
-      description:
-        "Browse our complete collection of Next.js templates and starter kits for various use cases.",
+      icon: <Grid className="w-6 h-6 text-violet-600" />,
+      description: "All Next.js templates in one place.",
     },
     {
       title: "SaaS Templates",
       href: "/nextjs-templates/category/saas",
-      description:
-        "Launch your startup faster with premium SaaS templates built with Next.js and Tailwind CSS. Includes authentication, billing, and dashboards.",
+      icon: <LayoutDashboard className="w-6 h-6 text-blue-600" />,
+      description: "Ready-to-launch SaaS boilerplates.",
     },
     {
       title: "Landing page",
       href: "/nextjs-templates/category/landing-page",
-      description:
-        "Modern and responsive Next.js landing page templates designed for startups, products, and marketing campaigns.",
+      icon: <Zap className="w-6 h-6 text-pink-500" />,
+      description: "Modern landing pages for products.",
     },
     {
       title: "Blog Templates",
       href: "/nextjs-templates/category/blog",
-      description:
-        "Minimalist and fast-loading Next.js blog templates perfect for personal blogs, editorial sites, or content-driven projects.",
+      icon: <FileText className="w-6 h-6 text-orange-500" />,
+      description: "Minimal & fast blog starters.",
     },
     {
       title: "Portfolio Templates",
       href: "/nextjs-templates/category/portfolio",
-      description:
-        "Showcase your work with clean and professional Next.js portfolio templates for developers, designers, and creatives.",
+      icon: <Briefcase className="w-6 h-6 text-green-600" />,
+      description: "Showcase your work online.",
     },
     {
       title: "E-Commerce Templates",
       href: "/nextjs-templates/category/e-commerce",
-      description:
-        "Powerful Next.js e-commerce templates with shopping cart, product pages, and checkout features for modern online stores.",
+      icon: <ShoppingCart className="w-6 h-6 text-yellow-500" />,
+      description: "Sell products with Next.js.",
     },
     {
       title: "Dashboard Templates",
       href: "/nextjs-templates/category/dashboard",
-      description:
-        "Feature-rich Next.js dashboard templates with charts, analytics, and admin panels for SaaS apps and business tools.",
+      icon: <Activity className="w-6 h-6 text-cyan-600" />,
+      description: "Admin panels & analytics.",
     },
     {
       title: "Restaurant Templates",
       href: "/nextjs-templates/category/restaurant",
-      description:
-        "Elegant and responsive Next.js restaurant templates with menus, reservations, and online ordering features.",
+      icon: <UtensilsCrossed className="w-6 h-6 text-red-500" />,
+      description: "Beautiful restaurant sites.",
     },
     {
       title: "Agency Templates",
       href: "/nextjs-templates/category/agency",
-      description:
-        "Professional Next.js agency templates with portfolios, services, team sections, and client testimonials for creative agencies.",
+      icon: <Palette className="w-6 h-6 text-gray-700" />,
+      description: "Sites for creative agencies.",
     },
     {
       title: "Free Templates",
       href: "/nextjs-templates/category/free",
-      description:
-        "Explore our collection of free Next.js templates, built with modern design and best practices in mind.",
+      icon: <Star className="w-6 h-6 text-purple-500" />,
+      description: "Free to use, open source.",
     },
   ];
 
@@ -200,13 +217,14 @@ export default function HeaderCPN() {
                   <NavigationMenuTrigger>Templates</NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <ul className="grid w-[400px] gap-2 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                      {templates.map((component) => (
+                      {templates.map((template) => (
                         <ListItem
-                          key={component.title}
-                          title={component.title}
-                          href={component.href}
+                          key={template.title}
+                          title={template.title}
+                          href={template.href}
+                          icon={template.icon}
                         >
-                          {component.description}
+                          {template.description}
                         </ListItem>
                       ))}
                     </ul>
@@ -274,7 +292,7 @@ export default function HeaderCPN() {
                           </Link>
                         </NavigationMenuLink>
 
-                        <NavigationMenuLink asChild>
+                        {/* <NavigationMenuLink asChild>
                           <Link href="/ai-builder">
                             <div className="font-medium">AI Builder</div>
                             <div className="text-muted-foreground">
@@ -290,7 +308,7 @@ export default function HeaderCPN() {
                               View our pricing plans and options.
                             </div>
                           </Link>
-                        </NavigationMenuLink>
+                        </NavigationMenuLink> */}
                       </li>
                     </ul>
                   </NavigationMenuContent>
@@ -416,20 +434,30 @@ function ListItem({
   title,
   children,
   href,
+  icon,
   ...props
-}: React.ComponentPropsWithoutRef<"li"> & { href: string }) {
+}: React.ComponentPropsWithoutRef<"li"> & {
+  href: string;
+  icon?: React.ReactNode;
+}) {
   return (
     <li {...props}>
-      <NavigationMenuLink asChild>
-        <Link href={href}>
-          <div className="text-sm leading-none font-medium underline">
-            {title}
-          </div>
-          <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
+      <Link
+        href={href}
+        className="flex items-center gap-2 py-3 px-2 rounded-md hover:bg-muted transition-colors"
+      >
+        {icon && (
+          <span className="flex items-center justify-center shrink-0 border rounded-full bg-muted p-2">
+            <div className="flex items-center justify-center">{icon}</div>
+          </span>
+        )}
+        <div className="flex flex-col flex-1">
+          <span className="text-base font-semibold">{title}</span>
+          <span className="text-muted-foreground line-clamp-2 text-sm leading-snug">
             {children}
-          </p>
-        </Link>
-      </NavigationMenuLink>
+          </span>
+        </div>
+      </Link>
     </li>
   );
 }

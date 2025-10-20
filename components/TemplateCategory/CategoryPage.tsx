@@ -1,14 +1,7 @@
 "use client";
 
-import { Badge } from "@/components/ui/badge";
+import TemplateCard from "@/components/Template/TemplateCard";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import {
   Select,
   SelectContent,
@@ -16,7 +9,6 @@ import {
   SelectTrigger,
 } from "@/components/ui/select";
 import { useSession } from "next-auth/react";
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -264,94 +256,20 @@ export default function CategoryPage({
                       const isOwned = ownedTemplates.includes(item.name);
 
                       return (
-                        <Card
+                        <TemplateCard
                           key={item.id}
-                          className="overflow-hidden hover:shadow-xl transition-all hover:-translate-y-1"
-                        >
-                          <div className="aspect-[1200/630] relative bg-gray-50">
-                            <Image
-                              src={
-                                item.openGraphImage ||
-                                item.imageUrl ||
-                                "/images/NoImage.jpg"
-                              }
-                              alt={`${item.name} preview`}
-                              fill
-                              className="object-cover"
-                              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
-                            />
-                            {/* NEW Badge */}
-                            {new Date().getTime() -
-                              new Date(item.created_at).getTime() <
-                              14 * 24 * 60 * 60 * 1000 && (
-                              <span className="absolute top-3 right-3 bg-violet-600 text-white text-xs px-2 py-1 rounded font-medium">
-                                NEW
-                              </span>
-                            )}
-
-                            {/* Owned Badge */}
-                            {isOwned && (
-                              <span className="absolute bottom-3 right-3 bg-green-100 text-green-700 text-xs px-2 py-1 rounded">
-                                ✓ Owned
-                              </span>
-                            )}
-                          </div>
-
-                          <CardHeader>
-                            <div className="flex items-center justify-between mb-2">
-                              <Badge variant="secondary">{item.category}</Badge>
-                            </div>
-                            <CardTitle className="text-xl line-clamp-1">
-                              <Link
-                                href={`/nextjs-templates/${item.slug}`}
-                                className="hover:text-primary transition-colors"
-                              >
-                                {item.name}
-                              </Link>
-                            </CardTitle>
-                            <CardDescription className="line-clamp-2">
-                              {item.description ||
-                                "A beautifully crafted template ready for your next project."}
-                            </CardDescription>
-                          </CardHeader>
-
-                          <CardFooter className="flex gap-2">
-                            <Button
-                              variant="outline"
-                              className="flex-1"
-                              asChild
-                            >
-                              <Link
-                                href={item.demoUrl ?? "#"}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                              >
-                                Live Demo
-                              </Link>
-                            </Button>
-                            {isOwned ? (
-                              <Button
-                                asChild
-                                variant="outline"
-                                className="flex-1"
-                              >
-                                <Link href="/dashboard">Owned</Link>
-                              </Button>
-                            ) : (
-                              <Button
-                                className="flex-1"
-                                asChild
-                                variant={
-                                  item.price === 0 ? "outline" : "default"
-                                }
-                              >
-                                <Link href={`/nextjs-templates/${item.slug}`}>
-                                  {item.price === 0 ? "Free" : `Buy Now`}
-                                </Link>
-                              </Button>
-                            )}
-                          </CardFooter>
-                        </Card>
+                          id={item.id}
+                          name={item.name}
+                          slug={item.slug ?? ""}
+                          description={item.description}
+                          category={item.category}
+                          price={item.price}
+                          imageUrl={item.imageUrl}
+                          demoUrl={item.demoUrl}
+                          openGraphImage={item.openGraphImage}
+                          created_at={item.created_at}
+                          owned={isOwned}
+                        />
                       );
                     })}
                   </div>

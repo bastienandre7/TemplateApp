@@ -205,7 +205,7 @@ export default async function Category({
     id: tpl.id,
     name: tpl.name,
     description: tpl.description ?? "",
-    price: tpl.price ?? 0,
+    price: tpl.price ? tpl.price / 100 : 0,
     imageUrl:
       tpl.openGraphImage ?? tpl.performanceImage ?? "/images/NoImage.jpg",
     demoUrl: tpl.demoUrl ?? "",

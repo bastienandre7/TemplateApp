@@ -1,10 +1,10 @@
 import { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Geist } from "next/font/google";
 import { ReactNode } from "react";
 import "./globals.css";
 import LayoutShell from "./LayoutShell";
 
-const poppins = Inter({
+const geist = Geist({
   subsets: ["latin"],
   weight: ["400", "700"],
   display: "swap",
@@ -74,7 +74,7 @@ export const viewport = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${poppins.className} antialiased`}>
+      <body className={`${geist.className} antialiased`}>
         <LayoutShell>{children}</LayoutShell>
       </body>
     </html>
