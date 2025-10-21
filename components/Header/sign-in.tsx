@@ -19,7 +19,7 @@ export default function AuthButton() {
 
   if (!session) {
     return (
-      <Button className="mr-0" variant="default" onClick={() => signIn()}>
+      <Button className="mr-0" variant="ghost" onClick={() => signIn()}>
         Sign In
       </Button>
     );

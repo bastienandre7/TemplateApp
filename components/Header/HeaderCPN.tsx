@@ -216,7 +216,7 @@ export default function HeaderCPN() {
                 <NavigationMenuItem>
                   <NavigationMenuTrigger>Templates</NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid w-[400px] gap-2 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                    <ul className="grid w-[400px] gap-2 md:w-[500px] md:grid-cols-3 lg:w-[900px]">
                       {templates.map((template) => (
                         <ListItem
                           key={template.title}
@@ -321,13 +321,12 @@ export default function HeaderCPN() {
           <div className="flex items-center space-x-2 rtl:space-x-reverse">
             <AuthButton />
             <Button
-              variant="outline"
-              className="hidden md:flex ml-2 border-violet-200 text-violet-700 hover:bg-violet-50"
+              variant="default"
+              className="hidden md:flex ml-2 shadow-[0_0_16px_2px_rgba(139,92,246,0.5)]"
               asChild
             >
               <Link href="/all-access-pass">All Access Pass</Link>
             </Button>
-
             <button
               type="button"
               onClick={() => setIsOpen(!isOpen)}
