@@ -262,12 +262,12 @@ export default function Home() {
                   Premium Next.js Templates
                 </Badge>
 
-                <h1 className="text-4xl md:text-6xl font-bold text-gray-900 leading-tight tracking-tight">
+                <h1 className="text-4xl md:text-6xl font-bold text-gray-900 leading-none tracking-tighter">
                   Build Faster with
                   <span className="text-primary"> Premium Templates</span>
                 </h1>
 
-                <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl">
+                <p className="max-w-lg">
                   Kickstart your next project with our collection of
                   production-ready Next.js templates and free React components.
                   Built with TypeScript, Tailwind CSS, and modern best

@@ -1,15 +1,11 @@
 "use client";
 import { useScrollHeader } from "@/hooks/useScrollHeader";
 import {
-  Activity,
-  Briefcase,
   FileText,
   Grid,
   LayoutDashboard,
-  Palette,
   ShoppingCart,
   Star,
-  UtensilsCrossed,
   Zap,
 } from "lucide-react";
 import Image from "next/image";
@@ -53,61 +49,37 @@ export default function HeaderCPN() {
     {
       title: "All Templates",
       href: "/nextjs-templates",
-      icon: <Grid className="w-6 h-6 text-violet-600" />,
+      icon: <Grid className="w-6 h-6" />,
       description: "All Next.js templates in one place.",
     },
     {
       title: "SaaS Templates",
       href: "/nextjs-templates/category/saas",
-      icon: <LayoutDashboard className="w-6 h-6 text-blue-600" />,
+      icon: <LayoutDashboard className="w-6 h-6" />,
       description: "Ready-to-launch SaaS boilerplates.",
     },
     {
       title: "Landing page",
       href: "/nextjs-templates/category/landing-page",
-      icon: <Zap className="w-6 h-6 text-pink-500" />,
+      icon: <Zap className="w-6 h-6" />,
       description: "Modern landing pages for products.",
     },
     {
       title: "Blog Templates",
       href: "/nextjs-templates/category/blog",
-      icon: <FileText className="w-6 h-6 text-orange-500" />,
+      icon: <FileText className="w-6 h-6" />,
       description: "Minimal & fast blog starters.",
-    },
-    {
-      title: "Portfolio Templates",
-      href: "/nextjs-templates/category/portfolio",
-      icon: <Briefcase className="w-6 h-6 text-green-600" />,
-      description: "Showcase your work online.",
     },
     {
       title: "E-Commerce Templates",
       href: "/nextjs-templates/category/e-commerce",
-      icon: <ShoppingCart className="w-6 h-6 text-yellow-500" />,
+      icon: <ShoppingCart className="w-6 h-6" />,
       description: "Sell products with Next.js.",
-    },
-    {
-      title: "Dashboard Templates",
-      href: "/nextjs-templates/category/dashboard",
-      icon: <Activity className="w-6 h-6 text-cyan-600" />,
-      description: "Admin panels & analytics.",
-    },
-    {
-      title: "Restaurant Templates",
-      href: "/nextjs-templates/category/restaurant",
-      icon: <UtensilsCrossed className="w-6 h-6 text-red-500" />,
-      description: "Beautiful restaurant sites.",
-    },
-    {
-      title: "Agency Templates",
-      href: "/nextjs-templates/category/agency",
-      icon: <Palette className="w-6 h-6 text-gray-700" />,
-      description: "Sites for creative agencies.",
     },
     {
       title: "Free Templates",
       href: "/nextjs-templates/category/free",
-      icon: <Star className="w-6 h-6 text-purple-500" />,
+      icon: <Star className="w-6 h-6" />,
       description: "Free to use, open source.",
     },
   ];
@@ -216,7 +188,7 @@ export default function HeaderCPN() {
                 <NavigationMenuItem>
                   <NavigationMenuTrigger>Templates</NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid w-[400px] gap-2 md:w-[500px] md:grid-cols-3 lg:w-[900px]">
+                    <ul className="grid w-[400px] gap-2 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                       {templates.map((template) => (
                         <ListItem
                           key={template.title}
@@ -446,7 +418,7 @@ function ListItem({
         className="flex items-center gap-2 py-3 px-2 rounded-md hover:bg-muted transition-colors"
       >
         {icon && (
-          <span className="flex items-center justify-center shrink-0 border rounded-full bg-muted p-2">
+          <span className="flex items-center justify-center shrink-0 p-2">
             <div className="flex items-center justify-center">{icon}</div>
           </span>
         )}

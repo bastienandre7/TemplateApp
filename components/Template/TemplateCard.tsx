@@ -87,7 +87,7 @@ export default function TemplateCard({
         <CardTitle className="text-lg font-semibold line-clamp-1">
           <Link
             href={`/nextjs-templates/${slug}`}
-            className="hover:text-violet-600 transition-colors"
+            className="hover:text-primary transition-colors"
           >
             {name}
           </Link>
