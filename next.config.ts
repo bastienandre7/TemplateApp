@@ -97,6 +97,13 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source:
+          "/nextjs-templates/blogstarter-next-js-tailwind-css-blog-starter-kit",
+        destination:
+          "/nextjs-templates/blogstarter-nextjs-sanity-blog-starter-kit",
+        permanent: true,
+      },
+      {
         source: "/components",
         destination: "/nextjs-components",
         permanent: true,
