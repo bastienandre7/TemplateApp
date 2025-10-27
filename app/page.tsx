@@ -186,8 +186,8 @@ export default function Home() {
       demoUrl: "https://bloomtpl-shopbase-template.vercel.app/",
     },
     {
-      name: "BlogStarter – Next.js Tailwind CSS Blog Starter Kit",
-      slug: "blogstarter-next-js-tailwind-css-blog-starter-kit",
+      name: "BlogStarter – Next.js + Sanity Blog Starter Kit",
+      slug: "blogstarter-nextjs-sanity-blog-starter-kit",
       description:
         "BloomTPL BlogStarter is a modern blog starter kit with Next.js, Sanity.io & Tailwind CSS. Fast, customizable, and production-ready.",
       category: "Blog",
