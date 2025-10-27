@@ -107,7 +107,7 @@ export default function ProductPage({ template, purchases }: ProductPageProps) {
                 <div className="flex flex-col items-center lg:items-start gap-2 pt-0">
                   <span className="inline-flex items-center gap-2 px-2 py-1 rounded-full text-sm font-medium whitespace-nowrap">
                     <Monitor className="w-4 h-4" />
-                    Built with Next.js 15
+                    Built with Next.js
                   </span>
                   <span className="inline-flex items-center gap-2 bg-gray-50 px-2 py-1 rounded-full text-sm font-medium whitespace-nowrap">
                     <CalendarCheck className="w-4 h-4" />
