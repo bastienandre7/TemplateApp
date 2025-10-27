@@ -193,8 +193,8 @@ export default function Home() {
       category: "Blog",
       price: 34.99,
       image:
-        "https://9hn0rhd8ibpivln7.public.blob.vercel-storage.com/templates/blogstarter-starterkit/og-image-v2-opti.webp",
-      link: "/nextjs-templates/blogstarter-next-js-tailwind-css-blog-starter-kit",
+        "https://9hn0rhd8ibpivln7.public.blob.vercel-storage.com/templates/blogstarter-starterkit/BlogStarter.png",
+      link: "/nextjs-templates/blogstarter-nextjs-sanity-blog-starter-kit",
       demoUrl: "https://bloomtpl-blogstarter-starter-kit.vercel.app/",
     },
     {
