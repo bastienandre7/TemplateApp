@@ -235,7 +235,7 @@ export default function ProductPage({ template, purchases }: ProductPageProps) {
                 {[
                   {
                     label: "Framework",
-                    value: "Next.js 15",
+                    value: "Next.js",
                     icon: (
                       <Image
                         src="/svg/nextjs-icon.svg"
