@@ -55,76 +55,80 @@ interface ProductPageProps {
 export default function ProductPage({ template, purchases }: ProductPageProps) {
   return (
     <div className="pt-16 md:pt-4 text-black bg-background min-h-screen">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-20 sm:py-32">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-20 md:py-32">
         {/* Hero Section - Style Clay */}
-        <section className="mb-16">
-          {/* Titre hors de la grille */}
-          <h1 className="text-foreground leading-tighter text-3xl md:text-4xl font-semibold tracking-tight text-balance lg:leading-[1.1] lg:font-semibold xl:tracking-tighter mb-8">
+        <section className="mb-16 max-w-4xl mx-auto">
+          {/* Titre */}
+          <h1 className="text-foreground leading-tighter text-3xl md:text-4xl font-semibold tracking-tight text-balance lg:leading-[1.1] lg:font-semibold xl:tracking-tighter mb-4">
             {template.name}
           </h1>
-          <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-4 items-center">
-            {/* Colonne gauche : Image + Description */}
-            <div className="flex flex-col">
-              <div
-                className="relative w-full aspect-[1200/630] mb-6"
-                id="template-image"
-              >
-                <div className="absolute inset-0 template-background-style rounded-2xl"></div>
-                <Image
-                  src={template.openGraphImage || "/og-image.png"}
-                  alt={template.name}
-                  fill
-                  className="relative rounded-2xl shadow-xl object-cover"
-                  priority
-                  sizes="100vw"
-                  fetchPriority="high"
-                />
-              </div>
-            </div>
 
-            {/* Colonne droite : Card boutons + avantages */}
-            <div className="flex items-center sm:items-start h-full px-0 lg:px-8">
-              <div className="w-full max-w-screen lg:max-w-md bg-background p-0 flex flex-col">
-                <div className="pb-0">
-                  <p className="mb-2 text-base">{template.description}</p>
-                </div>
-                <div className="flex flex-col gap-4 pt-4">
-                  {template.demoUrl && (
-                    <Button
-                      variant="outline"
-                      className="w-full bg-white min-h-[56px] px-8 py-4 text-lg hover:bg-gray-50 transition"
-                      asChild
-                    >
-                      <Link href={template.demoUrl} target="_blank">
-                        <Eye className="w-5 h-5 mr-2" />
-                        Live Demo
-                      </Link>
-                    </Button>
-                  )}
+          {/* Image */}
+          <div className="w-full aspect-[16/9] md:aspect-[1200/630] relative mb-6">
+            <Image
+              src={template.openGraphImage || "/og-image.png"}
+              alt={template.name}
+              fill
+              className="rounded-xl md:rounded-2xl shadow-lg md:shadow-xl object-cover"
+              priority
+              sizes="100vw"
+              fetchPriority="high"
+            />
+          </div>
+
+          {/* Card informations et actions */}
+          <div className="border border-gray-200 rounded-xl md:rounded-2xl shadow-sm p-4 sm:p-6">
+            <div className="max-w-4xl">
+              <p className="text-sm sm:text-base text-gray-700 mb-4">
+                {template.description}
+              </p>
+
+              {/* Boutons - side by side sur desktop */}
+              <div className="flex flex-col sm:flex-row gap-3 mb-6">
+                {template.demoUrl && (
+                  <Button
+                    variant="outline"
+                    className="w-full sm:flex-1 h-[50px] px-6 text-base sm:text-lg bg-white hover:bg-gray-50 transition"
+                    asChild
+                  >
+                    <Link href={template.demoUrl} target="_blank">
+                      <Eye className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+                      Live Demo
+                    </Link>
+                  </Button>
+                )}
+                <div className="w-full sm:flex-1">
                   <DynamicBuyButton template={template} purchases={purchases} />
                 </div>
-                <Separator className="my-4" />
-                <div className="flex flex-col items-center lg:items-start gap-2 pt-0">
-                  <span className="inline-flex items-center gap-2 px-2 py-1 rounded-full text-sm font-medium whitespace-nowrap">
-                    <Monitor className="w-4 h-4" />
-                    Built with Next.js
-                  </span>
-                  <span className="inline-flex items-center gap-2 bg-gray-50 px-2 py-1 rounded-full text-sm font-medium whitespace-nowrap">
-                    <CalendarCheck className="w-4 h-4" />
-                    Last Update:{" "}
+              </div>
+
+              <Separator className="my-6" />
+
+              {/* Infos - horizontal sur desktop */}
+              <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-6 text-sm text-gray-600">
+                <span className="inline-flex items-center gap-2">
+                  <Monitor className="w-4 h-4 text-gray-500 flex-shrink-0" />
+                  <span>Built with Next.js</span>
+                </span>
+
+                <span className="inline-flex items-center gap-2">
+                  <CalendarCheck className="w-4 h-4 text-gray-500 flex-shrink-0" />
+                  <span>
+                    Last update:{" "}
                     {new Date(template.updated_at).toLocaleDateString()}
                   </span>
-                  {template.docLink && (
-                    <Link
-                      href={template.docLink}
-                      target="_blank"
-                      className="inline-flex items-center gap-2 px-2 py-1 rounded-full text-sm font-medium whitespace-nowrap hover:bg-indigo-100 transition underline"
-                    >
-                      <BookOpen className="w-4 h-4" />
-                      Documentation
-                    </Link>
-                  )}
-                </div>
+                </span>
+
+                {template.docLink && (
+                  <Link
+                    href={template.docLink}
+                    target="_blank"
+                    className="inline-flex items-center gap-2 text-indigo-600 hover:underline font-medium"
+                  >
+                    <BookOpen className="w-4 h-4 flex-shrink-0" />
+                    <span>Documentation</span>
+                  </Link>
+                )}
               </div>
             </div>
           </div>
@@ -132,7 +136,7 @@ export default function ProductPage({ template, purchases }: ProductPageProps) {
 
         {/* Pages Description */}
         {template.pages && template.pages.length > 0 && (
-          <section className="mb-16">
+          <section className="mb-16 max-w-4xl mx-auto">
             <div className="">
               <div className="prose prose-lg max-w-none">
                 {template.pages.map((description, idx) => (
@@ -145,8 +149,8 @@ export default function ProductPage({ template, purchases }: ProductPageProps) {
           </section>
         )}
 
-        <section className="my-24">
-          <div className="max-w-5xl mx-auto text-center mb-12">
+        <section className="my-24 max-w-4xl mx-auto">
+          <div className="text-center mb-12">
             <h2 className="text-2xl font-bold text-gray-900">
               Features & What’s Included
             </h2>
@@ -162,7 +166,7 @@ export default function ProductPage({ template, purchases }: ProductPageProps) {
               return (
                 <div
                   key={idx}
-                  className="p-5 border border-gray-100 rounded-2xl bg-white hover:bg-gray-50 transition"
+                  className="p-5 border border-gray-200 shadow-sm rounded-2xl bg-white hover:bg-gray-50 transition"
                 >
                   <h3 className="text-base font-semibold text-gray-900">
                     {title}
@@ -188,7 +192,7 @@ export default function ProductPage({ template, purchases }: ProductPageProps) {
           </div>
         </section>
 
-        <section className="mb-20">
+        <section className="mb-20 max-w-4xl mx-auto">
           <div className="rounded-3xl border border-gray-200 bg-gray-100/40 backdrop-blur-sm overflow-hidden">
             {/* Header */}
             <div className="px-8 pt-10 pb-6 border-b border-gray-200">
@@ -293,7 +297,6 @@ export default function ProductPage({ template, purchases }: ProductPageProps) {
                 ))}
               </div>
 
-              {/* Technical details */}
               {template.tech && (
                 <div className="grid md:grid-cols-2 gap-6">
                   {template.tech.map((tech, i) => {
@@ -303,8 +306,8 @@ export default function ProductPage({ template, purchases }: ProductPageProps) {
                         key={i}
                         className="flex items-start gap-4 p-5 bg-white/60 border border-gray-200 rounded-2xl hover:bg-white/80 transition-colors"
                       >
-                        <div className="w-9 h-9 bg-indigo-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                          <Check className="w-4 h-4 text-indigo-600" />
+                        <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0">
+                          {getTechIcon(title)}
                         </div>
                         <div>
                           <h3 className="font-semibold text-gray-900">
@@ -355,7 +358,7 @@ export default function ProductPage({ template, purchases }: ProductPageProps) {
                 >
                   <Button
                     variant="outline"
-                    className="w-full min-h-[56px] px-8 py-4 text-lg border border-gray-600 text-gray-800 hover:bg-white/10 hover:border-gray-400 hover:text-white transition-all duration-300 flex items-center justify-center gap-2"
+                    className="w-full h-[50px] px-8 py-4 text-lg border border-gray-600 text-gray-800 hover:bg-white/10 hover:border-gray-400 hover:text-white transition-all duration-300 flex items-center justify-center gap-2"
                   >
                     <Eye className="w-5 h-5" />
                     Live Demo
@@ -395,3 +398,74 @@ const parseDescriptionText = (text: string) => {
 
   return { title, description };
 };
+
+function getTechIcon(title: string) {
+  const key = title.toLowerCase();
+  if (key.includes("next.js"))
+    return (
+      <Image src="/svg/nextjs-icon.svg" alt="Next.js" width={30} height={30} />
+    );
+  if (key.includes("tailwind"))
+    return (
+      <Image
+        src="/svg/tailwind.svg"
+        alt="Tailwind CSS"
+        width={30}
+        height={30}
+      />
+    );
+  if (key.includes("lucid"))
+    return (
+      <Image
+        src="/images/logo/lucid-react.png"
+        alt="Lucid"
+        width={30}
+        height={30}
+      />
+    );
+  if (key.includes("shadcn"))
+    return (
+      <Image
+        src="/svg/shadcn.svg"
+        className="bg-black rounded-md"
+        alt="ShadCN"
+        width={30}
+        height={30}
+      />
+    );
+  if (key.includes("motion"))
+    return (
+      <Image
+        src="/images/logo/motion.png"
+        alt="Motion"
+        className="rounded-md"
+        width={30}
+        height={30}
+      />
+    );
+  if (key.includes("prisma"))
+    return <Image src="/svg/prisma.svg" alt="Prisma" width={30} height={30} />;
+  if (key.includes("stripe"))
+    return <Image src="/svg/stripe.svg" alt="Stripe" width={30} height={30} />;
+  if (key.includes("nextauth"))
+    return (
+      <Image
+        src="/images/logo/nextAuth.png"
+        alt="Lucid"
+        width={30}
+        height={30}
+      />
+    );
+  if (key.includes("sanity"))
+    return (
+      <Image
+        src="/images/logo/sanity.avif"
+        className="rounded-md"
+        alt="Sanity"
+        width={30}
+        height={30}
+      />
+    );
+
+  return <Check className="w-4 h-4 text-indigo-600" />;
+}

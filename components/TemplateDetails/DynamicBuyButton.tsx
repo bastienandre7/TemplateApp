@@ -35,10 +35,7 @@ export default function DynamicBuyButton({
   // Si loading, bouton désactivé
   if (status === "loading") {
     return (
-      <Button
-        disabled
-        className="w-full px-8 py-4 text-lg min-h-[56px] opacity-60"
-      >
+      <Button disabled className="w-full px-8 py-4 text-lg h-[50px] opacity-60">
         Loading...
       </Button>
     );
@@ -50,7 +47,7 @@ export default function DynamicBuyButton({
     if (status === "unauthenticated") {
       return (
         <Button
-          className="w-full px-8 py-4 text-lg min-h-[56px] bg-primary text-white"
+          className="w-full px-8 py-4 text-lg h-[50px] bg-primary text-white"
           onClick={() => signIn()}
         >
           Sign in to access
@@ -71,7 +68,7 @@ export default function DynamicBuyButton({
         className="w-full"
         target={isOwned ? undefined : "_blank"}
       >
-        <Button className="w-full px-8 py-4 text-lg bg-primary text-white min-h-[56px] shadow-xl hover:shadow-2xl flex items-center justify-center gap-2">
+        <Button className="w-full px-8 py-4 text-lg bg-primary text-white h-[50px] shadow-xl hover:shadow-2xl flex items-center justify-center gap-2">
           <Download className="w-5 h-5" />
           {isOwned ? "Download Template" : "Get FREE"}
         </Button>
@@ -84,7 +81,7 @@ export default function DynamicBuyButton({
     <Button
       type="button"
       onClick={scrollToPricing}
-      className={`w-full px-8 py-4 text-lg min-h-[56px] shadow-xl hover:shadow-2xl cursor-pointer ${
+      className={`w-full px-8 py-4 text-lg h-[50px] shadow-xl hover:shadow-2xl cursor-pointer ${
         variant === "dark"
           ? "bg-white text-slate-900 hover:bg-gray-100"
           : "bg-primary hover:bg-foreground text-white"
