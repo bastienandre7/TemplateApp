@@ -200,24 +200,30 @@ export default async function Category({
     notFound();
   }
 
-  // Transforme les objets pour matcher le type Product
-  const templates: Product[] = templatesRaw.map((tpl) => ({
-    id: tpl.id,
-    name: tpl.name,
-    description: tpl.description ?? "",
-    price: tpl.price ? tpl.price / 100 : 0,
-    imageUrl:
-      tpl.openGraphImage ?? tpl.performanceImage ?? "/images/NoImage.jpg",
-    demoUrl: tpl.demoUrl ?? "",
-    lemonLink: tpl.lemonLink ?? "",
-    type: "template",
-    category: tpl.category ?? "",
-    categories: Array.isArray(tpl.categories) ? tpl.categories.join(", ") : "",
-    slug: tpl.slug,
-    created_at: tpl.createdAt ? tpl.createdAt.toISOString() : "",
-    openGraphImage: tpl.openGraphImage ?? undefined,
-    // Ajoute d'autres champs si besoin
-  }));
+  const templates: Product[] = templatesRaw.map((tpl) => {
+    const price = tpl.price ? tpl.price / 100 : 0;
+    const discount = price > 0 ? Math.round(price * 0.8 * 100) / 100 : 0;
+
+    return {
+      id: tpl.id,
+      name: tpl.name,
+      description: tpl.description ?? "",
+      price,
+      discount,
+      imageUrl:
+        tpl.openGraphImage ?? tpl.performanceImage ?? "/images/NoImage.jpg",
+      demoUrl: tpl.demoUrl ?? "",
+      lemonLink: tpl.lemonLink ?? "",
+      type: "template",
+      category: tpl.category ?? "",
+      categories: Array.isArray(tpl.categories)
+        ? tpl.categories.join(", ")
+        : "",
+      slug: tpl.slug,
+      created_at: tpl.createdAt ? tpl.createdAt.toISOString() : "",
+      openGraphImage: tpl.openGraphImage ?? undefined,
+    };
+  });
 
   const seo = seoContent[category] ?? {
     h1: "Next.js Templates by Category",

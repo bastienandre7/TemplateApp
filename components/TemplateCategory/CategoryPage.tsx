@@ -1,6 +1,13 @@
 "use client";
 
 import TemplateCard from "@/components/Template/TemplateCard";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
 import {
   Select,
@@ -9,7 +16,6 @@ import {
   SelectTrigger,
 } from "@/components/ui/select";
 import { useSession } from "next-auth/react";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 
 type Product = {
@@ -17,6 +23,7 @@ type Product = {
   name: string;
   description?: string;
   price: number;
+  discount?: number;
   imageUrl: string;
   demoUrl?: string;
   lemonLink: string;
@@ -150,22 +157,32 @@ export default function CategoryPage({
               )}
             </div>
 
-            {/* Layout avec sidebar sur desktop */}
             <div className="lg:flex lg:gap-8">
-              {/* Contenu principal */}
               <main className="flex-1 min-w-0">
-                {/* Header et filtres mobile */}
                 <div className="space-y-4 mb-8">
-                  {/* Top row: Results counter */}
                   <div className="flex justify-between items-center">
-                    <div>
-                      <Link
-                        href="/nextjs-templates"
-                        className="font-bold text-primary hover:underline mt-1"
-                      >
-                        ← Back to all templates
-                      </Link>
-                    </div>
+                    <Breadcrumb>
+                      <BreadcrumbList>
+                        <BreadcrumbItem>
+                          <BreadcrumbLink href="/">Home</BreadcrumbLink>
+                        </BreadcrumbItem>
+                        <BreadcrumbSeparator />
+                        <BreadcrumbItem>
+                          <BreadcrumbLink href="/nextjs-templates">
+                            Templates
+                          </BreadcrumbLink>
+                        </BreadcrumbItem>
+                        <BreadcrumbSeparator />
+                        <BreadcrumbItem>
+                          <BreadcrumbLink
+                            href={`/nextjs-templates/category/${category}`}
+                            aria-current="page"
+                          >
+                            {category}
+                          </BreadcrumbLink>
+                        </BreadcrumbItem>
+                      </BreadcrumbList>
+                    </Breadcrumb>
                     <div className="text-sm text-gray-500">
                       {filteredItems.length} template
                       {filteredItems.length !== 1 ? "s" : ""}
@@ -264,6 +281,7 @@ export default function CategoryPage({
                           description={item.description}
                           category={item.category}
                           price={item.price}
+                          discount={item.discount}
                           imageUrl={item.imageUrl}
                           demoUrl={item.demoUrl}
                           openGraphImage={item.openGraphImage}

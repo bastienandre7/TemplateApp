@@ -55,7 +55,6 @@ export default function DynamicBuyButton({
       );
     }
 
-    // Préremplir l'email dans le lien LemonSqueezy
     const email = data?.user?.email;
     const lemonLinkWithEmail =
       email && template.lemonLink.includes("lemonsqueezy.com")
@@ -76,7 +75,6 @@ export default function DynamicBuyButton({
     );
   }
 
-  // Si payant et pas possédé, scroll vers PricingSection
   return (
     <Button
       type="button"
@@ -84,10 +82,10 @@ export default function DynamicBuyButton({
       className={`w-full px-8 py-4 text-lg h-[50px] shadow-xl hover:shadow-2xl cursor-pointer ${
         variant === "dark"
           ? "bg-white text-slate-900 hover:bg-gray-100"
-          : "bg-primary hover:bg-foreground text-white"
+          : "bg-black hover:bg-foreground text-white"
       }`}
     >
-      Purchase Now
+      See Pricing
     </Button>
   );
 }

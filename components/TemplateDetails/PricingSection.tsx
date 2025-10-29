@@ -17,7 +17,6 @@ interface PricingSectionProps {
   variants: Variants;
 }
 
-// styles pour chaque licence (utilise les couleurs de la card)
 const licenseStyles = {
   solo: {
     iconClass: "text-yellow-500",
@@ -40,6 +39,8 @@ const licenseStyles = {
 };
 
 export default function PricingSection({ variants }: PricingSectionProps) {
+  const getDiscountedPrice = (price: number) =>
+    price > 0 ? Math.round(price * 0.8 * 100) / 100 : 0;
   return (
     <section id="pricing-section" className="py-12">
       <div className="">
@@ -70,7 +71,13 @@ export default function PricingSection({ variants }: PricingSectionProps) {
                 Solo License
               </div>
               <div className="text-4xl font-extrabold mb-2 text-gray-900 flex items-center justify-center gap-2">
-                ${variants.solo.price}
+                {getDiscountedPrice(variants.solo.price) <
+                  variants.solo.price && (
+                  <span className="text-2xl text-gray-400 line-through mr-2">
+                    ${variants.solo.price}
+                  </span>
+                )}
+                <span>${getDiscountedPrice(variants.solo.price)}</span>
                 <span className="text-base text-muted-foreground font-normal">
                   /Lifetime
                 </span>
@@ -124,7 +131,13 @@ export default function PricingSection({ variants }: PricingSectionProps) {
                 Studio License
               </div>
               <div className="text-4xl font-extrabold mb-2 text-gray-900 flex items-center justify-center gap-2">
-                ${variants.studio.price}
+                {getDiscountedPrice(variants.studio.price) <
+                  variants.studio.price && (
+                  <span className="text-2xl text-gray-400 line-through mr-2">
+                    ${variants.studio.price}
+                  </span>
+                )}
+                <span>${getDiscountedPrice(variants.studio.price)}</span>
                 <span className="text-base text-muted-foreground font-normal">
                   /Lifetime
                 </span>
@@ -178,7 +191,13 @@ export default function PricingSection({ variants }: PricingSectionProps) {
                 Unlimited License
               </div>
               <div className="text-4xl font-extrabold mb-2 text-gray-900 flex items-center justify-center gap-2">
-                ${variants.unlimited.price}
+                {getDiscountedPrice(variants.unlimited.price) <
+                  variants.unlimited.price && (
+                  <span className="text-2xl text-gray-400 line-through mr-2">
+                    ${variants.unlimited.price}
+                  </span>
+                )}
+                <span>${getDiscountedPrice(variants.unlimited.price)}</span>
                 <span className="text-base text-muted-foreground font-normal">
                   /Lifetime
                 </span>

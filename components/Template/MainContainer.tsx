@@ -25,6 +25,7 @@ type Product = {
   created_at: string;
   openGraphImage?: string;
   categories: string[];
+  discount?: number;
 };
 
 type Purchase = {
@@ -266,6 +267,7 @@ export default function MainContainer({ products }: { products: Product[] }) {
                         openGraphImage={item.openGraphImage}
                         created_at={item.created_at}
                         owned={isOwned}
+                        discount={item.discount}
                       />
                     );
                   })}

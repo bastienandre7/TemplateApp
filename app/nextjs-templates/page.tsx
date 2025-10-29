@@ -60,21 +60,27 @@ export default async function TemplatePage() {
     },
   });
 
-  const products = data.map((tpl) => ({
-    id: tpl.lemonId,
-    name: tpl.name,
-    description: tpl.description,
-    price: tpl.price ? tpl.price / 100 : 0,
-    imageUrl: tpl.openGraphImage || "/og-image.png",
-    demoUrl: tpl.demoUrl,
-    lemonLink: tpl.lemonLink,
-    type: "template" as const,
-    category: tpl.category,
-    slug: tpl.slug,
-    created_at: tpl.createdAt.toISOString(),
-    openGraphImage: tpl.openGraphImage,
-    categories: tpl.categories,
-  }));
+  const products = data.map((tpl) => {
+    const price = tpl.price ? tpl.price / 100 : 0;
+    const discount = price > 0 ? Math.round(price * 0.8 * 100) / 100 : 0;
+
+    return {
+      id: tpl.lemonId,
+      name: tpl.name,
+      description: tpl.description,
+      price,
+      discount,
+      imageUrl: tpl.openGraphImage || "/og-image.png",
+      demoUrl: tpl.demoUrl,
+      lemonLink: tpl.lemonLink,
+      type: "template" as const,
+      category: tpl.category,
+      slug: tpl.slug,
+      created_at: tpl.createdAt.toISOString(),
+      openGraphImage: tpl.openGraphImage,
+      categories: tpl.categories,
+    };
+  });
 
   const jsonLd = {
     "@context": "https://schema.org",

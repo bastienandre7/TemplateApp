@@ -23,6 +23,7 @@ type TemplateCardProps = {
   openGraphImage?: string;
   created_at?: string | Date;
   owned?: boolean;
+  discount?: number;
 };
 
 export default function TemplateCard({
@@ -38,6 +39,7 @@ export default function TemplateCard({
   openGraphImage,
   created_at,
   owned = false,
+  discount,
 }: TemplateCardProps) {
   const isOwned = owned;
   const isNew =
@@ -102,13 +104,24 @@ export default function TemplateCard({
         {/* Price */}
         <div className="flex items-baseline gap-1">
           {Number(price) > 0 ? (
-            <>
-              <span className="text-xs text-gray-900">From</span>
-              <span className="text-lg font-semibold text-gray-900">
-                {price}
-              </span>
-              <span className="text-sm text-gray-500">€</span>
-            </>
+            discount && discount < price ? (
+              <>
+                <span className="text-xs text-gray-900">From</span>
+                <span className="text-sm text-gray-500 line-through">
+                  {price}$
+                </span>
+                <span className="text-lg font-semibold text-gray-900">
+                  {discount}$
+                </span>
+              </>
+            ) : (
+              <>
+                <span className="text-xs text-gray-900">From</span>
+                <span className="text-lg font-semibold text-gray-900">
+                  {price}$
+                </span>
+              </>
+            )
           ) : (
             <span className="text-sm font-semibold text-gray-900">FREE</span>
           )}

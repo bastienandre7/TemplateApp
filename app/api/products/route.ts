@@ -24,23 +24,29 @@ export async function GET() {
       },
     });
 
-    const formatted = templates.map((tpl) => ({
-      id: tpl.lemonId,
-      name: tpl.name,
-      price: tpl.price ? tpl.price / 100 : 0,
-      description: tpl.description,
-      lemonLink: tpl.lemonLink,
-      slug: tpl.slug,
-      type: "template",
-      demoUrl: tpl.demoUrl,
-      category: tpl.category,
-      created_at: tpl.createdAt,
-      openGraphImage: tpl.openGraphImage || "",
-      tech: tpl.tech,
-      pages: tpl.pages,
-      extras: tpl.extras,
-      categories: tpl.categories,
-    }));
+    const formatted = templates.map((tpl) => {
+      const price = tpl.price ? tpl.price / 100 : 0;
+      const discount = price > 0 ? Math.round(price * 0.8 * 100) / 100 : 0;
+
+      return {
+        id: tpl.lemonId,
+        name: tpl.name,
+        price,
+        discount,
+        description: tpl.description,
+        lemonLink: tpl.lemonLink,
+        slug: tpl.slug,
+        type: "template",
+        demoUrl: tpl.demoUrl,
+        category: tpl.category,
+        created_at: tpl.createdAt,
+        openGraphImage: tpl.openGraphImage || "",
+        tech: tpl.tech,
+        pages: tpl.pages,
+        extras: tpl.extras,
+        categories: tpl.categories,
+      };
+    });
 
     return NextResponse.json(formatted);
   } catch (error) {

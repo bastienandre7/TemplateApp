@@ -3,6 +3,7 @@ import FaqAccordion from "@/components/TemplateDetails/FaqAccordion";
 import PaymentMethodSection from "@/components/TemplateDetails/PaymentMethodSection";
 import PricingSection from "@/components/TemplateDetails/PricingSection";
 import ProjectStructureModal from "@/components/TemplateDetails/ProjectStructureModal";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import {
@@ -40,6 +41,7 @@ export interface Product {
     unlimited: Variant;
     [key: string]: Variant;
   };
+  categories?: string[];
 }
 
 interface Variant {
@@ -53,6 +55,8 @@ interface ProductPageProps {
 }
 
 export default function ProductPage({ template, purchases }: ProductPageProps) {
+  console.log("Categories:", template.categories);
+
   return (
     <div className="pt-16 md:pt-4 text-black bg-background min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-20 md:py-32">
@@ -62,6 +66,18 @@ export default function ProductPage({ template, purchases }: ProductPageProps) {
           <h1 className="text-foreground leading-tighter text-3xl md:text-4xl font-semibold tracking-tight text-balance lg:leading-[1.1] lg:font-semibold xl:tracking-tighter mb-4">
             {template.name}
           </h1>
+
+          {template.categories &&
+            Array.isArray(template.categories) &&
+            template.categories.length > 0 && (
+              <div className="flex flex-wrap gap-2 mb-4">
+                {template.categories.map((cat) => (
+                  <Badge key={cat} variant="secondary" className="capitalize">
+                    {cat}
+                  </Badge>
+                ))}
+              </div>
+            )}
 
           {/* Image */}
           <div className="w-full aspect-[16/9] md:aspect-[1200/630] relative mb-6">

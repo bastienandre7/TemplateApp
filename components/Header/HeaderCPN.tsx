@@ -294,7 +294,8 @@ export default function HeaderCPN() {
             <AuthButton />
             <Button
               variant="default"
-              className="hidden md:flex ml-2 shadow-[0_0_16px_2px_rgba(139,92,246,0.5)]"
+              size="lg"
+              className="hidden md:flex ml-2 hover:scale-110 transition-transform"
               asChild
             >
               <Link href="/all-access-pass">All Access Pass</Link>
@@ -302,7 +303,7 @@ export default function HeaderCPN() {
             <button
               type="button"
               onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center py-2 pr-0 w-10 h-10 justify-center text-gray-600 rounded-lg lg:hidden hover:bg-purple-50 hover:text-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-200 transition-all duration-200"
+              className="inline-flex items-center py-2 pr-0 w-12 h-12 justify-center rounded-3xl lg:hidden bg-primary hover:scale-110 transition-all duration-200 text-white"
               aria-expanded={isOpen}
             >
               <span className="sr-only">Open main menu</span>

@@ -19,6 +19,14 @@ export default function SignIn() {
 
   if (!hasMounted) return null;
 
+  if (loading) {
+    return (
+      <div className="min-h-screen flex justify-center items-center">
+        <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-violet-600" />
+      </div>
+    );
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (emailSent || loading) return;
@@ -42,15 +50,18 @@ export default function SignIn() {
   };
 
   return (
-    <div className="h-screen flex items-center justify-center bg-background px-4">
-      <div className="max-w-md w-full p-6 bg-white shadow-lg rounded-xl space-y-4">
-        <h2 className="text-xl font-semibold text-gray-800 text-center">
-          Sign in
+    <div className="min-h-screen flex items-center justify-center px-4">
+      <div className="max-w-md w-full p-6 space-y-4 border border-gray-200 rounded-3xl shadow-md">
+        <h2 className="text-xl font-semibold text-gray-800">
+          Sign in / Register
         </h2>
+        <p>
+          Sign in securely. A new account will be created if you don’t have one.
+        </p>
 
         <button
           onClick={() => signIn("google", { callbackUrl: "/" })}
-          className="w-full flex items-center justify-center gap-2 bg-white border border-gray-300 rounded-lg px-4 py-2 text-sm hover:bg-gray-50"
+          className="w-full flex items-center justify-center gap-2 bg-white border border-gray-300 rounded-3xl px-4 py-2 text-sm hover:bg-gray-50"
         >
           <FcGoogle size={20} />
           Continue with Google
@@ -58,7 +69,7 @@ export default function SignIn() {
 
         <button
           onClick={() => signIn("github", { callbackUrl: "/" })}
-          className="w-full flex items-center justify-center gap-2 bg-gray-900 text-white rounded-lg px-4 py-2 text-sm hover:bg-gray-800"
+          className="w-full flex items-center justify-center gap-2 bg-gray-900 text-white rounded-3xl px-4 py-2 text-sm hover:bg-gray-800"
         >
           <FaGithub size={18} />
           Continue with GitHub
@@ -82,12 +93,12 @@ export default function SignIn() {
             placeholder="Enter your email"
             required
             autoComplete="email"
-            className="w-full p-2 border rounded-lg text-black"
+            className="w-full p-2 border rounded-md text-black"
           />
           <button
             type="submit"
             disabled={emailSent || loading}
-            className={`w-full p-2 rounded-lg ${
+            className={`w-full p-2 rounded-3xl font-semibold ${
               emailSent || loading
                 ? "bg-gray-400 cursor-not-allowed"
                 : "bg-primary hover:bg-foreground text-white"
