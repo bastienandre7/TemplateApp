@@ -138,8 +138,8 @@ export default function TemplateCard({
           </Button>
         ) : (
           <Button
-            variant="outline"
-            className="text-sm bg-white hover:bg-violet-50 hover:border-violet-200 transition-all"
+            variant="default"
+            className="text-sm bg-black hover:bg-gray-800 transition-all"
             asChild
           >
             <Link

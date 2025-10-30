@@ -34,12 +34,12 @@ export default function UltimateBundle({
     (sum, template) => sum + Number(template.price),
     0
   );
-  const bundlePrice = 49.99;
+  const bundlePrice = 59;
 
   const bundlePrices = {
-    solo: 49.99,
-    studio: 99.99,
-    unlimited: 349.99,
+    solo: 59,
+    studio: 129,
+    unlimited: 199,
   };
 
   const totalSolo = templates.reduce(
@@ -70,10 +70,10 @@ export default function UltimateBundle({
   );
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background pt-20">
       <div className="relative mx-auto">
         {/* Hero Section */}
-        <section className="relative py-24 sm:py-32 pt-40">
+        <section className="relative py-24 sm:py-32">
           {/* Subtle grid / lines background */}
           <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(to_right,rgba(226,232,240,.5)_1px,transparent_1px),linear-gradient(to_bottom,rgba(226,232,240,.5)_1px,transparent_1px)] bg-[size:48px_48px]" />
 

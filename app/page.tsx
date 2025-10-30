@@ -167,8 +167,8 @@ export default function Home() {
       description:
         "A modular Next.js landing page kit designed for startups, SaaS, and makers. Includes 10+ production-ready components styled with Tailwind CSS.",
       category: "Landing Page",
-      price: 9.99,
-      discount: 7.99,
+      price: 19.99,
+      discount: 15.99,
       image:
         "https://9hn0rhd8ibpivln7.public.blob.vercel-storage.com/templates/Landkit%20Landing%20Page/og-image-v2-opti.webp",
       link: "/nextjs-templates/landkit-nextjs-landing-page-starter-kit",
@@ -180,8 +180,8 @@ export default function Home() {
       description:
         "Production-ready Next.js e-commerce boilerplate with Stripe, cart, product management, and admin dashboard. Launch your online store in minutes.",
       category: "E-commerce",
-      price: 19.99,
-      discount: 15.99,
+      price: 59.99,
+      discount: 47.99,
       image:
         "https://9hn0rhd8ibpivln7.public.blob.vercel-storage.com/templates/ShopBase%20Template/og-image-v2-opti.webp",
       link: "/nextjs-templates/shopbase-nextjs-e-commerce-boilerplate",
@@ -193,8 +193,8 @@ export default function Home() {
       description:
         "BloomTPL BlogStarter is a modern blog starter kit with Next.js, Sanity.io & Tailwind CSS. Fast, customizable, and production-ready.",
       category: "Blog",
-      price: 19.99,
-      discount: 15.99,
+      price: 49.99,
+      discount: 39.99,
       image:
         "https://9hn0rhd8ibpivln7.public.blob.vercel-storage.com/templates/blogstarter-starterkit/BlogStarter.png",
       link: "/nextjs-templates/blogstarter-nextjs-sanity-blog-starter-kit",
@@ -206,8 +206,8 @@ export default function Home() {
       description:
         "Launch your SaaS faster with a complete starter kit: authentication, Stripe billing, admin dashboard, and user management – built with Next.js and Tailwind CSS.",
       category: "SaaS",
-      price: 19.99,
-      discount: 15.99,
+      price: 49.99,
+      discount: 39.99,
       image:
         "https://9hn0rhd8ibpivln7.public.blob.vercel-storage.com/templates/coresaas-boilerplate/og-opti.webp",
       link: "/nextjs-templates/coresaas-next-js-tailwind-css-saas-boilerplate",
@@ -394,7 +394,12 @@ export default function Home() {
           </div>
 
           <div className="text-center mt-12">
-            <Button variant="outline" className="bg-white" size="lg" asChild>
+            <Button
+              variant="default"
+              className="bg-black hover:bg-black hover:scale-105 transition-transform"
+              size="lg"
+              asChild
+            >
               <Link href="/nextjs-templates">
                 View All Templates
                 <ChevronRight className="w-5 h-5 ml-2" />

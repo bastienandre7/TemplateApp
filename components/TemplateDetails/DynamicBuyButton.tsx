@@ -43,7 +43,6 @@ export default function DynamicBuyButton({
 
   // Si template possédé ou gratuit
   if (isOwned || template.price === 0) {
-    // Si pas connecté, demander connexion
     if (status === "unauthenticated") {
       return (
         <Button
