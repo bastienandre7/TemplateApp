@@ -10,7 +10,7 @@ import Link from "next/link";
 export default function FaqAccordion() {
   return (
     <section id="faq" className="py-20">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6">
+      <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-black mb-4">
@@ -22,13 +22,13 @@ export default function FaqAccordion() {
         </div>
 
         {/* FAQ Accordion */}
-        <div className="bg-white rounded-3xl border border-gray-200 shadow-sm overflow-hidden">
+        <div className="overflow-hidden">
           <Accordion type="multiple" className="w-full">
             <AccordionItem
               value="item-1"
               className="border-b border-gray-100 last:border-0"
             >
-              <AccordionTrigger className="text-lg font-semibold text-black hover:text-gray-700 px-8 py-6 hover:bg-gray-50 transition-all duration-200">
+              <AccordionTrigger className="text-lg text-black hover:text-gray-700 px-8 py-6 hover:bg-gray-50 transition-all duration-200">
                 What is BloomTPL?
               </AccordionTrigger>
               <AccordionContent className="px-8 pb-6 text-gray-600 leading-relaxed">
@@ -44,7 +44,7 @@ export default function FaqAccordion() {
               value="item-2"
               className="border-b border-gray-100 last:border-0"
             >
-              <AccordionTrigger className="text-lg font-semibold text-black hover:text-gray-700 px-8 py-6 hover:bg-gray-50 transition-all duration-200">
+              <AccordionTrigger className="text-lg text-black hover:text-gray-700 px-8 py-6 hover:bg-gray-50 transition-all duration-200">
                 Are the templates free to use?
               </AccordionTrigger>
               <AccordionContent className="px-8 pb-6 text-gray-600 leading-relaxed">
@@ -58,7 +58,7 @@ export default function FaqAccordion() {
               value="item-3"
               className="border-b border-gray-100 last:border-0"
             >
-              <AccordionTrigger className="text-lg font-semibold text-black hover:text-gray-700 px-8 py-6 hover:bg-gray-50 transition-all duration-200">
+              <AccordionTrigger className="text-lg text-black hover:text-gray-700 px-8 py-6 hover:bg-gray-50 transition-all duration-200">
                 Can I use these templates for commercial projects?
               </AccordionTrigger>
               <AccordionContent className="px-8 pb-6 text-gray-600 leading-relaxed">
@@ -72,7 +72,7 @@ export default function FaqAccordion() {
               value="item-4"
               className="border-b border-gray-100 last:border-0"
             >
-              <AccordionTrigger className="text-lg font-semibold text-black hover:text-gray-700 px-8 py-6 hover:bg-gray-50 transition-all duration-200">
+              <AccordionTrigger className="text-lg text-black hover:text-gray-700 px-8 py-6 hover:bg-gray-50 transition-all duration-200">
                 Do you offer support or updates?
               </AccordionTrigger>
               <AccordionContent className="px-8 pb-6 text-gray-600 leading-relaxed">
@@ -86,7 +86,7 @@ export default function FaqAccordion() {
               value="item-5"
               className="border-b border-gray-100 last:border-0"
             >
-              <AccordionTrigger className="text-lg font-semibold text-black hover:text-gray-700 px-8 py-6 hover:bg-gray-50 transition-all duration-200">
+              <AccordionTrigger className="text-lg text-black hover:text-gray-700 px-8 py-6 hover:bg-gray-50 transition-all duration-200">
                 How do I install a template after purchase?
               </AccordionTrigger>
               <AccordionContent className="px-8 pb-6 text-gray-600 leading-relaxed">
@@ -113,7 +113,7 @@ export default function FaqAccordion() {
               value="item-6"
               className="border-b border-gray-100 last:border-0"
             >
-              <AccordionTrigger className="text-lg font-semibold text-black hover:text-gray-700 px-8 py-6 hover:bg-gray-50 transition-all duration-200">
+              <AccordionTrigger className="text-lg text-black hover:text-gray-700 px-8 py-6 hover:bg-gray-50 transition-all duration-200">
                 Which payment methods do you accept?
               </AccordionTrigger>
               <AccordionContent className="px-8 pb-6 text-gray-600 leading-relaxed">
@@ -127,7 +127,7 @@ export default function FaqAccordion() {
               value="item-7"
               className="border-b border-gray-100 last:border-0"
             >
-              <AccordionTrigger className="text-lg font-semibold text-black hover:text-gray-700 px-8 py-6 hover:bg-gray-50 transition-all duration-200">
+              <AccordionTrigger className="text-lg text-black hover:text-gray-700 px-8 py-6 hover:bg-gray-50 transition-all duration-200">
                 Do you offer refunds?
               </AccordionTrigger>
               <AccordionContent className="px-8 pb-6 text-gray-600 leading-relaxed">
@@ -168,7 +168,7 @@ export default function FaqAccordion() {
               value="item-8"
               className="border-b border-gray-100 last:border-0"
             >
-              <AccordionTrigger className="text-lg font-semibold text-black hover:text-gray-700 px-8 py-6 hover:bg-gray-50 transition-all duration-200">
+              <AccordionTrigger className="text-lg text-black hover:text-gray-700 px-8 py-6 hover:bg-gray-50 transition-all duration-200">
                 Can I customize the templates to match my brand?
               </AccordionTrigger>
               <AccordionContent className="px-8 pb-6 text-gray-600 leading-relaxed">
@@ -182,7 +182,7 @@ export default function FaqAccordion() {
               value="item-9"
               className="border-b border-gray-100 last:border-0"
             >
-              <AccordionTrigger className="text-lg font-semibold text-black hover:text-gray-700 px-8 py-6 hover:bg-gray-50 transition-all duration-200">
+              <AccordionTrigger className="text-lg text-black hover:text-gray-700 px-8 py-6 hover:bg-gray-50 transition-all duration-200">
                 What do I get when I purchase a template?
               </AccordionTrigger>
               <AccordionContent className="px-8 pb-6">
@@ -255,7 +255,7 @@ export default function FaqAccordion() {
               value="item-10"
               className="border-b border-gray-100 last:border-0"
             >
-              <AccordionTrigger className="text-lg font-semibold text-black hover:text-gray-700 px-8 py-6 hover:bg-gray-50 transition-all duration-200">
+              <AccordionTrigger className="text-lg text-black hover:text-gray-700 px-8 py-6 hover:bg-gray-50 transition-all duration-200">
                 Can I download the templates anytime?
               </AccordionTrigger>
               <AccordionContent className="px-8 pb-6 text-gray-600 leading-relaxed">

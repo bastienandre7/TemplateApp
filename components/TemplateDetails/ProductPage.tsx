@@ -55,11 +55,9 @@ interface ProductPageProps {
 }
 
 export default function ProductPage({ template, purchases }: ProductPageProps) {
-  console.log("Categories:", template.categories);
-
   return (
     <div className="pt-16 md:pt-4 text-black bg-background min-h-screen">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-20 md:py-32">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-20 md:pt-32">
         {/* Hero Section - Style Clay */}
         <section className="mb-16 max-w-4xl mx-auto">
           {/* Titre */}
@@ -345,60 +343,35 @@ export default function ProductPage({ template, purchases }: ProductPageProps) {
         {template.variants && <PricingSection variants={template.variants} />}
         <PaymentMethodSection />
         <FaqAccordion />
-
-        <section className="relative overflow-hidden rounded-3xl bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 py-20 text-white mt-0 md:mt-12">
-          {/* Glow background */}
-          <div className="absolute inset-0">
-            <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 via-blue-500/10 to-transparent" />
-            <div className="absolute top-1/2 left-1/2 w-[800px] h-[800px] -translate-x-1/2 -translate-y-1/2 bg-blue-600/20 blur-[120px] rounded-full" />
-          </div>
-
-          <div className="relative z-10 text-center space-y-10 px-6">
-            <h2 className="text-4xl lg:text-5xl font-bold tracking-tight bg-gradient-to-r from-white via-indigo-200 to-blue-200 bg-clip-text text-transparent">
-              Start Building Today
-            </h2>
-
-            <p className="text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed">
-              Production-ready code, modern architecture, and everything you
-              need to ship faster.
-            </p>
-
-            {/* CTA buttons */}
-            <div className="flex flex-col sm:flex-row justify-center gap-4 max-w-md mx-auto">
-              <DynamicBuyButton template={template} purchases={purchases} />
-              {template.demoUrl && (
-                <Link
-                  href={template.demoUrl}
-                  target="_blank"
-                  className="flex-1 w-full"
-                >
-                  <Button
-                    variant="outline"
-                    className="w-full h-[50px] px-8 py-4 text-lg border border-gray-600 text-gray-800 hover:bg-white/10 hover:border-gray-400 hover:text-white transition-all duration-300 flex items-center justify-center gap-2"
-                  >
-                    <Eye className="w-5 h-5" />
-                    Live Demo
-                  </Button>
-                </Link>
-              )}
-            </div>
-
-            {/* Small highlights */}
-            <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-400 pt-8">
-              {[
-                { color: "bg-green-400", label: "Instant Download" },
-                { color: "bg-blue-400", label: "TypeScript Ready" },
-                { color: "bg-purple-400", label: "Next.js 15" },
-              ].map((item, i) => (
-                <div key={i} className="flex items-center gap-2">
-                  <div className={`w-2 h-2 ${item.color} rounded-full`} />
-                  {item.label}
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
       </div>
+      <section className="w-full py-20 md:py-32 bg-gradient-to-br from-primary to-primary/80 text-primary-foreground relative overflow-hidden isolate">
+        <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(from_var(--primary-foreground)_r_g_b_/_0.075)_1px,transparent_1px),linear-gradient(to_bottom,rgba(from_var(--primary-foreground)_r_g_b_/_0.075)_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+        <div className="absolute -top-24 -left-24 w-64 h-64 bg-foreground/15 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-foreground/15 rounded-full blur-3xl animate-pulse"></div>
+        <div className="container mx-auto px-4 md:px-6 relative">
+          <div className="flex flex-col items-center justify-center space-y-6 text-center">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">
+              Ready to Start Building with This Template?
+            </h2>
+            <p className="mx-auto max-w-[700px] text-primary-foreground/80 md:text-xl">
+              Get instant access to a production-ready Next.js template — fully
+              customizable, beautifully designed, and built to help you launch
+              faster.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 mt-4">
+              <DynamicBuyButton template={template} purchases={purchases} />
+              <a href={template.demoUrl} target="_blank" rel="noreferrer">
+                <button className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium focus:outline-none focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-secondary text-secondary-foreground hover:bg-secondary/80 rounded-full h-12 px-8 text-base cursor-pointer shadow-md hover:shadow-lg transition-all duration-300 hover:translate-y-[-2px]">
+                  Live Demo
+                </button>
+              </a>
+            </div>
+            <p className="text-sm text-primary-foreground/80 mt-4">
+              Instant download. Lifetime updates included.
+            </p>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
