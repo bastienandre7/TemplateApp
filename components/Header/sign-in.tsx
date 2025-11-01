@@ -9,6 +9,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useRole } from "@/hooks/useRole";
+import { ChevronDown } from "lucide-react";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
@@ -20,11 +21,11 @@ export default function AuthButton() {
   if (!session) {
     return (
       <Button
-        className="mr-2 font-semibold"
-        variant="ghost"
+        className="mr-2 bg-black hover:bg-gray-900 hover:scale-105 transition-transform cursor-pointer"
+        variant="default"
         onClick={() => signIn()}
       >
-        Sign In
+        Get Started
       </Button>
     );
   }
@@ -32,12 +33,8 @@ export default function AuthButton() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" className="text-black relative">
-          {"My Account"}
-          {/* Badge admin */}
-          {isAdmin && !loading && (
-            <span className="absolute -top-1 -right-1 w-3 h-3 bg-purple-500 rounded-full border-2 border-white"></span>
-          )}
+        <Button variant="outline" className="text-black relative rounded-md">
+          Dashboard <ChevronDown className="h-4 w-4" />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-48">
