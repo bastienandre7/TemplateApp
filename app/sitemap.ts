@@ -81,12 +81,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/nextjs-components`,
-      lastModified: new Date(),
-      changeFrequency: "weekly" as const,
-      priority: 0.9,
-    },
-    {
       url: `${baseUrl}/all-access-pass`,
       lastModified: new Date(),
       changeFrequency: "weekly" as const,
@@ -166,18 +160,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.9,
   }));
 
-  // Ajouter les composants individuels
-  const dbComponents = await prisma.component.findMany({
-    select: { slug: true, updatedAt: true },
-  });
-
-  const componentRoutes = dbComponents.map((component) => ({
-    url: `${baseUrl}/nextjs-components/${component.slug}`,
-    lastModified: component.updatedAt || new Date(),
-    changeFrequency: "weekly" as const,
-    priority: 0.8,
-  }));
-
   // Récupère les slugs des blogs depuis Sanity
   const blogPosts = await client.fetch<
     { slug: { current: string }; _updatedAt?: string }[]
@@ -190,10 +172,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8,
   }));
 
-  return [
-    ...staticRoutes,
-    ...templateRoutes,
-    ...componentRoutes,
-    ...blogRoutes,
-  ];
+  return [...staticRoutes, ...templateRoutes, ...blogRoutes];
 }

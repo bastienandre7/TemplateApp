@@ -6,7 +6,6 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -30,9 +29,9 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Next.js Templates & Free React Components | BloomTPL",
+  title: "Premium And Free Next.js Templates | BloomTPL",
   description:
-    "Premium Next.js templates and free React components for SaaS, e-commerce, and portfolios. Built with Tailwind CSS and TypeScript.",
+    "Premium And Free Next.js templates for SaaS, e-commerce, and portfolios. Built with Tailwind CSS and TypeScript.",
   metadataBase: new URL("https://bloomtpl.com"),
   alternates: {
     canonical: "https://bloomtpl.com",
@@ -40,9 +39,9 @@ export const metadata: Metadata = {
   robots:
     "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
   openGraph: {
-    title: "Next.js Templates & Free React Components | BloomTPL",
+    title: "Premium And Free Next.js Templates | BloomTPL",
     description:
-      "Premium Next.js templates and free React components for modern web apps. Built with Tailwind CSS and TypeScript.",
+      "Premium And Free Next.js templates for SaaS, e-commerce, and portfolios. Built with Tailwind CSS and TypeScript.",
     url: "https://bloomtpl.com",
     siteName: "BloomTPL",
     locale: "en_US",
@@ -58,9 +57,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Next.js Templates & Free React Components | BloomTPL",
+    title: "Premium And Free Next.js Templates | BloomTPL",
     description:
-      "Premium Next.js templates and free React components for SaaS, e-commerce, and portfolios. Built with Tailwind CSS and TypeScript.",
+      "Premium And Free Next.js templates for SaaS, e-commerce, and portfolios. Built with Tailwind CSS and TypeScript.",
     images: ["https://bloomtpl.com/og-image.png"],
   },
   creator: "BloomTPL",
@@ -130,33 +129,6 @@ export default function Home() {
     {
       name: "Dashboard",
       href: "/nextjs-templates/category/dashboard",
-    },
-  ];
-
-  const freeComponents = [
-    {
-      name: "Simple Footer",
-      description:
-        "Professional footer with organized links, newsletter signup, and social media integration.",
-      image:
-        "https://9hn0rhd8ibpivln7.public.blob.vercel-storage.com/components/simple-footer.png",
-      link: "/nextjs-components/simple-footer",
-    },
-    {
-      name: "Pricing Section",
-      description:
-        "Modern pricing table with monthly/yearly toggle, popular plan highlighting, and FAQ section.",
-      image:
-        "https://9hn0rhd8ibpivln7.public.blob.vercel-storage.com/components/pricing-section.png",
-      link: "/nextjs-components/pricing-section",
-    },
-    {
-      name: "Product Card",
-      description:
-        "E-commerce product card with ratings, pricing, wishlist, and cart functionality.",
-      image:
-        "https://9hn0rhd8ibpivln7.public.blob.vercel-storage.com/components/product-card.png",
-      link: "/nextjs-components/product-card",
     },
   ];
 
@@ -261,28 +233,31 @@ export default function Home() {
           <div className="flex flex-col lg:flex-row items-center gap-12">
             <div className="flex-1 text-center lg:text-left space-y-8">
               <div className="space-y-6">
-                <Badge variant="secondary" className="text-sm font-medium">
+                <Badge
+                  variant="secondary"
+                  className="text-sm font-medium border border-primary/20 bg-primary/5 text-primary"
+                >
                   <Sparkles className="w-4 h-4 mr-2" />
-                  Premium Next.js Templates
+                  Trusted by developers
                 </Badge>
 
-                <h1 className="text-4xl md:text-6xl font-bold text-gray-900 leading-none tracking-tighter">
-                  Build Faster with
-                  <span className="text-primary"> Premium Templates</span>
+                <h1 className="text-4xl md:text-6xl font-bold text-foreground leading-none tracking-tighter">
+                  Build Faster with{" "}
+                  <span className="text-primary">
+                    Premium Next.js Templates
+                  </span>
                 </h1>
 
-                <p className="max-w-lg">
-                  Kickstart your next project with our collection of
-                  production-ready Next.js templates and free React components.
-                  Built with TypeScript, Tailwind CSS, and modern best
-                  practices.
+                <p className="max-w-lg text-lg">
+                  Kickstart your next project with production-ready Next.js
+                  templates built with TypeScript and Tailwind CSS.
                 </p>
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button
                   size="lg"
-                  className="text-lg px-8 py-6 hover:scale-110 transition-transform"
+                  className="text-lg px-8 py-6 hover:scale-105 transition-transform"
                   asChild
                 >
                   <Link href="/nextjs-templates">
@@ -290,17 +265,13 @@ export default function Home() {
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Link>
                 </Button>
-
                 <Button
                   size="lg"
                   variant="outline"
-                  className="text-lg px-8 py-6 hover:scale-110 transition-transform"
+                  className="text-lg px-8 py-6"
                   asChild
                 >
-                  <Link href="/nextjs-components" className="bg-white">
-                    Free Components
-                    <Download className="w-5 h-5 ml-2" />
-                  </Link>
+                  <Link href="/all-access">Get All Access</Link>
                 </Button>
               </div>
 
@@ -337,7 +308,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Latest Templates Section */}
       <section className="py-8 md:py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-16">
@@ -355,14 +325,14 @@ export default function Home() {
           </div>
           <div className="flex flex-wrap justify-center gap-2 mb-12">
             <Button
-              key="All"
-              variant="default"
+              variant="secondary"
               size="sm"
-              className="text-sm font-medium"
+              className="text-sm font-medium bg-primary/10 text-primary hover:bg-primary/20"
               asChild
             >
               <Link href="/">All</Link>
             </Button>
+
             {categories.map((category) => (
               <Button
                 key={category.name}
@@ -420,8 +390,8 @@ export default function Home() {
               Free Next.js Templates
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Download our free, fully responsive Next.js templates built with
-              Tailwind CSS and React.
+              Get started with our free, high-quality Next.js templates built
+              for speed and flexibility.
             </p>
           </div>
 
@@ -440,10 +410,15 @@ export default function Home() {
               />
             ))}
           </div>
+          <Link
+            href="/nextjs-templates"
+            className="flex justify-center mt-12 underline font-medium"
+          >
+            Want more? Explore our full collection of premium templates
+          </Link>
         </div>
       </section>
 
-      {/* Features Section */}
       <section className="py-8 md:py-20 bg-muted/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-16">
@@ -451,8 +426,8 @@ export default function Home() {
               Why Choose Our Templates?
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Every template is crafted with attention to detail and modern
-              development practices
+              Every template is designed for speed, scalability, and seamless
+              customization.
             </p>
           </div>
 
@@ -480,25 +455,24 @@ export default function Home() {
       </section>
 
       <section className="relative py-24 border-t border-b border-slate-200">
-        {/* Subtle grid background */}
         <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(to_right,rgba(226,232,240,.4)_1px,transparent_1px),linear-gradient(to_bottom,rgba(226,232,240,.4)_1px,transparent_1px)] bg-[size:48px_48px]" />
 
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 text-center">
           <div className="inline-flex items-center px-4 py-1.5 bg-slate-100 text-slate-700 rounded-full text-sm font-medium mb-6">
             <Sparkles className="w-4 h-4 mr-2 text-yellow-600" />
-            Limited Time Offer
+            Save 70% with the All Access Pass
           </div>
 
           <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-slate-900 mb-5">
-            Get Access to <span className="text-slate-700">Every Template</span>{" "}
+            Get Access to <span className="text-primary">Every Template</span>{" "}
             for One Price
           </h2>
 
-          <p className="text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto mb-10">
-            Unlock <strong>all premium BloomTPL templates</strong> — including
-            SaaS, eCommerce, Portfolio, and more — for{" "}
-            <span className="text-slate-900 font-semibold">$49.99</span>.
-            Lifetime access, future updates included.
+          <p className="text-lg sm:text-xl max-w-2xl mx-auto mb-10">
+            Unlock <strong>every premium BloomTPL template</strong> — including
+            including SaaS, eCommerce, and Portfolio kits — for just{" "}
+            <span className="text-slate-900 font-semibold">$59</span>. Lifetime
+            access with all future updates included.
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4">
@@ -534,74 +508,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Free Components Section */}
-      <section className="py-8 md:py-20 bg-muted/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-16">
-            <Badge variant="secondary" className="mb-4">
-              <Download className="w-4 h-4 mr-2" />
-              100% Free
-            </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Free Next.js Components
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Beautiful, responsive components built with Tailwind CSS and
-              React. Copy the code and paste into your project.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {freeComponents.map((component) => (
-              <Card
-                key={component.name}
-                className="overflow-hidden hover:shadow-xl transition-all hover:-translate-y-1"
-              >
-                <div className="aspect-video relative bg-gradient-to-br from-green-100 to-blue-100">
-                  <Image
-                    src={component.image}
-                    alt={component.name}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  />
-                  <Badge variant="secondary" className="absolute top-4 left-4">
-                    FREE
-                  </Badge>
-                </div>
-
-                <CardHeader>
-                  <CardTitle className="text-xl">{component.name}</CardTitle>
-                  <CardDescription>{component.description}</CardDescription>
-                </CardHeader>
-
-                <CardFooter className="flex items-center">
-                  <Button asChild>
-                    <Link className="w-full" href={component.link}>
-                      View Code
-                    </Link>
-                  </Button>
-                </CardFooter>
-              </Card>
-            ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <Button size="lg" variant="outline" asChild>
-              <Link href="/nextjs-components">
-                Browse All Free Components
-                <ChevronRight className="w-5 h-5 ml-2" />
-              </Link>
-            </Button>
-            <p className="text-sm text-muted-foreground mt-4">
-              No signup required • Copy & paste ready • Always free
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Social Proof Section */}
-      <section className="py-8 md:py-20 bg-background">
+      <section className="py-8 md:py-20 bg-gradient-to-b from-white to-muted/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
@@ -615,7 +522,7 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                name: "Next.js",
+                name: "Next.js 15",
                 icon: "/svg/nextjs-icon.svg",
                 description: "Latest React framework with App Router",
               },
@@ -625,7 +532,7 @@ export default function Home() {
                 description: "Type-safe code for better development experience",
               },
               {
-                name: "Tailwind CSS",
+                name: "Tailwind CSS v4",
                 icon: "/svg/tailwind.svg",
                 description: "Utility-first CSS framework for rapid styling",
               },
@@ -665,11 +572,14 @@ export default function Home() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-8">
           <div className="space-y-4">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-              Start Building Your Next Project Today
+              Ready to Build Something Great?
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Choose from our collection of premium Next.js templates and launch
-              faster than ever before
+              Pick a premium Next.js template and launch your next project
+              today.
+            </p>
+            <p className="text-muted-foreground">
+              Trusted by developers worldwide.
             </p>
           </div>
 
@@ -690,6 +600,9 @@ export default function Home() {
               <Link href="/nextjs-components">Try Free Components</Link>
             </Button>
           </div>
+          <p className="text-sm text-muted-foreground">
+            Instant access. No subscriptions. Lifetime updates.
+          </p>
         </div>
       </section>
     </div>

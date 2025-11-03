@@ -64,10 +64,18 @@ export default function page() {
             collaborate? We&apos;d love to hear from you and help bring your
             ideas to life.
           </p>
+          <p className="mt-4 text-base text-gray-700">
+            Or email us directly at{" "}
+            <a
+              href="mailto:bloomtpl@gmail.com"
+              className="text-primary underline hover:text-primary/80"
+            >
+              bloomtpl@gmail.com
+            </a>
+          </p>
         </div>
       </div>
 
-      {/* Contact Form Section */}
       <div className="pb-20 px-4">
         <div className="max-w-2xl mx-auto">
           <div className="bg-white border border-gray-200 rounded-2xl shadow-xl p-8 md:p-12">
