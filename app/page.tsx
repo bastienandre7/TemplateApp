@@ -228,146 +228,109 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
-      <section className="bg-background relative overflow-hidden pt-20 pb-16">
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 pt-20">
-          <div className="flex flex-col lg:flex-row items-center gap-12">
-            <div className="flex-1 text-center lg:text-left space-y-8">
-              <div className="space-y-6">
-                <Badge
-                  variant="secondary"
-                  className="text-sm font-medium border border-primary/20 bg-primary/5 text-primary"
-                >
-                  <Sparkles className="w-4 h-4 mr-2" />
-                  Trusted by developers
-                </Badge>
+      <section className="relative overflow-hidden bg-background pt-32 pb-12 mdpb-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col lg:flex-row items-center gap-20 pt-20">
+          {/* Text content */}
+          <div className="flex-1 text-center lg:text-left space-y-8">
+            <div className="space-y-4">
+              <Badge
+                variant="secondary"
+                className="mb-4 mx-auto lg:mx-0 bg-primary/10 text-primary"
+              >
+                <Sparkles className="w-4 h-4 mr-2 text-primary" />
+                Launch Faster
+              </Badge>
 
-                <h1 className="text-4xl md:text-6xl font-bold text-foreground leading-none tracking-tighter">
-                  Build Faster with{" "}
-                  <span className="text-primary">
-                    Premium Next.js Templates
-                  </span>
-                </h1>
+              <h1 className="text-5xl md:text-6xl font-semibold text-foreground tracking-tight">
+                Build Faster with{" "}
+                <span className="text-primary">Premium Next.js Templates</span>
+              </h1>
 
-                <p className="max-w-lg text-lg">
-                  Kickstart your next project with production-ready Next.js
-                  templates built with TypeScript and Tailwind CSS.
-                </p>
-              </div>
+              <p className="max-w-lg text-lg text-muted-foreground mx-auto lg:mx-0">
+                Production-ready templates built with Next.js, TypeScript, and
+                Tailwind CSS.
+              </p>
 
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button
-                  size="lg"
-                  className="text-lg px-8 py-6 hover:scale-105 transition-transform"
-                  asChild
-                >
-                  <Link href="/nextjs-templates">
-                    Browse Templates
-                    <ArrowRight className="w-5 h-5 ml-2" />
-                  </Link>
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="text-lg px-8 py-6"
-                  asChild
-                >
-                  <Link href="/all-access">Get All Access</Link>
-                </Button>
-              </div>
-
-              <div className="flex items-center gap-6 text-sm text-muted-foreground">
-                <div className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-green-500" />
-                  Production Ready
-                </div>
-                <div className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-green-500" />
-                  TypeScript & Tailwind
-                </div>
-                <div className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-green-500" />
-                  Lifetime Updates
-                </div>
-              </div>
+              <p className="max-w-lg text-base text-muted-foreground/80 mx-auto lg:mx-0">
+                Trusted by indie hackers and startups worldwide.
+              </p>
             </div>
 
-            <div className="flex-1 relative">
-              <div className="relative">
-                <Image
-                  src="/images/banner-opti.webp"
-                  alt="Desktop Banner Image"
-                  width={800}
-                  height={640}
-                  className="shadow-2xl rounded-2xl transform hover:rotate-0 transition-transform duration-500"
-                  priority
-                  fetchPriority="high"
-                />
-              </div>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mt-8">
+              <Button
+                size="lg"
+                asChild
+                className="px-8 py-6 text-lg bg-primary hover:bg-primary/90 shadow-md"
+              >
+                <Link href="/nextjs-templates">
+                  Browse Templates
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Link>
+              </Button>
             </div>
+          </div>
+
+          {/* Image */}
+          <div className="flex-1 relative">
+            <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent rounded-full blur-3xl -z-10" />
+            <Image
+              src="/banner.png"
+              alt="Showcase of Next.js templates"
+              width={1200}
+              height={1200}
+              className="w-full h-auto scale-110 drop-shadow-2xl"
+              priority
+            />
           </div>
         </div>
       </section>
 
-      <section className="py-8 md:py-20 bg-background">
+      <section className="py-24 bg-background dark:bg-slate-950 border-t border-slate-200/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-16">
-            <Badge variant="secondary" className="mb-4">
-              <Star className="w-4 h-4 mr-2" />
+            <Badge
+              variant="secondary"
+              className="mb-4 text-indigo-600 bg-indigo-50 border-none"
+            >
+              <Star className="w-4 h-4 mr-2 text-indigo-500" />
               Latest Templates
             </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Premium Next.js Templates
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
+              Handcrafted Next.js Templates
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Discover our newest premium Next.js templates built with modern
-              best practices
+            <p className="text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto">
+              Explore our latest premium templates — clean design, scalable
+              code, and optimized for performance.
             </p>
           </div>
+
+          {/* Filters */}
           <div className="flex flex-wrap justify-center gap-2 mb-12">
             <Button
               variant="secondary"
               size="sm"
-              className="text-sm font-medium bg-primary/10 text-primary hover:bg-primary/20"
-              asChild
+              className="bg-indigo-100 text-indigo-700 hover:bg-indigo-200"
             >
-              <Link href="/">All</Link>
+              All
             </Button>
-
             {categories.map((category) => (
-              <Button
-                key={category.name}
-                variant="outline"
-                size="sm"
-                className="text-sm font-medium"
-                asChild
-              >
+              <Button key={category.name} variant="outline" size="sm">
                 <Link href={category.href}>{category.name}</Link>
               </Button>
             ))}
           </div>
 
+          {/* Cards */}
           <div className="grid md:grid-cols-2 gap-8">
             {templates.map((template) => (
-              <TemplateCard
-                key={template.slug}
-                id={template.slug}
-                name={template.name}
-                slug={template.slug}
-                description={template.description}
-                category={template.category}
-                price={template.price}
-                imageUrl={template.image}
-                demoUrl={template.demoUrl}
-                discount={template.discount}
-              />
+              <TemplateCard key={template.slug} {...template} />
             ))}
           </div>
 
-          <div className="text-center mt-12">
+          <div className="text-center mt-16">
             <Button
               variant="default"
-              className="bg-black hover:bg-black hover:scale-105 transition-transform"
-              size="lg"
+              className="bg-indigo-600 hover:bg-indigo-500 text-white text-lg px-8 py-6 rounded-xl shadow-lg hover:scale-105 transition-transform"
               asChild
             >
               <Link href="/nextjs-templates">
@@ -379,7 +342,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-8 md:py-20 bg-muted/30">
+      <section className="py-8 md:py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-16">
             <Badge variant="secondary" className="mb-4">

@@ -295,7 +295,7 @@ export default function HeaderCPN() {
           <div className="flex items-center space-x-2 rtl:space-x-reverse">
             <Button
               variant="default"
-              className="hidden md:flex mr-2 hover:scale-105 transition-transform"
+              className="hidden lg:flex mr-2 hover:scale-105 transition-transform"
               asChild
             >
               <Link href="/all-access-pass">All Access Pass</Link>
