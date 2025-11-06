@@ -228,64 +228,37 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
-      <section className="relative overflow-hidden bg-background pt-32 pb-12 mdpb-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col lg:flex-row items-center gap-20 pt-20">
-          {/* Text content */}
-          <div className="flex-1 text-center lg:text-left space-y-8">
-            <div className="space-y-4">
-              <Badge
-                variant="secondary"
-                className="mb-4 mx-auto lg:mx-0 bg-primary/10 text-primary"
-              >
-                <Sparkles className="w-4 h-4 mr-2 text-primary" />
-                Launch Faster
-              </Badge>
+      <section className="relative overflow-hidden bg-background pt-32 pb-12 md:pb-24 px-6 border-b border-slate-200">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 flex flex-col items-center gap-4 pt-20 text-center">
+          <h1 className="text-5xl md:text-6xl font-semibold text-foreground tracking-tight">
+            Build Faster with Premium Next.js Templates
+          </h1>
 
-              <h1 className="text-5xl md:text-6xl font-semibold text-foreground tracking-tight">
-                Build Faster with{" "}
-                <span className="text-primary">Premium Next.js Templates</span>
-              </h1>
+          <p className="max-w-lg text-lg text-muted-foreground mx-auto lg:mx-0">
+            Production-ready templates built with Next.js, TypeScript, and
+            Tailwind CSS.
+          </p>
 
-              <p className="max-w-lg text-lg text-muted-foreground mx-auto lg:mx-0">
-                Production-ready templates built with Next.js, TypeScript, and
-                Tailwind CSS.
-              </p>
+          <p className="max-w-lg text-base text-muted-foreground/80 mx-auto lg:mx-0 text-center flex">
+            Trusted by indie hackers and startups worldwide.
+          </p>
+        </div>
 
-              <p className="max-w-lg text-base text-muted-foreground/80 mx-auto lg:mx-0">
-                Trusted by indie hackers and startups worldwide.
-              </p>
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mt-8">
-              <Button
-                size="lg"
-                asChild
-                className="px-8 py-6 text-lg bg-primary hover:bg-primary/90 shadow-md"
-              >
-                <Link href="/nextjs-templates">
-                  Browse Templates
-                  <ArrowRight className="w-5 h-5 ml-2" />
-                </Link>
-              </Button>
-            </div>
-          </div>
-
-          {/* Image */}
-          <div className="flex-1 relative">
-            <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent rounded-full blur-3xl -z-10" />
-            <Image
-              src="/banner.png"
-              alt="Showcase of Next.js templates"
-              width={1200}
-              height={1200}
-              className="w-full h-auto scale-110 drop-shadow-2xl"
-              priority
-            />
-          </div>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+          <Button
+            size="lg"
+            asChild
+            className="px-8 py-6 text-lg bg-primary hover:bg-primary/90 shadow-md"
+          >
+            <Link href="/nextjs-templates">
+              Browse Templates
+              <ArrowRight className="w-5 h-5 ml-2" />
+            </Link>
+          </Button>
         </div>
       </section>
 
-      <section className="py-24 bg-background dark:bg-slate-950 border-t border-slate-200/10">
+      <section className="py-24 bg-background dark:bg-slate-950 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-16">
             <Badge
@@ -342,7 +315,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-8 md:py-20 bg-background">
+      <section className="py-8 md:py-20 bg-background border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-16">
             <Badge variant="secondary" className="mb-4">
@@ -531,7 +504,7 @@ export default function Home() {
 
       <FaqAccordion />
 
-      <section className="py-8 md:py-20 bg-muted/30">
+      <section className="py-8 md:py-20 bg-muted/30 border-t border-slate-200">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-8">
           <div className="space-y-4">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">

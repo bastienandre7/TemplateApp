@@ -293,6 +293,7 @@ export default function HeaderCPN() {
 
           {/* Bouton de connexion et menu mobile */}
           <div className="flex items-center space-x-2 rtl:space-x-reverse">
+            <AuthButton />
             <Button
               variant="default"
               className="hidden lg:flex mr-2 hover:scale-105 transition-transform"
@@ -300,7 +301,6 @@ export default function HeaderCPN() {
             >
               <Link href="/all-access-pass">All Access Pass</Link>
             </Button>
-            <AuthButton />
             <button
               type="button"
               onClick={() => setIsOpen(!isOpen)}

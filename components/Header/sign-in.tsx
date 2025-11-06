@@ -21,11 +21,11 @@ export default function AuthButton() {
   if (!session) {
     return (
       <Button
-        className="mr-2 bg-black hover:bg-gray-900 hover:scale-105 transition-transform cursor-pointer"
-        variant="default"
+        className="mr-2 cursor-pointer text-black"
+        variant="link"
         onClick={() => signIn()}
       >
-        Get Started
+        Sign In
       </Button>
     );
   }

@@ -146,7 +146,16 @@ export async function generateMetadata({
       description:
         "Browse our complete collection of Next.js templates and starter kits for SaaS, blogs, e-commerce, portfolios, dashboards, and more.",
       alternates: {
-        canonical: `https://bloomtpl.com/nextjs-templates/category/${category}`,
+        canonical: `https://bloomtpl.com/nextjs-templates/category/${category.toLowerCase()}`,
+      },
+      robots: {
+        index: true,
+        follow: true,
+        nocache: false,
+        googleBot: {
+          index: true,
+          follow: true,
+        },
       },
     };
   }
@@ -155,12 +164,21 @@ export async function generateMetadata({
     title: meta.title,
     description: meta.description,
     alternates: {
-      canonical: `https://bloomtpl.com/nextjs-templates/category/${category}`,
+      canonical: `https://bloomtpl.com/nextjs-templates/category/${category.toLowerCase()}`,
+    },
+    robots: {
+      index: true,
+      follow: true,
+      nocache: false,
+      googleBot: {
+        index: true,
+        follow: true,
+      },
     },
     openGraph: {
       title: meta.title,
       description: meta.description,
-      url: `https://bloomtpl.com/nextjs-templates/category/${category}`,
+      url: `https://bloomtpl.com/nextjs-templates/category/${category.toLowerCase()}`,
       siteName: "BloomTPL",
       locale: "en_US",
       type: "website",
