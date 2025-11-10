@@ -164,8 +164,16 @@ export default function HeaderCPN() {
       <PromoBanner />
       <nav className="max-w-7xl mx-auto transition-all duration-300 px-4 sm:px-6 py-4">
         <div className=" w-full flex items-center justify-between">
-          <Link href="/" className="hover:bg-white focus:bg-white lg:hidden">
-            <Image src="/icons/favicon.ico" alt="Logo" width={32} height={32} />
+          <Link
+            href="/"
+            className="hover:bg-white focus:bg-white lg:hidden"
+          >
+            <Image
+              src="/icons/favicon.ico"
+              alt="Logo"
+              width={32}
+              height={32}
+            />
           </Link>
           <div className="hidden lg:flex items-center space-x-4 rtl:space-x-reverse">
             <NavigationMenu viewport={false}>

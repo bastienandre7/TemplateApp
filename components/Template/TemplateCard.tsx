@@ -2,11 +2,13 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   Card,
+  CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -50,21 +52,17 @@ export default function TemplateCard({
   return (
     <Card
       key={id}
-      className="group overflow-hidden border border-gray-200 hover:border-violet-200 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 bg-white"
+      className="group grid grid-rows-[auto_1fr_auto] overflow-hidden border border-gray-200 hover:shadow-lg transition-all duration-300 bg-card"
     >
-      <div className="relative aspect-[1200/630] bg-gray-50 cursor-pointer">
+      <div className="relative aspect-[1200/630] cursor-pointer m-2">
         <Link href={`/nextjs-templates/${slug}`}>
           <Image
             src={openGraphImage || imageUrl || image || "/images/NoImage.jpg"}
             alt={`${name} preview`}
             fill
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            className="object-contain rounded-md border border-gray-100"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
           />
-          {/* Tooltip on hover */}
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition bg-black/30 text-white text-sm font-medium pointer-events-none group-hover:scale-105">
-            View details →
-          </div>
         </Link>
         {/* NEW Badge */}
         {isNew && (
@@ -80,13 +78,37 @@ export default function TemplateCard({
         )}
       </div>
 
-      <CardHeader className="p-4">
+      <CardHeader className="pt-4 px-4 pb-2">
         <div className="flex items-center justify-between mb-2">
           <Badge variant="secondary" className="text-xs px-2 py-0.5">
             {category}
           </Badge>
+          <div className="flex items-baseline gap-1">
+            {Number(price) > 0 ? (
+              discount && discount < price ? (
+                <>
+                  <span className="text-xs text-gray-900">From</span>
+                  <span className="text-sm text-gray-500 line-through">
+                    {price}$
+                  </span>
+                  <span className="text-lg font-semibold text-gray-900">
+                    {discount}$
+                  </span>
+                </>
+              ) : (
+                <>
+                  <span className="text-xs text-gray-900">From</span>
+                  <span className="text-lg font-semibold text-gray-900">
+                    {price}$
+                  </span>
+                </>
+              )
+            ) : (
+              <span className="font-semibold text-gray-900 text-lg">FREE</span>
+            )}
+          </div>
         </div>
-        <CardTitle className="text-lg font-semibold line-clamp-1">
+        <CardTitle className="text-lg font-semibold">
           <Link
             href={`/nextjs-templates/${slug}`}
             className="hover:text-primary transition-colors"
@@ -94,61 +116,40 @@ export default function TemplateCard({
             {name}
           </Link>
         </CardTitle>
+      </CardHeader>
+      <CardContent className="pt-0 pb-4 px-4">
         <CardDescription className="text-sm text-gray-500 line-clamp-2 mt-1">
           {description ||
             "A beautifully crafted template ready for your next project."}
         </CardDescription>
-      </CardHeader>
+      </CardContent>
 
-      <CardFooter className="flex items-center justify-between p-4 border-t border-gray-100">
-        {/* Price */}
-        <div className="flex items-baseline gap-1">
-          {Number(price) > 0 ? (
-            discount && discount < price ? (
-              <>
-                <span className="text-xs text-gray-900">From</span>
-                <span className="text-sm text-gray-500 line-through">
-                  {price}$
-                </span>
-                <span className="text-lg font-semibold text-gray-900">
-                  {discount}$
-                </span>
-              </>
-            ) : (
-              <>
-                <span className="text-xs text-gray-900">From</span>
-                <span className="text-lg font-semibold text-gray-900">
-                  {price}$
-                </span>
-              </>
-            )
-          ) : (
-            <span className="text-sm font-semibold text-gray-900">FREE</span>
-          )}
-        </div>
-
-        {/* Button */}
+      <CardFooter className="flex gap-2 h-15 p-2 border-t border-gray-100">
+        <Button
+          variant="ghost"
+          className="flex-1 justify-center rounded-md"
+          asChild
+        >
+          <Link href={demoUrl ?? "#"} target="_blank" rel="noopener noreferrer">
+            Live Preview
+          </Link>
+        </Button>
+        <Separator orientation="vertical" className="" />
         {isOwned ? (
           <Button
             asChild
             variant="outline"
-            className="text-sm border-green-200 text-green-700 hover:bg-green-50"
+            className="flex-1 justify-center text-sm border-green-200 text-green-700 hover:bg-green-50 rounded-md"
           >
-            <Link href="/dashboard">Owned</Link>
+            <Link href="/dashboard">Download</Link>
           </Button>
         ) : (
           <Button
-            variant="default"
-            className="text-sm bg-black hover:bg-gray-800 transition-all"
+            variant="ghost"
+            className="flex-1 justify-center flex items-center rounded-md"
             asChild
           >
-            <Link
-              href={demoUrl ?? "#"}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Live Demo
-            </Link>
+            <Link href={`/nextjs-templates/${slug}`}>Download</Link>
           </Button>
         )}
       </CardFooter>

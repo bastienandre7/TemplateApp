@@ -323,7 +323,7 @@ export default function Home() {
           <div className="text-center mt-16">
             <Button
               variant="default"
-              className="bg-indigo-600 hover:bg-indigo-500 text-white text-lg px-8 py-6 rounded-xl shadow-lg hover:scale-105 transition-transform"
+              className="bg-primary text-white text-lg px-8 py-6 shadow-lg hover:scale-102 transition-transform"
               asChild
             >
               <Link href="/nextjs-templates">

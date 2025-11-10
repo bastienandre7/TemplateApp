@@ -73,7 +73,7 @@ export default function UltimateBundle({
     <div className="min-h-screen bg-background pt-20">
       <div className="relative mx-auto">
         {/* Hero Section */}
-        <section className="relative py-24 sm:py-32">
+        <section className="relative py-24 sm:py-32 border-b border-slate-200">
           {/* Subtle grid / lines background */}
           <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(to_right,rgba(226,232,240,.5)_1px,transparent_1px),linear-gradient(to_bottom,rgba(226,232,240,.5)_1px,transparent_1px)] bg-[size:48px_48px]" />
 
