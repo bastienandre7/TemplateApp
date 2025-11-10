@@ -169,7 +169,7 @@ export default function FooterCPN() {
             </div>
 
             {/* Components */}
-            <div className="space-y-4">
+            {/* <div className="space-y-4">
               <h3 className="font-semibold text-sm uppercase tracking-wide flex items-center gap-2">
                 <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
                 Components
@@ -267,7 +267,7 @@ export default function FooterCPN() {
                   </Link>
                 </li>
               </ul>
-            </div>
+            </div> */}
 
             {/* Resources & Other sections */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">

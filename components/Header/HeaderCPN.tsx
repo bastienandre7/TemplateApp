@@ -155,7 +155,7 @@ export default function HeaderCPN() {
 
   return (
     <header
-      className={`transform transition-all duration-300 z-50 left-0 right-0 ${
+      className={`transform transition-all duration-300 z-50 left-0 right-0 border-b border-slate-200 ${
         isFixed
           ? `fixed top-0 shadow-lg translate-y-0 bg-background`
           : "absolute bg-background"

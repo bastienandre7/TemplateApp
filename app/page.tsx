@@ -228,33 +228,53 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
-      <section className="relative overflow-hidden bg-background pt-32 pb-12 md:pb-24 px-6 border-b border-slate-200">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 flex flex-col items-center gap-4 pt-20 text-center">
-          <h1 className="text-5xl md:text-6xl font-semibold text-foreground tracking-tight">
-            Build Faster with Premium Next.js Templates
-          </h1>
+      <section className="relative overflow-hidden bg-background mt-[115px] pt-32 pb-24 border-b border-slate-200">
+        <div className="hidden lg:block absolute bottom-0 left-0 w-1/4 opacity-90">
+          <Image
+            src="/left-banner.png"
+            alt="template preview"
+            width={600}
+            height={600}
+            className="object-cover"
+          />
+        </div>
 
-          <p className="max-w-lg text-lg text-muted-foreground mx-auto lg:mx-0">
+        <div className="hidden lg:block absolute top-0 right-0 w-1/4 opacity-90">
+          <Image
+            src="/right-banner.png"
+            alt="template preview"
+            width={600}
+            height={600}
+            className="object-cover"
+          />
+        </div>
+
+        {/* Contenu principal */}
+        <div className="max-w-4xl mx-auto px-6 text-center relative z-10 pb-20">
+          <h1 className="text-4xl md:text-6xl font-bold text-foreground tracking-tight">
+            Build Faster with{" "}
+            <span className="text-primary">Premium Next.js Templates</span>
+          </h1>
+          <p className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto">
             Production-ready templates built with Next.js, TypeScript, and
             Tailwind CSS.
           </p>
-
-          <p className="max-w-lg text-base text-muted-foreground/80 mx-auto lg:mx-0 text-center flex">
+          <p className="mt-2 text-base text-muted-foreground/80 max-w-2xl mx-auto">
             Trusted by indie hackers and startups worldwide.
           </p>
-        </div>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-          <Button
-            size="lg"
-            asChild
-            className="px-8 py-6 text-lg bg-primary hover:bg-primary/90 shadow-md"
-          >
-            <Link href="/nextjs-templates">
-              Browse Templates
-              <ArrowRight className="w-5 h-5 ml-2" />
-            </Link>
-          </Button>
+          <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+            <Button
+              size="lg"
+              asChild
+              className="px-8 py-6 text-lg bg-primary hover:bg-primary/90 shadow-md"
+            >
+              <Link href="/nextjs-templates">
+                Browse Templates
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Link>
+            </Button>
+          </div>
         </div>
       </section>
 
@@ -458,7 +478,7 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                name: "Next.js 15",
+                name: "Next.js",
                 icon: "/svg/nextjs-icon.svg",
                 description: "Latest React framework with App Router",
               },
@@ -468,7 +488,7 @@ export default function Home() {
                 description: "Type-safe code for better development experience",
               },
               {
-                name: "Tailwind CSS v4",
+                name: "Tailwind CSS",
                 icon: "/svg/tailwind.svg",
                 description: "Utility-first CSS framework for rapid styling",
               },
@@ -525,15 +545,6 @@ export default function Home() {
                 Browse All Templates
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Link>
-            </Button>
-
-            <Button
-              size="lg"
-              variant="outline"
-              className="text-lg px-8 py-6"
-              asChild
-            >
-              <Link href="/nextjs-components">Try Free Components</Link>
             </Button>
           </div>
           <p className="text-sm text-muted-foreground">
