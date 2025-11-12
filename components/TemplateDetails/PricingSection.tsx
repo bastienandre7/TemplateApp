@@ -18,7 +18,7 @@ interface PricingSectionProps {
 
 export default function PricingSection({ variants }: PricingSectionProps) {
   const getDiscountedPrice = (price: number) =>
-    price > 0 ? Math.round(price * 0.8 * 100) / 100 : 0;
+    price > 0 ? Math.round(price * 0.5 * 100) / 100 : 0;
   return (
     <section id="pricing-section" className="py-12">
       <div className="">
