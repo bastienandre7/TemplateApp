@@ -57,7 +57,7 @@ interface ProductPageProps {
 export default function ProductPage({ template, purchases }: ProductPageProps) {
   return (
     <div className="pt-16 md:pt-4 text-black bg-background min-h-screen">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-20 md:pt-32">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-32">
         {/* Hero Section - Style Clay */}
         <section className="mb-16 max-w-4xl mx-auto">
           {/* Titre */}
@@ -148,17 +148,18 @@ export default function ProductPage({ template, purchases }: ProductPageProps) {
           </div>
         </section>
 
-        {/* Pages Description */}
         {template.pages && template.pages.length > 0 && (
           <section className="mb-16 max-w-4xl mx-auto">
-            <div className="">
-              <div className="prose prose-lg max-w-none">
-                {template.pages.map((description, idx) => (
-                  <div key={idx} className="mb-4">
-                    <ReactMarkdown>{description}</ReactMarkdown>
-                  </div>
-                ))}
-              </div>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+              About this Template
+            </h2>
+
+            <div className="prose prose-lg max-w-none">
+              {template.pages.map((description, idx) => (
+                <div key={idx} className="mb-4">
+                  <ReactMarkdown>{description}</ReactMarkdown>
+                </div>
+              ))}
             </div>
           </section>
         )}
@@ -359,11 +360,15 @@ export default function ProductPage({ template, purchases }: ProductPageProps) {
               faster.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 mt-4">
-              <a href={template.demoUrl} target="_blank" rel="noreferrer">
-                <button className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium focus:outline-none focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-secondary text-secondary-foreground hover:bg-secondary/80 rounded-lg h-12 px-8 text-base cursor-pointer shadow-md hover:shadow-lg transition-all duration-300 hover:translate-y-[-2px]">
+              <Button
+                variant="secondary"
+                className="w-full px-8 py-4 text-lg h-[50px] bg-white"
+                asChild
+              >
+                <Link href={template.demoUrl} target="_blank" rel="noreferrer">
                   Live Demo
-                </button>
-              </a>
+                </Link>
+              </Button>
               <DynamicBuyButton template={template} purchases={purchases} />
             </div>
             <p className="text-sm text-primary-foreground/80 mt-4">

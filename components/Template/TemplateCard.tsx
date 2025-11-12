@@ -52,30 +52,32 @@ export default function TemplateCard({
   return (
     <Card
       key={id}
-      className="group grid grid-rows-[auto_1fr_auto] overflow-hidden border border-gray-200 hover:shadow-lg transition-all duration-300 bg-card"
+      className="group flex flex-col h-full overflow-hidden border border-gray-200 hover:shadow-lg transition-all duration-300 bg-card"
     >
-      <div className="relative aspect-[1200/630] cursor-pointer m-2">
-        <Link href={`/nextjs-templates/${slug}`}>
-          <Image
-            src={openGraphImage || imageUrl || image || "/images/NoImage.jpg"}
-            alt={`${name} preview`}
-            fill
-            className="object-contain rounded-md border border-gray-100"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
-          />
-        </Link>
-        {/* NEW Badge */}
-        {isNew && (
-          <span className="absolute top-3 right-3 bg-violet-600 text-white text-[11px] px-2 py-1 rounded-full font-medium shadow-sm">
-            NEW
-          </span>
-        )}
-        {/* Owned Badge */}
-        {isOwned && (
-          <span className="absolute bottom-3 right-3 bg-green-100 text-green-700 text-[11px] px-2 py-1 rounded-full font-medium shadow-sm">
-            ✓ Owned
-          </span>
-        )}
+      <div className="relative aspect-[1200/630] bg-card p-4">
+        <div className="relative w-full h-full rounded-lg overflow-hidden bg-white border border-gray-200">
+          <Link href={`/nextjs-templates/${slug}`}>
+            <Image
+              src={openGraphImage || imageUrl || image || "/images/NoImage.jpg"}
+              alt={`${name} preview`}
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
+            />
+          </Link>
+          {/* NEW Badge */}
+          {isNew && (
+            <span className="absolute top-3 right-3 bg-violet-600 text-white text-[11px] px-2 py-1 rounded-full font-medium shadow-sm">
+              NEW
+            </span>
+          )}
+          {/* Owned Badge */}
+          {isOwned && (
+            <span className="absolute bottom-3 right-3 bg-green-100 text-green-700 text-[11px] px-2 py-1 rounded-full font-medium shadow-sm">
+              ✓ Owned
+            </span>
+          )}
+        </div>
       </div>
 
       <CardHeader className="pt-4 px-4 pb-2">

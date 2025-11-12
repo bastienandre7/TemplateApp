@@ -76,9 +76,9 @@ export default function DynamicBuyButton({
   return (
     <Button
       type="button"
-      variant="default"
+      variant="outline"
       onClick={scrollToPricing}
-      className="w-full px-8 py-4 text-lg h-[50px] cursor-pointer"
+      className="w-full px-8 py-4 text-lg h-[50px] cursor-pointer border-primary text-primary hover:bg-primary hover:text-white transition"
     >
       See Pricing
     </Button>

@@ -228,52 +228,43 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
-      <section className="relative overflow-hidden bg-background mt-[115px] pt-32 pb-24 border-b border-slate-200">
-        <div className="hidden lg:block absolute bottom-0 left-0 w-1/4 opacity-90">
-          <Image
-            src="/left-banner.png"
-            alt="template preview"
-            width={600}
-            height={600}
-            className="object-cover"
-          />
-        </div>
-
-        <div className="hidden lg:block absolute top-0 right-0 w-1/4 opacity-90">
-          <Image
-            src="/right-banner.png"
-            alt="template preview"
-            width={600}
-            height={600}
-            className="object-cover"
-          />
-        </div>
-
-        {/* Contenu principal */}
-        <div className="max-w-4xl mx-auto px-6 text-center relative z-10 pb-20">
-          <h1 className="text-4xl md:text-6xl font-bold text-foreground tracking-tight">
-            Build Faster with{" "}
-            <span className="text-primary">Premium Next.js Templates</span>
-          </h1>
-          <p className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto">
-            Production-ready templates built with Next.js, TypeScript, and
-            Tailwind CSS.
-          </p>
-          <p className="mt-2 text-base text-muted-foreground/80 max-w-2xl mx-auto">
-            Trusted by indie hackers and startups worldwide.
-          </p>
-
-          <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              size="lg"
-              asChild
-              className="px-8 py-6 text-lg bg-primary hover:bg-primary/90 shadow-md"
-            >
-              <Link href="/nextjs-templates">
-                Browse Templates
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Link>
-            </Button>
+      <section className="relative overflow-hidden bg-background mt-[115px] pb-0 pt-20">
+        <div className="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center lg:items-start relative">
+          {/* Texte à gauche */}
+          <div className="flex-1 text-center lg:text-left">
+            <h1 className="text-4xl md:text-6xl font-bold text-foreground tracking-tight">
+              Build Faster with{" "}
+              <span className="text-primary">Premium Next.js Templates</span>
+            </h1>
+            <p className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto">
+              Production-ready templates built with Next.js, TypeScript, and
+              Tailwind CSS.
+            </p>
+            <p className="mt-2 text-base text-muted-foreground/80 max-w-2xl mx-auto">
+              Trusted by indie hackers and startups worldwide.
+            </p>
+            <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <Button
+                size="lg"
+                asChild
+                className="px-8 py-6 text-lg bg-primary hover:bg-primary/90 shadow-md"
+              >
+                <Link href="/nextjs-templates">
+                  Browse Templates
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Link>
+              </Button>
+            </div>
+          </div>
+          <div className="hidden lg:block flex-1 ml-12">
+            <Image
+              src="/left-banner.png"
+              alt="template preview"
+              width={800}
+              height={800}
+              className="object-cover"
+              priority
+            />
           </div>
         </div>
       </section>

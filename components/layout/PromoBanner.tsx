@@ -35,24 +35,25 @@ export default function PromoBanner() {
 
   return (
     <div className="w-full z-[60]">
-      <div className="flex items-center justify-center gap-3 bg-chart-5 text-primary-foreground px-4 py-2 text-sm md:text-base relative shadow-lg font-semibold">
-        <Zap className="w-5 h-5 text-yellow-400 mr-2" />
-        <span className="uppercase tracking-wider font-bold mr-2">
+      <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 bg-chart-5 text-primary-foreground px-2 md:px-4 py-2 text-xs md:text-base relative shadow-lg font-semibold">
+        <Zap className="w-4 h-4 md:w-5 md:h-5 text-yellow-400 mr-1 md:mr-2" />
+        <span className="uppercase tracking-wider font-bold mr-1 md:mr-2">
           Black Friday
         </span>
-        <span>
-          <span className="font-semibold">50% OFF</span> on every template{" "}
-          <span className="font-bold text-primary bg-white px-2 py-1 rounded-2xl shadow-sm ml-2">
+        <span className="flex items-center gap-1">
+          <span className="font-semibold">50% OFF</span>
+          <span className="hidden md:inline">on every purchase</span>
+          <span className="font-bold text-primary bg-white px-2 py-1 rounded-2xl shadow-sm ml-1">
             BFBLOOM50
           </span>
         </span>
-        <span className="ml-3 text-sm font-medium flex items-center">
-          <AlarmClock className="w-5 h-5 mr-2" />{" "}
-          <span className="ml-1">{timeLeft} left</span>
+        <span className="ml-0 md:ml-3 text-xs md:text-sm font-medium flex items-center">
+          <AlarmClock className="w-4 h-4 md:w-5 md:h-5 mr-1 md:mr-2" />
+          <span>{timeLeft} left</span>
         </span>
         <button
           onClick={() => setVisible(false)}
-          className="absolute right-3 top-1/2 -translate-y-1/2 text-primary-foreground/80 hover:text-white transition"
+          className="absolute right-2 top-1/2 -translate-y-1/2 text-primary-foreground/80 hover:text-white transition"
           aria-label="Close promo banner"
         >
           <X className="w-4 h-4" />
