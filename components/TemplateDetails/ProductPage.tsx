@@ -107,7 +107,7 @@ export default function ProductPage({ template, purchases }: ProductPageProps) {
                   >
                     <Link href={template.demoUrl} target="_blank">
                       <Eye className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-                      Live Demo
+                      Live Preview
                     </Link>
                   </Button>
                 )}

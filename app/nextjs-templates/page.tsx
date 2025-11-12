@@ -62,7 +62,7 @@ export default async function TemplatePage() {
 
   const products = data.map((tpl) => {
     const price = tpl.price ? tpl.price / 100 : 0;
-    const discount = price > 0 ? Math.round(price * 0.8 * 100) / 100 : 0;
+    const discount = price > 0 ? Math.round(price * 0.5 * 100) / 100 : 0;
 
     return {
       id: tpl.lemonId,
