@@ -34,7 +34,6 @@ export default function PaymentMethodSection() {
       <div className="flex flex-wrap justify-center items-center gap-3">
         <Image
           src="/images/logo/all-logos.png"
-          className="border border-gray-200 rounded-lg"
           alt="visa"
           width={810}
           height={64}

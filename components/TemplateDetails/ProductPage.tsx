@@ -137,7 +137,7 @@ export default function ProductPage({ template, purchases }: ProductPageProps) {
                   <Link
                     href={template.docLink}
                     target="_blank"
-                    className="inline-flex items-center gap-2 text-indigo-600 hover:underline font-medium"
+                    className="inline-flex items-center gap-2 text-gray-500 hover:underline font-medium"
                   >
                     <BookOpen className="w-4 h-4 flex-shrink-0" />
                     <span>Documentation</span>
@@ -359,12 +359,12 @@ export default function ProductPage({ template, purchases }: ProductPageProps) {
               faster.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 mt-4">
-              <DynamicBuyButton template={template} purchases={purchases} />
               <a href={template.demoUrl} target="_blank" rel="noreferrer">
-                <button className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium focus:outline-none focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-secondary text-secondary-foreground hover:bg-secondary/80 rounded-full h-12 px-8 text-base cursor-pointer shadow-md hover:shadow-lg transition-all duration-300 hover:translate-y-[-2px]">
+                <button className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium focus:outline-none focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-secondary text-secondary-foreground hover:bg-secondary/80 rounded-lg h-12 px-8 text-base cursor-pointer shadow-md hover:shadow-lg transition-all duration-300 hover:translate-y-[-2px]">
                   Live Demo
                 </button>
               </a>
+              <DynamicBuyButton template={template} purchases={purchases} />
             </div>
             <p className="text-sm text-primary-foreground/80 mt-4">
               Instant download. Lifetime updates included.

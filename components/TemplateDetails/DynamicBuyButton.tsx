@@ -17,7 +17,6 @@ interface DynamicBuyButtonProps {
 export default function DynamicBuyButton({
   template,
   purchases,
-  variant = "light",
 }: DynamicBuyButtonProps) {
   const { status, data } = useSession();
   const isOwned = purchases.some((p) => p.template === template.name);
@@ -77,12 +76,9 @@ export default function DynamicBuyButton({
   return (
     <Button
       type="button"
+      variant="default"
       onClick={scrollToPricing}
-      className={`w-full px-8 py-4 text-lg h-[50px] shadow-xl hover:shadow-2xl cursor-pointer ${
-        variant === "dark"
-          ? "bg-white text-slate-900 hover:bg-gray-100"
-          : "bg-black hover:bg-foreground text-white"
-      }`}
+      className="w-full px-8 py-4 text-lg h-[50px] cursor-pointer"
     >
       See Pricing
     </Button>

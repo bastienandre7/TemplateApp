@@ -55,6 +55,7 @@ export default async function AllAccessPassPage() {
       demoUrl: true,
       extras: true,
       variants: true,
+      category: true,
     },
   });
 
@@ -109,6 +110,7 @@ export default async function AllAccessPassPage() {
       slug: tpl.slug,
       demoUrl: tpl.demoUrl ?? "",
       variants: parsedVariants,
+      category: tpl.category ?? "Uncategorized",
     };
   });
 

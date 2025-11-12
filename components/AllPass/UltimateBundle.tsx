@@ -1,8 +1,8 @@
 "use client";
 
+import TemplateCard from "@/components/Template/TemplateCard";
 import { Check, Package, TrendingUp, Zap } from "lucide-react";
 import { useSession } from "next-auth/react";
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Button } from "../ui/button";
@@ -15,6 +15,7 @@ interface BundleTemplate {
   features: string[];
   slug: string;
   demoUrl?: string;
+  category?: string;
   variants?: {
     solo?: { price: number; link: string };
     studio?: { price: number; link: string };
@@ -308,43 +309,24 @@ export default function UltimateBundle({
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {templates.map((template) => (
-              <div
+              <TemplateCard
                 key={template.slug}
-                className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border hover:border-blue-200 transform hover:-translate-y-1 flex flex-col justify-between"
-              >
-                {template.imageUrl && (
-                  <Image
-                    src={template.imageUrl}
-                    alt={template.name}
-                    width={400}
-                    height={128}
-                    className="w-full h-40 object-cover rounded-lg mb-4"
-                  />
-                )}
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <Link
-                      href={`/nextjs-templates/${template.slug}`}
-                      className="text-xl font-bold text-slate-900 hover:text-primary transition-colors"
-                    >
-                      {template.name}
-                    </Link>
-                  </div>
-                  <p
-                    className="text-slate-600 mb-4"
-                    style={{ minHeight: "56px", display: "block" }} // Ajuste la hauteur selon tes besoins
-                  >
-                    {template.description}
-                  </p>
-                </div>
-                <div className="mt-auto flex">
-                  <Button variant="default" className="flex-1" asChild>
-                    <Link href={template.demoUrl ?? "#"} target="_blank">
-                      Live Demo
-                    </Link>
-                  </Button>
-                </div>
-              </div>
+                id={template.slug}
+                name={template.name}
+                slug={template.slug}
+                description={template.description}
+                category={template.category ?? ""}
+                price={template.price}
+                imageUrl={template.imageUrl}
+                demoUrl={template.demoUrl}
+                openGraphImage={template.imageUrl}
+                discount={
+                  template.variants?.solo?.price &&
+                  template.variants.solo.price < template.price
+                    ? template.variants.solo.price
+                    : undefined
+                }
+              />
             ))}
           </div>
           <div className="bg-gradient-to-br from-yellow-50 to-orange-50 rounded-xl p-6 border-2 border-yellow-200 relative overflow-hidden my-8">

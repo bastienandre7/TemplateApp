@@ -1,10 +1,10 @@
 "use client";
 
-import { X } from "lucide-react";
+import { AlarmClock, X, Zap } from "lucide-react";
 import { useEffect, useState } from "react";
 
-// ✅ Déplacé ici, en dehors du composant
-const targetDate = new Date("2025-11-20T00:00:00Z");
+// Date de fin du Black Friday
+const targetDate = new Date("2025-11-29T00:00:00Z");
 
 export default function PromoBanner() {
   const [visible, setVisible] = useState(true);
@@ -35,20 +35,24 @@ export default function PromoBanner() {
 
   return (
     <div className="w-full z-[60]">
-      <div className="flex items-center justify-center gap-3 bg-purple-100/80 text-purple-900 px-4 py-2 text-sm md:text-base relative border-b border-purple-200">
-        <p className="font-medium text-center">
-          🎉 Enjoy <span className="font-semibold">20% off</span> your purchase
-          with code{" "}
-          <span className="font-semibold text-purple-700 bg-white/60 px-1 py-0.5 rounded-3xl px-2">
-            BLOOM20
-          </span>{" "}
-          <span className="ml-2 text-purple-800 font-semibold">
-            ⏰ {timeLeft} left
+      <div className="flex items-center justify-center gap-3 bg-chart-5 text-primary-foreground px-4 py-2 text-sm md:text-base relative shadow-lg font-semibold">
+        <Zap className="w-5 h-5 text-yellow-400 mr-2" />
+        <span className="uppercase tracking-wider font-bold mr-2">
+          Black Friday
+        </span>
+        <span>
+          <span className="font-semibold">50% OFF</span> on every template{" "}
+          <span className="font-bold text-primary bg-white px-2 py-1 rounded-2xl shadow-sm ml-2">
+            BFBLOOM50
           </span>
-        </p>
+        </span>
+        <span className="ml-3 text-sm font-medium flex items-center">
+          <AlarmClock className="w-5 h-5 mr-2" />{" "}
+          <span className="ml-1">{timeLeft} left</span>
+        </span>
         <button
           onClick={() => setVisible(false)}
-          className="absolute right-3 top-1/2 -translate-y-1/2 text-purple-600 hover:text-purple-800 transition"
+          className="absolute right-3 top-1/2 -translate-y-1/2 text-primary-foreground/80 hover:text-white transition"
           aria-label="Close promo banner"
         >
           <X className="w-4 h-4" />

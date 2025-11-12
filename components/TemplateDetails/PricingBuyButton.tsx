@@ -6,7 +6,7 @@ import Link from "next/link";
 interface PricingBuyButtonProps {
   link: string;
   label: string;
-  buttonClass?: string; // <-- nouvelle prop pour personnaliser la couleur du bouton
+  buttonClass?: string;
 }
 
 export default function PricingBuyButton({
@@ -34,7 +34,7 @@ export default function PricingBuyButton({
   return (
     <Button
       variant="default"
-      className={`w-full py-6 my-4 font-semibold text-lg ${buttonClass ?? ""}`}
+      className={`w-full py-6 my-4 font-semibold text-lg cursor-pointer ${buttonClass ?? ""}`}
       asChild={status === "authenticated"}
       onClick={handleClick}
       disabled={status === "loading"}
