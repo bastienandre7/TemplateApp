@@ -123,7 +123,8 @@ export default function ProductPage({ template, purchases }: ProductPageProps) {
               fill
               className="rounded-2xl shadow-2xl object-cover group-hover:scale-[1.02] transition-transform duration-700 ease-out"
               priority
-              sizes="100vw"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 800px"
+              // 100vw sur mobile, 90vw sur tablette, 800px max sur desktop
               fetchPriority="high"
             />
           </div>
