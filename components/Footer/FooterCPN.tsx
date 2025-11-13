@@ -35,7 +35,7 @@ export default function FooterCPN() {
               <p className="text-gray-700 leading-relaxed max-w-sm text-base">
                 The best Next.js templates for modern web applications.
                 <br />
-                <span className="inline-flex items-center gap-2 text-purple-600 font-semibold bg-purple-50 px-2 py-1 rounded-lg mt-2">
+                <span className="inline-flex items-center gap-2 text-primary font-semibold bg-primary/10 px-2 py-1 rounded-lg mt-2">
                   <svg
                     width="16"
                     height="16"
@@ -74,21 +74,21 @@ export default function FooterCPN() {
           </div>
 
           {/* Links sections */}
-          <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Templates */}
             <div className="space-y-4">
               <h3 className="font-semibold text-sm uppercase tracking-wide flex items-center gap-2">
-                <span className="w-2 h-2 bg-purple-500 rounded-full"></span>
+                <span className="w-2 h-2 bg-primary rounded-full"></span>
                 Templates
               </h3>
-              <ul className="space-y-3 text-sm">
+              <ul className="grid grid-cols-1  gap-x-8 gap-y-3 text-sm">
                 <li>
                   <Link
                     href="/nextjs-templates"
-                    className="text-gray-600 hover:text-purple-400 transition-colors group flex items-center gap-2"
+                    className="text-gray-600 hover:text-primary transition-colors group flex items-center gap-2"
                   >
                     <span>All Templates</span>
-                    <span className="bg-purple-600/20 text-purple-600 text-xs px-2 py-0.5 rounded-full">
+                    <span className="bg-primary/20 text-primary text-xs px-2 py-0.5 rounded-full">
                       10+
                     </span>
                   </Link>
@@ -96,7 +96,7 @@ export default function FooterCPN() {
                 <li>
                   <Link
                     href="/nextjs-templates/category/saas"
-                    className="text-gray-600 hover:text-purple-400 transition-colors block"
+                    className="text-gray-600 hover:text-primary transition-colors block"
                   >
                     SaaS Templates
                   </Link>
@@ -104,7 +104,7 @@ export default function FooterCPN() {
                 <li>
                   <Link
                     href="/nextjs-templates/category/e-commerce"
-                    className="text-gray-600 hover:text-purple-400 transition-colors block"
+                    className="text-gray-600 hover:text-primary transition-colors block"
                   >
                     E-Commerce Templates
                   </Link>
@@ -112,7 +112,7 @@ export default function FooterCPN() {
                 <li>
                   <Link
                     href="/nextjs-templates/category/landing-page"
-                    className="text-gray-600 hover:text-purple-400 transition-colors block"
+                    className="text-gray-600 hover:text-primary transition-colors block"
                   >
                     Landing Page Templates
                   </Link>
@@ -120,7 +120,7 @@ export default function FooterCPN() {
                 <li>
                   <Link
                     href="/nextjs-templates/category/blog"
-                    className="text-gray-600 hover:text-purple-400 transition-colors block"
+                    className="text-gray-600 hover:text-primary transition-colors block"
                   >
                     Blog Templates
                   </Link>
@@ -128,7 +128,7 @@ export default function FooterCPN() {
                 <li>
                   <Link
                     href="/nextjs-templates/category/dashboard"
-                    className="text-gray-600 hover:text-purple-400 transition-colors block"
+                    className="text-gray-600 hover:text-primary transition-colors block"
                   >
                     Dashboard Templates
                   </Link>
@@ -136,31 +136,16 @@ export default function FooterCPN() {
                 <li>
                   <Link
                     href="/nextjs-templates/category/portfolio"
-                    className="text-gray-600 hover:text-purple-400 transition-colors block"
+                    className="text-gray-600 hover:text-primary transition-colors block"
                   >
                     Portfolio Templates
                   </Link>
                 </li>
-                <li>
-                  <Link
-                    href="/nextjs-templates/category/restaurant"
-                    className="text-gray-600 hover:text-purple-400 transition-colors block"
-                  >
-                    Restaurant Templates
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/nextjs-templates/category/agency"
-                    className="text-gray-600 hover:text-purple-400 transition-colors block"
-                  >
-                    Agency Templates
-                  </Link>
-                </li>
+
                 <li>
                   <Link
                     href="/nextjs-templates/category/free"
-                    className="text-gray-600 hover:text-purple-400 transition-colors block"
+                    className="text-gray-600 hover:text-primary transition-colors block"
                   >
                     Free Templates
                   </Link>

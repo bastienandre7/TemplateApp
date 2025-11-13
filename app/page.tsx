@@ -134,17 +134,17 @@ export default function Home() {
 
   const templates = [
     {
-      name: "LandKit - Next.js Landing Page Starter Kit",
-      slug: "landkit-nextjs-landing-page-starter-kit",
+      name: "Orbit - Next.js Agency Template",
+      slug: "orbit-next-js-agency-template",
       description:
-        "A modular Next.js landing page kit designed for startups, SaaS, and makers. Includes 10+ production-ready components styled with Tailwind CSS.",
-      category: "Landing Page",
-      price: 19.99,
-      discount: 9.99,
+        "Complete Next.js 15 agency template with App Router, TypeScript, and Tailwind CSS. Features dynamic routing, SEO optimization and 8 production-ready pages.",
+      category: "Agency",
+      price: 29.99,
+      discount: 15,
       image:
-        "https://9hn0rhd8ibpivln7.public.blob.vercel-storage.com/templates/Landkit%20Landing%20Page/og-image-v2-opti.webp",
-      link: "/nextjs-templates/landkit-nextjs-landing-page-starter-kit",
-      demoUrl: "https://bloomtpl-landkit-landing-page.vercel.app/",
+        "https://9hn0rhd8ibpivln7.public.blob.vercel-storage.com/templates/orbit-agency-template/og-image-opti.webp",
+      link: "/nextjs-templates/orbit-next-js-agency-template",
+      demoUrl: "https://bloomtpl-orbit-agency-template.vercel.app/",
     },
     {
       name: "ShopBase - Next.js E-commerce Boilerplate",
@@ -359,7 +359,7 @@ export default function Home() {
           </div>
           <Link
             href="/nextjs-templates"
-            className="flex justify-center mt-12 underline font-medium"
+            className="flex justify-center text-center mt-12 underline font-medium"
           >
             Want more? Explore our full collection of premium templates
           </Link>

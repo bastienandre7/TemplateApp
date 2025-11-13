@@ -113,6 +113,8 @@ export default async function TemplateDetailsPage({
         returnPolicyCategory:
           "https://schema.org/MerchantReturnFiniteReturnWindow",
         merchantReturnDays: 1,
+        returnFees: "https://schema.org/FreeReturn",
+        returnMethod: "https://schema.org/ReturnByMail",
       },
       itemCondition: "https://schema.org/NewCondition",
       seller: {

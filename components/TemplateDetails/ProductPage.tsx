@@ -5,14 +5,15 @@ import PricingSection from "@/components/TemplateDetails/PricingSection";
 import ProjectStructureModal from "@/components/TemplateDetails/ProjectStructureModal";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
 import {
   BookOpen,
   CalendarCheck,
   Check,
   Eye,
   Monitor,
+  Palette,
   Smartphone,
+  SquareCheck,
   Zap,
 } from "lucide-react";
 import Image from "next/image";
@@ -57,114 +58,156 @@ interface ProductPageProps {
 export default function ProductPage({ template, purchases }: ProductPageProps) {
   return (
     <div className="pt-16 md:pt-4 text-black bg-background min-h-screen">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-32">
+      <div className="max-w-7xl mx-auto px-4 pt-32">
         {/* Hero Section - Style Clay */}
-        <section className="mb-16 max-w-4xl mx-auto">
-          {/* Titre */}
-          <h1 className="text-foreground leading-tighter text-3xl md:text-4xl font-semibold tracking-tight text-balance lg:leading-[1.1] lg:font-semibold xl:tracking-tighter mb-4">
-            {template.name}
-          </h1>
+        <section className="relative mb-24 max-w-5xl mx-auto">
+          {/* Subtle gradient background */}
+          <div className="absolute inset-0 -z-10 bg-gradient-to-b from-gray-50 via-white to-gray-50" />
 
-          {template.categories &&
-            Array.isArray(template.categories) &&
-            template.categories.length > 0 && (
-              <div className="flex flex-wrap gap-2 mb-4">
-                {template.categories.map((cat) => (
-                  <Badge key={cat} variant="secondary" className="capitalize">
-                    {cat}
-                  </Badge>
-                ))}
-              </div>
-            )}
+          {/* Title + badges */}
+          <div className="text-center">
+            <h1 className="text-foreground text-4xl md:text-5xl font-bold tracking-tight mb-4 leading-tight">
+              {template.name}
+            </h1>
 
-          {/* Image */}
-          <div className="w-full aspect-[16/9] md:aspect-[1200/630] relative mb-6">
+            {template.categories &&
+              Array.isArray(template.categories) &&
+              template.categories.length > 0 && (
+                <div className="flex justify-center flex-wrap gap-2 mb-4">
+                  {" "}
+                  {template.categories.map((cat) => (
+                    <Badge
+                      key={cat}
+                      variant="secondary"
+                      className="capitalize bg-primary/10 text-primary border-none"
+                    >
+                      {cat}
+                    </Badge>
+                  ))}{" "}
+                </div>
+              )}
+
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+              {template.description}
+            </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 py-4 max-w-2xl mx-auto mb-4">
+              {template.demoUrl && (
+                <Button
+                  variant="outline"
+                  className="w-full sm:w-auto px-8 py-4 text-lg h-[50px]
+             border-gray-300 text-gray-700 hover:bg-gray-100 transition"
+                  asChild
+                >
+                  <Link
+                    href={template.demoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Eye className="w-5 h-5 mr-2" />
+                    Live Preview
+                  </Link>
+                </Button>
+              )}
+
+              <DynamicBuyButton template={template} purchases={purchases} />
+            </div>
+          </div>
+
+          {/* Image showcase */}
+          <div className="w-full aspect-[1200/630] relative mb-10 group">
+            <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition" />
             <Image
               src={template.openGraphImage || "/og-image.png"}
               alt={template.name}
               fill
-              className="rounded-xl md:rounded-2xl shadow-lg md:shadow-xl object-cover"
+              className="rounded-2xl shadow-2xl object-cover group-hover:scale-[1.02] transition-transform duration-700 ease-out"
               priority
               sizes="100vw"
               fetchPriority="high"
             />
           </div>
-
-          {/* Card informations et actions */}
-          <div className="border border-gray-200 rounded-xl md:rounded-2xl shadow-sm p-4 sm:p-6">
-            <div className="max-w-4xl">
-              <p className="text-sm sm:text-base text-gray-700 mb-4">
-                {template.description}
-              </p>
-
-              {/* Boutons - side by side sur desktop */}
-              <div className="flex flex-col sm:flex-row gap-3 mb-6">
-                {template.demoUrl && (
-                  <Button
-                    variant="outline"
-                    className="w-full sm:flex-1 h-[50px] px-6 text-base sm:text-lg bg-white hover:bg-gray-50 transition"
-                    asChild
-                  >
-                    <Link href={template.demoUrl} target="_blank">
-                      <Eye className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-                      Live Preview
-                    </Link>
-                  </Button>
-                )}
-                <div className="w-full sm:flex-1">
-                  <DynamicBuyButton template={template} purchases={purchases} />
-                </div>
-              </div>
-
-              <Separator className="my-6" />
-
-              {/* Infos - horizontal sur desktop */}
-              <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-6 text-sm text-gray-600">
-                <span className="inline-flex items-center gap-2">
-                  <Monitor className="w-4 h-4 text-gray-500 flex-shrink-0" />
-                  <span>Built with Next.js</span>
-                </span>
-
-                <span className="inline-flex items-center gap-2">
-                  <CalendarCheck className="w-4 h-4 text-gray-500 flex-shrink-0" />
-                  <span>
-                    Last update:{" "}
-                    {new Date(template.updated_at).toLocaleDateString()}
-                  </span>
-                </span>
-
-                {template.docLink && (
-                  <Link
-                    href={template.docLink}
-                    target="_blank"
-                    className="inline-flex items-center gap-2 text-gray-500 hover:underline font-medium"
-                  >
-                    <BookOpen className="w-4 h-4 flex-shrink-0" />
-                    <span>Documentation</span>
-                  </Link>
-                )}
-              </div>
-            </div>
-          </div>
         </section>
 
-        {template.pages && template.pages.length > 0 && (
-          <section className="mb-16 max-w-4xl mx-auto">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+        <section className="mt-16 mb-24 max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-12">
+          {/* Colonne gauche — About */}
+          <div>
+            <h2 className="text-2xl font-semibold text-foreground mb-4">
               About this Template
             </h2>
 
-            <div className="prose prose-lg max-w-none">
-              {template.pages.map((description, idx) => (
-                <div key={idx} className="mb-4">
-                  <ReactMarkdown>{description}</ReactMarkdown>
-                </div>
-              ))}
-            </div>
-          </section>
-        )}
+            {template.pages && template.pages.length > 0 && (
+              <div className="prose prose-gray max-w-none">
+                {template.pages.map((description, idx) => (
+                  <div key={idx} className="mb-4">
+                    <ReactMarkdown>{description}</ReactMarkdown>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
 
-        <section className="my-24 max-w-4xl mx-auto">
+          {/* Colonne droite — Tech Info */}
+          <aside className="flex flex-col gap-4">
+            <div className="p-5 rounded-xl border border-gray-200 bg-gray-50/60">
+              <h3 className="text-sm font-semibold text-gray-800 mb-3">
+                Tech Information
+              </h3>
+
+              <ul className="space-y-3 text-sm text-gray-600">
+                <li className="flex items-center gap-2">
+                  <Monitor className="w-4 h-4 text-primary" />
+                  <span>Built with Next.js</span>
+                </li>
+
+                <li className="flex items-center gap-2">
+                  <CalendarCheck className="w-4 h-4 text-primary" />
+                  <span>
+                    Updated {new Date(template.updated_at).toLocaleDateString()}
+                  </span>
+                </li>
+
+                {template.docLink && (
+                  <li>
+                    <Link
+                      href={template.docLink}
+                      target="_blank"
+                      className="flex items-center gap-2 hover:text-primary transition"
+                    >
+                      <BookOpen className="w-4 h-4 text-primary" />
+                      <span>Documentation</span>
+                    </Link>
+                  </li>
+                )}
+              </ul>
+            </div>
+
+            <div className="p-5 rounded-xl border border-gray-200 bg-gray-50/60">
+              <h3 className="text-sm font-semibold text-gray-800 mb-3">
+                Key Features
+              </h3>
+              <ul className="space-y-2 text-sm text-gray-600">
+                <li className="flex items-center gap-2">
+                  <SquareCheck className="w-4 h-4 text-green-500" /> SEO
+                  Optimized
+                </li>
+                <li className="flex items-center gap-2">
+                  <Zap className="w-4 h-4 text-yellow-500" /> Lightning Fast
+                </li>
+                <li className="flex items-center gap-2">
+                  <Palette className="w-4 h-4 text-red-500" /> Fully
+                  Customizable
+                </li>
+                <li className="flex items-center gap-2">
+                  <Smartphone className="w-4 h-4 text-blue-500" /> Responsive by
+                  Default
+                </li>
+              </ul>
+            </div>
+          </aside>
+        </section>
+
+        <section className="my-24 max-w-5xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-2xl font-bold text-gray-900">
               Features & What’s Included
@@ -207,7 +250,7 @@ export default function ProductPage({ template, purchases }: ProductPageProps) {
           </div>
         </section>
 
-        <section className="mb-20 max-w-4xl mx-auto">
+        <section className="mb-20 max-w-5xl mx-auto">
           <div className="rounded-3xl border border-gray-200 bg-gray-100/40 backdrop-blur-sm overflow-hidden">
             {/* Header */}
             <div className="px-8 pt-10 pb-6 border-b border-gray-200">

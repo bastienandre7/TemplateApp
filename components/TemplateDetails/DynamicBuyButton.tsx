@@ -18,10 +18,11 @@ export default function DynamicBuyButton({
   template,
   purchases,
 }: DynamicBuyButtonProps) {
-  const { status, data } = useSession();
+  const { status } = useSession();
   const isOwned = purchases.some((p) => p.template === template.name);
+  const isFree = template.price === 0;
 
-  // Fonction pour scroll vers la section Pricing
+  // Scroll vers la section Pricing
   const scrollToPricing = () => {
     const section = document.getElementById("pricing-section");
     if (section) {
@@ -31,7 +32,7 @@ export default function DynamicBuyButton({
     }
   };
 
-  // Si loading, bouton désactivé
+  // Loading
   if (status === "loading") {
     return (
       <Button disabled className="w-full px-8 py-4 text-lg h-[50px] opacity-60">
@@ -40,47 +41,64 @@ export default function DynamicBuyButton({
     );
   }
 
-  // Si template possédé ou gratuit
-  if (isOwned || template.price === 0) {
-    if (status === "unauthenticated") {
-      return (
-        <Button
-          className="w-full px-8 py-4 text-lg h-[50px] bg-primary text-white"
-          onClick={() => signIn()}
-        >
-          Sign in to access
-        </Button>
-      );
-    }
-
-    const email = data?.user?.email;
-    const lemonLinkWithEmail =
-      email && template.lemonLink.includes("lemonsqueezy.com")
-        ? `${template.lemonLink}${template.lemonLink.includes("?") ? "&" : "?"}checkout[email]=${encodeURIComponent(email)}`
-        : template.lemonLink;
-
+  // Si payant : scroll vers pricing
+  if (!isFree) {
     return (
-      <Link
-        href={isOwned ? "/dashboard" : lemonLinkWithEmail}
-        className="w-full"
-        target={isOwned ? undefined : "_blank"}
+      <Button
+        onClick={scrollToPricing}
+        className="w-full sm:w-auto px-8 py-4 text-lg h-[50px] cursor-pointer 
+          font-medium text-white bg-gradient-to-r from-primary to-primary/80 
+          hover:opacity-90 transition shadow-sm hover:shadow-md border border-white/20"
       >
-        <Button className="w-full px-8 py-4 text-lg bg-primary text-white h-[50px] shadow-xl hover:shadow-2xl flex items-center justify-center gap-2">
-          <Download className="w-5 h-5" />
-          {isOwned ? "Download Template" : "Get FREE"}
-        </Button>
-      </Link>
+        Get the Template
+      </Button>
     );
   }
 
+  // Gratuit
+  if (isFree) {
+    // Authentifié et possède déjà
+    if (status === "authenticated" && isOwned) {
+      return (
+        <Link href="/dashboard" className="w-full">
+          <Button className="w-full px-8 py-4 text-lg bg-primary text-white h-[50px] shadow-xl hover:shadow-2xl flex items-center justify-center gap-2 border border-white/20">
+            <Download className="w-5 h-5" />
+            Download
+          </Button>
+        </Link>
+      );
+    }
+    // Authentifié et ne possède pas
+    if (status === "authenticated" && !isOwned) {
+      return (
+        <Link href={template.lemonLink} className="w-full" target="_blank">
+          <Button className="w-full px-8 py-4 text-lg bg-primary text-white h-[50px] shadow-xl hover:shadow-2xl flex items-center justify-center gap-2 border border-white/20">
+            <Download className="w-5 h-5" />
+            Get the Template
+          </Button>
+        </Link>
+      );
+    }
+    // Non authentifié
+    if (status === "unauthenticated") {
+      return (
+        <Button
+          className="w-full px-8 py-4 text-lg h-[50px] bg-primary text-white border border-white/20"
+          onClick={() => signIn()}
+        >
+          Get the Template
+        </Button>
+      );
+    }
+  }
+
+  // Fallback
   return (
     <Button
-      type="button"
-      variant="outline"
-      onClick={scrollToPricing}
-      className="w-full px-8 py-4 text-lg h-[50px] cursor-pointer border-primary text-primary hover:bg-primary hover:text-white transition"
+      className="w-full px-8 py-4 text-lg h-[50px] bg-primary text-white border border-white/20"
+      disabled
     >
-      See Pricing
+      Get the Template
     </Button>
   );
 }

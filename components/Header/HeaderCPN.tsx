@@ -33,7 +33,7 @@ export default function HeaderCPN() {
   const navLinks = [
     { name: "All Access Pass", path: "/all-access-pass" },
     { name: "Next.js Templates", path: "/nextjs-templates" },
-    { name: "Components", path: "/nextjs-components" },
+    // { name: "Components", path: "/nextjs-components" },
     // { name: "AI Builder", path: "/ai-builder" },
     // { name: "Pricing", path: "/pricing" },
     { name: "Docs", path: "/docs" },
@@ -164,16 +164,8 @@ export default function HeaderCPN() {
       <PromoBanner />
       <nav className="max-w-7xl mx-auto transition-all duration-300 px-4 sm:px-6 py-4">
         <div className=" w-full flex items-center justify-between">
-          <Link
-            href="/"
-            className="hover:bg-white focus:bg-white lg:hidden"
-          >
-            <Image
-              src="/icons/favicon.ico"
-              alt="Logo"
-              width={32}
-              height={32}
-            />
+          <Link href="/" className="hover:bg-white focus:bg-white lg:hidden">
+            <Image src="/icons/favicon.ico" alt="Logo" width={32} height={32} />
           </Link>
           <div className="hidden lg:flex items-center space-x-4 rtl:space-x-reverse">
             <NavigationMenu viewport={false}>
@@ -362,9 +354,9 @@ export default function HeaderCPN() {
                 key={link.path}
                 href={link.path}
                 onClick={() => setIsOpen(false)}
-                className={`block my-1 py-2 px-4 text-gray-700 rounded-lg font-medium transition-all duration-200 hover:bg-purple-50 hover:text-purple-700 ${
+                className={`block my-1 py-2 px-4 text-gray-700 rounded-lg font-medium transition-all duration-200 hover:bg-primary/10 hover:text-primary ${
                   pathname === link.path
-                    ? "bg-purple-100 text-purple-700 shadow-sm"
+                    ? "bg-primary/10 text-primary shadow-sm"
                     : ""
                 }`}
               >
@@ -374,9 +366,9 @@ export default function HeaderCPN() {
             <Link
               href="/#faq"
               onClick={() => setIsOpen(false)}
-              className={`block py-3 px-4 text-gray-700 rounded-lg font-medium transition-all duration-200 hover:bg-purple-50 hover:text-purple-700 ${
+              className={`block py-3 px-4 text-gray-700 rounded-lg font-medium transition-all duration-200 hover:bg-primary/10 hover:text-primary ${
                 pathname === "/#faq"
-                  ? "bg-purple-100 text-purple-700 shadow-sm"
+                  ? "bg-primary/10 text-primary shadow-sm"
                   : ""
               }`}
             >
@@ -385,9 +377,9 @@ export default function HeaderCPN() {
             <Link
               href="/license"
               onClick={() => setIsOpen(false)}
-              className={`block py-3 px-4 text-gray-700 rounded-lg font-medium transition-all duration-200 hover:bg-purple-50 hover:text-purple-700 ${
+              className={`block py-3 px-4 text-gray-700 rounded-lg font-medium transition-all duration-200 hover:bg-primary/10 hover:text-primary ${
                 pathname === "/license"
-                  ? "bg-purple-100 text-purple-700 shadow-sm"
+                  ? "bg-primary/10 text-primary shadow-sm"
                   : ""
               }`}
             >
@@ -396,9 +388,9 @@ export default function HeaderCPN() {
             <Link
               href="/blog"
               onClick={() => setIsOpen(false)}
-              className={`block py-2 px-4 text-gray-700 rounded-lg font-medium transition-all duration-200 hover:bg-purple-50 hover:text-purple-700 ${
+              className={`block py-2 px-4 text-gray-700 rounded-lg font-medium transition-all duration-200 hover:bg-primary/10 hover:text-primary ${
                 pathname === "/blog"
-                  ? "bg-purple-100 text-purple-700 shadow-sm"
+                  ? "bg-primary/10 text-primary shadow-sm"
                   : ""
               }`}
             >
