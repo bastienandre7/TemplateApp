@@ -39,6 +39,7 @@ export default function DashboardSection() {
 
   const handleDownload = async (variantId: number) => {
     try {
+      console.log("Trying to download variantId:", variantId);
       const res = await fetch("/api/download", {
         method: "POST",
         headers: { "Content-Type": "application/json" },

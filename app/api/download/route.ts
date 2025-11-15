@@ -32,7 +32,6 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Si l'achat est vérifié, on appelle Lemon API
     const res = await fetch(
       `https://api.lemonsqueezy.com/v1/files?filter[variant_id]=${variantId}`,
       {
