@@ -1,7 +1,6 @@
 import DynamicBuyButton from "@/components/TemplateDetails/DynamicBuyButton";
 import FaqAccordion from "@/components/TemplateDetails/FaqAccordion";
 import PaymentMethodSection from "@/components/TemplateDetails/PaymentMethodSection";
-import PricingSection from "@/components/TemplateDetails/PricingSection";
 import ProjectStructureModal from "@/components/TemplateDetails/ProjectStructureModal";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -37,10 +36,8 @@ export interface Product {
   docLink?: string;
   structure?: string;
   variants?: {
-    solo: Variant;
-    studio: Variant;
-    unlimited: Variant;
-    [key: string]: Variant;
+    free?: Variant;
+    premium?: Variant;
   };
   categories?: string[];
 }
@@ -385,7 +382,6 @@ export default function ProductPage({ template, purchases }: ProductPageProps) {
           </div>
         </section>
 
-        {template.variants && <PricingSection variants={template.variants} />}
         <PaymentMethodSection />
         <FaqAccordion />
       </div>

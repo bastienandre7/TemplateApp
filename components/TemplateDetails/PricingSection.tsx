@@ -1,4 +1,6 @@
 import { Check, Crown, Infinity, Users } from "lucide-react";
+import Link from "next/link";
+import { Button } from "../ui/button";
 import PricingBuyButton from "./PricingBuyButton";
 
 interface Variant {
@@ -7,9 +9,8 @@ interface Variant {
 }
 
 interface Variants {
-  solo?: Variant;
-  studio?: Variant;
-  unlimited?: Variant;
+  free?: Variant;
+  premium?: Variant;
 }
 
 interface PricingSectionProps {
@@ -17,8 +18,13 @@ interface PricingSectionProps {
 }
 
 export default function PricingSection({ variants }: PricingSectionProps) {
-  const getDiscountedPrice = (price: number) =>
-    price > 0 ? Math.round(price * 0.5 * 100) / 100 : 0;
+  const variantCount = [variants.free, variants.premium].filter(Boolean).length;
+
+  const gridCols =
+    variantCount === 1
+      ? "grid-cols-1 md:grid-cols-2 max-w-5xl mx-auto"
+      : "grid-cols-1 lg:grid-cols-3";
+
   return (
     <section id="pricing-section" className="py-12">
       <div className="">
@@ -34,46 +40,36 @@ export default function PricingSection({ variants }: PricingSectionProps) {
             </span>
           </p>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Solo License */}
-          {variants.solo && (
+        <div className={`grid ${gridCols} gap-8`}>
+          {variants.free && (
             <div
               className={`p-8 bg-white border shadow-xl rounded-2xl text-center flex flex-col items-center hover:shadow-2xl transition`}
             >
               <Crown className={`w-6 h-6 mb-2`} />
-              <div className={`font-bold text-xl mb-2 `}>Solo License</div>
-              <div className="text-4xl font-extrabold mb-2 text-gray-900 flex items-center justify-center gap-2">
-                {getDiscountedPrice(variants.solo.price) <
-                  variants.solo.price && (
-                  <span className="text-2xl text-gray-400 line-through mr-2">
-                    ${variants.solo.price}
-                  </span>
-                )}
-                <span>${getDiscountedPrice(variants.solo.price)}</span>
-                <span className="text-base text-muted-foreground font-normal">
-                  /Lifetime
-                </span>
-              </div>
-              <PricingBuyButton link={variants.solo.link} label="Buy Now" />
+              <div className={`font-bold text-xl mb-2 `}>Free License</div>
+              <p className="text-muted-foreground mb-4 text-xs">
+                Get the clean, production-grade frontend of the template —
+                perfect for learning, experimenting, or kickstarting small
+                projects.
+              </p>
+              <p className="text-4xl font-extrabold mb-2 text-gray-900 flex items-center justify-center gap-2">
+                $0
+              </p>
+              <PricingBuyButton link={variants.free.link} label="Download" />
               <ul className="mt-2 text-left text-sm text-gray-700 space-y-3 w-full">
                 <li className="flex items-center">
                   <Check className="text-green-500 mr-2" /> Instant Access to
                   Template
                 </li>
                 <li className="flex items-center">
+                  <Check className="text-green-500 mr-2" /> Full Source Code
+                </li>
+                <li className="flex items-center">
                   <Check className="text-green-500 mr-2" /> Commercial License
                 </li>
                 <li className="flex items-center">
-                  <Check className="text-green-500 mr-2" /> Use on{" "}
-                  <span className="font-semibold ml-1">1 Project</span>
-                </li>
-                <li className="flex items-center">
-                  <Check className="text-green-500 mr-2" /> Premium Features
-                  Included
-                </li>
-                <li className="flex items-center">
-                  <Check className="text-green-500 mr-2" /> Next.js / Tailwind
-                  CSS Files
+                  <Check className="text-green-500 mr-2" /> Use on Unlimited
+                  Projects Included
                 </li>
                 <li className="flex items-center">
                   <Check className="text-green-500 mr-2" /> Email Support
@@ -85,49 +81,42 @@ export default function PricingSection({ variants }: PricingSectionProps) {
               </ul>
             </div>
           )}
-          {/* Studio License */}
-          {variants.studio && (
+          {variants.premium && (
             <div
-              className={`p-8 bg-primary text-white md:scale-102 border shadow-xl rounded-2xl text-center flex flex-col items-center hover:shadow-2xl transition`}
+              className={`p-8 bg-chart-2 text-white md:scale-105 border shadow-xl rounded-2xl text-center flex flex-col items-center hover:shadow-2xl transition`}
             >
               <Users className={`w-6 h-6 mb-2`} />
-              <div className={`font-bold text-xl mb-2`}>Studio License</div>
-              <div className="text-4xl font-extrabold mb-2 text-gray-100 flex items-center justify-center gap-2">
-                {getDiscountedPrice(variants.studio.price) <
-                  variants.studio.price && (
-                  <span className="text-2xl text-gray-300 line-through mr-2">
-                    ${variants.studio.price}
-                  </span>
-                )}
-                <span>${getDiscountedPrice(variants.studio.price)}</span>
-                <span className="text-base text-gray-300 font-normal">
-                  /Lifetime
-                </span>
-              </div>
+              <div className={`font-bold text-xl mb-2`}>Premium License</div>
+              <p className="text-white mb-4 text-xs">
+                The complete production-ready starter kit with backend,
+                authentication, billing, and everything needed to launch a real
+                SaaS/product.
+              </p>
+              <p className="text-4xl font-extrabold mb-2 text-gray-100 flex items-center justify-center gap-2">
+                ${variants.premium.price}
+              </p>
               <PricingBuyButton
-                link={variants.studio.link}
+                link={variants.premium.link}
                 label="Buy Now"
                 buttonClass="bg-white text-primary hover:bg-gray-100"
               />
-              <ul className="mt-2 text-left text-sm text-gray-100 space-y-3 w-full">
+              <ul className="mt-2 text-left text-sm text-white space-y-3 w-full">
                 <li className="flex items-center">
                   <Check className="text-green-500 mr-2" /> Instant Access to
                   Template
                 </li>
                 <li className="flex items-center">
+                  <Check className="text-green-500 mr-2" /> Full Source Code
+                </li>
+                <li className="flex items-center">
                   <Check className="text-green-500 mr-2" /> Commercial License
                 </li>
                 <li className="flex items-center">
-                  <Check className="text-green-500 mr-2" /> Use on{" "}
-                  <span className="font-semibold ml-1">5 Projects</span>
+                  <Check className="text-green-500 mr-2" /> Use on Unlimited
+                  Projects Included
                 </li>
                 <li className="flex items-center">
                   <Check className="text-green-500 mr-2" /> Premium Features
-                  Included
-                </li>
-                <li className="flex items-center">
-                  <Check className="text-green-500 mr-2" /> Next.js / Tailwind
-                  CSS Files
                 </li>
                 <li className="flex items-center">
                   <Check className="text-green-500 mr-2" /> Email Support
@@ -139,59 +128,57 @@ export default function PricingSection({ variants }: PricingSectionProps) {
               </ul>
             </div>
           )}
-          {/* Unlimited License */}
-          {variants.unlimited && (
-            <div
-              className={`p-8 bg-white border shadow-xl rounded-2xl text-center flex flex-col items-center hover:shadow-2xl transition`}
+
+          <div
+            className={`p-8 bg-white border shadow-xl rounded-2xl text-center flex flex-col items-center hover:shadow-2xl transition`}
+          >
+            <Infinity className={`w-6 h-6 mb-2`} />
+            <div className={`font-bold text-xl mb-2`}>All-Access Pass</div>
+            <p className="text-muted-foreground mb-4 text-xs">
+              Unlock the full BloomTPL library — including all current and
+              future templates — with lifetime updates and unlimited usage
+              rights.
+            </p>
+            <p className="text-4xl font-extrabold mb-2 text-gray-900 flex items-center justify-center gap-2">
+              $149 one-time
+            </p>
+            <Button
+              variant="default"
+              className="w-full py-6 my-4 font-semibold text-lg cursor-pointer bg-chart-2"
+              asChild
             >
-              <Infinity className={`w-6 h-6 mb-2`} />
-              <div className={`font-bold text-xl mb-2`}>Unlimited License</div>
-              <div className="text-4xl font-extrabold mb-2 text-gray-900 flex items-center justify-center gap-2">
-                {getDiscountedPrice(variants.unlimited.price) <
-                  variants.unlimited.price && (
-                  <span className="text-2xl text-gray-400 line-through mr-2">
-                    ${variants.unlimited.price}
-                  </span>
-                )}
-                <span>${getDiscountedPrice(variants.unlimited.price)}</span>
-                <span className="text-base text-muted-foreground font-normal">
-                  /Lifetime
-                </span>
-              </div>
-              <PricingBuyButton
-                link={variants.unlimited.link}
-                label="Buy Unlimited"
-              />
-              <ul className="mt-2 text-left text-sm text-gray-700 space-y-3 w-full">
-                <li className="flex items-center">
-                  <Check className="text-green-500 mr-2" /> Instant Access to
-                  Template
-                </li>
-                <li className="flex items-center">
-                  <Check className="text-green-500 mr-2" /> Commercial License
-                </li>
-                <li className="flex items-center">
-                  <Check className="text-green-500 mr-2" /> Use on{" "}
-                  <span className="font-semibold ml-1">Unlimited Projects</span>
-                </li>
-                <li className="flex items-center">
-                  <Check className="text-green-500 mr-2" /> Premium Features
-                  Included
-                </li>
-                <li className="flex items-center">
-                  <Check className="text-green-500 mr-2" /> Next.js / Tailwind
-                  CSS Files
-                </li>
-                <li className="flex items-center">
-                  <Check className="text-green-500 mr-2" /> Email Support
-                </li>
-                <li className="flex items-center">
-                  <Check className="text-green-500 mr-2" /> Lifetime Free
-                  Updates
-                </li>
-              </ul>
-            </div>
-          )}
+              <Link href="/all-access-pass">Buy Now</Link>
+            </Button>
+            <ul className="mt-2 text-left text-sm text-gray-700 space-y-3 w-full">
+              <li className="flex items-center">
+                <Check className="text-green-500 mr-2" /> Instant Access to all
+                premium templates
+              </li>
+              <li className="flex items-center">
+                <Check className="text-green-500 mr-2" /> Access to all future
+                releases
+              </li>
+              <li className="flex items-center">
+                <Check className="text-green-500 mr-2" /> One-time payment, no
+                subscriptions
+              </li>
+              <li className="flex items-center">
+                <Check className="text-green-500 mr-2" /> Unlimited projects
+                (personal & commercial)
+              </li>
+              <li className="flex items-center">
+                <Check className="text-green-500 mr-2" /> Lifetime updates &
+                improvements
+              </li>
+              <li className="flex items-center">
+                <Check className="text-green-500 mr-2" /> All assets, components
+                & pages included
+              </li>
+              <li className="flex items-center">
+                <Check className="text-green-500 mr-2" /> Lifetime Free Updates
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>

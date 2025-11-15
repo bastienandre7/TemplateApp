@@ -29,30 +29,35 @@ export const getProductBySlug = async (slug: string) => {
 
   if (!tpl) return null;
 
-  // Correction ici : parser variants si c'est une string
   let parsedVariants: Product["variants"] | undefined = undefined;
   if (tpl.variants) {
     if (typeof tpl.variants === "string") {
       try {
         const parsed = JSON.parse(tpl.variants);
+        console.log("parsed variants:", parsed);
         if (
           typeof parsed === "object" &&
           parsed !== null &&
-          "solo" in parsed &&
-          "studio" in parsed &&
-          "unlimited" in parsed
+          ("solo" in parsed ||
+            "studio" in parsed ||
+            "unlimited" in parsed ||
+            "free" in parsed ||
+            "premium" in parsed)
         ) {
           parsedVariants = parsed as Product["variants"];
         }
-      } catch {
+      } catch (e) {
+        console.log("Erreur parsing variants:", e);
         parsedVariants = undefined;
       }
     } else if (
       typeof tpl.variants === "object" &&
       tpl.variants !== null &&
-      "solo" in tpl.variants &&
-      "studio" in tpl.variants &&
-      "unlimited" in tpl.variants
+      ("solo" in tpl.variants ||
+        "studio" in tpl.variants ||
+        "unlimited" in tpl.variants ||
+        "free" in tpl.variants ||
+        "premium" in tpl.variants)
     ) {
       parsedVariants = tpl.variants as unknown as Product["variants"];
     }
