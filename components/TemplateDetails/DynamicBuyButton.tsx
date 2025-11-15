@@ -35,7 +35,8 @@ export default function DynamicBuyButton({
         className="w-full px-8 py-4 text-lg h-[50px] bg-primary text-white border border-white/20"
         onClick={() => signIn()}
       >
-        Purchase for ${template.price.toFixed(2)}
+        Purchase for{" "}
+        {template.price === 0 ? "FREE" : `$${template.price.toFixed(2)}`}
       </Button>
     );
   }
@@ -55,7 +56,8 @@ export default function DynamicBuyButton({
     <Link href={template.lemonLink} className="w-full" target="_blank">
       <Button className="w-full px-8 py-4 text-lg bg-primary text-white h-[50px] shadow-xl hover:shadow-2xl flex items-center justify-center gap-2 border border-white/20">
         <Download className="w-5 h-5" />
-        Purchase for ${template.price.toFixed(2)}
+        Purchase for{" "}
+        {template.price === 0 ? "FREE" : `$${template.price.toFixed(2)}`}
       </Button>
     </Link>
   );
