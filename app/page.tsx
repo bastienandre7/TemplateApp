@@ -177,44 +177,44 @@ export default function Home() {
     },
   ];
 
-  const freeTemplates = [
-    {
-      name: "BloomShop - Free Next.js Tailwind CSS E-Commerce Template",
-      slug: "bloomshop-free-nextjs-tailwind-css-e-commerce-template",
-      description:
-        "Free modern e-commerce template built with Tailwind CSS. Fast, responsive, and perfect for launching your digital store.",
-      category: "E-commerce",
-      price: 0.0,
-      image:
-        "https://9hn0rhd8ibpivln7.public.blob.vercel-storage.com/templates/e-commerce-template/og-2-opti.webp",
-      link: "/nextjs-templates/bloomshop-free-nextjs-tailwind-css-e-commerce-template",
-      demoUrl: "https://bloomtpl-ecommerce-template.vercel.app/",
-    },
-    {
-      name: "Free Next.js Tailwind CSS Restaurant Template",
-      slug: "free-nextjs-tailwind-css-restaurant-template",
-      description:
-        "Free modern restaurant website template built with Next.js and Tailwind CSS. Perfect for showcasing a menu and attracting local food lovers.",
-      category: "Restaurant",
-      price: 0.0,
-      image:
-        "https://9hn0rhd8ibpivln7.public.blob.vercel-storage.com/templates/restaurant-template/og-image-v2-opti.webp",
-      link: "/nextjs-templates/free-nextjs-tailwind-css-restaurant-template",
-      demoUrl: "https://bloomtpl-restaurant-template.vercel.app/",
-    },
-    {
-      name: "BloomBlog - Free Next.js Tailwind CSS Blog Template",
-      slug: "bloomblog-free-nextjs-tailwind-css-blog-template",
-      description:
-        "Minimalist blog template built with Next.js and Tailwind CSS. Clean, fast, and perfect for launching your personal blog, journal, or editorial site.",
-      category: "Blog",
-      price: 0.0,
-      image:
-        "https://9hn0rhd8ibpivln7.public.blob.vercel-storage.com/templates/blog-template/BloomBlog-OG-opti.webp",
-      link: "/nextjs-templates/bloomblog-free-nextjs-tailwind-css-blog-template",
-      demoUrl: "https://bloomtpl-blog-template.vercel.app/",
-    },
-  ];
+  // const freeTemplates = [
+  //   {
+  //     name: "BloomShop - Free Next.js Tailwind CSS E-Commerce Template",
+  //     slug: "bloomshop-free-nextjs-tailwind-css-e-commerce-template",
+  //     description:
+  //       "Free modern e-commerce template built with Tailwind CSS. Fast, responsive, and perfect for launching your digital store.",
+  //     category: "E-commerce",
+  //     price: 0.0,
+  //     image:
+  //       "https://9hn0rhd8ibpivln7.public.blob.vercel-storage.com/templates/e-commerce-template/og-2-opti.webp",
+  //     link: "/nextjs-templates/bloomshop-free-nextjs-tailwind-css-e-commerce-template",
+  //     demoUrl: "https://bloomtpl-ecommerce-template.vercel.app/",
+  //   },
+  //   {
+  //     name: "Free Next.js Tailwind CSS Restaurant Template",
+  //     slug: "free-nextjs-tailwind-css-restaurant-template",
+  //     description:
+  //       "Free modern restaurant website template built with Next.js and Tailwind CSS. Perfect for showcasing a menu and attracting local food lovers.",
+  //     category: "Restaurant",
+  //     price: 0.0,
+  //     image:
+  //       "https://9hn0rhd8ibpivln7.public.blob.vercel-storage.com/templates/restaurant-template/og-image-v2-opti.webp",
+  //     link: "/nextjs-templates/free-nextjs-tailwind-css-restaurant-template",
+  //     demoUrl: "https://bloomtpl-restaurant-template.vercel.app/",
+  //   },
+  //   {
+  //     name: "BloomBlog - Free Next.js Tailwind CSS Blog Template",
+  //     slug: "bloomblog-free-nextjs-tailwind-css-blog-template",
+  //     description:
+  //       "Minimalist blog template built with Next.js and Tailwind CSS. Clean, fast, and perfect for launching your personal blog, journal, or editorial site.",
+  //     category: "Blog",
+  //     price: 0.0,
+  //     image:
+  //       "https://9hn0rhd8ibpivln7.public.blob.vercel-storage.com/templates/blog-template/BloomBlog-OG-opti.webp",
+  //     link: "/nextjs-templates/bloomblog-free-nextjs-tailwind-css-blog-template",
+  //     demoUrl: "https://bloomtpl-blog-template.vercel.app/",
+  //   },
+  // ];
 
   return (
     <div className="min-h-screen">
