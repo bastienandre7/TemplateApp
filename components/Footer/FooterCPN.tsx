@@ -95,10 +95,10 @@ export default function FooterCPN() {
                 </li>
                 <li>
                   <Link
-                    href="/nextjs-templates/category/saas"
+                    href="/nextjs-templates/category/business"
                     className="text-gray-600 hover:text-primary transition-colors block"
                   >
-                    SaaS Templates
+                    Business Templates
                   </Link>
                 </li>
                 <li>
@@ -127,21 +127,12 @@ export default function FooterCPN() {
                 </li>
                 <li>
                   <Link
-                    href="/nextjs-templates/category/dashboard"
-                    className="text-gray-600 hover:text-primary transition-colors block"
-                  >
-                    Dashboard Templates
-                  </Link>
-                </li>
-                <li>
-                  <Link
                     href="/nextjs-templates/category/portfolio"
                     className="text-gray-600 hover:text-primary transition-colors block"
                   >
                     Portfolio Templates
                   </Link>
                 </li>
-
                 <li>
                   <Link
                     href="/nextjs-templates/category/free"

@@ -84,53 +84,57 @@ export default function TemplateCard({
         </div>
       </div>
 
-      <CardHeader className="pt-4 px-4 pb-2">
-        <div className="flex items-center justify-between mb-2">
-          <Badge variant="secondary" className="text-xs px-2 py-0.5">
-            {category}
-          </Badge>
-          <div className="flex items-baseline gap-1">
-            {Number(price) > 0 ? (
-              discount && discount < price ? (
-                <>
-                  <span className="text-xs text-gray-900">From</span>
-                  <span className="text-sm text-gray-500 line-through">
-                    {price}$
-                  </span>
-                  <span className="text-lg font-semibold text-gray-900">
-                    {discount}$
-                  </span>
-                </>
+      <div className="flex-1 flex flex-col">
+        <CardHeader className="pt-4 px-4 pb-2">
+          <div className="flex items-center justify-between mb-2">
+            <Badge variant="secondary" className="text-xs px-2 py-0.5">
+              {category}
+            </Badge>
+            <div className="flex items-baseline gap-1">
+              {Number(price) > 0 ? (
+                discount && discount < price ? (
+                  <>
+                    <span className="text-xs text-gray-900">From</span>
+                    <span className="text-sm text-gray-500 line-through">
+                      {price}$
+                    </span>
+                    <span className="text-lg font-semibold text-gray-900">
+                      {discount}$
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    <span className="text-xs text-gray-900">From</span>
+                    <span className="text-lg font-semibold text-gray-900">
+                      {price}$
+                    </span>
+                  </>
+                )
               ) : (
-                <>
-                  <span className="text-xs text-gray-900">From</span>
-                  <span className="text-lg font-semibold text-gray-900">
-                    {price}$
-                  </span>
-                </>
-              )
-            ) : (
-              <span className="font-semibold text-gray-900 text-lg">FREE</span>
-            )}
+                <span className="font-semibold text-gray-900 text-lg">
+                  FREE
+                </span>
+              )}
+            </div>
           </div>
-        </div>
-        <CardTitle className="text-lg font-semibold">
-          <Link
-            href={`/nextjs-templates/${slug}`}
-            className="hover:text-primary transition-colors"
-          >
-            {name}
-          </Link>
-        </CardTitle>
-      </CardHeader>
-      <CardContent className="pt-0 pb-4 px-4">
-        <CardDescription className="text-sm text-gray-500 line-clamp-2 mt-1">
-          {description ||
-            "A beautifully crafted template ready for your next project."}
-        </CardDescription>
-      </CardContent>
+          <CardTitle className="text-lg font-semibold">
+            <Link
+              href={`/nextjs-templates/${slug}`}
+              className="hover:text-primary transition-colors"
+            >
+              {name}
+            </Link>
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="pt-0 pb-4 px-4">
+          <CardDescription className="text-sm text-gray-500 line-clamp-2 mt-1">
+            {description ||
+              "A beautifully crafted template ready for your next project."}
+          </CardDescription>
+        </CardContent>
+      </div>
 
-      <CardFooter className="flex gap-2 h-15 p-2 border-t border-gray-100">
+      <CardFooter className="flex gap-2 h-15 p-2 border-t border-gray-200">
         <Button
           variant="ghost"
           className="flex-1 justify-center rounded-md"
@@ -140,12 +144,12 @@ export default function TemplateCard({
             Live Preview
           </Link>
         </Button>
-        <Separator orientation="vertical" className="" />
+        <Separator orientation="vertical" />
         {isOwned ? (
           <Button
             asChild
-            variant="outline"
-            className="flex-1 justify-center text-sm border-green-200 text-green-700 hover:bg-green-50 rounded-md"
+            variant="ghost"
+            className="flex-1 justify-center flex items-center rounded-md"
           >
             <Link href="/dashboard">Download</Link>
           </Button>

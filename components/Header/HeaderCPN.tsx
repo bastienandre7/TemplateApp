@@ -13,7 +13,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import PromoBanner from "../layout/PromoBanner";
-import { Button } from "../ui/button";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -31,7 +30,7 @@ export default function HeaderCPN() {
   const { isFixed } = useScrollHeader();
 
   const navLinks = [
-    { name: "All Access Pass", path: "/all-access-pass" },
+    // { name: "All Access Pass", path: "/all-access-pass" },
     { name: "Next.js Templates", path: "/nextjs-templates" },
     // { name: "Components", path: "/nextjs-components" },
     // { name: "AI Builder", path: "/ai-builder" },
@@ -53,10 +52,10 @@ export default function HeaderCPN() {
       description: "All Next.js templates in one place.",
     },
     {
-      title: "SaaS Templates",
-      href: "/nextjs-templates/category/saas",
+      title: "Business Templates",
+      href: "/nextjs-templates/category/business",
       icon: <LayoutDashboard className="w-6 h-6" />,
-      description: "Ready-to-launch SaaS boilerplates.",
+      description: "Ready-to-launch business templates.",
     },
     {
       title: "Landing page",
@@ -294,13 +293,13 @@ export default function HeaderCPN() {
           {/* Bouton de connexion et menu mobile */}
           <div className="flex items-center space-x-2 rtl:space-x-reverse">
             <AuthButton />
-            <Button
+            {/* <Button
               variant="default"
               className="hidden lg:flex mr-2 hover:scale-105 transition-transform"
               asChild
             >
               <Link href="/all-access-pass">All Access Pass</Link>
-            </Button>
+            </Button> */}
             <button
               type="button"
               onClick={() => setIsOpen(!isOpen)}

@@ -20,20 +20,28 @@ export default function AuthButton() {
 
   if (!session) {
     return (
-      <Button
-        className="mr-2 cursor-pointer text-black"
-        variant="link"
-        onClick={() => signIn()}
-      >
-        Sign In
-      </Button>
+      <div>
+        <Button
+          className="cursor-pointer text-black"
+          variant="link"
+          onClick={() => signIn()}
+        >
+          Sign In
+        </Button>
+        <Button
+          className="bg-black text-white hover:bg-gray-800 cursor-pointer"
+          onClick={() => signIn()}
+        >
+          Get Started
+        </Button>
+      </div>
     );
   }
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" className="text-black relative rounded-md">
+        <Button variant="ghost" className="text-black relative rounded-md">
           Dashboard <ChevronDown className="h-4 w-4" />
         </Button>
       </DropdownMenuTrigger>

@@ -12,14 +12,12 @@ import {
 import { Separator } from "@/components/ui/separator";
 import {
   ArrowRight,
-  Check,
   ChevronRight,
   Code,
   Download,
   Laptop,
   Lock,
   Shield,
-  Sparkles,
   Star,
   Wrench,
   Zap,
@@ -147,19 +145,6 @@ export default function Home() {
       demoUrl: "https://bloomtpl-orbit-agency-template.vercel.app/",
     },
     {
-      name: "ShopBase - Next.js E-commerce Boilerplate",
-      slug: "shopbase-nextjs-e-commerce-boilerplate",
-      description:
-        "Production-ready Next.js e-commerce boilerplate with Stripe, cart, product management, and admin dashboard. Launch your online store in minutes.",
-      category: "E-commerce",
-      price: 59.99,
-      discount: 30,
-      image:
-        "https://9hn0rhd8ibpivln7.public.blob.vercel-storage.com/templates/ShopBase%20Template/og-image-v2-opti.webp",
-      link: "/nextjs-templates/shopbase-nextjs-e-commerce-boilerplate",
-      demoUrl: "https://bloomtpl-shopbase-template.vercel.app/",
-    },
-    {
       name: "BlogStarter – Next.js + Sanity Blog Starter Kit",
       slug: "blogstarter-nextjs-sanity-blog-starter-kit",
       description:
@@ -171,19 +156,6 @@ export default function Home() {
         "https://9hn0rhd8ibpivln7.public.blob.vercel-storage.com/templates/blogstarter-starterkit/BlogStarter.png",
       link: "/nextjs-templates/blogstarter-nextjs-sanity-blog-starter-kit",
       demoUrl: "https://bloomtpl-blogstarter-starter-kit.vercel.app/",
-    },
-    {
-      name: "CoreSaaS – Next.js Tailwind CSS SaaS Boilerplate",
-      slug: "coresaas-next-js-tailwind-css-saas-boilerplate",
-      description:
-        "Launch your SaaS faster with a complete starter kit: authentication, Stripe billing, admin dashboard, and user management – built with Next.js and Tailwind CSS.",
-      category: "SaaS",
-      price: 49.99,
-      discount: 25,
-      image:
-        "https://9hn0rhd8ibpivln7.public.blob.vercel-storage.com/templates/coresaas-boilerplate/og-opti.webp",
-      link: "/nextjs-templates/coresaas-next-js-tailwind-css-saas-boilerplate",
-      demoUrl: "https://bloomtpl-coresaas-template.vercel.app/",
     },
   ];
 
@@ -220,7 +192,7 @@ export default function Home() {
       category: "Blog",
       price: 0.0,
       image:
-        "https://9hn0rhd8ibpivln7.public.blob.vercel-storage.com/templates/blog-template/og-opti.webp",
+        "https://9hn0rhd8ibpivln7.public.blob.vercel-storage.com/templates/blog-template/BloomBlog-OG-opti.webp",
       link: "/nextjs-templates/bloomblog-free-nextjs-tailwind-css-blog-template",
       demoUrl: "https://bloomtpl-blog-template.vercel.app/",
     },
@@ -401,7 +373,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative py-24 border-t border-b border-slate-200">
+      {/* <section className="relative py-24 border-t border-b border-slate-200">
         <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(to_right,rgba(226,232,240,.4)_1px,transparent_1px),linear-gradient(to_bottom,rgba(226,232,240,.4)_1px,transparent_1px)] bg-[size:48px_48px]" />
 
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 text-center">
@@ -453,7 +425,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section className="py-8 md:py-20 bg-gradient-to-b from-white to-muted/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -489,7 +461,7 @@ export default function Home() {
                 className="text-center hover:shadow-lg transition-all"
               >
                 <CardHeader>
-                  <div className="inline-flex items-center justify-center w-20 h-20 bg-muted rounded-xl mb-4 mx-auto">
+                  <div className="inline-flex items-center justify-center w-20 h-20 rounded-xl mb-4 mx-auto">
                     <Image
                       src={tech.icon}
                       alt={tech.name}
