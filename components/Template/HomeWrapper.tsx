@@ -22,7 +22,7 @@ type Product = {
 
 export default function HomeWrapper({ products }: { products: Product[] }) {
   return (
-    <div className="min-h-screen bg-background pt-16 md:pt-0">
+    <div className="min-h-screen bg-background pt-16 lg:pt-0">
       <BannerCPN products={products} />
       <Suspense fallback={<div className="text-gray-500">Loading...</div>}>
         <MainContainer products={products} />

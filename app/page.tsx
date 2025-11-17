@@ -12,9 +12,7 @@ import {
 import { Separator } from "@/components/ui/separator";
 import {
   ArrowRight,
-  ChevronRight,
   Code,
-  Download,
   Laptop,
   Lock,
   Shield,
@@ -105,7 +103,7 @@ export default function Home() {
   ];
 
   const categories = [
-    { name: "SaaS", href: "/nextjs-templates/category/saas" },
+    { name: "Business", href: "/nextjs-templates/category/business" },
     {
       name: "E-commerce",
       href: "/nextjs-templates/category/e-commerce",
@@ -124,16 +122,12 @@ export default function Home() {
       name: "Restaurant",
       href: "/nextjs-templates/category/restaurant",
     },
-    {
-      name: "Dashboard",
-      href: "/nextjs-templates/category/dashboard",
-    },
   ];
 
   const templates = [
     {
-      name: "Orbit - Next.js Agency Template",
-      slug: "orbit-next-js-agency-template",
+      name: "Orbit - Next.js Agency & Portfolio Template",
+      slug: "orbit-next-js-agency-portfolio-template",
       description:
         "Complete Next.js 15 agency template with App Router, TypeScript, and Tailwind CSS. Features dynamic routing, SEO optimization and 8 production-ready pages.",
       category: "Agency",
@@ -156,6 +150,30 @@ export default function Home() {
         "https://9hn0rhd8ibpivln7.public.blob.vercel-storage.com/templates/blogstarter-starterkit/BlogStarter.png",
       link: "/nextjs-templates/blogstarter-nextjs-sanity-blog-starter-kit",
       demoUrl: "https://bloomtpl-blogstarter-starter-kit.vercel.app/",
+    },
+    {
+      name: "BloomBlog - Free Next.js Tailwind CSS Blog Template",
+      slug: "bloomblog-free-nextjs-tailwind-css-blog-template",
+      description:
+        "Minimalist blog template built with Next.js and Tailwind CSS. Clean, fast, and perfect for launching your personal blog, journal, or editorial site.",
+      category: "Blog",
+      price: 0.0,
+      image:
+        "https://9hn0rhd8ibpivln7.public.blob.vercel-storage.com/templates/blog-template/BloomBlog-OG-opti.webp",
+      link: "/nextjs-templates/bloomblog-free-nextjs-tailwind-css-blog-template",
+      demoUrl: "https://bloomtpl-blog-template.vercel.app/",
+    },
+    {
+      name: "BloomShop - Free Next.js Tailwind CSS E-Commerce Template",
+      slug: "bloomshop-free-nextjs-tailwind-css-e-commerce-template",
+      description:
+        "Free modern e-commerce template built with Tailwind CSS. Fast, responsive, and perfect for launching your digital store.",
+      category: "E-commerce",
+      price: 0.0,
+      image:
+        "https://9hn0rhd8ibpivln7.public.blob.vercel-storage.com/templates/e-commerce-template/og-2-opti.webp",
+      link: "/nextjs-templates/bloomshop-free-nextjs-tailwind-css-e-commerce-template",
+      demoUrl: "https://bloomtpl-ecommerce-template.vercel.app/",
     },
   ];
 
@@ -255,8 +273,8 @@ export default function Home() {
               Handcrafted Next.js Templates
             </h2>
             <p className="text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto">
-              Explore our latest premium templates — clean design, scalable
-              code, and optimized for performance.
+              Explore our latest templates — clean design, scalable code, and
+              optimized for performance.
             </p>
           </div>
 
@@ -284,21 +302,14 @@ export default function Home() {
           </div>
 
           <div className="text-center mt-16">
-            <Button
-              variant="default"
-              className="bg-primary text-white text-lg px-8 py-6 shadow-lg hover:scale-102 transition-transform"
-              asChild
-            >
-              <Link href="/nextjs-templates">
-                View All Templates
-                <ChevronRight className="w-5 h-5 ml-2" />
-              </Link>
+            <Button variant="outline" size="lg" asChild>
+              <Link href="/nextjs-templates">View All Templates</Link>
             </Button>
           </div>
         </div>
       </section>
 
-      <section className="py-8 md:py-20 bg-background border-b border-slate-200">
+      {/* <section className="py-8 md:py-20 bg-background border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-16">
             <Badge variant="secondary" className="mb-4">
@@ -336,7 +347,7 @@ export default function Home() {
             Want more? Explore our full collection of premium templates
           </Link>
         </div>
-      </section>
+      </section> */}
 
       <section className="py-8 md:py-20 bg-muted/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
