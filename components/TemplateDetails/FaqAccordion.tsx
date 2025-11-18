@@ -5,7 +5,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import Link from "next/link";
 
 export default function FaqAccordion() {
   return (
@@ -32,11 +31,9 @@ export default function FaqAccordion() {
                 What is BloomTPL?
               </AccordionTrigger>
               <AccordionContent className="px-8 pb-6 text-gray-600 leading-relaxed">
-                BloomTPL offers a carefully curated collection of high-quality,
-                production-ready Next.js and Tailwind CSS templates for SaaS
-                applications, dashboards, portfolios, landing pages, and more.
-                Perfect for developers who want to build faster with a clean,
-                responsive foundation.
+                BloomTPL is a platform offering high-quality, ready-to-use
+                templates for Next.js and Tailwind CSS, designed to help you
+                build web projects faster.
               </AccordionContent>
             </AccordionItem>
 
@@ -59,12 +56,11 @@ export default function FaqAccordion() {
               className="border-b border-gray-100 last:border-0"
             >
               <AccordionTrigger className="text-lg text-black hover:text-gray-700 px-8 py-6 hover:bg-gray-50 transition-all duration-200">
-                Can I use these templates for commercial projects?
+                How do I purchase a template?
               </AccordionTrigger>
               <AccordionContent className="px-8 pb-6 text-gray-600 leading-relaxed">
-                Absolutely! All BloomTPL templates can be used for personal or
-                commercial projects with unlimited installations — no
-                restrictions on how many projects you build.
+                Simply click the “Purchase” button on the template page and
+                follow the secure checkout process via Lemon Squeezy.
               </AccordionContent>
             </AccordionItem>
 
@@ -73,12 +69,12 @@ export default function FaqAccordion() {
               className="border-b border-gray-100 last:border-0"
             >
               <AccordionTrigger className="text-lg text-black hover:text-gray-700 px-8 py-6 hover:bg-gray-50 transition-all duration-200">
-                Do you offer support or updates?
+                Which payment methods are accepted?
               </AccordionTrigger>
               <AccordionContent className="px-8 pb-6 text-gray-600 leading-relaxed">
-                Yes — premium templates include free lifetime updates and
-                priority support. Free templates come with community support and
-                bug fixes whenever possible.
+                We accept all major credit/debit cards and PayPal via Lemon
+                Squeezy. All payments are secure and processed with SSL
+                encryption.
               </AccordionContent>
             </AccordionItem>
 
@@ -87,25 +83,11 @@ export default function FaqAccordion() {
               className="border-b border-gray-100 last:border-0"
             >
               <AccordionTrigger className="text-lg text-black hover:text-gray-700 px-8 py-6 hover:bg-gray-50 transition-all duration-200">
-                How do I install a template after purchase?
+                Do you offer refunds?
               </AccordionTrigger>
               <AccordionContent className="px-8 pb-6 text-gray-600 leading-relaxed">
-                After purchase, you&apos;ll receive a download link via email
-                and in your dashboard. Unzip the project and run{" "}
-                <code className="px-2 py-1 bg-gray-100 rounded-md font-mono text-sm">
-                  npm install
-                </code>{" "}
-                followed by{" "}
-                <code className="px-2 py-1 bg-gray-100 rounded-md font-mono text-sm">
-                  npm run dev
-                </code>{" "}
-                to get started. More details here:{" "}
-                <a
-                  href="/docs"
-                  className="text-blue-600 hover:text-blue-700 underline transition-colors"
-                >
-                  Installation Guide
-                </a>
+                Refunds are available within 24 hours if you encounter a real
+                issue we can&apos;t resolve.
               </AccordionContent>
             </AccordionItem>
 
@@ -114,154 +96,11 @@ export default function FaqAccordion() {
               className="border-b border-gray-100 last:border-0"
             >
               <AccordionTrigger className="text-lg text-black hover:text-gray-700 px-8 py-6 hover:bg-gray-50 transition-all duration-200">
-                Which payment methods do you accept?
+                How do I access my purchased templates?
               </AccordionTrigger>
               <AccordionContent className="px-8 pb-6 text-gray-600 leading-relaxed">
-                We accept all major credit cards, debit cards and PayPal via
-                Lemon Squeezy. All payments are secure and processed with SSL
-                encryption.
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem
-              value="item-7"
-              className="border-b border-gray-100 last:border-0"
-            >
-              <AccordionTrigger className="text-lg text-black hover:text-gray-700 px-8 py-6 hover:bg-gray-50 transition-all duration-200">
-                Do you offer refunds?
-              </AccordionTrigger>
-              <AccordionContent className="px-8 pb-6 text-gray-600 leading-relaxed">
-                Yes! You can request a refund within{" "}
-                <span className="font-semibold text-black">24 hours</span> of
-                your purchase if you have a valid reason (for example, technical
-                issues or the template not working as described).
-                <br />
-                <br />
-                To request a refund, simply contact us at{" "}
-                <a
-                  href="mailto:bloomtpl@gmail.com"
-                  className="text-blue-600 hover:text-blue-700 underline transition-colors"
-                >
-                  bloomtpl@gmail.com
-                </a>{" "}
-                or{" "}
-                <Link
-                  href="/contact"
-                  className="text-blue-600 hover:text-blue-700 underline transition-colors"
-                >
-                  use our contact form
-                </Link>{" "}
-                with your order details and reason for your request.
-                <br />
-                <br />
-                For more information, please read our{" "}
-                <a
-                  href="/refund-policy"
-                  className="text-blue-600 hover:text-blue-700 underline transition-colors"
-                >
-                  Refund Policy
-                </a>
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem
-              value="item-8"
-              className="border-b border-gray-100 last:border-0"
-            >
-              <AccordionTrigger className="text-lg text-black hover:text-gray-700 px-8 py-6 hover:bg-gray-50 transition-all duration-200">
-                Can I customize the templates to match my brand?
-              </AccordionTrigger>
-              <AccordionContent className="px-8 pb-6 text-gray-600 leading-relaxed">
-                Of course! All templates use Tailwind CSS with a clear
-                structure, so you can easily change colors, fonts, sections, and
-                add your own components to match your brand perfectly.
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem
-              value="item-9"
-              className="border-b border-gray-100 last:border-0"
-            >
-              <AccordionTrigger className="text-lg text-black hover:text-gray-700 px-8 py-6 hover:bg-gray-50 transition-all duration-200">
-                What do I get when I purchase a template?
-              </AccordionTrigger>
-              <AccordionContent className="px-8 pb-6">
-                <div className="bg-gray-50 rounded-2xl p-6 border border-gray-100">
-                  <h3 className="text-lg font-semibold text-black mb-6">
-                    What&apos;s included in your purchase
-                  </h3>
-                  <div className="grid sm:grid-cols-2 gap-4">
-                    <div className="flex items-start gap-3">
-                      <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <span className="text-green-600 text-sm">✓</span>
-                      </div>
-                      <div>
-                        <div className="font-medium text-black">
-                          Instant Access
-                        </div>
-                        <div className="text-sm text-gray-600">
-                          Download immediately after purchase
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-3">
-                      <div className="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <span className="text-blue-600 text-sm">∞</span>
-                      </div>
-                      <div>
-                        <div className="font-medium text-black">
-                          Lifetime Updates
-                        </div>
-                        <div className="text-sm text-gray-600">
-                          Get all future improvements for free
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-3">
-                      <div className="w-6 h-6 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <span className="text-purple-600 text-sm">⚡</span>
-                      </div>
-                      <div>
-                        <div className="font-medium text-black">
-                          Production Ready
-                        </div>
-                        <div className="text-sm text-gray-600">
-                          Clean, optimized codebase
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-3">
-                      <div className="w-6 h-6 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <span className="text-orange-600 text-sm">⚖</span>
-                      </div>
-                      <div>
-                        <div className="font-medium text-black">
-                          Commercial License
-                        </div>
-                        <div className="text-sm text-gray-600">
-                          Use for personal & client projects
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem
-              value="item-10"
-              className="border-b border-gray-100 last:border-0"
-            >
-              <AccordionTrigger className="text-lg text-black hover:text-gray-700 px-8 py-6 hover:bg-gray-50 transition-all duration-200">
-                Can I download the templates anytime?
-              </AccordionTrigger>
-              <AccordionContent className="px-8 pb-6 text-gray-600 leading-relaxed">
-                Absolutely! Simply log in to your account, head over to the
-                dashboard section, and enjoy instant access to all your
-                templates — anytime, day or night.
+                After purchase, your templates are available for download in
+                your dashboard and via email.
               </AccordionContent>
             </AccordionItem>
           </Accordion>

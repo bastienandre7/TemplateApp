@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function PaymentMethodSection() {
   return (
-    <div className="w-full max-w-4xl mx-auto p-6 text-center">
+    <div className="w-full max-w-4xl mx-auto p-6 text-center py-12">
       <div className="flex flex-wrap items-center justify-center gap-2 bg-green-50 px-4 py-2 rounded-full border border-green-200 mb-4">
         <Shield className="h-5 w-5 text-green-600 flex-shrink-0" />
 

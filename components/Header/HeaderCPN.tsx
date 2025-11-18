@@ -4,8 +4,10 @@ import {
   FileText,
   Grid,
   LayoutDashboard,
+  Menu,
   ShoppingCart,
   Star,
+  X,
   Zap,
 } from "lucide-react";
 import Image from "next/image";
@@ -13,6 +15,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import PromoBanner from "../layout/PromoBanner";
+import { Button } from "../ui/button";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -300,43 +303,21 @@ export default function HeaderCPN() {
             >
               <Link href="/all-access-pass">All Access Pass</Link>
             </Button> */}
-            <button
+            <Button
               type="button"
+              variant="ghost"
+              size="icon"
+              className="text-foreground lg:hidden"
               onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center py-2 pr-0 w-12 h-12 justify-center rounded-3xl lg:hidden bg-primary hover:scale-110 transition-all duration-200 text-white"
               aria-expanded={isOpen}
             >
               <span className="sr-only">Open main menu</span>
               {isOpen ? (
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
+                <X className="w-12 h-12" />
               ) : (
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
+                <Menu className="w-12 h-12" />
               )}
-            </button>
+            </Button>
           </div>
         </div>
       </nav>
@@ -344,10 +325,10 @@ export default function HeaderCPN() {
       {/* Menu mobile (liens de navigation) */}
       {isOpen && (
         <div
-          className="lg:hidden w-full pt-2 animate-in slide-in-from-top-2 duration-200"
+          className="lg:hidden w-full pt-2 animate-in slide-in-from-top-2 duration-200 border-t border-slate-200 bg-background"
           id="navbar-sticky"
         >
-          <div className="flex flex-col p-6 bg-white/90 backdrop-blur-md border border-gray-200/50 rounded-2xl shadow-xl mx-4">
+          <div className="flex flex-col p-6 mx-4">
             {navLinks.map((link) => (
               <Link
                 key={link.path}

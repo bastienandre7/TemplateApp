@@ -1,23 +1,14 @@
 import DynamicBuyButton from "@/components/TemplateDetails/DynamicBuyButton";
-import FaqAccordion from "@/components/TemplateDetails/FaqAccordion";
 import PaymentMethodSection from "@/components/TemplateDetails/PaymentMethodSection";
 import ProjectStructureModal from "@/components/TemplateDetails/ProjectStructureModal";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import {
-  BookOpen,
-  CalendarCheck,
-  Check,
-  Eye,
-  Monitor,
-  Palette,
-  Smartphone,
-  SquareCheck,
-  Zap,
-} from "lucide-react";
+import { Check, ExternalLink, Monitor, Smartphone, Zap } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
+import HeroCtaButtons from "./HeroCtaButtons";
+import TemplateFAQ from "./TemplateFAQ";
 
 export interface Product {
   id: number;
@@ -40,6 +31,7 @@ export interface Product {
     premium?: Variant;
   };
   categories?: string[];
+  content?: string[];
 }
 
 interface Variant {
@@ -54,87 +46,107 @@ interface ProductPageProps {
 
 export default function ProductPage({ template, purchases }: ProductPageProps) {
   return (
-    <div className="pt-16 md:pt-4 text-black bg-background min-h-screen">
-      <div className="max-w-7xl mx-auto px-4 pt-32">
-        {/* Hero Section - Style Clay */}
-        <section className="relative mb-24 max-w-5xl mx-auto">
-          {/* Subtle gradient background */}
-          <div className="absolute inset-0 -z-10 bg-gradient-to-b from-gray-50 via-white to-gray-50" />
-
-          {/* Title + badges */}
-          <div className="text-center">
-            <h1 className="text-foreground text-4xl md:text-5xl font-bold tracking-tight mb-4 leading-tight">
-              {template.name}
-            </h1>
-
-            {template.categories &&
-              Array.isArray(template.categories) &&
-              template.categories.length > 0 && (
-                <div className="flex justify-center flex-wrap gap-2 mb-4">
-                  {" "}
-                  {template.categories.map((cat) => (
+    <div className="pt-4 text-black bg-background min-h-screen">
+      <div className="pt-32">
+        <section>
+          <div className="container mx-auto px-4">
+            <div className="grid grid-cols-1 xl:grid-cols-[1.4fr_1.6fr] gap-12 items-start w-full mx-auto border-b py-12 md:py-20">
+              {/* Left: Info */}
+              <div>
+                <div className="flex items-center gap-2 mb-4">
+                  {template.categories?.map((tag, index) => (
                     <Badge
-                      key={cat}
+                      key={index}
                       variant="secondary"
                       className="capitalize bg-primary/10 text-primary border-none"
                     >
-                      {cat}
+                      {tag}
                     </Badge>
-                  ))}{" "}
+                  ))}
                 </div>
-              )}
 
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              {template.description}
-            </p>
+                <h1 className="mb-4 text-foreground text-4xl md:text-5xl font-bold tracking-tight leading-tight">
+                  {template.name}
+                </h1>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 py-4 max-w-2xl mx-auto mb-4">
-              {template.demoUrl && (
-                <Button
-                  variant="outline"
-                  className="w-full sm:w-auto px-8 py-4 text-lg h-[50px]
-             border-gray-300 text-gray-700 hover:bg-gray-100 transition"
-                  asChild
-                >
-                  <Link
-                    href={template.demoUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Eye className="w-5 h-5 mr-2" />
-                    Live Preview
-                  </Link>
-                </Button>
-              )}
+                <p className="text-xl text-muted-foreground mb-6">
+                  {template.description}
+                </p>
 
-              <DynamicBuyButton template={template} purchases={purchases} />
+                <div className="flex items-baseline gap-2 mb-8">
+                  <span className="text-4xl text-primary">
+                    {template.price === 0 ? "FREE" : `$${template.price}`}
+                  </span>
+                  {template.price > 0 && (
+                    <span className="text-muted-foreground">
+                      one-time payment
+                    </span>
+                  )}
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-4 mb-8">
+                  <DynamicBuyButton template={template} purchases={purchases} />
+                  {template.demoUrl && (
+                    <Button
+                      size="lg"
+                      variant="outline"
+                      className="w-full sm:flex-1 h-[50px]"
+                      asChild
+                    >
+                      <Link
+                        href={template.demoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <ExternalLink className="size-4" />
+                        Live Preview
+                      </Link>
+                    </Button>
+                  )}
+                </div>
+
+                <div className="flex flex-row gap-8 text-xs text-muted-foreground">
+                  <div className="flex items-center gap-2">
+                    <Check className="size-4 text-green-600" />
+                    <span>Lifetime access & updates</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Check className="size-4 text-green-600" />
+                    <span>Money-back guarantee</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Check className="size-4 text-green-600" />
+                    <span>Use in unlimited projects</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right: Preview */}
+              <div className="space-y-4">
+                <div className="rounded-lg overflow-hidden border shadow-2xl">
+                  <Image
+                    src={template.openGraphImage || "/og-image.png"}
+                    alt={template.name}
+                    className="w-full object-cover"
+                    style={{ aspectRatio: "1200/630" }}
+                    width={1200}
+                    height={630}
+                    priority
+                  />
+                </div>
+              </div>
             </div>
-          </div>
-
-          {/* Image showcase */}
-          <div className="w-full aspect-[1200/630] relative mb-10 group">
-            <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition" />
-            <Image
-              src={template.openGraphImage || "/og-image.png"}
-              alt={template.name}
-              fill
-              className="rounded-2xl shadow-2xl object-cover group-hover:scale-[1.02] transition-transform duration-700 ease-out"
-              priority
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 800px"
-              fetchPriority="high"
-            />
           </div>
         </section>
 
-        <section className="mt-16 mb-24 max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-12">
-          {/* Colonne gauche — About */}
+        <section className="mt-16 mb-24 max-w-5xl mx-auto px-4 grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-6 md:gap-12">
+          {/* Colonne principale */}
           <div>
-            <h2 className="text-2xl font-semibold text-foreground mb-4">
-              About this Template
+            <h2 className="text-xl font-medium text-black mb-8">
+              About This Template
             </h2>
-
             {template.pages && template.pages.length > 0 && (
-              <div className="prose prose-gray max-w-none">
+              <div className="prose prose-gray max-w-none text-muted-foreground font-thin">
                 {template.pages.map((description, idx) => (
                   <div key={idx} className="mb-4">
                     <ReactMarkdown>{description}</ReactMarkdown>
@@ -144,26 +156,27 @@ export default function ProductPage({ template, purchases }: ProductPageProps) {
             )}
           </div>
 
-          {/* Colonne droite — Tech Info */}
-          <aside className="flex flex-col gap-4">
+          {/* Aside */}
+          <aside className="flex flex-col gap-6">
+            {/* Liste des pages (depuis content) */}
+            {template.content && template.content.length > 0 && (
+              <div className="p-5 rounded-xl border border-gray-200 bg-gray-50/60">
+                <h3 className="text-sm font-semibold text-gray-800 mb-3">
+                  Pages Included
+                </h3>
+                <ul className="space-y-2 text-sm text-gray-600 list-disc list-inside">
+                  {template.content.map((page, idx) => (
+                    <li key={idx}>{page}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
             <div className="p-5 rounded-xl border border-gray-200 bg-gray-50/60">
               <h3 className="text-sm font-semibold text-gray-800 mb-3">
-                Tech Information
+                Resources
               </h3>
-
-              <ul className="space-y-3 text-sm text-gray-600">
-                <li className="flex items-center gap-2">
-                  <Monitor className="w-4 h-4 text-primary" />
-                  <span>Built with Next.js</span>
-                </li>
-
-                <li className="flex items-center gap-2">
-                  <CalendarCheck className="w-4 h-4 text-primary" />
-                  <span>
-                    Updated {new Date(template.updated_at).toLocaleDateString()}
-                  </span>
-                </li>
-
+              <ul className="space-y-2 text-sm text-gray-600">
                 {template.docLink && (
                   <li>
                     <Link
@@ -171,218 +184,132 @@ export default function ProductPage({ template, purchases }: ProductPageProps) {
                       target="_blank"
                       className="flex items-center gap-2 hover:text-primary transition"
                     >
-                      <BookOpen className="w-4 h-4 text-primary" />
-                      <span>Documentation</span>
+                      Documentation
                     </Link>
                   </li>
                 )}
-              </ul>
-            </div>
-
-            <div className="p-5 rounded-xl border border-gray-200 bg-gray-50/60">
-              <h3 className="text-sm font-semibold text-gray-800 mb-3">
-                Key Features
-              </h3>
-              <ul className="space-y-2 text-sm text-gray-600">
-                <li className="flex items-center gap-2">
-                  <SquareCheck className="w-4 h-4 text-green-500" /> SEO
-                  Optimized
-                </li>
-                <li className="flex items-center gap-2">
-                  <Zap className="w-4 h-4 text-yellow-500" /> Lightning Fast
-                </li>
-                <li className="flex items-center gap-2">
-                  <Palette className="w-4 h-4 text-red-500" /> Fully
-                  Customizable
-                </li>
-                <li className="flex items-center gap-2">
-                  <Smartphone className="w-4 h-4 text-blue-500" /> Responsive by
-                  Default
+                <li>
+                  {template.structure && (
+                    <ProjectStructureModal structure={template.structure} />
+                  )}
                 </li>
               </ul>
             </div>
           </aside>
         </section>
 
-        <section className="my-24 max-w-5xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl font-bold text-gray-900">
-              Features & What’s Included
-            </h2>
-            <p className="text-gray-600 mt-3">
-              Everything you get with this template — production-ready pages, UI
-              components, and full documentation to help you launch faster.
-            </p>
-          </div>
-
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {template.extras?.map((feature, idx) => {
-              const { title, description } = parseDescriptionText(feature);
-              return (
-                <div
-                  key={idx}
-                  className="p-5 border border-gray-200 shadow-sm rounded-2xl bg-white hover:bg-gray-50 transition"
-                >
-                  <h3 className="text-base font-semibold text-gray-900">
-                    {title}
-                  </h3>
-                  <p className="text-sm text-gray-600 mt-2">{description}</p>
-                </div>
-              );
-            })}
-          </div>
-
-          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              href={template.docLink || "#"}
-              className="text-sm text-indigo-600 underline"
-              target={template.docLink ? "_blank" : undefined}
-            >
-              Quick install & usage guide
-            </Link>
-
-            {template.structure && (
-              <ProjectStructureModal structure={template.structure} />
-            )}
-          </div>
-        </section>
-
-        <section className="mb-20 max-w-5xl mx-auto">
-          <div className="rounded-3xl border border-gray-200 bg-gray-100/40 backdrop-blur-sm overflow-hidden">
-            {/* Header */}
-            <div className="px-8 pt-10 pb-6 border-b border-gray-200">
-              <h2 className="text-2xl font-bold text-gray-900 flex items-center gap-3">
-                <Monitor className="w-6 h-6 text-indigo-600" />
-                Technical Specifications
+        <section className="mt-24 bg-muted/30 border-t border-b border-gray-200 py-16">
+          <div className="max-w-6xl mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-2xl font-bold text-gray-900">
+                Features & What’s Included
               </h2>
-              <p className="text-sm text-gray-600 mt-2 max-w-2xl">
-                Key technologies, framework versions, and verified performance
-                results that power this template.
+              <p className="text-gray-600 mt-3">
+                Everything you get with this template — production-ready pages,
+                UI components, and full documentation to help you launch faster.
               </p>
             </div>
 
-            <div className="p-8">
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {template.extras?.map((feature, idx) => {
+                const { title, description } = parseDescriptionText(feature);
+                return (
+                  <div
+                    key={idx}
+                    className="p-5 border border-gray-200 shadow-sm rounded-2xl bg-white hover:bg-gray-50 transition"
+                  >
+                    <div className="flex items-start gap-3 mb-2">
+                      <Check className="w-5 h-5 text-green-600 mb-3" />
+                      <h3 className="text-base text-gray-900">{title}</h3>
+                    </div>
+                    <p className="text-sm text-muted-foreground ml-8">
+                      {description}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        <section className="py-12 md:py-20">
+          <div className="container mx-auto px-4">
+            <div className="max-w-5xl mx-auto">
+              {/* Header */}
+              <div className="mb-12">
+                <h2 className="mb-3 flex items-center gap-3 text-2xl font-bold text-gray-900">
+                  <Monitor className="w-6 h-6 text-primary" />
+                  Technical Specifications
+                </h2>
+                <p className="text-muted-foreground">
+                  Built with modern technologies and optimized for performance
+                </p>
+              </div>
+
+              <div className="flex flex-wrap justify-center items-stretch gap-4 mb-12">
+                {[
+                  ...(template.tech || []).map((tech, i) => {
+                    const { title } = parseDescriptionText(tech);
+                    return (
+                      <div
+                        key={title + i}
+                        className="flex flex-col items-center justify-center text-center p-6 bg-card border rounded-xl hover:shadow-md transition-shadow w-[min(100%,220px)] flex-1"
+                      >
+                        <div className="mb-3 flex justify-center">
+                          <div className="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center mx-auto">
+                            {getTechIcon(title)}
+                          </div>
+                        </div>
+                        <div className="text-foreground">{title}</div>
+                      </div>
+                    );
+                  }),
+                  <div
+                    key="responsive"
+                    className="flex flex-col items-center justify-center text-center p-6 bg-card border rounded-xl hover:shadow-md transition-shadow w-[min(100%,220px)] flex-1"
+                  >
+                    <div className="mb-3 flex justify-center">
+                      <div className="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center mx-auto">
+                        <Smartphone className="mx-auto w-6 h-6 text-blue-500" />
+                      </div>
+                    </div>
+                    <div className="text-foreground">Responsive</div>
+                  </div>,
+                ]}
+              </div>
+
               {template.performanceImage && (
-                <div className="mb-12">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                <div className="mt-12">
+                  <div className="flex items-center gap-2 mb-4">
                     <Zap className="w-5 h-5 text-green-600" />
-                    Lighthouse Performance Score
-                  </h3>
-                  <div className="bg-gradient-to-br from-green-50 to-blue-50/50 rounded-2xl p-6 border border-green-100/70">
+                    <h3 className="text-lg font-semibold">
+                      Lighthouse Performance Score
+                    </h3>
+                  </div>
+                  <div className="bg-gradient-to-br from-green-50 to-primary/5 rounded-xl p-6 border">
                     <div className="flex justify-center">
                       <Image
                         src={template.performanceImage}
                         alt={`${template.name} Lighthouse Performance Report`}
+                        className="rounded-lg border max-w-full h-auto"
                         width={956}
                         height={118}
-                        className="rounded-xl border border-gray-200 shadow-sm max-w-full"
                         loading="lazy"
-                        style={{ width: "auto", height: "auto" }}
                       />
                     </div>
                     <div className="mt-4 text-center">
-                      <span className="inline-flex items-center px-3 py-1 bg-green-100 text-green-800 text-sm font-medium rounded-full">
+                      <span className="inline-flex items-center px-3 py-1 bg-green-100 text-green-800 text-sm rounded-full">
                         ✓ Verified Lighthouse Results
                       </span>
                     </div>
                   </div>
                 </div>
               )}
-
-              {/* Tech stack badges */}
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-                {[
-                  {
-                    label: "Framework",
-                    value: "Next.js",
-                    icon: (
-                      <Image
-                        src="/svg/nextjs-icon.svg"
-                        alt="Next.js"
-                        width={32}
-                        height={32}
-                        className="mx-auto mb-2"
-                      />
-                    ),
-                  },
-                  {
-                    label: "Language",
-                    value: "TypeScript",
-                    icon: (
-                      <Image
-                        src="/svg/typescript.svg"
-                        alt="TypeScript"
-                        width={32}
-                        height={32}
-                        className="mx-auto mb-2"
-                      />
-                    ),
-                  },
-                  {
-                    label: "Styling",
-                    value: "Tailwind CSS",
-                    icon: (
-                      <Image
-                        src="/svg/tailwind.svg"
-                        alt="Tailwind CSS"
-                        width={32}
-                        height={32}
-                        className="mx-auto mb-2"
-                      />
-                    ),
-                  },
-                  {
-                    label: "Design",
-                    value: "Responsive",
-                    icon: (
-                      <Smartphone className="mx-auto mb-2 w-8 h-8 text-slate-500" />
-                    ),
-                  },
-                ].map((item, i) => (
-                  <div
-                    key={i}
-                    className="text-center p-5 bg-white/60 border border-gray-200 rounded-2xl hover:bg-white/80 transition-colors"
-                  >
-                    {item.icon}
-                    <div className="text-lg font-semibold text-gray-900 mb-1">
-                      {item.value}
-                    </div>
-                    <div className="text-sm text-gray-600">{item.label}</div>
-                  </div>
-                ))}
-              </div>
-
-              {template.tech && (
-                <div className="grid md:grid-cols-2 gap-6">
-                  {template.tech.map((tech, i) => {
-                    const { title, description } = parseDescriptionText(tech);
-                    return (
-                      <div
-                        key={i}
-                        className="flex items-start gap-4 p-5 bg-white/60 border border-gray-200 rounded-2xl hover:bg-white/80 transition-colors"
-                      >
-                        <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0">
-                          {getTechIcon(title)}
-                        </div>
-                        <div>
-                          <h3 className="font-semibold text-gray-900">
-                            {title}
-                          </h3>
-                          <p className="text-gray-600 text-sm mt-1">
-                            {description}
-                          </p>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              )}
             </div>
           </div>
         </section>
-
+        <TemplateFAQ />
         <PaymentMethodSection />
-        <FaqAccordion />
       </div>
       <section className="w-full py-20 md:py-32 bg-gradient-to-br from-primary to-primary/80 text-primary-foreground relative overflow-hidden isolate">
         <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(from_var(--primary-foreground)_r_g_b_/_0.075)_1px,transparent_1px),linear-gradient(to_bottom,rgba(from_var(--primary-foreground)_r_g_b_/_0.075)_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
@@ -398,18 +325,7 @@ export default function ProductPage({ template, purchases }: ProductPageProps) {
               customizable, beautifully designed, and built to help you launch
               faster.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 mt-4">
-              <Button
-                variant="secondary"
-                className="w-full px-8 py-4 text-lg h-[50px] bg-white"
-                asChild
-              >
-                <Link href={template.demoUrl} target="_blank" rel="noreferrer">
-                  Live Demo
-                </Link>
-              </Button>
-              <DynamicBuyButton template={template} purchases={purchases} />
-            </div>
+            <HeroCtaButtons template={template} />
             <p className="text-sm text-primary-foreground/80 mt-4">
               Instant download. Lifetime updates included.
             </p>

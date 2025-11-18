@@ -24,6 +24,7 @@ export const getProductBySlug = async (slug: string) => {
       structure: true,
       variants: true,
       categories: true,
+      content: true,
     },
   });
 
@@ -91,5 +92,6 @@ export const getProductBySlug = async (slug: string) => {
     structure: tpl.structure || undefined,
     variants: parsedVariants,
     categories: tpl.categories,
+    content: tpl.content || undefined,
   };
 };
