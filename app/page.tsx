@@ -159,7 +159,7 @@ export default function Home() {
       category: "Blog",
       price: 0.0,
       image:
-        "https://9hn0rhd8ibpivln7.public.blob.vercel-storage.com/templates/blog-template/BloomBlog-OG-opti.webp",
+        "https://9hn0rhd8ibpivln7.public.blob.vercel-storage.com/templates/blog-template/og-image.webp",
       link: "/nextjs-templates/bloomblog-free-nextjs-tailwind-css-blog-template",
       demoUrl: "https://bloomtpl-blog-template.vercel.app/",
     },
