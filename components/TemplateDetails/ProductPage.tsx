@@ -363,6 +363,8 @@ function getTechIcon(title: string) {
         height={30}
       />
     );
+  if (key.includes("react"))
+    return <Image src="/svg/react.svg" alt="React" width={30} height={30} />;
   if (key.includes("lucid"))
     return (
       <Image
