@@ -21,70 +21,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/nextjs-templates/category/saas`,
-      lastModified: new Date(),
-      changeFrequency: "weekly" as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/nextjs-templates/category/landing-page`,
-      lastModified: new Date(),
-      changeFrequency: "weekly" as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/nextjs-templates/category/blog`,
-      lastModified: new Date(),
-      changeFrequency: "weekly" as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/nextjs-templates/category/portfolio`,
-      lastModified: new Date(),
-      changeFrequency: "weekly" as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/nextjs-templates/category/e-commerce`,
-      lastModified: new Date(),
-      changeFrequency: "weekly" as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/nextjs-templates/category/dashboard`,
-      lastModified: new Date(),
-      changeFrequency: "weekly" as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/nextjs-templates/category/restaurant`,
-      lastModified: new Date(),
-      changeFrequency: "weekly" as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/nextjs-templates/category/agency`,
-      lastModified: new Date(),
-      changeFrequency: "weekly" as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/nextjs-templates/category/free`,
-      lastModified: new Date(),
-      changeFrequency: "weekly" as const,
-      priority: 0.8,
-    },
-    {
       url: `${baseUrl}/blog`,
       lastModified: new Date(),
       changeFrequency: "weekly" as const,
       priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/all-access-pass`,
-      lastModified: new Date(),
-      changeFrequency: "weekly" as const,
-      priority: 0.9,
     },
     {
       url: `${baseUrl}/legal/terms-of-use`,
@@ -148,7 +88,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
-  // Récupère les slugs des templates depuis la base
   const templates = await prisma.template.findMany({
     select: { slug: true, updatedAt: true },
   });
@@ -160,7 +99,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.9,
   }));
 
-  // Récupère les slugs des blogs depuis Sanity
+  const categories = await prisma.template.findMany({
+    select: { category: true },
+    distinct: ["category"],
+  });
+
+  const categoryRoutes = categories
+    .filter((cat) => !!cat.category)
+    .map((cat) => ({
+      url: `${baseUrl}/nextjs-templates/category/${cat.category}`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
+    }));
+
   const blogPosts = await client.fetch<
     { slug: { current: string }; _updatedAt?: string }[]
   >(`*[_type == "post" && defined(slug.current)]{slug, _updatedAt}`);
@@ -172,5 +124,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8,
   }));
 
-  return [...staticRoutes, ...templateRoutes, ...blogRoutes];
+  return [...staticRoutes, ...templateRoutes, ...blogRoutes, ...categoryRoutes];
 }
