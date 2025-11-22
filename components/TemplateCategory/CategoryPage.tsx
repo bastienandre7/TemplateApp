@@ -175,7 +175,7 @@ export default function CategoryPage({
                         <BreadcrumbSeparator />
                         <BreadcrumbItem>
                           <BreadcrumbLink
-                            href={`/nextjs-templates/category/${category}`}
+                            href={`/nextjs-templates/category/${category.toLowerCase()}`}
                             aria-current="page"
                           >
                             {category}
