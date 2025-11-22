@@ -107,7 +107,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const categoryRoutes = categories
     .filter((cat) => !!cat.category)
     .map((cat) => ({
-      url: `${baseUrl}/nextjs-templates/category/${cat.category}`,
+      url: `${baseUrl}/nextjs-templates/category/${cat.category.toLowerCase()}`,
       lastModified: new Date(),
       changeFrequency: "weekly" as const,
       priority: 0.8,
